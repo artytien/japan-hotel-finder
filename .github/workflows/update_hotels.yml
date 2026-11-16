@@ -1,0 +1,55 @@
+name: Auto Update Japan Hotels Data (All Regions)
+
+on:
+  schedule:
+    - cron: '0 20 1 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-hotel-json:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+
+      - name: Run nationwide hotel data generator script
+        run: |
+          python generate_hotels_data.py
+
+      - name: Verify and Commit all 3 JSON files
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          
+          for file in "./data/hotels_kansai.json" "./data/hotels_tokyo.json" "./data/hotels_all.json"; do
+            if [ ! -s "$file" ] || [ $(wc -c < "$file") -lt 100 ]; then
+              echo "⚠️ 嚴重警告：$file 異常過小或不存在，中止寫入以保護既有資料！"
+              exit 1
+            fi
+          done
+
+          git add ./data/hotels_kansai.json ./data/hotels_tokyo.json ./data/hotels_all.json
+          
+          if git diff --staged --quiet; then
+            echo "✅ 全國三區圖資皆無變動，無需更新 Commit。"
+          else
+            git commit -m "chore(data): 自動更新關西、首都圈與全國商務飯店圖資 ($(date +'%Y-%m-%d'))"
+            git push
+            echo "🚀 已成功推送 3 份最新飯店 JSON 資料並觸發 GitHub Pages 更新！"
+          fi
