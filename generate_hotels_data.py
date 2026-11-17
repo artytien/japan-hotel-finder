@@ -26,11 +26,19 @@ REGIONS_CONFIG = [
     {"key": "hokkaido", "name": "北海道",     "bbox": (41.35, 139.80, 45.55, 145.80)},
 ]
 
+# 修正：使用支援度最高的官方主節點與日本/歐洲鏡像節點
 OVERPASS_URLS = [
     "https://overpass-api.de/api/interpreter",
-    "https://lz4.overpass-api.de/api/interpreter",
+    "https://maps.mail.ru/osm/tools/overpass/api/interpreter",
     "https://overpass.kumi.systems/api/interpreter"
 ]
+
+# 關鍵修正：補上符合 OSM 規範的 User-Agent 與 Accept 標頭，解決 406 Not Acceptable 阻擋
+REQUEST_HEADERS = {
+    "User-Agent": "JapanHotelFinderPWA/1.0 (https://github.com/artytien/japan-hotel-finder)",
+    "Accept": "application/json, text/plain, */*",
+    "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
+}
 
 BRAND_PATTERNS = [
     ("Via Inn", r"ヴィアイン|via\s*inn"),
@@ -104,18 +112,23 @@ def get_coords(element):
     return None, None
 
 def query_overpass(query_str, region_name):
-    for attempt in range(2):
+    for attempt in range(3):
         for url in OVERPASS_URLS:
             try:
                 print(f"📡 [{region_name}] 請求伺服器 ({url}) ...")
-                resp = requests.post(url, data={"data": query_str}, timeout=180)
+                resp = requests.post(
+                    url,
+                    data={"data": query_str},
+                    headers=REQUEST_HEADERS,
+                    timeout=180
+                )
                 resp.raise_for_status()
                 return resp.json().get("elements", [])
             except Exception as e:
                 print(f"⚠️ [{region_name}] 節點 {url} 異常 ({e})，切換備援節點...")
-                time.sleep(3)
-        print(f"⏳ [{region_name}] 第一輪節點皆忙碌，等待 10 秒後重試...")
-        time.sleep(10)
+                time.sleep(5)
+        print(f"⏳ [{region_name}] 第 {attempt + 1} 輪節點皆忙碌，等待 15 秒後重試...")
+        time.sleep(15)
     raise RuntimeError(f"❌ [{region_name}] 所有 Overpass API 節點皆無法完成查詢。")
 
 # ==========================================
@@ -322,7 +335,7 @@ def main():
             save_json(OUTPUT_FILES["tokyo"], tokyo_hotels)
 
         if idx < len(REGIONS_CONFIG) - 1:
-            time.sleep(3)
+            time.sleep(5)
 
     all_hotels.sort(key=lambda x: x["station_dist"])
     save_json(OUTPUT_FILES["all"], all_hotels)
