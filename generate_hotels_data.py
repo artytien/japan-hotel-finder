@@ -8,17 +8,19 @@ from collections import defaultdict
 import requests
 
 # ==========================================
-# 1. 設定區：日本 7 大地理分區定義
+# 1. 設定區：日本 8 大精準地理分區定義
 # ==========================================
 DATA_DIR = "./data"
 REGIONS_MAP = {
-    "kansai":   {"name": "關西圈(京阪神)",     "bbox": (34.40, 135.10, 35.08, 135.85)},
-    "tokyo":    {"name": "關東(首都圈)",       "bbox": (35.35, 139.45, 35.95, 140.42)},
-    "tokai":    {"name": "東海(名古屋・静岡)", "bbox": (34.65, 136.60, 35.45, 138.50)},
-    "kyushu":   {"name": "九州(福岡・熊本)",   "bbox": (32.60, 130.15, 33.95, 131.70)},
-    "hokkaido": {"name": "北海道(札幌・函館)", "bbox": (41.70, 140.65, 43.85, 142.50)},
-    "chugoku":  {"name": "中國・四國(廣島岡山)", "bbox": (33.80, 132.30, 34.75, 134.10)},
-    "tohoku":   {"name": "東北(仙台・青森)",   "bbox": (38.15, 140.70, 40.90, 141.20)},
+    "kansai":        {"name": "關西圈(京阪神)",       "bbox": (34.40, 135.10, 35.08, 135.85)},
+    "tokyo":         {"name": "關東(首都圈)",         "bbox": (35.35, 139.45, 35.95, 140.42)},
+    "tokai":         {"name": "東海(名古屋・静岡)",   "bbox": (34.65, 136.60, 35.45, 138.50)},
+    # 將原本過大的九州拆分為「北九州(福岡・小倉)」與「南九州(熊本・鹿兒島)」，徹底解決逾時
+    "kyushu_north":  {"name": "北九州(福岡・小倉)",   "bbox": (33.30, 130.15, 33.95, 131.05)},
+    "kyushu_south":  {"name": "南九州(熊本・鹿兒島)", "bbox": (31.50, 130.40, 32.90, 131.70)},
+    "hokkaido":      {"name": "北海道(札幌・函館)",   "bbox": (41.70, 140.65, 43.85, 142.50)},
+    "chugoku":       {"name": "中國・四國(廣島岡山)", "bbox": (33.80, 132.30, 34.75, 134.10)},
+    "tohoku":        {"name": "東北(仙台・青森)",     "bbox": (38.15, 140.70, 40.90, 141.20)},
 }
 
 OVERPASS_URLS = [
@@ -27,7 +29,7 @@ OVERPASS_URLS = [
 ]
 
 REQUEST_HEADERS = {
-    "User-Agent": "JapanHotelFinderPWA/1.3 (https://github.com/artytien/japan-hotel-finder)",
+    "User-Agent": "JapanHotelFinderPWA/1.4 (https://github.com/artytien/japan-hotel-finder)",
     "Accept": "application/json",
     "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
 }
@@ -50,8 +52,10 @@ BRAND_PATTERNS = [
     ("Hotel Metropolitan", r"ホテルメトロポリタン|metropolitan"),
 ]
 
-# 伺服器端預先過濾品牌關鍵字，大幅減少回傳資料量
 SERVER_HOTEL_REGEX = "ヴィアイン|via|ドーミーイン|dormy|野乃|東横|東橫|toyoko|スーパーホテル|super|ルートイン|route|コンフォート|comfort|アパホテル|apa|リブマックス|livemax|フレッサイン|fresa|ワシントン|washington|リッチモンド|richmond|ダイワロイネット|daiwa|三井ガーデン|mitsui|東急ステイ|tokyu|メトロポリタン|metropolitan"
+
+# 伺服器端生活機能精準過濾關鍵字（大幅縮減無關雜店傳輸量）
+SERVER_AMENITY_REGEX = "ローソン|lawson|セブン|7-eleven|seven-eleven|ファミリーマート|ファミマ|familymart|マクドナルド|mcdonald|マツモトキヨシ|ウエルシア|ダイコク|スギ薬局|ツルハ|ココカラファイン|サンドラッグ|コスモス|ドラッグ|薬局|drug|ライフ|玉出|業務スーパー|イオン|マックスバリュ|成城石井|コーヨー|kohyo|サンディ|ロピア|イズミヤ|マルエツ|まいばすけっと|オーケー|ゆめタウン|サニー"
 
 AIRPORT_STATION_RULES = {
     "JR_HARUKA": ["関西空港", "天王寺", "新今宮", "大阪", "うめきた", "新大阪", "京都", "日根野", "和泉府中", "西九条"],
@@ -163,7 +167,7 @@ def classify_amenity(tags):
     if shop == "supermarket" or any(
         k in text for k in [
             "ライフ", "玉出", "業務スーパー", "イオン", "マックスバリュ", 
-            "成城石井", "コーヨー", "kohyo", "サンディ", "ロピア", "イズミヤ", "マルエツ", "まいばすけっと", "オーケー"
+            "成城石井", "コーヨー", "kohyo", "サンディ", "ロピア", "イズミヤ", "マルエツ", "まいばすけっと", "オーケー", "ゆめタウン", "サニー"
         ]
     ):
         return "supermarket"
@@ -205,7 +209,6 @@ def fetch_and_save_region(r_key):
     s, w, n, e = cfg["bbox"]
     bbox_str = f"{s},{w},{n},{e}"
 
-    # 第 1 段輕量請求：僅抓取 15 大連鎖品牌飯店與鐵道車站
     query_part1 = f"""
     [out:json][timeout:60];
     (
@@ -220,12 +223,14 @@ def fetch_and_save_region(r_key):
 
     time.sleep(3)
 
-    # 第 2 段輕量請求：抓取周邊生活機能點
+    # 加上名稱/品牌正規表示式過濾，避免下載無關鄉間雜貨店導致逾時
     query_part2 = f"""
     [out:json][timeout:60];
     (
-      nwr["shop"~"convenience|supermarket|chemist"]({bbox_str});
-      nwr["amenity"~"fast_food|pharmacy"]({bbox_str});
+      nwr["shop"~"convenience|supermarket|chemist"]["name"~"{SERVER_AMENITY_REGEX}",i]({bbox_str});
+      nwr["shop"~"convenience|supermarket|chemist"]["brand"~"{SERVER_AMENITY_REGEX}",i]({bbox_str});
+      nwr["amenity"~"fast_food|pharmacy"]["name"~"{SERVER_AMENITY_REGEX}",i]({bbox_str});
+      nwr["amenity"~"fast_food|pharmacy"]["brand"~"{SERVER_AMENITY_REGEX}",i]({bbox_str});
     );
     out center tags;
     """
