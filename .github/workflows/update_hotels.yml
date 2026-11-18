@@ -10,15 +10,17 @@ on:
         required: true
         default: 'kansai'
         type: choice
-        options:
+options:
           - kansai
           - tokyo
           - tokai
-          - kyushu
+          - kyushu_north
+          - kyushu_south
           - hokkaido
           - chugoku
           - tohoku
           - all
+
 
 permissions:
   contents: write
