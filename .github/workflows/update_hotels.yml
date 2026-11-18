@@ -6,11 +6,11 @@ on:
   workflow_dispatch:
     inputs:
       region:
-        description: '選擇要抓取的區域（建議分批先選 kansai，成功後再抓其他區）'
+        description: '選擇要抓取的區域（已將九州拆分為南北兩區以防逾時）'
         required: true
         default: 'kansai'
         type: choice
-options:
+        options:
           - kansai
           - tokyo
           - tokai
@@ -20,7 +20,6 @@ options:
           - chugoku
           - tohoku
           - all
-
 
 permissions:
   contents: write
