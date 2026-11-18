@@ -12,8 +12,8 @@ import requests
 # ==========================================
 DATA_DIR = "./data"
 REGIONS_MAP = {
-    "kansai":   {"name": "關西圈(京阪神)",   "bbox": (34.40, 135.10, 35.08, 135.85)},
-    "tokyo":    {"name": "關東(首都圈)",     "bbox": (35.35, 139.45, 35.95, 140.42)},
+    "kansai":   {"name": "關西圈(京阪神)",     "bbox": (34.40, 135.10, 35.08, 135.85)},
+    "tokyo":    {"name": "關東(首都圈)",       "bbox": (35.35, 139.45, 35.95, 140.42)},
     "tokai":    {"name": "東海(名古屋・静岡)", "bbox": (34.65, 136.60, 35.45, 138.50)},
     "kyushu":   {"name": "九州(福岡・熊本)",   "bbox": (32.60, 130.15, 33.95, 131.70)},
     "hokkaido": {"name": "北海道(札幌・函館)", "bbox": (41.70, 140.65, 43.85, 142.50)},
@@ -27,7 +27,7 @@ OVERPASS_URLS = [
 ]
 
 REQUEST_HEADERS = {
-    "User-Agent": "JapanHotelFinderPWA/1.2 (https://github.com/artytien/japan-hotel-finder)",
+    "User-Agent": "JapanHotelFinderPWA/1.3 (https://github.com/artytien/japan-hotel-finder)",
     "Accept": "application/json",
     "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
 }
@@ -49,6 +49,9 @@ BRAND_PATTERNS = [
     ("Tokyu Stay", r"東急ステイ|tokyu\s*stay"),
     ("Hotel Metropolitan", r"ホテルメトロポリタン|metropolitan"),
 ]
+
+# 伺服器端預先過濾品牌關鍵字，大幅減少回傳資料量
+SERVER_HOTEL_REGEX = "ヴィアイン|via|ドーミーイン|dormy|野乃|東横|東橫|toyoko|スーパーホテル|super|ルートイン|route|コンフォート|comfort|アパホテル|apa|リブマックス|livemax|フレッサイン|fresa|ワシントン|washington|リッチモンド|richmond|ダイワロイネット|daiwa|三井ガーデン|mitsui|東急ステイ|tokyu|メトロポリタン|metropolitan"
 
 AIRPORT_STATION_RULES = {
     "JR_HARUKA": ["関西空港", "天王寺", "新今宮", "大阪", "うめきた", "新大阪", "京都", "日根野", "和泉府中", "西九条"],
@@ -98,25 +101,25 @@ def get_coords(element):
         return element["center"]["lat"], element["center"]["lon"]
     return None, None
 
-def query_overpass(query_str, region_name):
+def query_overpass(query_str, step_label):
     for attempt in range(3):
         for url in OVERPASS_URLS:
             try:
-                print(f"📡 [{region_name}] 請求伺服器 ({url}) ...")
+                print(f"📡 [{step_label}] 請求伺服器 ({url}) ...")
                 resp = requests.post(
                     url,
                     data={"data": query_str},
                     headers=REQUEST_HEADERS,
-                    timeout=55
+                    timeout=90
                 )
                 resp.raise_for_status()
                 return resp.json().get("elements", [])
             except Exception as e:
-                print(f"⚠️ [{region_name}] 節點異常 ({e})，5 秒後切換...")
-                time.sleep(5)
-        print(f"⏳ [{region_name}] 等待 10 秒後重試...")
-        time.sleep(10)
-    raise RuntimeError(f"❌ [{region_name}] 無法完成查詢。")
+                print(f"⚠️ [{step_label}] 節點異常 ({e})，6 秒後切換...")
+                time.sleep(6)
+        print(f"⏳ [{step_label}] 等待 12 秒後重試...")
+        time.sleep(12)
+    raise RuntimeError(f"❌ [{step_label}] 無法完成查詢。")
 
 def detect_hotel_brand(tags):
     search_text = " ".join([
@@ -202,25 +205,38 @@ def fetch_and_save_region(r_key):
     s, w, n, e = cfg["bbox"]
     bbox_str = f"{s},{w},{n},{e}"
 
-    overpass_query = f"""
-    [out:json][timeout:45];
+    # 第 1 段輕量請求：僅抓取 15 大連鎖品牌飯店與鐵道車站
+    query_part1 = f"""
+    [out:json][timeout:60];
     (
-      nwr["tourism"="hotel"]({bbox_str});
+      nwr["tourism"="hotel"]["name"~"{SERVER_HOTEL_REGEX}",i]({bbox_str});
+      nwr["tourism"="hotel"]["brand"~"{SERVER_HOTEL_REGEX}",i]({bbox_str});
       nwr["railway"="station"]({bbox_str});
+    );
+    out center tags;
+    """
+    elements_part1 = query_overpass(query_part1, f"{r_name}-飯店與車站")
+    print(f"✅ [{r_name}-飯店與車站] 取回 {len(elements_part1)} 筆節點")
+
+    time.sleep(3)
+
+    # 第 2 段輕量請求：抓取周邊生活機能點
+    query_part2 = f"""
+    [out:json][timeout:60];
+    (
       nwr["shop"~"convenience|supermarket|chemist"]({bbox_str});
       nwr["amenity"~"fast_food|pharmacy"]({bbox_str});
     );
     out center tags;
     """
-
-    elements = query_overpass(overpass_query, r_name)
-    print(f"✅ [{r_name}] 取回 {len(elements)} 筆節點，開始空間配對...")
+    elements_part2 = query_overpass(query_part2, f"{r_name}-生活機能")
+    print(f"✅ [{r_name}-生活機能] 取回 {len(elements_part2)} 筆節點，開始空間配對...")
 
     raw_hotels = []
     stations = []
     amenities_pool = {k: [] for k in ["lawson", "seven", "familymart", "mcdonalds", "drugstore", "supermarket"]}
 
-    for el in elements:
+    for el in elements_part1:
         tags = el.get("tags", {})
         lat, lon = get_coords(el)
         if lat is None or lon is None:
@@ -229,9 +245,7 @@ def fetch_and_save_region(r_key):
         if tags.get("railway") == "station":
             st_name = tags.get("name:ja") or tags.get("name") or "周邊車站"
             stations.append({"name": st_name, "lat": lat, "lng": lon, "tags": tags})
-            continue
-
-        if tags.get("tourism") == "hotel":
+        elif tags.get("tourism") == "hotel":
             brand = detect_hotel_brand(tags)
             if brand:
                 name = tags.get("name:ja") or tags.get("name") or f"{brand} ({r_name})"
@@ -242,8 +256,12 @@ def fetch_and_save_region(r_key):
                     "lng": round(lon, 6),
                     "tags": tags
                 })
-                continue
 
+    for el in elements_part2:
+        tags = el.get("tags", {})
+        lat, lon = get_coords(el)
+        if lat is None or lon is None:
+            continue
         a_type = classify_amenity(tags)
         if a_type:
             amenities_pool[a_type].append({"lat": lat, "lng": lon})
@@ -293,7 +311,6 @@ def fetch_and_save_region(r_key):
     print(f"💾 [{r_name}] 已儲存至 {out_file} (共 {len(region_results)} 筆)")
 
 def merge_all_regions():
-    """自動掃描 ./data/ 下所有已抓取的區域 JSON，去重後合併成 hotels_all.json"""
     all_hotels = []
     seen_keys = set()
 
@@ -315,7 +332,6 @@ def merge_all_regions():
     print(f"🎉 已自動更新全國總檔 {all_path} (目前累計收錄 {len(all_hotels)} 間商務飯店)")
 
 def main():
-    # 讀取命令列參數：預設為 'all'（全部依序抓），或指定單一區域如 'kansai'
     target = sys.argv[1].strip().lower() if len(sys.argv) > 1 else "all"
 
     if target == "all":
@@ -329,7 +345,6 @@ def main():
     else:
         raise ValueError(f"不支援的區域名稱: {target}")
 
-    # 無論只抓哪一區，都自動重新合併更新 hotels_all.json
     merge_all_regions()
 
 if __name__ == "__main__":
