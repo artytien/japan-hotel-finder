@@ -38,6 +38,84 @@
     }
   },
   {
+    "id": "tokyo_111",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.693086,
+    "lng": 139.782412,
+    "station_name": "馬喰町",
+    "station_dist": 32,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 149,
+      "seven": 121,
+      "familymart": 35,
+      "mcdonalds": 845,
+      "drugstore": 258,
+      "supermarket": 86
+    }
+  },
+  {
+    "id": "tokyo_123",
+    "name": "Dormy Inn Korakuen",
+    "brand": "Dormy Inn",
+    "region": "tokyo",
+    "lat": 35.710127,
+    "lng": 139.753427,
+    "station_name": "春日",
+    "station_dist": 35,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 19,
+      "seven": 147,
+      "familymart": 146,
+      "mcdonalds": 76,
+      "drugstore": 22,
+      "supermarket": 230
+    }
+  },
+  {
+    "id": "tokyo_48",
+    "name": "相鉄フレッサイン",
+    "brand": "Fresa Inn",
+    "region": "tokyo",
+    "lat": 35.669893,
+    "lng": 139.817639,
+    "station_name": "東陽町",
+    "station_dist": 36,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 40,
+      "seven": 136,
+      "familymart": 109,
+      "mcdonalds": 31,
+      "drugstore": 116,
+      "supermarket": 331
+    }
+  },
+  {
+    "id": "tokyo_249",
+    "name": "東急ステイ新宿",
+    "brand": "Tokyu Stay",
+    "region": "tokyo",
+    "lat": 35.69092,
+    "lng": 139.706186,
+    "station_name": "新宿三丁目",
+    "station_dist": 36,
+    "airport_lines": [
+      "JR_NEX"
+    ],
+    "amenities": {
+      "lawson": 141,
+      "seven": 123,
+      "familymart": 53,
+      "mcdonalds": 380,
+      "drugstore": 102,
+      "supermarket": 302
+    }
+  },
+  {
     "id": "kansai_147",
     "name": "ホテルリブマックス神戸",
     "brand": "LiveMax",
@@ -54,6 +132,202 @@
       "mcdonalds": 755,
       "drugstore": 17,
       "supermarket": 138
+    }
+  },
+  {
+    "id": "tokyo_82",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.675953,
+    "lng": 139.737423,
+    "station_name": "赤坂見附",
+    "station_dist": 42,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 270,
+      "seven": 72,
+      "familymart": 59,
+      "mcdonalds": 163,
+      "drugstore": 76,
+      "supermarket": 122
+    }
+  },
+  {
+    "id": "tokyo_254",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.698225,
+    "lng": 139.707304,
+    "station_name": "東新宿",
+    "station_dist": 42,
+    "airport_lines": [
+      "JR_NEX"
+    ],
+    "amenities": {
+      "lawson": 66,
+      "seven": 87,
+      "familymart": 144,
+      "mcdonalds": 69,
+      "drugstore": 221,
+      "supermarket": 165
+    }
+  },
+  {
+    "id": "tokyo_6",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.580526,
+    "lng": 139.641766,
+    "station_name": "武蔵中原",
+    "station_dist": 43,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 67,
+      "seven": 93,
+      "familymart": 64,
+      "mcdonalds": 1260,
+      "drugstore": 64,
+      "supermarket": 127
+    }
+  },
+  {
+    "id": "tokyo_211",
+    "name": "スーパーホテル",
+    "brand": "Super Hotel",
+    "region": "tokyo",
+    "lat": 35.706315,
+    "lng": 139.775768,
+    "station_name": "仲御徒町",
+    "station_dist": 43,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 121,
+      "seven": 36,
+      "familymart": 133,
+      "mcdonalds": 321,
+      "drugstore": 86,
+      "supermarket": 107
+    }
+  },
+  {
+    "id": "tokyo_1",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.606697,
+    "lng": 140.102275,
+    "station_name": "千葉みなと",
+    "station_dist": 46,
+    "airport_lines": [
+      "JR_NEX"
+    ],
+    "amenities": {
+      "lawson": 267,
+      "seven": 180,
+      "familymart": 828,
+      "mcdonalds": 1360,
+      "drugstore": 75,
+      "supermarket": 68
+    }
+  },
+  {
+    "id": "tokyo_5",
+    "name": "相鉄フレッサイン",
+    "brand": "Fresa Inn",
+    "region": "tokyo",
+    "lat": 35.698565,
+    "lng": 139.707926,
+    "station_name": "東新宿",
+    "station_dist": 46,
+    "airport_lines": [
+      "JR_NEX"
+    ],
+    "amenities": {
+      "lawson": 84,
+      "seven": 66,
+      "familymart": 184,
+      "mcdonalds": 100,
+      "drugstore": 246,
+      "supermarket": 222
+    }
+  },
+  {
+    "id": "tokyo_62",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.692539,
+    "lng": 139.784851,
+    "station_name": "東日本橋",
+    "station_dist": 46,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 284,
+      "seven": 41,
+      "familymart": 84,
+      "mcdonalds": 707,
+      "drugstore": 34,
+      "supermarket": 234
+    }
+  },
+  {
+    "id": "tokyo_86",
+    "name": "doemy inn premium",
+    "brand": "Dormy Inn",
+    "region": "tokyo",
+    "lat": 35.690314,
+    "lng": 139.778193,
+    "station_name": "小伝馬町",
+    "station_dist": 54,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 370,
+      "seven": 14,
+      "familymart": 43,
+      "mcdonalds": 771,
+      "drugstore": 32,
+      "supermarket": 31
+    }
+  },
+  {
+    "id": "tokyo_156",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.692524,
+    "lng": 139.78313,
+    "station_name": "馬喰横山",
+    "station_dist": 54,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 140,
+      "seven": 142,
+      "familymart": 96,
+      "mcdonalds": 837,
+      "drugstore": 183,
+      "supermarket": 132
+    }
+  },
+  {
+    "id": "tokyo_55",
+    "name": "東急ステイ用賀",
+    "brand": "Tokyu Stay",
+    "region": "tokyo",
+    "lat": 35.626426,
+    "lng": 139.633615,
+    "station_name": "用賀",
+    "station_dist": 55,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 65,
+      "seven": 160,
+      "familymart": 79,
+      "mcdonalds": 696,
+      "drugstore": 64,
+      "supermarket": 49
     }
   },
   {
@@ -76,6 +350,27 @@
     }
   },
   {
+    "id": "tokyo_8",
+    "name": "三井ガーデンホテル上野",
+    "brand": "Mitsui Garden",
+    "region": "tokyo",
+    "lat": 35.71183,
+    "lng": 139.778214,
+    "station_name": "上野",
+    "station_dist": 58,
+    "airport_lines": [
+      "KEISEI"
+    ],
+    "amenities": {
+      "lawson": 91,
+      "seven": 143,
+      "familymart": 60,
+      "mcdonalds": 405,
+      "drugstore": 44,
+      "supermarket": 74
+    }
+  },
+  {
     "id": "kansai_7",
     "name": "スーパーホテル",
     "brand": "Super Hotel",
@@ -95,6 +390,44 @@
     }
   },
   {
+    "id": "tokyo_71",
+    "name": "相鉄フレッサイン",
+    "brand": "Fresa Inn",
+    "region": "tokyo",
+    "lat": 35.449603,
+    "lng": 139.636229,
+    "station_name": "馬車道",
+    "station_dist": 61,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 121,
+      "seven": 119,
+      "familymart": 208,
+      "mcdonalds": 470,
+      "drugstore": 112,
+      "supermarket": 144
+    }
+  },
+  {
+    "id": "tokyo_248",
+    "name": "WASHINGTON HOTEL",
+    "brand": "Washington Hotel",
+    "region": "tokyo",
+    "lat": 35.441577,
+    "lng": 139.632817,
+    "station_name": "伊勢佐木長者町",
+    "station_dist": 64,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 204,
+      "seven": 209,
+      "familymart": 278,
+      "mcdonalds": 292,
+      "drugstore": 273,
+      "supermarket": 223
+    }
+  },
+  {
     "id": "kansai_36",
     "name": "東横INN大阪谷四交差点",
     "brand": "Toyoko Inn",
@@ -111,6 +444,67 @@
       "mcdonalds": 227,
       "drugstore": 275,
       "supermarket": 309
+    }
+  },
+  {
+    "id": "tokyo_34",
+    "name": "ホテルルートイン北松戸駅前",
+    "brand": "Route Inn",
+    "region": "tokyo",
+    "lat": 35.800038,
+    "lng": 139.91155,
+    "station_name": "北松戸",
+    "station_dist": 67,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 195,
+      "seven": 101,
+      "familymart": 42,
+      "mcdonalds": 26,
+      "drugstore": 52,
+      "supermarket": 161
+    }
+  },
+  {
+    "id": "tokyo_275",
+    "name": "東急ステイ銀座",
+    "brand": "Tokyu Stay",
+    "region": "tokyo",
+    "lat": 35.670419,
+    "lng": 139.767368,
+    "station_name": "東銀座",
+    "station_dist": 67,
+    "airport_lines": [
+      "KEIKYU"
+    ],
+    "amenities": {
+      "lawson": 68,
+      "seven": 121,
+      "familymart": 65,
+      "mcdonalds": 229,
+      "drugstore": 60,
+      "supermarket": 403
+    }
+  },
+  {
+    "id": "tokyo_210",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.711391,
+    "lng": 139.772956,
+    "station_name": "京成上野",
+    "station_dist": 70,
+    "airport_lines": [
+      "KEISEI"
+    ],
+    "amenities": {
+      "lawson": 153,
+      "seven": 94,
+      "familymart": 67,
+      "mcdonalds": 318,
+      "drugstore": 152,
+      "supermarket": 250
     }
   },
   {
@@ -135,6 +529,67 @@
     }
   },
   {
+    "id": "tokyo_147",
+    "name": "アパホテル〈浅草 新御徒町駅前〉",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.707631,
+    "lng": 139.782201,
+    "station_name": "新御徒町",
+    "station_dist": 71,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 98,
+      "seven": 33,
+      "familymart": 93,
+      "mcdonalds": 387,
+      "drugstore": 112,
+      "supermarket": 205
+    }
+  },
+  {
+    "id": "tokyo_166",
+    "name": "ホテルメトロポリタン 羽田",
+    "brand": "Hotel Metropolitan",
+    "region": "tokyo",
+    "lat": 35.549441,
+    "lng": 139.754912,
+    "station_name": "天空橋",
+    "station_dist": 71,
+    "airport_lines": [
+      "MONORAIL"
+    ],
+    "amenities": {
+      "lawson": 503,
+      "seven": 682,
+      "familymart": 437,
+      "mcdonalds": 2257,
+      "drugstore": 553,
+      "supermarket": 639
+    }
+  },
+  {
+    "id": "tokyo_304",
+    "name": "東急ステイ",
+    "brand": "Tokyu Stay",
+    "region": "tokyo",
+    "lat": 35.638317,
+    "lng": 139.739327,
+    "station_name": "泉岳寺",
+    "station_dist": 73,
+    "airport_lines": [
+      "KEIKYU"
+    ],
+    "amenities": {
+      "lawson": 207,
+      "seven": 265,
+      "familymart": 680,
+      "mcdonalds": 1097,
+      "drugstore": 98,
+      "supermarket": 228
+    }
+  },
+  {
     "id": "kansai_121",
     "name": "スーパーホテル",
     "brand": "Super Hotel",
@@ -151,6 +606,86 @@
       "mcdonalds": 226,
       "drugstore": 41,
       "supermarket": 374
+    }
+  },
+  {
+    "id": "tokyo_17",
+    "name": "コンフォートホテル東京清澄白河",
+    "brand": "Comfort Hotel",
+    "region": "tokyo",
+    "lat": 35.682226,
+    "lng": 139.799556,
+    "station_name": "清澄白河",
+    "station_dist": 74,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 149,
+      "seven": 367,
+      "familymart": 10,
+      "mcdonalds": 330,
+      "drugstore": 54,
+      "supermarket": 69
+    }
+  },
+  {
+    "id": "tokyo_9",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.609498,
+    "lng": 139.742741,
+    "station_name": "青物横丁",
+    "station_dist": 76,
+    "airport_lines": [
+      "KEIKYU"
+    ],
+    "amenities": {
+      "lawson": 327,
+      "seven": 11,
+      "familymart": 125,
+      "mcdonalds": 442,
+      "drugstore": 170,
+      "supermarket": 120
+    }
+  },
+  {
+    "id": "tokyo_10",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.672191,
+    "lng": 139.742329,
+    "station_name": "溜池山王",
+    "station_dist": 80,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 56,
+      "seven": 219,
+      "familymart": 170,
+      "mcdonalds": 557,
+      "drugstore": 190,
+      "supermarket": 361
+    }
+  },
+  {
+    "id": "tokyo_195",
+    "name": "ミレニアム三井ガーデンホテル東京",
+    "brand": "Mitsui Garden",
+    "region": "tokyo",
+    "lat": 35.669779,
+    "lng": 139.766035,
+    "station_name": "東銀座",
+    "station_dist": 83,
+    "airport_lines": [
+      "KEIKYU"
+    ],
+    "amenities": {
+      "lawson": 85,
+      "seven": 114,
+      "familymart": 113,
+      "mcdonalds": 346,
+      "drugstore": 88,
+      "supermarket": 430
     }
   },
   {
@@ -175,6 +710,25 @@
     }
   },
   {
+    "id": "tokyo_7",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.845633,
+    "lng": 139.887025,
+    "station_name": "三郷",
+    "station_dist": 84,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 1047,
+      "seven": 222,
+      "familymart": 76,
+      "mcdonalds": 615,
+      "drugstore": 67,
+      "supermarket": 198
+    }
+  },
+  {
     "id": "kansai_101",
     "name": "Hotel Livemax",
     "brand": "LiveMax",
@@ -194,6 +748,25 @@
     }
   },
   {
+    "id": "tokyo_203",
+    "name": "相鉄フレッサイン 日本橋茅場町",
+    "brand": "Fresa Inn",
+    "region": "tokyo",
+    "lat": 35.680798,
+    "lng": 139.780071,
+    "station_name": "茅場町",
+    "station_dist": 86,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 192,
+      "seven": 51,
+      "familymart": 29,
+      "mcdonalds": 571,
+      "drugstore": 290,
+      "supermarket": 332
+    }
+  },
+  {
     "id": "kansai_115",
     "name": "Comfort Suites",
     "brand": "Comfort Hotel",
@@ -210,6 +783,27 @@
       "mcdonalds": 814,
       "drugstore": 240,
       "supermarket": 165
+    }
+  },
+  {
+    "id": "tokyo_281",
+    "name": "アパホテル＆リゾート西新宿五丁目駅タワー",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.689706,
+    "lng": 139.683572,
+    "station_name": "西新宿五丁目",
+    "station_dist": 88,
+    "airport_lines": [
+      "JR_NEX"
+    ],
+    "amenities": {
+      "lawson": 89,
+      "seven": 227,
+      "familymart": 73,
+      "mcdonalds": 315,
+      "drugstore": 86,
+      "supermarket": 149
     }
   },
   {
@@ -251,6 +845,67 @@
     }
   },
   {
+    "id": "tokyo_305",
+    "name": "アパホテル〈品川 泉岳寺駅前〉",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.63807,
+    "lng": 139.73928,
+    "station_name": "泉岳寺",
+    "station_dist": 94,
+    "airport_lines": [
+      "KEIKYU"
+    ],
+    "amenities": {
+      "lawson": 194,
+      "seven": 289,
+      "familymart": 673,
+      "mcdonalds": 1092,
+      "drugstore": 73,
+      "supermarket": 202
+    }
+  },
+  {
+    "id": "tokyo_175",
+    "name": "No.412 APA Hotel Keisei Ueno Ekimae Minami",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.708793,
+    "lng": 139.773004,
+    "station_name": "上野御徒町",
+    "station_dist": 95,
+    "airport_lines": [
+      "KEISEI"
+    ],
+    "amenities": {
+      "lawson": 109,
+      "seven": 55,
+      "familymart": 93,
+      "mcdonalds": 55,
+      "drugstore": 85,
+      "supermarket": 106
+    }
+  },
+  {
+    "id": "tokyo_268",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.698254,
+    "lng": 139.776525,
+    "station_name": "秋葉原",
+    "station_dist": 95,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 251,
+      "seven": 52,
+      "familymart": 42,
+      "mcdonalds": 120,
+      "drugstore": 67,
+      "supermarket": 196
+    }
+  },
+  {
     "id": "kansai_122",
     "name": "東横イン",
     "brand": "Toyoko Inn",
@@ -270,6 +925,25 @@
     }
   },
   {
+    "id": "tokyo_3",
+    "name": "ワシントンホテル",
+    "brand": "Washington Hotel",
+    "region": "tokyo",
+    "lat": 35.612093,
+    "lng": 140.118616,
+    "station_name": "栄町",
+    "station_dist": 97,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 431,
+      "seven": 246,
+      "familymart": 120,
+      "mcdonalds": 241,
+      "drugstore": 243,
+      "supermarket": 482
+    }
+  },
+  {
     "id": "kansai_156",
     "name": "ホテルルートイン",
     "brand": "Route Inn",
@@ -286,6 +960,199 @@
       "mcdonalds": 1833,
       "drugstore": 1504,
       "supermarket": 133
+    }
+  },
+  {
+    "id": "tokyo_23",
+    "name": "コンフォートホテル東京東日本橋",
+    "brand": "Comfort Hotel",
+    "region": "tokyo",
+    "lat": 35.694135,
+    "lng": 139.782967,
+    "station_name": "馬喰町",
+    "station_dist": 98,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 276,
+      "seven": 13,
+      "familymart": 161,
+      "mcdonalds": 800,
+      "drugstore": 136,
+      "supermarket": 208
+    }
+  },
+  {
+    "id": "tokyo_51",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.449602,
+    "lng": 139.635447,
+    "station_name": "馬車道",
+    "station_dist": 98,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 192,
+      "seven": 57,
+      "familymart": 138,
+      "mcdonalds": 469,
+      "drugstore": 139,
+      "supermarket": 165
+    }
+  },
+  {
+    "id": "tokyo_74",
+    "name": "ホテル リブマックス 日暮里",
+    "brand": "LiveMax",
+    "region": "tokyo",
+    "lat": 35.725444,
+    "lng": 139.764366,
+    "station_name": "千駄木",
+    "station_dist": 99,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 19,
+      "seven": 163,
+      "familymart": 587,
+      "mcdonalds": 761,
+      "drugstore": 188,
+      "supermarket": 33
+    }
+  },
+  {
+    "id": "tokyo_154",
+    "name": "東横INN浅草蔵前2",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.703374,
+    "lng": 139.79202,
+    "station_name": "蔵前",
+    "station_dist": 99,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 264,
+      "seven": 141,
+      "familymart": 155,
+      "mcdonalds": 44,
+      "drugstore": 125,
+      "supermarket": 252
+    }
+  },
+  {
+    "id": "tokyo_216",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.486157,
+    "lng": 139.653502,
+    "station_name": "新子安",
+    "station_dist": 99,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 419,
+      "seven": 19,
+      "familymart": 200,
+      "mcdonalds": 89,
+      "drugstore": 121,
+      "supermarket": 137
+    }
+  },
+  {
+    "id": "tokyo_90",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.649473,
+    "lng": 139.488811,
+    "station_name": "南多摩",
+    "station_dist": 101,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 1197,
+      "seven": 61,
+      "familymart": 70,
+      "mcdonalds": 934,
+      "drugstore": 188,
+      "supermarket": 59
+    }
+  },
+  {
+    "id": "tokyo_98",
+    "name": "ダイワロイネットホテル千葉中央",
+    "brand": "Daiwa Roynet",
+    "region": "tokyo",
+    "lat": 35.607627,
+    "lng": 140.118895,
+    "station_name": "千葉中央",
+    "station_dist": 101,
+    "airport_lines": [
+      "JR_NEX",
+      "KEISEI"
+    ],
+    "amenities": {
+      "lawson": 68,
+      "seven": 47,
+      "familymart": 121,
+      "mcdonalds": 423,
+      "drugstore": 73,
+      "supermarket": 152
+    }
+  },
+  {
+    "id": "tokyo_274",
+    "name": "三井ガーデンホテル五反田",
+    "brand": "Mitsui Garden",
+    "region": "tokyo",
+    "lat": 35.625275,
+    "lng": 139.725262,
+    "station_name": "五反田",
+    "station_dist": 103,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 22,
+      "seven": 113,
+      "familymart": 178,
+      "mcdonalds": 203,
+      "drugstore": 70,
+      "supermarket": 88
+    }
+  },
+  {
+    "id": "tokyo_76",
+    "name": "アパホテル 巣鴨駅前",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.734659,
+    "lng": 139.737736,
+    "station_name": "巣鴨",
+    "station_dist": 106,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 315,
+      "seven": 118,
+      "familymart": 122,
+      "mcdonalds": 71,
+      "drugstore": 79,
+      "supermarket": 180
+    }
+  },
+  {
+    "id": "tokyo_240",
+    "name": "相鉄フレッサイン 東京京橋",
+    "brand": "Fresa Inn",
+    "region": "tokyo",
+    "lat": 35.676383,
+    "lng": 139.771817,
+    "station_name": "宝町",
+    "station_dist": 106,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 309,
+      "seven": 149,
+      "familymart": 27,
+      "mcdonalds": 503,
+      "drugstore": 156,
+      "supermarket": 178
     }
   },
   {
@@ -327,6 +1194,25 @@
     }
   },
   {
+    "id": "tokyo_167",
+    "name": "三井ガーデンホテル日本橋プレミア",
+    "brand": "Mitsui Garden",
+    "region": "tokyo",
+    "lat": 35.688229,
+    "lng": 139.773466,
+    "station_name": "新日本橋",
+    "station_dist": 108,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 184,
+      "seven": 37,
+      "familymart": 71,
+      "mcdonalds": 991,
+      "drugstore": 108,
+      "supermarket": 269
+    }
+  },
+  {
     "id": "kansai_100",
     "name": "アパホテル",
     "brand": "APA Hotel",
@@ -346,6 +1232,44 @@
     }
   },
   {
+    "id": "tokyo_112",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.693709,
+    "lng": 139.781273,
+    "station_name": "馬喰町",
+    "station_dist": 111,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 215,
+      "seven": 165,
+      "familymart": 124,
+      "mcdonalds": 722,
+      "drugstore": 173,
+      "supermarket": 129
+    }
+  },
+  {
+    "id": "tokyo_159",
+    "name": "ダイワロイネットホテル",
+    "brand": "Daiwa Roynet",
+    "region": "tokyo",
+    "lat": 35.677479,
+    "lng": 139.7708,
+    "station_name": "京橋",
+    "station_dist": 111,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 262,
+      "seven": 17,
+      "familymart": 175,
+      "mcdonalds": 353,
+      "drugstore": 139,
+      "supermarket": 55
+    }
+  },
+  {
     "id": "kansai_70",
     "name": "Toyoko Inn Kyoto Shijo Omiya",
     "brand": "Toyoko Inn",
@@ -362,6 +1286,126 @@
       "mcdonalds": 195,
       "drugstore": 72,
       "supermarket": 159
+    }
+  },
+  {
+    "id": "tokyo_164",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.759304,
+    "lng": 139.533607,
+    "station_name": "東久留米",
+    "station_dist": 114,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 185,
+      "seven": 250,
+      "familymart": 42,
+      "mcdonalds": 1309,
+      "drugstore": 105,
+      "supermarket": 116
+    }
+  },
+  {
+    "id": "tokyo_115",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.87149,
+    "lng": 139.923865,
+    "station_name": "流山おおたかの森",
+    "station_dist": 115,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 121,
+      "seven": 85,
+      "familymart": 152,
+      "mcdonalds": 353,
+      "drugstore": 40,
+      "supermarket": 82
+    }
+  },
+  {
+    "id": "tokyo_146",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.708295,
+    "lng": 139.795593,
+    "station_name": "浅草",
+    "station_dist": 115,
+    "airport_lines": [
+      "KEIKYU"
+    ],
+    "amenities": {
+      "lawson": 91,
+      "seven": 224,
+      "familymart": 16,
+      "mcdonalds": 420,
+      "drugstore": 120,
+      "supermarket": 102
+    }
+  },
+  {
+    "id": "tokyo_157",
+    "name": "相鉄フレッサイン",
+    "brand": "Fresa Inn",
+    "region": "tokyo",
+    "lat": 35.352239,
+    "lng": 139.532644,
+    "station_name": "大船",
+    "station_dist": 115,
+    "airport_lines": [
+      "JR_NEX"
+    ],
+    "amenities": {
+      "lawson": 85,
+      "seven": 190,
+      "familymart": 86,
+      "mcdonalds": 117,
+      "drugstore": 39,
+      "supermarket": 99
+    }
+  },
+  {
+    "id": "tokyo_242",
+    "name": "アパホテル 銀座 新富町駅前",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.671624,
+    "lng": 139.773798,
+    "station_name": "新富町",
+    "station_dist": 115,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 130,
+      "seven": 125,
+      "familymart": 193,
+      "mcdonalds": 521,
+      "drugstore": 256,
+      "supermarket": 239
+    }
+  },
+  {
+    "id": "tokyo_12",
+    "name": "リッチモンドホテル プレミア武蔵小杉",
+    "brand": "Richmond Hotel",
+    "region": "tokyo",
+    "lat": 35.574698,
+    "lng": 139.662505,
+    "station_name": "武蔵小杉",
+    "station_dist": 119,
+    "airport_lines": [
+      "JR_NEX"
+    ],
+    "amenities": {
+      "lawson": 270,
+      "seven": 72,
+      "familymart": 159,
+      "mcdonalds": 296,
+      "drugstore": 156,
+      "supermarket": 104
     }
   },
   {
@@ -403,6 +1447,147 @@
     }
   },
   {
+    "id": "tokyo_125",
+    "name": "アパホテル〈羽田 穴守稲荷駅前〉",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.549258,
+    "lng": 139.747028,
+    "station_name": "穴守稲荷",
+    "station_dist": 120,
+    "airport_lines": [
+      "KEIKYU"
+    ],
+    "amenities": {
+      "lawson": 143,
+      "seven": 114,
+      "familymart": 203,
+      "mcdonalds": 1653,
+      "drugstore": 29,
+      "supermarket": 21
+    }
+  },
+  {
+    "id": "tokyo_293",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.674357,
+    "lng": 139.771743,
+    "station_name": "宝町",
+    "station_dist": 120,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 113,
+      "seven": 64,
+      "familymart": 46,
+      "mcdonalds": 395,
+      "drugstore": 154,
+      "supermarket": 357
+    }
+  },
+  {
+    "id": "tokyo_187",
+    "name": "ホテルリブマックス",
+    "brand": "LiveMax",
+    "region": "tokyo",
+    "lat": 35.658344,
+    "lng": 139.818329,
+    "station_name": "潮見",
+    "station_dist": 121,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 57,
+      "seven": 230,
+      "familymart": 137,
+      "mcdonalds": 1275,
+      "drugstore": 127,
+      "supermarket": 90
+    }
+  },
+  {
+    "id": "tokyo_192",
+    "name": "アパホテル新宿歌舞伎町タワー",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.695902,
+    "lng": 139.701225,
+    "station_name": "西武新宿",
+    "station_dist": 122,
+    "airport_lines": [
+      "JR_NEX"
+    ],
+    "amenities": {
+      "lawson": 81,
+      "seven": 70,
+      "familymart": 53,
+      "mcdonalds": 201,
+      "drugstore": 60,
+      "supermarket": 323
+    }
+  },
+  {
+    "id": "tokyo_245",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.615302,
+    "lng": 139.717283,
+    "station_name": "戸越",
+    "station_dist": 122,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 39,
+      "seven": 88,
+      "familymart": 133,
+      "mcdonalds": 143,
+      "drugstore": 24,
+      "supermarket": 210
+    }
+  },
+  {
+    "id": "tokyo_109",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.776713,
+    "lng": 140.316836,
+    "station_name": "京成成田",
+    "station_dist": 123,
+    "airport_lines": [
+      "KEISEI"
+    ],
+    "amenities": {
+      "lawson": 12,
+      "seven": 342,
+      "familymart": 132,
+      "mcdonalds": 168,
+      "drugstore": 182,
+      "supermarket": 365
+    }
+  },
+  {
+    "id": "tokyo_105",
+    "name": "東横INN",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.783196,
+    "lng": 139.901041,
+    "station_name": "松戸",
+    "station_dist": 124,
+    "airport_lines": [
+      "KEISEI"
+    ],
+    "amenities": {
+      "lawson": 56,
+      "seven": 79,
+      "familymart": 135,
+      "mcdonalds": 59,
+      "drugstore": 46,
+      "supermarket": 151
+    }
+  },
+  {
     "id": "kansai_118",
     "name": "東横イン",
     "brand": "Toyoko Inn",
@@ -419,6 +1604,63 @@
       "mcdonalds": 616,
       "drugstore": 57,
       "supermarket": 93
+    }
+  },
+  {
+    "id": "tokyo_214",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.675164,
+    "lng": 139.770522,
+    "station_name": "宝町",
+    "station_dist": 127,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 185,
+      "seven": 102,
+      "familymart": 51,
+      "mcdonalds": 378,
+      "drugstore": 140,
+      "supermarket": 242
+    }
+  },
+  {
+    "id": "tokyo_256",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.693747,
+    "lng": 139.772315,
+    "station_name": "神田",
+    "station_dist": 129,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 266,
+      "seven": 48,
+      "familymart": 135,
+      "mcdonalds": 539,
+      "drugstore": 125,
+      "supermarket": 175
+    }
+  },
+  {
+    "id": "tokyo_186",
+    "name": "相鉄フレッサイン",
+    "brand": "Fresa Inn",
+    "region": "tokyo",
+    "lat": 35.671187,
+    "lng": 139.735525,
+    "station_name": "赤坂",
+    "station_dist": 130,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 154,
+      "seven": 111,
+      "familymart": 32,
+      "mcdonalds": 126,
+      "drugstore": 73,
+      "supermarket": 238
     }
   },
   {
@@ -479,6 +1721,25 @@
     }
   },
   {
+    "id": "tokyo_29",
+    "name": "アパホテル横浜関内",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.446535,
+    "lng": 139.636734,
+    "station_name": "関内",
+    "station_dist": 134,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 64,
+      "seven": 42,
+      "familymart": 100,
+      "mcdonalds": 154,
+      "drugstore": 121,
+      "supermarket": 185
+    }
+  },
+  {
     "id": "kansai_136",
     "name": "宝塚ワシントンホテル",
     "brand": "Washington Hotel",
@@ -495,6 +1756,65 @@
       "mcdonalds": 1687,
       "drugstore": 62,
       "supermarket": 158
+    }
+  },
+  {
+    "id": "tokyo_162",
+    "name": "Keisei Richmond Hotel Tokyo Monzennakacho",
+    "brand": "Richmond Hotel",
+    "region": "tokyo",
+    "lat": 35.672826,
+    "lng": 139.796509,
+    "station_name": "門前仲町",
+    "station_dist": 138,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 342,
+      "seven": 102,
+      "familymart": 134,
+      "mcdonalds": 132,
+      "drugstore": 192,
+      "supermarket": 73
+    }
+  },
+  {
+    "id": "tokyo_126",
+    "name": "スーパーホテル",
+    "brand": "Super Hotel",
+    "region": "tokyo",
+    "lat": 35.696669,
+    "lng": 139.774485,
+    "station_name": "岩本町",
+    "station_dist": 139,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 152,
+      "seven": 162,
+      "familymart": 133,
+      "mcdonalds": 160,
+      "drugstore": 44,
+      "supermarket": 184
+    }
+  },
+  {
+    "id": "tokyo_170",
+    "name": "Hotel LiVEMAX 浅草橋駅前",
+    "brand": "LiveMax",
+    "region": "tokyo",
+    "lat": 35.696288,
+    "lng": 139.785376,
+    "station_name": "浅草橋",
+    "station_dist": 139,
+    "airport_lines": [
+      "KEIKYU"
+    ],
+    "amenities": {
+      "lawson": 187,
+      "seven": 106,
+      "familymart": 47,
+      "mcdonalds": 564,
+      "drugstore": 168,
+      "supermarket": 132
     }
   },
   {
@@ -517,6 +1837,63 @@
     }
   },
   {
+    "id": "tokyo_36",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.469792,
+    "lng": 139.459898,
+    "station_name": "大和",
+    "station_dist": 143,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 57,
+      "seven": 106,
+      "familymart": 113,
+      "mcdonalds": 176,
+      "drugstore": 76,
+      "supermarket": 133
+    }
+  },
+  {
+    "id": "tokyo_22",
+    "name": "秋葉原ワシントンホテル",
+    "brand": "Washington Hotel",
+    "region": "tokyo",
+    "lat": 35.697246,
+    "lng": 139.773827,
+    "station_name": "秋葉原",
+    "station_dist": 144,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 74,
+      "seven": 151,
+      "familymart": 74,
+      "mcdonalds": 151,
+      "drugstore": 108,
+      "supermarket": 179
+    }
+  },
+  {
+    "id": "tokyo_182",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.787145,
+    "lng": 139.613,
+    "station_name": "和光市",
+    "station_dist": 144,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 190,
+      "seven": 439,
+      "familymart": 56,
+      "mcdonalds": 954,
+      "drugstore": 43,
+      "supermarket": 74
+    }
+  },
+  {
     "id": "kansai_134",
     "name": "三井ガーデンホテル京都駅前",
     "brand": "Mitsui Garden",
@@ -535,6 +1912,25 @@
       "mcdonalds": 195,
       "drugstore": 33,
       "supermarket": 439
+    }
+  },
+  {
+    "id": "tokyo_161",
+    "name": "三井ガーデンホテル豊洲プレミア",
+    "brand": "Mitsui Garden",
+    "region": "tokyo",
+    "lat": 35.654958,
+    "lng": 139.794545,
+    "station_name": "豊洲",
+    "station_dist": 147,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 240,
+      "seven": 143,
+      "familymart": 186,
+      "mcdonalds": 249,
+      "drugstore": 234,
+      "supermarket": 102
     }
   },
   {
@@ -578,6 +1974,198 @@
     }
   },
   {
+    "id": "tokyo_144",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.701674,
+    "lng": 139.771134,
+    "station_name": "末広町",
+    "station_dist": 149,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 176,
+      "seven": 159,
+      "familymart": 56,
+      "mcdonalds": 219,
+      "drugstore": 56,
+      "supermarket": 172
+    }
+  },
+  {
+    "id": "tokyo_2",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.611643,
+    "lng": 140.118976,
+    "station_name": "栄町",
+    "station_dist": 150,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 382,
+      "seven": 224,
+      "familymart": 73,
+      "mcdonalds": 247,
+      "drugstore": 220,
+      "supermarket": 423
+    }
+  },
+  {
+    "id": "tokyo_64",
+    "name": "ホテルメトロポリタンさいたま新都心",
+    "brand": "Hotel Metropolitan",
+    "region": "tokyo",
+    "lat": 35.893861,
+    "lng": 139.632299,
+    "station_name": "さいたま新都心",
+    "station_dist": 150,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 163,
+      "seven": 77,
+      "familymart": 267,
+      "mcdonalds": 213,
+      "drugstore": 154,
+      "supermarket": 148
+    }
+  },
+  {
+    "id": "tokyo_85",
+    "name": "横浜桜木町ワシントンホテル",
+    "brand": "Washington Hotel",
+    "region": "tokyo",
+    "lat": 35.450587,
+    "lng": 139.632598,
+    "station_name": "桜木町",
+    "station_dist": 150,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 307,
+      "seven": 149,
+      "familymart": 179,
+      "mcdonalds": 577,
+      "drugstore": 143,
+      "supermarket": 118
+    }
+  },
+  {
+    "id": "tokyo_208",
+    "name": "ドーミーイン秋葉原",
+    "brand": "Dormy Inn",
+    "region": "tokyo",
+    "lat": 35.702592,
+    "lng": 139.77329,
+    "station_name": "末広町",
+    "station_dist": 150,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 147,
+      "seven": 90,
+      "familymart": 18,
+      "mcdonalds": 181,
+      "drugstore": 145,
+      "supermarket": 45
+    }
+  },
+  {
+    "id": "tokyo_209",
+    "name": "スーパーホテル",
+    "brand": "Super Hotel",
+    "region": "tokyo",
+    "lat": 35.703351,
+    "lng": 139.773274,
+    "station_name": "末広町",
+    "station_dist": 151,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 114,
+      "seven": 111,
+      "familymart": 83,
+      "mcdonalds": 124,
+      "drugstore": 142,
+      "supermarket": 93
+    }
+  },
+  {
+    "id": "tokyo_102",
+    "name": "リッチモンドホテルプレミア浅草",
+    "brand": "Richmond Hotel",
+    "region": "tokyo",
+    "lat": 35.714109,
+    "lng": 139.793992,
+    "station_name": "浅草",
+    "station_dist": 152,
+    "airport_lines": [
+      "KEIKYU"
+    ],
+    "amenities": {
+      "lawson": 60,
+      "seven": 110,
+      "familymart": 148,
+      "mcdonalds": 218,
+      "drugstore": 47,
+      "supermarket": 158
+    }
+  },
+  {
+    "id": "tokyo_143",
+    "name": "Tokyu Stay Nihombashi",
+    "brand": "Tokyu Stay",
+    "region": "tokyo",
+    "lat": 35.690148,
+    "lng": 139.775112,
+    "station_name": "新日本橋",
+    "station_dist": 152,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 274,
+      "seven": 155,
+      "familymart": 103,
+      "mcdonalds": 870,
+      "drugstore": 158,
+      "supermarket": 124
+    }
+  },
+  {
+    "id": "tokyo_42",
+    "name": "相鉄フレッサイン",
+    "brand": "Fresa Inn",
+    "region": "tokyo",
+    "lat": 35.395292,
+    "lng": 139.465632,
+    "station_name": "湘南台",
+    "station_dist": 153,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 168,
+      "seven": 14,
+      "familymart": 31,
+      "mcdonalds": 82,
+      "drugstore": 79,
+      "supermarket": 112
+    }
+  },
+  {
+    "id": "tokyo_79",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.706158,
+    "lng": 139.79391,
+    "station_name": "蔵前",
+    "station_dist": 153,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 138,
+      "seven": 40,
+      "familymart": 179,
+      "mcdonalds": 330,
+      "drugstore": 104,
+      "supermarket": 103
+    }
+  },
+  {
     "id": "kansai_55",
     "name": "相鉄フレッサイン",
     "brand": "Fresa Inn",
@@ -597,6 +2185,63 @@
     }
   },
   {
+    "id": "tokyo_235",
+    "name": "アパホテル八千代緑が丘",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.72978,
+    "lng": 140.074296,
+    "station_name": "八千代緑が丘",
+    "station_dist": 156,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 110,
+      "seven": 72,
+      "familymart": 274,
+      "mcdonalds": 1365,
+      "drugstore": 300,
+      "supermarket": 114
+    }
+  },
+  {
+    "id": "tokyo_40",
+    "name": "東横INN山手線大塚駅北口2",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.732614,
+    "lng": 139.727271,
+    "station_name": "大塚",
+    "station_dist": 157,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 134,
+      "seven": 149,
+      "familymart": 88,
+      "mcdonalds": 134,
+      "drugstore": 124,
+      "supermarket": 158
+    }
+  },
+  {
+    "id": "tokyo_237",
+    "name": "相鉄フレッサイン",
+    "brand": "Fresa Inn",
+    "region": "tokyo",
+    "lat": 35.399952,
+    "lng": 139.532716,
+    "station_name": "戸塚",
+    "station_dist": 157,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 42,
+      "seven": 139,
+      "familymart": 126,
+      "mcdonalds": 119,
+      "drugstore": 10,
+      "supermarket": 121
+    }
+  },
+  {
     "id": "kansai_13",
     "name": "東横イン",
     "brand": "Toyoko Inn",
@@ -613,6 +2258,145 @@
       "mcdonalds": 330,
       "drugstore": 186,
       "supermarket": 248
+    }
+  },
+  {
+    "id": "tokyo_28",
+    "name": "コンフォートホテル",
+    "brand": "Comfort Hotel",
+    "region": "tokyo",
+    "lat": 35.446728,
+    "lng": 139.637003,
+    "station_name": "関内",
+    "station_dist": 158,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 35,
+      "seven": 58,
+      "familymart": 83,
+      "mcdonalds": 185,
+      "drugstore": 92,
+      "supermarket": 157
+    }
+  },
+  {
+    "id": "tokyo_278",
+    "name": "Mitsui Garden Hotel Jingugaien Tokyo Premier",
+    "brand": "Mitsui Garden",
+    "region": "tokyo",
+    "lat": 35.680031,
+    "lng": 139.715705,
+    "station_name": "国立競技場",
+    "station_dist": 159,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 498,
+      "seven": 459,
+      "familymart": 446,
+      "mcdonalds": 1367,
+      "drugstore": 361,
+      "supermarket": 600
+    }
+  },
+  {
+    "id": "tokyo_129",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.863193,
+    "lng": 139.969615,
+    "station_name": "柏",
+    "station_dist": 160,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 171,
+      "seven": 239,
+      "familymart": 31,
+      "mcdonalds": 301,
+      "drugstore": 50,
+      "supermarket": 306
+    }
+  },
+  {
+    "id": "tokyo_250",
+    "name": "アパホテル横浜鶴見",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.506765,
+    "lng": 139.679659,
+    "station_name": "京急鶴見",
+    "station_dist": 160,
+    "airport_lines": [
+      "KEIKYU"
+    ],
+    "amenities": {
+      "lawson": 64,
+      "seven": 174,
+      "familymart": 125,
+      "mcdonalds": 347,
+      "drugstore": 471,
+      "supermarket": 127
+    }
+  },
+  {
+    "id": "tokyo_273",
+    "name": "相鉄フレッサイン",
+    "brand": "Fresa Inn",
+    "region": "tokyo",
+    "lat": 35.354506,
+    "lng": 139.533159,
+    "station_name": "大船",
+    "station_dist": 160,
+    "airport_lines": [
+      "JR_NEX"
+    ],
+    "amenities": {
+      "lawson": 187,
+      "seven": 164,
+      "familymart": 59,
+      "mcdonalds": 49,
+      "drugstore": 44,
+      "supermarket": 68
+    }
+  },
+  {
+    "id": "tokyo_68",
+    "name": "リッチモンドホテル東京",
+    "brand": "Richmond Hotel",
+    "region": "tokyo",
+    "lat": 35.722083,
+    "lng": 139.705024,
+    "station_name": "目白",
+    "station_dist": 163,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 107,
+      "seven": 143,
+      "familymart": 84,
+      "mcdonalds": 937,
+      "drugstore": 19,
+      "supermarket": 179
+    }
+  },
+  {
+    "id": "tokyo_188",
+    "name": "Sotetsu Fresa Inn Shimbashi-Hibiyaguchi",
+    "brand": "Fresa Inn",
+    "region": "tokyo",
+    "lat": 35.668247,
+    "lng": 139.757613,
+    "station_name": "新橋",
+    "station_dist": 163,
+    "airport_lines": [
+      "KEIKYU"
+    ],
+    "amenities": {
+      "lawson": 44,
+      "seven": 62,
+      "familymart": 5,
+      "mcdonalds": 80,
+      "drugstore": 108,
+      "supermarket": 304
     }
   },
   {
@@ -654,6 +2438,44 @@
     }
   },
   {
+    "id": "tokyo_78",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.70575,
+    "lng": 139.79422,
+    "station_name": "蔵前",
+    "station_dist": 165,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 158,
+      "seven": 45,
+      "familymart": 178,
+      "mcdonalds": 313,
+      "drugstore": 157,
+      "supermarket": 98
+    }
+  },
+  {
+    "id": "tokyo_270",
+    "name": "東横INN浦和美園駅東口",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.894815,
+    "lng": 139.728985,
+    "station_name": "浦和美園",
+    "station_dist": 165,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 292,
+      "seven": 130,
+      "familymart": 74,
+      "mcdonalds": 167,
+      "drugstore": 105,
+      "supermarket": 446
+    }
+  },
+  {
     "id": "kansai_75",
     "name": "東横イン",
     "brand": "Toyoko Inn",
@@ -673,6 +2495,46 @@
     }
   },
   {
+    "id": "tokyo_57",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.656339,
+    "lng": 139.69497,
+    "station_name": "神泉",
+    "station_dist": 166,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 22,
+      "seven": 151,
+      "familymart": 35,
+      "mcdonalds": 551,
+      "drugstore": 192,
+      "supermarket": 121
+    }
+  },
+  {
+    "id": "tokyo_120",
+    "name": "Daiwa Roynet Hotel",
+    "brand": "Daiwa Roynet",
+    "region": "tokyo",
+    "lat": 35.728324,
+    "lng": 139.712859,
+    "station_name": "池袋",
+    "station_dist": 166,
+    "airport_lines": [
+      "JR_NEX"
+    ],
+    "amenities": {
+      "lawson": 201,
+      "seven": 6,
+      "familymart": 28,
+      "mcdonalds": 133,
+      "drugstore": 70,
+      "supermarket": 155
+    }
+  },
+  {
     "id": "kansai_157",
     "name": "アパホテル",
     "brand": "APA Hotel",
@@ -689,6 +2551,25 @@
       "mcdonalds": 67,
       "drugstore": 82,
       "supermarket": 150
+    }
+  },
+  {
+    "id": "tokyo_24",
+    "name": "ホテル ルートイン 横浜馬車道",
+    "brand": "Route Inn",
+    "region": "tokyo",
+    "lat": 35.448723,
+    "lng": 139.636875,
+    "station_name": "馬車道",
+    "station_dist": 167,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 127,
+      "seven": 180,
+      "familymart": 139,
+      "mcdonalds": 383,
+      "drugstore": 12,
+      "supermarket": 30
     }
   },
   {
@@ -751,6 +2632,105 @@
     }
   },
   {
+    "id": "tokyo_283",
+    "name": "スーパーホテル",
+    "brand": "Super Hotel",
+    "region": "tokyo",
+    "lat": 35.57551,
+    "lng": 139.662818,
+    "station_name": "武蔵小杉",
+    "station_dist": 171,
+    "airport_lines": [
+      "JR_NEX"
+    ],
+    "amenities": {
+      "lawson": 266,
+      "seven": 164,
+      "familymart": 199,
+      "mcdonalds": 324,
+      "drugstore": 165,
+      "supermarket": 166
+    }
+  },
+  {
+    "id": "tokyo_289",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.669809,
+    "lng": 139.493614,
+    "station_name": "東府中",
+    "station_dist": 171,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 77,
+      "seven": 296,
+      "familymart": 160,
+      "mcdonalds": 517,
+      "drugstore": 292,
+      "supermarket": 139
+    }
+  },
+  {
+    "id": "tokyo_106",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.894854,
+    "lng": 140.06467,
+    "station_name": "取手",
+    "station_dist": 172,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 140,
+      "seven": 30,
+      "familymart": 399,
+      "mcdonalds": 9999,
+      "drugstore": 245,
+      "supermarket": 218
+    }
+  },
+  {
+    "id": "tokyo_16",
+    "name": "ダイワロイネットホテル東京赤羽",
+    "brand": "Daiwa Roynet",
+    "region": "tokyo",
+    "lat": 35.777573,
+    "lng": 139.722531,
+    "station_name": "赤羽",
+    "station_dist": 174,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 36,
+      "seven": 111,
+      "familymart": 69,
+      "mcdonalds": 187,
+      "drugstore": 27,
+      "supermarket": 193
+    }
+  },
+  {
+    "id": "tokyo_133",
+    "name": "相鉄フレッサイン 大門駅前",
+    "brand": "Fresa Inn",
+    "region": "tokyo",
+    "lat": 35.655566,
+    "lng": 139.753764,
+    "station_name": "大門",
+    "station_dist": 174,
+    "airport_lines": [
+      "KEIKYU"
+    ],
+    "amenities": {
+      "lawson": 90,
+      "seven": 171,
+      "familymart": 119,
+      "mcdonalds": 130,
+      "drugstore": 67,
+      "supermarket": 213
+    }
+  },
+  {
     "id": "kansai_123",
     "name": "ホテルヴィアイン心斎橋四ツ橋",
     "brand": "Via Inn",
@@ -767,6 +2747,84 @@
       "mcdonalds": 35,
       "drugstore": 87,
       "supermarket": 13
+    }
+  },
+  {
+    "id": "tokyo_119",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.562547,
+    "lng": 139.713058,
+    "station_name": "蒲田",
+    "station_dist": 175,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 118,
+      "seven": 131,
+      "familymart": 232,
+      "mcdonalds": 351,
+      "drugstore": 65,
+      "supermarket": 197
+    }
+  },
+  {
+    "id": "tokyo_122",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.76331,
+    "lng": 139.826271,
+    "station_name": "綾瀬",
+    "station_dist": 175,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 196,
+      "seven": 19,
+      "familymart": 98,
+      "mcdonalds": 1590,
+      "drugstore": 124,
+      "supermarket": 98
+    }
+  },
+  {
+    "id": "tokyo_176",
+    "name": "No.220 APA Hotel Shinjuku Gyoemmae",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.688917,
+    "lng": 139.708846,
+    "station_name": "新宿御苑前",
+    "station_dist": 175,
+    "airport_lines": [
+      "JR_NEX"
+    ],
+    "amenities": {
+      "lawson": 140,
+      "seven": 94,
+      "familymart": 64,
+      "mcdonalds": 574,
+      "drugstore": 43,
+      "supermarket": 486
+    }
+  },
+  {
+    "id": "tokyo_96",
+    "name": "HOTEL LiVEMAX",
+    "brand": "LiveMax",
+    "region": "tokyo",
+    "lat": 35.763655,
+    "lng": 139.824058,
+    "station_name": "綾瀬",
+    "station_dist": 176,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 349,
+      "seven": 81,
+      "familymart": 137,
+      "mcdonalds": 1387,
+      "drugstore": 40,
+      "supermarket": 98
     }
   },
   {
@@ -789,6 +2847,28 @@
     }
   },
   {
+    "id": "tokyo_204",
+    "name": "東横イン品川駅高輪口",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.626538,
+    "lng": 139.737443,
+    "station_name": "品川",
+    "station_dist": 177,
+    "airport_lines": [
+      "JR_NEX",
+      "KEIKYU"
+    ],
+    "amenities": {
+      "lawson": 413,
+      "seven": 210,
+      "familymart": 211,
+      "mcdonalds": 437,
+      "drugstore": 160,
+      "supermarket": 33
+    }
+  },
+  {
     "id": "kansai_138",
     "name": "関西エアポートワシントンホテル",
     "brand": "Washington Hotel",
@@ -807,6 +2887,46 @@
       "mcdonalds": 557,
       "drugstore": 106,
       "supermarket": 276
+    }
+  },
+  {
+    "id": "tokyo_89",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.674597,
+    "lng": 139.741246,
+    "station_name": "溜池山王",
+    "station_dist": 179,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 315,
+      "seven": 41,
+      "familymart": 323,
+      "mcdonalds": 524,
+      "drugstore": 335,
+      "supermarket": 366
+    }
+  },
+  {
+    "id": "tokyo_97",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.710117,
+    "lng": 139.795186,
+    "station_name": "浅草",
+    "station_dist": 179,
+    "airport_lines": [
+      "KEIKYU"
+    ],
+    "amenities": {
+      "lawson": 188,
+      "seven": 123,
+      "familymart": 133,
+      "mcdonalds": 268,
+      "drugstore": 84,
+      "supermarket": 74
     }
   },
   {
@@ -867,6 +2987,27 @@
     }
   },
   {
+    "id": "tokyo_247",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.531744,
+    "lng": 139.702301,
+    "station_name": "京急川崎",
+    "station_dist": 183,
+    "airport_lines": [
+      "KEIKYU"
+    ],
+    "amenities": {
+      "lawson": 77,
+      "seven": 68,
+      "familymart": 103,
+      "mcdonalds": 275,
+      "drugstore": 164,
+      "supermarket": 230
+    }
+  },
+  {
     "id": "kansai_88",
     "name": "相鉄フレッサイン",
     "brand": "Fresa Inn",
@@ -888,6 +3029,44 @@
     }
   },
   {
+    "id": "tokyo_107",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.589364,
+    "lng": 139.729592,
+    "station_name": "大森",
+    "station_dist": 184,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 37,
+      "seven": 30,
+      "familymart": 54,
+      "mcdonalds": 133,
+      "drugstore": 73,
+      "supermarket": 54
+    }
+  },
+  {
+    "id": "tokyo_259",
+    "name": "三井ガーデンホテル柏の葉",
+    "brand": "Mitsui Garden",
+    "region": "tokyo",
+    "lat": 35.895101,
+    "lng": 139.952485,
+    "station_name": "柏の葉キャンパス",
+    "station_dist": 184,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 57,
+      "seven": 636,
+      "familymart": 159,
+      "mcdonalds": 147,
+      "drugstore": 139,
+      "supermarket": 205
+    }
+  },
+  {
     "id": "kansai_50",
     "name": "野乃",
     "brand": "Dormy Inn",
@@ -904,6 +3083,25 @@
       "mcdonalds": 784,
       "drugstore": 75,
       "supermarket": 144
+    }
+  },
+  {
+    "id": "tokyo_99",
+    "name": "ダイワロイネットホテル千葉駅前",
+    "brand": "Daiwa Roynet",
+    "region": "tokyo",
+    "lat": 35.612348,
+    "lng": 140.116697,
+    "station_name": "栄町",
+    "station_dist": 187,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 422,
+      "seven": 113,
+      "familymart": 67,
+      "mcdonalds": 168,
+      "drugstore": 194,
+      "supermarket": 441
     }
   },
   {
@@ -964,6 +3162,25 @@
     }
   },
   {
+    "id": "tokyo_15",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.783381,
+    "lng": 139.719991,
+    "station_name": "赤羽岩淵",
+    "station_dist": 190,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 280,
+      "seven": 239,
+      "familymart": 109,
+      "mcdonalds": 463,
+      "drugstore": 308,
+      "supermarket": 253
+    }
+  },
+  {
     "id": "kansai_43",
     "name": "アパホテル",
     "brand": "APA Hotel",
@@ -1021,6 +3238,44 @@
     }
   },
   {
+    "id": "tokyo_134",
+    "name": "スーパーホテル",
+    "brand": "Super Hotel",
+    "region": "tokyo",
+    "lat": 35.787517,
+    "lng": 139.610848,
+    "station_name": "和光市",
+    "station_dist": 191,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 59,
+      "seven": 372,
+      "familymart": 168,
+      "mcdonalds": 783,
+      "drugstore": 25,
+      "supermarket": 67
+    }
+  },
+  {
+    "id": "tokyo_228",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.691327,
+    "lng": 139.780921,
+    "station_name": "馬喰横山",
+    "station_dist": 191,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 100,
+      "seven": 108,
+      "familymart": 98,
+      "mcdonalds": 746,
+      "drugstore": 216,
+      "supermarket": 77
+    }
+  },
+  {
     "id": "kansai_23",
     "name": "ドーミーイン梅田東",
     "brand": "Dormy Inn",
@@ -1059,6 +3314,25 @@
     }
   },
   {
+    "id": "tokyo_183",
+    "name": "東急ステイ",
+    "brand": "Tokyu Stay",
+    "region": "tokyo",
+    "lat": 35.655491,
+    "lng": 139.693549,
+    "station_name": "神泉",
+    "station_dist": 192,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 89,
+      "seven": 121,
+      "familymart": 137,
+      "mcdonalds": 704,
+      "drugstore": 351,
+      "supermarket": 40
+    }
+  },
+  {
     "id": "kansai_37",
     "name": "アパホテル",
     "brand": "APA Hotel",
@@ -1080,6 +3354,27 @@
     }
   },
   {
+    "id": "tokyo_280",
+    "name": "Hotel Livemax",
+    "brand": "LiveMax",
+    "region": "tokyo",
+    "lat": 35.698833,
+    "lng": 139.787519,
+    "station_name": "浅草橋",
+    "station_dist": 194,
+    "airport_lines": [
+      "KEIKYU"
+    ],
+    "amenities": {
+      "lawson": 419,
+      "seven": 35,
+      "familymart": 72,
+      "mcdonalds": 501,
+      "drugstore": 98,
+      "supermarket": 150
+    }
+  },
+  {
     "id": "kansai_6",
     "name": "コンフォートホテル 奈良",
     "brand": "Comfort Hotel",
@@ -1096,6 +3391,63 @@
       "mcdonalds": 860,
       "drugstore": 154,
       "supermarket": 226
+    }
+  },
+  {
+    "id": "tokyo_229",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.691125,
+    "lng": 139.780562,
+    "station_name": "小伝馬町",
+    "station_dist": 195,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 139,
+      "seven": 117,
+      "familymart": 86,
+      "mcdonalds": 737,
+      "drugstore": 180,
+      "supermarket": 114
+    }
+  },
+  {
+    "id": "tokyo_276",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.657816,
+    "lng": 139.818865,
+    "station_name": "潮見",
+    "station_dist": 195,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 31,
+      "seven": 279,
+      "familymart": 95,
+      "mcdonalds": 1337,
+      "drugstore": 135,
+      "supermarket": 154
+    }
+  },
+  {
+    "id": "tokyo_236",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.721427,
+    "lng": 139.780059,
+    "station_name": "鶯谷",
+    "station_dist": 196,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 71,
+      "seven": 134,
+      "familymart": 57,
+      "mcdonalds": 240,
+      "drugstore": 79,
+      "supermarket": 43
     }
   },
   {
@@ -1134,6 +3486,101 @@
       "mcdonalds": 290,
       "drugstore": 215,
       "supermarket": 477
+    }
+  },
+  {
+    "id": "tokyo_88",
+    "name": "スーパーホテル",
+    "brand": "Super Hotel",
+    "region": "tokyo",
+    "lat": 35.733445,
+    "lng": 139.728282,
+    "station_name": "大塚",
+    "station_dist": 198,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 160,
+      "seven": 133,
+      "familymart": 99,
+      "mcdonalds": 143,
+      "drugstore": 36,
+      "supermarket": 41
+    }
+  },
+  {
+    "id": "tokyo_227",
+    "name": "dormy inn",
+    "brand": "Dormy Inn",
+    "region": "tokyo",
+    "lat": 35.695497,
+    "lng": 139.77065,
+    "station_name": "神田",
+    "station_dist": 199,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 390,
+      "seven": 9,
+      "familymart": 123,
+      "mcdonalds": 486,
+      "drugstore": 253,
+      "supermarket": 264
+    }
+  },
+  {
+    "id": "tokyo_194",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.648421,
+    "lng": 139.750149,
+    "station_name": "三田",
+    "station_dist": 200,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 276,
+      "seven": 61,
+      "familymart": 22,
+      "mcdonalds": 450,
+      "drugstore": 113,
+      "supermarket": 106
+    }
+  },
+  {
+    "id": "tokyo_205",
+    "name": "スーパーホテルプレミア",
+    "brand": "Super Hotel",
+    "region": "tokyo",
+    "lat": 35.90979,
+    "lng": 139.625011,
+    "station_name": "大宮",
+    "station_dist": 200,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 74,
+      "seven": 92,
+      "familymart": 311,
+      "mcdonalds": 395,
+      "drugstore": 79,
+      "supermarket": 122
+    }
+  },
+  {
+    "id": "tokyo_233",
+    "name": "相鉄フレッサイン お茶の水神保町",
+    "brand": "Fresa Inn",
+    "region": "tokyo",
+    "lat": 35.695239,
+    "lng": 139.760469,
+    "station_name": "神保町",
+    "station_dist": 200,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 297,
+      "seven": 107,
+      "familymart": 87,
+      "mcdonalds": 108,
+      "drugstore": 35,
+      "supermarket": 175
     }
   },
   {
@@ -1255,6 +3702,162 @@
     }
   },
   {
+    "id": "tokyo_92",
+    "name": "ホテルリブマックス高田馬場駅前",
+    "brand": "LiveMax",
+    "region": "tokyo",
+    "lat": 35.713045,
+    "lng": 139.701425,
+    "station_name": "高田馬場",
+    "station_dist": 204,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 281,
+      "seven": 47,
+      "familymart": 135,
+      "mcdonalds": 310,
+      "drugstore": 31,
+      "supermarket": 65
+    }
+  },
+  {
+    "id": "tokyo_243",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.671704,
+    "lng": 139.775258,
+    "station_name": "新富町",
+    "station_dist": 204,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 218,
+      "seven": 65,
+      "familymart": 214,
+      "mcdonalds": 651,
+      "drugstore": 167,
+      "supermarket": 136
+    }
+  },
+  {
+    "id": "tokyo_215",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.681994,
+    "lng": 139.771127,
+    "station_name": "日本橋",
+    "station_dist": 205,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 117,
+      "seven": 62,
+      "familymart": 43,
+      "mcdonalds": 328,
+      "drugstore": 74,
+      "supermarket": 245
+    }
+  },
+  {
+    "id": "tokyo_91",
+    "name": "ホテルメトロポリタン丸の内",
+    "brand": "Hotel Metropolitan",
+    "region": "tokyo",
+    "lat": 35.683755,
+    "lng": 139.768499,
+    "station_name": "大手町",
+    "station_dist": 207,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 144,
+      "seven": 189,
+      "familymart": 14,
+      "mcdonalds": 368,
+      "drugstore": 167,
+      "supermarket": 271
+    }
+  },
+  {
+    "id": "tokyo_94",
+    "name": "スーパーホテル",
+    "brand": "Super Hotel",
+    "region": "tokyo",
+    "lat": 35.691631,
+    "lng": 139.926597,
+    "station_name": "妙典",
+    "station_dist": 207,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 127,
+      "seven": 162,
+      "familymart": 146,
+      "mcdonalds": 83,
+      "drugstore": 12,
+      "supermarket": 187
+    }
+  },
+  {
+    "id": "tokyo_163",
+    "name": "Mitsui Garden Hotel Kyobashi",
+    "brand": "Mitsui Garden",
+    "region": "tokyo",
+    "lat": 35.678421,
+    "lng": 139.770909,
+    "station_name": "京橋",
+    "station_dist": 207,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 203,
+      "seven": 120,
+      "familymart": 257,
+      "mcdonalds": 304,
+      "drugstore": 240,
+      "supermarket": 137
+    }
+  },
+  {
+    "id": "tokyo_193",
+    "name": "ホテルメトロポリタン",
+    "brand": "Hotel Metropolitan",
+    "region": "tokyo",
+    "lat": 35.728382,
+    "lng": 139.708,
+    "station_name": "池袋",
+    "station_dist": 207,
+    "airport_lines": [
+      "JR_NEX"
+    ],
+    "amenities": {
+      "lawson": 127,
+      "seven": 67,
+      "familymart": 100,
+      "mcdonalds": 342,
+      "drugstore": 281,
+      "supermarket": 263
+    }
+  },
+  {
+    "id": "tokyo_221",
+    "name": "スーパーホテル",
+    "brand": "Super Hotel",
+    "region": "tokyo",
+    "lat": 35.732121,
+    "lng": 139.706993,
+    "station_name": "池袋",
+    "station_dist": 207,
+    "airport_lines": [
+      "JR_NEX"
+    ],
+    "amenities": {
+      "lawson": 256,
+      "seven": 91,
+      "familymart": 120,
+      "mcdonalds": 255,
+      "drugstore": 101,
+      "supermarket": 98
+    }
+  },
+  {
     "id": "kansai_62",
     "name": "Tokyu Stay Osaka Honmachi",
     "brand": "Tokyu Stay",
@@ -1276,6 +3879,44 @@
     }
   },
   {
+    "id": "tokyo_139",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.706189,
+    "lng": 139.794576,
+    "station_name": "蔵前",
+    "station_dist": 209,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 196,
+      "seven": 86,
+      "familymart": 181,
+      "mcdonalds": 371,
+      "drugstore": 139,
+      "supermarket": 150
+    }
+  },
+  {
+    "id": "tokyo_145",
+    "name": "スーパーホテル",
+    "brand": "Super Hotel",
+    "region": "tokyo",
+    "lat": 35.777121,
+    "lng": 139.722687,
+    "station_name": "赤羽",
+    "station_dist": 209,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 88,
+      "seven": 66,
+      "familymart": 17,
+      "mcdonalds": 206,
+      "drugstore": 78,
+      "supermarket": 201
+    }
+  },
+  {
     "id": "kansai_159",
     "name": "東横イン",
     "brand": "Toyoko Inn",
@@ -1292,6 +3933,67 @@
       "mcdonalds": 201,
       "drugstore": 148,
       "supermarket": 130
+    }
+  },
+  {
+    "id": "tokyo_43",
+    "name": "Tokyu Stay",
+    "brand": "Tokyu Stay",
+    "region": "tokyo",
+    "lat": 35.668795,
+    "lng": 139.716786,
+    "station_name": "外苑前",
+    "station_dist": 210,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 352,
+      "seven": 125,
+      "familymart": 101,
+      "mcdonalds": 972,
+      "drugstore": 89,
+      "supermarket": 75
+    }
+  },
+  {
+    "id": "tokyo_137",
+    "name": "コンフォートホテル",
+    "brand": "Comfort Hotel",
+    "region": "tokyo",
+    "lat": 35.776781,
+    "lng": 140.317814,
+    "station_name": "京成成田",
+    "station_dist": 210,
+    "airport_lines": [
+      "KEISEI"
+    ],
+    "amenities": {
+      "lawson": 66,
+      "seven": 299,
+      "familymart": 221,
+      "mcdonalds": 243,
+      "drugstore": 242,
+      "supermarket": 311
+    }
+  },
+  {
+    "id": "tokyo_220",
+    "name": "ホテル・東急ステイ",
+    "brand": "Tokyu Stay",
+    "region": "tokyo",
+    "lat": 35.732382,
+    "lng": 139.707194,
+    "station_name": "池袋",
+    "station_dist": 210,
+    "airport_lines": [
+      "JR_NEX"
+    ],
+    "amenities": {
+      "lawson": 226,
+      "seven": 120,
+      "familymart": 122,
+      "mcdonalds": 253,
+      "drugstore": 100,
+      "supermarket": 114
     }
   },
   {
@@ -1316,6 +4018,265 @@
     }
   },
   {
+    "id": "tokyo_26",
+    "name": "ワシントンホテル",
+    "brand": "Washington Hotel",
+    "region": "tokyo",
+    "lat": 35.632654,
+    "lng": 139.792974,
+    "station_name": "有明",
+    "station_dist": 211,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 118,
+      "seven": 228,
+      "familymart": 147,
+      "mcdonalds": 32,
+      "drugstore": 314,
+      "supermarket": 584
+    }
+  },
+  {
+    "id": "tokyo_70",
+    "name": "スーパーホテル",
+    "brand": "Super Hotel",
+    "region": "tokyo",
+    "lat": 35.674672,
+    "lng": 139.736378,
+    "station_name": "赤坂見附",
+    "station_dist": 211,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 275,
+      "seven": 7,
+      "familymart": 95,
+      "mcdonalds": 274,
+      "drugstore": 84,
+      "supermarket": 51
+    }
+  },
+  {
+    "id": "tokyo_241",
+    "name": "ホテルリブマックス茅場町",
+    "brand": "LiveMax",
+    "region": "tokyo",
+    "lat": 35.677476,
+    "lng": 139.778934,
+    "station_name": "茅場町",
+    "station_dist": 211,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 128,
+      "seven": 59,
+      "familymart": 179,
+      "mcdonalds": 931,
+      "drugstore": 78,
+      "supermarket": 118
+    }
+  },
+  {
+    "id": "tokyo_18",
+    "name": "ダイワロイネットホテル",
+    "brand": "Daiwa Roynet",
+    "region": "tokyo",
+    "lat": 35.51077,
+    "lng": 139.617749,
+    "station_name": "新横浜",
+    "station_dist": 213,
+    "airport_lines": [
+      "JR_NEX",
+      "KEIKYU"
+    ],
+    "amenities": {
+      "lawson": 42,
+      "seven": 140,
+      "familymart": 92,
+      "mcdonalds": 206,
+      "drugstore": 158,
+      "supermarket": 136
+    }
+  },
+  {
+    "id": "tokyo_66",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.698001,
+    "lng": 139.705189,
+    "station_name": "東新宿",
+    "station_dist": 213,
+    "airport_lines": [
+      "JR_NEX"
+    ],
+    "amenities": {
+      "lawson": 24,
+      "seven": 81,
+      "familymart": 53,
+      "mcdonalds": 228,
+      "drugstore": 29,
+      "supermarket": 49
+    }
+  },
+  {
+    "id": "tokyo_168",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.605961,
+    "lng": 140.119495,
+    "station_name": "千葉中央",
+    "station_dist": 213,
+    "airport_lines": [
+      "JR_NEX",
+      "KEISEI"
+    ],
+    "amenities": {
+      "lawson": 14,
+      "seven": 149,
+      "familymart": 249,
+      "mcdonalds": 611,
+      "drugstore": 115,
+      "supermarket": 249
+    }
+  },
+  {
+    "id": "tokyo_295",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.464824,
+    "lng": 139.533902,
+    "station_name": "二俣川",
+    "station_dist": 213,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 255,
+      "seven": 105,
+      "familymart": 194,
+      "mcdonalds": 180,
+      "drugstore": 137,
+      "supermarket": 178
+    }
+  },
+  {
+    "id": "tokyo_298",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.697399,
+    "lng": 139.794305,
+    "station_name": "両国",
+    "station_dist": 213,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 13,
+      "seven": 222,
+      "familymart": 241,
+      "mcdonalds": 304,
+      "drugstore": 50,
+      "supermarket": 216
+    }
+  },
+  {
+    "id": "tokyo_11",
+    "name": "リッチモンドホテル東京芝",
+    "brand": "Richmond Hotel",
+    "region": "tokyo",
+    "lat": 35.656903,
+    "lng": 139.752343,
+    "station_name": "大門",
+    "station_dist": 214,
+    "airport_lines": [
+      "KEIKYU"
+    ],
+    "amenities": {
+      "lawson": 191,
+      "seven": 123,
+      "familymart": 38,
+      "mcdonalds": 133,
+      "drugstore": 94,
+      "supermarket": 389
+    }
+  },
+  {
+    "id": "tokyo_31",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.562613,
+    "lng": 139.718337,
+    "station_name": "蒲田",
+    "station_dist": 215,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 67,
+      "seven": 138,
+      "familymart": 142,
+      "mcdonalds": 120,
+      "drugstore": 47,
+      "supermarket": 206
+    }
+  },
+  {
+    "id": "tokyo_35",
+    "name": "ホテルルートイン 東京阿佐ヶ谷",
+    "brand": "Route Inn",
+    "region": "tokyo",
+    "lat": 35.700081,
+    "lng": 139.633486,
+    "station_name": "南阿佐ケ谷",
+    "station_dist": 215,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 223,
+      "seven": 189,
+      "familymart": 359,
+      "mcdonalds": 599,
+      "drugstore": 139,
+      "supermarket": 219
+    }
+  },
+  {
+    "id": "tokyo_56",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.777759,
+    "lng": 139.999971,
+    "station_name": "新鎌ヶ谷",
+    "station_dist": 215,
+    "airport_lines": [
+      "KEISEI"
+    ],
+    "amenities": {
+      "lawson": 419,
+      "seven": 221,
+      "familymart": 222,
+      "mcdonalds": 231,
+      "drugstore": 160,
+      "supermarket": 130
+    }
+  },
+  {
+    "id": "tokyo_239",
+    "name": "ヴィアイン東銀座",
+    "brand": "Via Inn",
+    "region": "tokyo",
+    "lat": 35.667132,
+    "lng": 139.770519,
+    "station_name": "築地",
+    "station_dist": 215,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 23,
+      "seven": 303,
+      "familymart": 137,
+      "mcdonalds": 624,
+      "drugstore": 210,
+      "supermarket": 177
+    }
+  },
+  {
     "id": "kansai_81",
     "name": "LIVEMAX PREMIUM梅田EAST",
     "brand": "LiveMax",
@@ -1335,6 +4296,122 @@
     }
   },
   {
+    "id": "tokyo_93",
+    "name": "東横INN",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.508988,
+    "lng": 139.679189,
+    "station_name": "京急鶴見",
+    "station_dist": 216,
+    "airport_lines": [
+      "KEIKYU"
+    ],
+    "amenities": {
+      "lawson": 88,
+      "seven": 61,
+      "familymart": 117,
+      "mcdonalds": 415,
+      "drugstore": 422,
+      "supermarket": 267
+    }
+  },
+  {
+    "id": "tokyo_32",
+    "name": "三井ガーデンホテル",
+    "brand": "Mitsui Garden",
+    "region": "tokyo",
+    "lat": 35.562176,
+    "lng": 139.718369,
+    "station_name": "蒲田",
+    "station_dist": 218,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 114,
+      "seven": 158,
+      "familymart": 110,
+      "mcdonalds": 146,
+      "drugstore": 68,
+      "supermarket": 185
+    }
+  },
+  {
+    "id": "tokyo_59",
+    "name": "ダイワロイネットホテル銀座プレミア",
+    "brand": "Daiwa Roynet",
+    "region": "tokyo",
+    "lat": 35.673276,
+    "lng": 139.769049,
+    "station_name": "銀座一丁目",
+    "station_dist": 218,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 167,
+      "seven": 41,
+      "familymart": 24,
+      "mcdonalds": 130,
+      "drugstore": 184,
+      "supermarket": 349
+    }
+  },
+  {
+    "id": "tokyo_265",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.807224,
+    "lng": 139.842564,
+    "station_name": "八潮",
+    "station_dist": 218,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 418,
+      "seven": 68,
+      "familymart": 211,
+      "mcdonalds": 335,
+      "drugstore": 442,
+      "supermarket": 338
+    }
+  },
+  {
+    "id": "tokyo_67",
+    "name": "Via Inn",
+    "brand": "Via Inn",
+    "region": "tokyo",
+    "lat": 35.696483,
+    "lng": 139.772334,
+    "station_name": "秋葉原",
+    "station_dist": 219,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 206,
+      "seven": 196,
+      "familymart": 74,
+      "mcdonalds": 310,
+      "drugstore": 208,
+      "supermarket": 218
+    }
+  },
+  {
+    "id": "tokyo_299",
+    "name": "Via Inn Prime Akasaka",
+    "brand": "Via Inn",
+    "region": "tokyo",
+    "lat": 35.672548,
+    "lng": 139.73906,
+    "station_name": "溜池山王",
+    "station_dist": 219,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 212,
+      "seven": 20,
+      "familymart": 176,
+      "mcdonalds": 265,
+      "drugstore": 104,
+      "supermarket": 71
+    }
+  },
+  {
     "id": "kansai_98",
     "name": "アパホテル",
     "brand": "APA Hotel",
@@ -1351,6 +4428,63 @@
       "mcdonalds": 945,
       "drugstore": 111,
       "supermarket": 158
+    }
+  },
+  {
+    "id": "tokyo_155",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.704872,
+    "lng": 139.772185,
+    "station_name": "末広町",
+    "station_dist": 220,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 98,
+      "seven": 54,
+      "familymart": 97,
+      "mcdonalds": 111,
+      "drugstore": 69,
+      "supermarket": 162
+    }
+  },
+  {
+    "id": "tokyo_212",
+    "name": "ダイワロイネットホテル東京大崎",
+    "brand": "Daiwa Roynet",
+    "region": "tokyo",
+    "lat": 35.618142,
+    "lng": 139.726602,
+    "station_name": "大崎",
+    "station_dist": 220,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 136,
+      "seven": 198,
+      "familymart": 115,
+      "mcdonalds": 446,
+      "drugstore": 94,
+      "supermarket": 188
+    }
+  },
+  {
+    "id": "tokyo_291",
+    "name": "東横INN 南町田",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.513421,
+    "lng": 139.47014,
+    "station_name": "南町田グランベリーパーク",
+    "station_dist": 221,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 248,
+      "seven": 182,
+      "familymart": 148,
+      "mcdonalds": 600,
+      "drugstore": 104,
+      "supermarket": 232
     }
   },
   {
@@ -1375,6 +4509,86 @@
     }
   },
   {
+    "id": "tokyo_201",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.727051,
+    "lng": 139.77281,
+    "station_name": "日暮里",
+    "station_dist": 222,
+    "airport_lines": [
+      "KEISEI"
+    ],
+    "amenities": {
+      "lawson": 598,
+      "seven": 329,
+      "familymart": 99,
+      "mcdonalds": 232,
+      "drugstore": 100,
+      "supermarket": 201
+    }
+  },
+  {
+    "id": "tokyo_37",
+    "name": "ドーミーイン千葉City Soga",
+    "brand": "Dormy Inn",
+    "region": "tokyo",
+    "lat": 35.581267,
+    "lng": 140.13285,
+    "station_name": "蘇我",
+    "station_dist": 223,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 248,
+      "seven": 107,
+      "familymart": 444,
+      "mcdonalds": 953,
+      "drugstore": 89,
+      "supermarket": 176
+    }
+  },
+  {
+    "id": "tokyo_114",
+    "name": "Наш хотель ヴィアイン 日本橋人形町",
+    "brand": "Via Inn",
+    "region": "tokyo",
+    "lat": 35.685156,
+    "lng": 139.780146,
+    "station_name": "人形町 (都営地下鉄浅草線)",
+    "station_dist": 223,
+    "airport_lines": [
+      "KEIKYU"
+    ],
+    "amenities": {
+      "lawson": 159,
+      "seven": 39,
+      "familymart": 240,
+      "mcdonalds": 321,
+      "drugstore": 251,
+      "supermarket": 236
+    }
+  },
+  {
+    "id": "tokyo_294",
+    "name": "相鉄フレッサイン 銀座三丁目",
+    "brand": "Fresa Inn",
+    "region": "tokyo",
+    "lat": 35.671907,
+    "lng": 139.767703,
+    "station_name": "銀座",
+    "station_dist": 223,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 28,
+      "seven": 226,
+      "familymart": 117,
+      "mcdonalds": 65,
+      "drugstore": 78,
+      "supermarket": 293
+    }
+  },
+  {
     "id": "kansai_133",
     "name": "アパホテル京都駅東３０５",
     "brand": "APA Hotel",
@@ -1396,6 +4610,27 @@
     }
   },
   {
+    "id": "tokyo_150",
+    "name": "東横イン羽田空港1",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.551985,
+    "lng": 139.742104,
+    "station_name": "大鳥居",
+    "station_dist": 225,
+    "airport_lines": [
+      "KEIKYU"
+    ],
+    "amenities": {
+      "lawson": 82,
+      "seven": 48,
+      "familymart": 320,
+      "mcdonalds": 1135,
+      "drugstore": 61,
+      "supermarket": 131
+    }
+  },
+  {
     "id": "kansai_59",
     "name": "東横イン",
     "brand": "Toyoko Inn",
@@ -1412,6 +4647,107 @@
       "mcdonalds": 1193,
       "drugstore": 110,
       "supermarket": 357
+    }
+  },
+  {
+    "id": "tokyo_178",
+    "name": "三井ガーデンホテル千葉",
+    "brand": "Mitsui Garden",
+    "region": "tokyo",
+    "lat": 35.610368,
+    "lng": 140.121777,
+    "station_name": "葭川公園",
+    "station_dist": 227,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 366,
+      "seven": 141,
+      "familymart": 225,
+      "mcdonalds": 487,
+      "drugstore": 162,
+      "supermarket": 283
+    }
+  },
+  {
+    "id": "tokyo_251",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.688268,
+    "lng": 139.781608,
+    "station_name": "人形町 (都営地下鉄浅草線)",
+    "station_dist": 227,
+    "airport_lines": [
+      "KEIKYU"
+    ],
+    "amenities": {
+      "lawson": 265,
+      "seven": 94,
+      "familymart": 61,
+      "mcdonalds": 409,
+      "drugstore": 103,
+      "supermarket": 157
+    }
+  },
+  {
+    "id": "tokyo_108",
+    "name": "リッチモンドホテル",
+    "brand": "Richmond Hotel",
+    "region": "tokyo",
+    "lat": 35.777169,
+    "lng": 140.317878,
+    "station_name": "京成成田",
+    "station_dist": 228,
+    "airport_lines": [
+      "KEISEI"
+    ],
+    "amenities": {
+      "lawson": 95,
+      "seven": 286,
+      "familymart": 233,
+      "mcdonalds": 237,
+      "drugstore": 226,
+      "supermarket": 344
+    }
+  },
+  {
+    "id": "tokyo_140",
+    "name": "天然温泉 凌雲の湯 御宿 野乃 浅草",
+    "brand": "Dormy Inn",
+    "region": "tokyo",
+    "lat": 35.71506,
+    "lng": 139.794216,
+    "station_name": "浅草",
+    "station_dist": 228,
+    "airport_lines": [
+      "KEIKYU"
+    ],
+    "amenities": {
+      "lawson": 95,
+      "seven": 108,
+      "familymart": 69,
+      "mcdonalds": 324,
+      "drugstore": 64,
+      "supermarket": 92
+    }
+  },
+  {
+    "id": "tokyo_284",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.824266,
+    "lng": 139.574807,
+    "station_name": "志木",
+    "station_dist": 230,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 122,
+      "seven": 96,
+      "familymart": 146,
+      "mcdonalds": 84,
+      "drugstore": 109,
+      "supermarket": 119
     }
   },
   {
@@ -1453,6 +4789,63 @@
     }
   },
   {
+    "id": "tokyo_169",
+    "name": "APA Hotel 茅場町八丁堀駅前",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.677563,
+    "lng": 139.778249,
+    "station_name": "茅場町",
+    "station_dist": 231,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 124,
+      "seven": 69,
+      "familymart": 153,
+      "mcdonalds": 963,
+      "drugstore": 85,
+      "supermarket": 102
+    }
+  },
+  {
+    "id": "tokyo_252",
+    "name": "東横INN神田秋葉原",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.69539,
+    "lng": 139.783164,
+    "station_name": "馬喰町",
+    "station_dist": 234,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 177,
+      "seven": 144,
+      "familymart": 212,
+      "mcdonalds": 762,
+      "drugstore": 12,
+      "supermarket": 157
+    }
+  },
+  {
+    "id": "tokyo_257",
+    "name": "東横INN 東西線西葛西",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.664612,
+    "lng": 139.861921,
+    "station_name": "西葛西",
+    "station_dist": 235,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 81,
+      "seven": 225,
+      "familymart": 76,
+      "mcdonalds": 295,
+      "drugstore": 102,
+      "supermarket": 116
+    }
+  },
+  {
     "id": "kansai_155",
     "name": "三井ガーデンホテル京都河原町浄教寺",
     "brand": "Mitsui Garden",
@@ -1474,6 +4867,86 @@
     }
   },
   {
+    "id": "tokyo_223",
+    "name": "東横INN日本橋浜町明治座前",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.689263,
+    "lng": 139.785713,
+    "station_name": "浜町",
+    "station_dist": 236,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 452,
+      "seven": 70,
+      "familymart": 258,
+      "mcdonalds": 507,
+      "drugstore": 347,
+      "supermarket": 66
+    }
+  },
+  {
+    "id": "tokyo_20",
+    "name": "東急ステイ",
+    "brand": "Tokyu Stay",
+    "region": "tokyo",
+    "lat": 35.69104,
+    "lng": 139.686737,
+    "station_name": "西新宿五丁目",
+    "station_dist": 238,
+    "airport_lines": [
+      "JR_NEX"
+    ],
+    "amenities": {
+      "lawson": 245,
+      "seven": 108,
+      "familymart": 64,
+      "mcdonalds": 9,
+      "drugstore": 53,
+      "supermarket": 30
+    }
+  },
+  {
+    "id": "tokyo_202",
+    "name": "Sotetsu Fresa Inn",
+    "brand": "Fresa Inn",
+    "region": "tokyo",
+    "lat": 35.695916,
+    "lng": 139.811515,
+    "station_name": "錦糸町",
+    "station_dist": 239,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 211,
+      "seven": 126,
+      "familymart": 45,
+      "mcdonalds": 198,
+      "drugstore": 90,
+      "supermarket": 179
+    }
+  },
+  {
+    "id": "tokyo_142",
+    "name": "Tokyu Stay Kamata",
+    "brand": "Tokyu Stay",
+    "region": "tokyo",
+    "lat": 35.560823,
+    "lng": 139.721574,
+    "station_name": "京急蒲田",
+    "station_dist": 241,
+    "airport_lines": [
+      "KEIKYU"
+    ],
+    "amenities": {
+      "lawson": 313,
+      "seven": 103,
+      "familymart": 150,
+      "mcdonalds": 324,
+      "drugstore": 64,
+      "supermarket": 151
+    }
+  },
+  {
     "id": "kansai_20",
     "name": "アパホテル",
     "brand": "APA Hotel",
@@ -1490,6 +4963,65 @@
       "mcdonalds": 83,
       "drugstore": 349,
       "supermarket": 208
+    }
+  },
+  {
+    "id": "tokyo_46",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.682927,
+    "lng": 139.739964,
+    "station_name": "麹町",
+    "station_dist": 242,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 120,
+      "seven": 151,
+      "familymart": 69,
+      "mcdonalds": 721,
+      "drugstore": 89,
+      "supermarket": 118
+    }
+  },
+  {
+    "id": "tokyo_153",
+    "name": "相鉄フレッサイン",
+    "brand": "Fresa Inn",
+    "region": "tokyo",
+    "lat": 35.664817,
+    "lng": 139.756118,
+    "station_name": "新橋",
+    "station_dist": 242,
+    "airport_lines": [
+      "KEIKYU"
+    ],
+    "amenities": {
+      "lawson": 23,
+      "seven": 208,
+      "familymart": 130,
+      "mcdonalds": 324,
+      "drugstore": 156,
+      "supermarket": 273
+    }
+  },
+  {
+    "id": "tokyo_302",
+    "name": "スーパーホテル埼玉・川越",
+    "brand": "Super Hotel",
+    "region": "tokyo",
+    "lat": 35.911913,
+    "lng": 139.481133,
+    "station_name": "本川越",
+    "station_dist": 242,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 297,
+      "seven": 321,
+      "familymart": 83,
+      "mcdonalds": 227,
+      "drugstore": 165,
+      "supermarket": 283
     }
   },
   {
@@ -1550,6 +5082,25 @@
     }
   },
   {
+    "id": "tokyo_307",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.73847,
+    "lng": 139.745845,
+    "station_name": "駒込",
+    "station_dist": 245,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 291,
+      "seven": 239,
+      "familymart": 27,
+      "mcdonalds": 329,
+      "drugstore": 108,
+      "supermarket": 130
+    }
+  },
+  {
     "id": "kansai_52",
     "name": "東横イン",
     "brand": "Toyoko Inn",
@@ -1566,6 +5117,165 @@
       "mcdonalds": 275,
       "drugstore": 119,
       "supermarket": 254
+    }
+  },
+  {
+    "id": "tokyo_231",
+    "name": "ホテルルートインGrand東京浅草橋",
+    "brand": "Route Inn",
+    "region": "tokyo",
+    "lat": 35.69945,
+    "lng": 139.787308,
+    "station_name": "浅草橋",
+    "station_dist": 246,
+    "airport_lines": [
+      "KEIKYU"
+    ],
+    "amenities": {
+      "lawson": 442,
+      "seven": 101,
+      "familymart": 10,
+      "mcdonalds": 563,
+      "drugstore": 50,
+      "supermarket": 104
+    }
+  },
+  {
+    "id": "tokyo_271",
+    "name": "東横INN赤羽駅東口",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.779948,
+    "lng": 139.722203,
+    "station_name": "赤羽",
+    "station_dist": 246,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 211,
+      "seven": 286,
+      "familymart": 72,
+      "mcdonalds": 131,
+      "drugstore": 132,
+      "supermarket": 254
+    }
+  },
+  {
+    "id": "tokyo_282",
+    "name": "アパホテル＆リゾート〈横浜ベイタワー〉",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.451748,
+    "lng": 139.638165,
+    "station_name": "馬車道",
+    "station_dist": 246,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 232,
+      "seven": 400,
+      "familymart": 60,
+      "mcdonalds": 225,
+      "drugstore": 364,
+      "supermarket": 228
+    }
+  },
+  {
+    "id": "tokyo_21",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.446188,
+    "lng": 139.640023,
+    "station_name": "日本大通り",
+    "station_dist": 248,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 160,
+      "seven": 197,
+      "familymart": 177,
+      "mcdonalds": 395,
+      "drugstore": 87,
+      "supermarket": 140
+    }
+  },
+  {
+    "id": "tokyo_165",
+    "name": "Sotetsu Fresa Inn Yokohama-Higashiguchi",
+    "brand": "Fresa Inn",
+    "region": "tokyo",
+    "lat": 35.468011,
+    "lng": 139.624805,
+    "station_name": "横浜",
+    "station_dist": 248,
+    "airport_lines": [
+      "JR_NEX",
+      "KEIKYU"
+    ],
+    "amenities": {
+      "lawson": 182,
+      "seven": 116,
+      "familymart": 12,
+      "mcdonalds": 289,
+      "drugstore": 194,
+      "supermarket": 140
+    }
+  },
+  {
+    "id": "tokyo_158",
+    "name": "Livemax Kamata",
+    "brand": "LiveMax",
+    "region": "tokyo",
+    "lat": 35.560922,
+    "lng": 139.721443,
+    "station_name": "京急蒲田",
+    "station_dist": 250,
+    "airport_lines": [
+      "KEIKYU"
+    ],
+    "amenities": {
+      "lawson": 304,
+      "seven": 118,
+      "familymart": 159,
+      "mcdonalds": 312,
+      "drugstore": 62,
+      "supermarket": 134
+    }
+  },
+  {
+    "id": "tokyo_172",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.892709,
+    "lng": 139.62985,
+    "station_name": "北与野",
+    "station_dist": 251,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 101,
+      "seven": 74,
+      "familymart": 366,
+      "mcdonalds": 452,
+      "drugstore": 70,
+      "supermarket": 219
+    }
+  },
+  {
+    "id": "tokyo_309",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.786486,
+    "lng": 139.470557,
+    "station_name": "所沢",
+    "station_dist": 251,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 391,
+      "seven": 340,
+      "familymart": 212,
+      "mcdonalds": 212,
+      "drugstore": 131,
+      "supermarket": 128
     }
   },
   {
@@ -1590,6 +5300,47 @@
     }
   },
   {
+    "id": "tokyo_199",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.462752,
+    "lng": 139.618226,
+    "station_name": "横浜 (相模鉄道)",
+    "station_dist": 252,
+    "airport_lines": [
+      "JR_NEX",
+      "KEIKYU"
+    ],
+    "amenities": {
+      "lawson": 158,
+      "seven": 203,
+      "familymart": 91,
+      "mcdonalds": 158,
+      "drugstore": 157,
+      "supermarket": 193
+    }
+  },
+  {
+    "id": "tokyo_232",
+    "name": "相鉄フレッサイン",
+    "brand": "Fresa Inn",
+    "region": "tokyo",
+    "lat": 35.690722,
+    "lng": 139.768457,
+    "station_name": "神田",
+    "station_dist": 252,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 51,
+      "seven": 124,
+      "familymart": 128,
+      "mcdonalds": 909,
+      "drugstore": 73,
+      "supermarket": 153
+    }
+  },
+  {
     "id": "kansai_80",
     "name": "ヴィアイン梅田",
     "brand": "Via Inn",
@@ -1606,6 +5357,47 @@
       "mcdonalds": 327,
       "drugstore": 72,
       "supermarket": 128
+    }
+  },
+  {
+    "id": "tokyo_160",
+    "name": "APA Hotel Hatchobori Eki Minami",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.673134,
+    "lng": 139.775455,
+    "station_name": "八丁堀",
+    "station_dist": 254,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 178,
+      "seven": 201,
+      "familymart": 178,
+      "mcdonalds": 669,
+      "drugstore": 48,
+      "supermarket": 272
+    }
+  },
+  {
+    "id": "tokyo_95",
+    "name": "リッチモンドホテル横浜駅前店",
+    "brand": "Richmond Hotel",
+    "region": "tokyo",
+    "lat": 35.468493,
+    "lng": 139.62294,
+    "station_name": "横浜",
+    "station_dist": 255,
+    "airport_lines": [
+      "JR_NEX",
+      "KEIKYU"
+    ],
+    "amenities": {
+      "lawson": 123,
+      "seven": 191,
+      "familymart": 33,
+      "mcdonalds": 451,
+      "drugstore": 19,
+      "supermarket": 167
     }
   },
   {
@@ -1630,6 +5422,46 @@
     }
   },
   {
+    "id": "tokyo_207",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.704713,
+    "lng": 139.773989,
+    "station_name": "御徒町",
+    "station_dist": 256,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 32,
+      "seven": 210,
+      "familymart": 186,
+      "mcdonalds": 197,
+      "drugstore": 119,
+      "supermarket": 86
+    }
+  },
+  {
+    "id": "tokyo_60",
+    "name": "スーパーホテルLOHAS",
+    "brand": "Super Hotel",
+    "region": "tokyo",
+    "lat": 35.679265,
+    "lng": 139.769921,
+    "station_name": "東京",
+    "station_dist": 257,
+    "airport_lines": [
+      "JR_NEX"
+    ],
+    "amenities": {
+      "lawson": 285,
+      "seven": 60,
+      "familymart": 243,
+      "mcdonalds": 189,
+      "drugstore": 205,
+      "supermarket": 206
+    }
+  },
+  {
     "id": "kansai_117",
     "name": "ヴィアイン新大阪",
     "brand": "Via Inn",
@@ -1648,6 +5480,68 @@
       "mcdonalds": 516,
       "drugstore": 450,
       "supermarket": 586
+    }
+  },
+  {
+    "id": "tokyo_148",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.695633,
+    "lng": 139.70287,
+    "station_name": "西武新宿",
+    "station_dist": 258,
+    "airport_lines": [
+      "JR_NEX"
+    ],
+    "amenities": {
+      "lawson": 46,
+      "seven": 92,
+      "familymart": 118,
+      "mcdonalds": 260,
+      "drugstore": 101,
+      "supermarket": 278
+    }
+  },
+  {
+    "id": "tokyo_131",
+    "name": "スーパーホテル",
+    "brand": "Super Hotel",
+    "region": "tokyo",
+    "lat": 35.508342,
+    "lng": 139.614526,
+    "station_name": "新横浜",
+    "station_dist": 259,
+    "airport_lines": [
+      "JR_NEX",
+      "KEIKYU"
+    ],
+    "amenities": {
+      "lawson": 72,
+      "seven": 119,
+      "familymart": 88,
+      "mcdonalds": 302,
+      "drugstore": 39,
+      "supermarket": 63
+    }
+  },
+  {
+    "id": "tokyo_279",
+    "name": "東横イン大宮駅東口",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.908893,
+    "lng": 139.626813,
+    "station_name": "大宮",
+    "station_dist": 259,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 63,
+      "seven": 69,
+      "familymart": 229,
+      "mcdonalds": 316,
+      "drugstore": 226,
+      "supermarket": 163
     }
   },
   {
@@ -1692,6 +5586,124 @@
     }
   },
   {
+    "id": "tokyo_303",
+    "name": "御宿 野乃浅草別邸",
+    "brand": "Dormy Inn",
+    "region": "tokyo",
+    "lat": 35.714869,
+    "lng": 139.794848,
+    "station_name": "浅草",
+    "station_dist": 260,
+    "airport_lines": [
+      "KEIKYU"
+    ],
+    "amenities": {
+      "lawson": 132,
+      "seven": 54,
+      "familymart": 123,
+      "mcdonalds": 328,
+      "drugstore": 125,
+      "supermarket": 153
+    }
+  },
+  {
+    "id": "tokyo_81",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.700271,
+    "lng": 139.748291,
+    "station_name": "飯田橋",
+    "station_dist": 262,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 193,
+      "seven": 38,
+      "familymart": 52,
+      "mcdonalds": 556,
+      "drugstore": 149,
+      "supermarket": 337
+    }
+  },
+  {
+    "id": "tokyo_113",
+    "name": "Richmond Hotel",
+    "brand": "Richmond Hotel",
+    "region": "tokyo",
+    "lat": 35.447407,
+    "lng": 139.635331,
+    "station_name": "関内",
+    "station_dist": 262,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 164,
+      "seven": 118,
+      "familymart": 65,
+      "mcdonalds": 227,
+      "drugstore": 92,
+      "supermarket": 199
+    }
+  },
+  {
+    "id": "tokyo_80",
+    "name": "Tokyu Stay Yotsuya",
+    "brand": "Tokyu Stay",
+    "region": "tokyo",
+    "lat": 35.686489,
+    "lng": 139.726791,
+    "station_name": "四ツ谷",
+    "station_dist": 264,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 128,
+      "seven": 180,
+      "familymart": 8,
+      "mcdonalds": 1027,
+      "drugstore": 112,
+      "supermarket": 17
+    }
+  },
+  {
+    "id": "tokyo_127",
+    "name": "ドーミーイン",
+    "brand": "Dormy Inn",
+    "region": "tokyo",
+    "lat": 35.708992,
+    "lng": 139.776125,
+    "station_name": "御徒町",
+    "station_dist": 264,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 188,
+      "seven": 67,
+      "familymart": 14,
+      "mcdonalds": 237,
+      "drugstore": 37,
+      "supermarket": 120
+    }
+  },
+  {
+    "id": "tokyo_266",
+    "name": "スーパーホテル",
+    "brand": "Super Hotel",
+    "region": "tokyo",
+    "lat": 35.617418,
+    "lng": 139.74417,
+    "station_name": "新馬場",
+    "station_dist": 265,
+    "airport_lines": [
+      "KEIKYU"
+    ],
+    "amenities": {
+      "lawson": 312,
+      "seven": 156,
+      "familymart": 240,
+      "mcdonalds": 802,
+      "drugstore": 473,
+      "supermarket": 91
+    }
+  },
+  {
     "id": "kansai_161",
     "name": "アパホテル〈なんば駅東〉",
     "brand": "APA Hotel",
@@ -1710,6 +5722,44 @@
       "mcdonalds": 244,
       "drugstore": 157,
       "supermarket": 83
+    }
+  },
+  {
+    "id": "tokyo_124",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.688128,
+    "lng": 139.784133,
+    "station_name": "人形町",
+    "station_dist": 266,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 335,
+      "seven": 117,
+      "familymart": 188,
+      "mcdonalds": 349,
+      "drugstore": 238,
+      "supermarket": 114
+    }
+  },
+  {
+    "id": "tokyo_179",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.700688,
+    "lng": 139.770676,
+    "station_name": "末広町",
+    "station_dist": 266,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 60,
+      "seven": 255,
+      "familymart": 63,
+      "mcdonalds": 142,
+      "drugstore": 49,
+      "supermarket": 129
     }
   },
   {
@@ -1732,6 +5782,27 @@
       "mcdonalds": 186,
       "drugstore": 242,
       "supermarket": 121
+    }
+  },
+  {
+    "id": "tokyo_54",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.699403,
+    "lng": 139.787957,
+    "station_name": "浅草橋",
+    "station_dist": 269,
+    "airport_lines": [
+      "KEIKYU"
+    ],
+    "amenities": {
+      "lawson": 486,
+      "seven": 109,
+      "familymart": 49,
+      "mcdonalds": 520,
+      "drugstore": 90,
+      "supermarket": 76
     }
   },
   {
@@ -1773,6 +5844,25 @@
     }
   },
   {
+    "id": "tokyo_25",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.693286,
+    "lng": 140.022092,
+    "station_name": "津田沼",
+    "station_dist": 272,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 104,
+      "seven": 86,
+      "familymart": 43,
+      "mcdonalds": 197,
+      "drugstore": 123,
+      "supermarket": 103
+    }
+  },
+  {
     "id": "kansai_126",
     "name": "東横イン",
     "brand": "Toyoko Inn",
@@ -1794,6 +5884,25 @@
     }
   },
   {
+    "id": "tokyo_180",
+    "name": "三井ガーデンホテル大手町",
+    "brand": "Mitsui Garden",
+    "region": "tokyo",
+    "lat": 35.689155,
+    "lng": 139.767072,
+    "station_name": "大手町",
+    "station_dist": 274,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 152,
+      "seven": 92,
+      "familymart": 108,
+      "mcdonalds": 970,
+      "drugstore": 283,
+      "supermarket": 262
+    }
+  },
+  {
     "id": "kansai_128",
     "name": "ダイワロイネットホテル京都八条口",
     "brand": "Daiwa Roynet",
@@ -1810,6 +5919,103 @@
       "mcdonalds": 320,
       "drugstore": 281,
       "supermarket": 385
+    }
+  },
+  {
+    "id": "tokyo_14",
+    "name": "スーパーホテル",
+    "brand": "Super Hotel",
+    "region": "tokyo",
+    "lat": 35.781789,
+    "lng": 139.719843,
+    "station_name": "赤羽岩淵",
+    "station_dist": 275,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 107,
+      "seven": 70,
+      "familymart": 75,
+      "mcdonalds": 296,
+      "drugstore": 139,
+      "supermarket": 268
+    }
+  },
+  {
+    "id": "tokyo_30",
+    "name": "ワシントンホテル",
+    "brand": "Washington Hotel",
+    "region": "tokyo",
+    "lat": 35.562705,
+    "lng": 139.719011,
+    "station_name": "蒲田",
+    "station_dist": 276,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 69,
+      "seven": 78,
+      "familymart": 107,
+      "mcdonalds": 177,
+      "drugstore": 108,
+      "supermarket": 162
+    }
+  },
+  {
+    "id": "tokyo_189",
+    "name": "東急ステイ新橋",
+    "brand": "Tokyu Stay",
+    "region": "tokyo",
+    "lat": 35.66349,
+    "lng": 139.757007,
+    "station_name": "汐留",
+    "station_dist": 276,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 174,
+      "seven": 43,
+      "familymart": 67,
+      "mcdonalds": 453,
+      "drugstore": 254,
+      "supermarket": 192
+    }
+  },
+  {
+    "id": "tokyo_292",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.816695,
+    "lng": 139.701739,
+    "station_name": "西川口",
+    "station_dist": 276,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 139,
+      "seven": 119,
+      "familymart": 324,
+      "mcdonalds": 325,
+      "drugstore": 465,
+      "supermarket": 385
+    }
+  },
+  {
+    "id": "tokyo_200",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.709208,
+    "lng": 139.776053,
+    "station_name": "上野",
+    "station_dist": 278,
+    "airport_lines": [
+      "KEISEI"
+    ],
+    "amenities": {
+      "lawson": 165,
+      "seven": 52,
+      "familymart": 26,
+      "mcdonalds": 236,
+      "drugstore": 27,
+      "supermarket": 119
     }
   },
   {
@@ -1834,6 +6040,65 @@
     }
   },
   {
+    "id": "tokyo_50",
+    "name": "スーパーホテル",
+    "brand": "Super Hotel",
+    "region": "tokyo",
+    "lat": 35.69702,
+    "lng": 139.702385,
+    "station_name": "西武新宿",
+    "station_dist": 279,
+    "airport_lines": [
+      "JR_NEX"
+    ],
+    "amenities": {
+      "lawson": 124,
+      "seven": 25,
+      "familymart": 96,
+      "mcdonalds": 355,
+      "drugstore": 43,
+      "supermarket": 160
+    }
+  },
+  {
+    "id": "tokyo_84",
+    "name": "コンフォートホテル東京東神田",
+    "brand": "Comfort Hotel",
+    "region": "tokyo",
+    "lat": 35.694571,
+    "lng": 139.779726,
+    "station_name": "馬喰町",
+    "station_dist": 279,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 210,
+      "seven": 124,
+      "familymart": 150,
+      "mcdonalds": 554,
+      "drugstore": 89,
+      "supermarket": 281
+    }
+  },
+  {
+    "id": "tokyo_141",
+    "name": "相鉄フレッサイン",
+    "brand": "Fresa Inn",
+    "region": "tokyo",
+    "lat": 35.69175,
+    "lng": 139.774015,
+    "station_name": "神田",
+    "station_dist": 280,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 166,
+      "seven": 14,
+      "familymart": 101,
+      "mcdonalds": 700,
+      "drugstore": 159,
+      "supermarket": 325
+    }
+  },
+  {
     "id": "kansai_60",
     "name": "Comfort HOTEL",
     "brand": "Comfort Hotel",
@@ -1850,6 +6115,25 @@
       "mcdonalds": 175,
       "drugstore": 345,
       "supermarket": 91
+    }
+  },
+  {
+    "id": "tokyo_272",
+    "name": "ドーミーイン東京八丁堀",
+    "brand": "Dormy Inn",
+    "region": "tokyo",
+    "lat": 35.674424,
+    "lng": 139.780758,
+    "station_name": "八丁堀",
+    "station_dist": 281,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 101,
+      "seven": 142,
+      "familymart": 210,
+      "mcdonalds": 1043,
+      "drugstore": 117,
+      "supermarket": 169
     }
   },
   {
@@ -1874,6 +6158,25 @@
     }
   },
   {
+    "id": "tokyo_173",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.606196,
+    "lng": 139.731649,
+    "station_name": "大井町",
+    "station_dist": 286,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 225,
+      "seven": 78,
+      "familymart": 112,
+      "mcdonalds": 994,
+      "drugstore": 136,
+      "supermarket": 164
+    }
+  },
+  {
     "id": "kansai_19",
     "name": "ホテルリブマックス尼崎",
     "brand": "LiveMax",
@@ -1890,6 +6193,44 @@
       "mcdonalds": 421,
       "drugstore": 92,
       "supermarket": 188
+    }
+  },
+  {
+    "id": "tokyo_38",
+    "name": "Sotetsu Fresa Inn Nihombashi-Ningyocho",
+    "brand": "Fresa Inn",
+    "region": "tokyo",
+    "lat": 35.683175,
+    "lng": 139.782569,
+    "station_name": "水天宮前",
+    "station_dist": 287,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 133,
+      "seven": 36,
+      "familymart": 161,
+      "mcdonalds": 228,
+      "drugstore": 170,
+      "supermarket": 258
+    }
+  },
+  {
+    "id": "tokyo_63",
+    "name": "スーパーホテル",
+    "brand": "Super Hotel",
+    "region": "tokyo",
+    "lat": 35.444147,
+    "lng": 139.642706,
+    "station_name": "日本大通り",
+    "station_dist": 288,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 111,
+      "seven": 255,
+      "familymart": 23,
+      "mcdonalds": 504,
+      "drugstore": 382,
+      "supermarket": 108
     }
   },
   {
@@ -1952,6 +6293,25 @@
     }
   },
   {
+    "id": "tokyo_258",
+    "name": "相鉄フレッサイン千葉柏",
+    "brand": "Fresa Inn",
+    "region": "tokyo",
+    "lat": 35.860794,
+    "lng": 139.973698,
+    "station_name": "柏",
+    "station_dist": 292,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 171,
+      "seven": 117,
+      "familymart": 237,
+      "mcdonalds": 95,
+      "drugstore": 102,
+      "supermarket": 96
+    }
+  },
+  {
     "id": "kansai_57",
     "name": "Comfort INN",
     "brand": "Comfort Hotel",
@@ -1968,6 +6328,27 @@
       "mcdonalds": 179,
       "drugstore": 146,
       "supermarket": 227
+    }
+  },
+  {
+    "id": "tokyo_45",
+    "name": "東横INN新宿歌舞伎町",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.697291,
+    "lng": 139.704363,
+    "station_name": "東新宿",
+    "station_dist": 295,
+    "airport_lines": [
+      "JR_NEX"
+    ],
+    "amenities": {
+      "lawson": 127,
+      "seven": 29,
+      "familymart": 137,
+      "mcdonalds": 303,
+      "drugstore": 95,
+      "supermarket": 109
     }
   },
   {
@@ -2011,6 +6392,63 @@
     }
   },
   {
+    "id": "tokyo_13",
+    "name": "相鉄フレッサイン",
+    "brand": "Fresa Inn",
+    "region": "tokyo",
+    "lat": 35.659628,
+    "lng": 139.754334,
+    "station_name": "御成門",
+    "station_dist": 299,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 123,
+      "seven": 153,
+      "familymart": 185,
+      "mcdonalds": 325,
+      "drugstore": 329,
+      "supermarket": 139
+    }
+  },
+  {
+    "id": "tokyo_184",
+    "name": "ホテルメトロポリタンエドモント",
+    "brand": "Hotel Metropolitan",
+    "region": "tokyo",
+    "lat": 35.700882,
+    "lng": 139.749145,
+    "station_name": "飯田橋",
+    "station_dist": 299,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 227,
+      "seven": 91,
+      "familymart": 52,
+      "mcdonalds": 538,
+      "drugstore": 204,
+      "supermarket": 412
+    }
+  },
+  {
+    "id": "tokyo_206",
+    "name": "東急ステイ築地",
+    "brand": "Tokyu Stay",
+    "region": "tokyo",
+    "lat": 35.665789,
+    "lng": 139.770862,
+    "station_name": "築地",
+    "station_dist": 299,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 49,
+      "seven": 342,
+      "familymart": 146,
+      "mcdonalds": 775,
+      "drugstore": 266,
+      "supermarket": 38
+    }
+  },
+  {
     "id": "kansai_39",
     "name": "ヴィアイン",
     "brand": "Via Inn",
@@ -2029,6 +6467,25 @@
       "mcdonalds": 225,
       "drugstore": 81,
       "supermarket": 355
+    }
+  },
+  {
+    "id": "tokyo_213",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.673209,
+    "lng": 139.774396,
+    "station_name": "新富町",
+    "station_dist": 300,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 85,
+      "seven": 150,
+      "familymart": 237,
+      "mcdonalds": 575,
+      "drugstore": 144,
+      "supermarket": 318
     }
   },
   {
@@ -2069,6 +6526,147 @@
       "mcdonalds": 295,
       "drugstore": 237,
       "supermarket": 29
+    }
+  },
+  {
+    "id": "tokyo_117",
+    "name": "ホテルリブマックス",
+    "brand": "LiveMax",
+    "region": "tokyo",
+    "lat": 35.510114,
+    "lng": 139.614296,
+    "station_name": "新横浜",
+    "station_dist": 305,
+    "airport_lines": [
+      "JR_NEX",
+      "KEIKYU"
+    ],
+    "amenities": {
+      "lawson": 156,
+      "seven": 84,
+      "familymart": 90,
+      "mcdonalds": 343,
+      "drugstore": 56,
+      "supermarket": 195
+    }
+  },
+  {
+    "id": "tokyo_152",
+    "name": "ホテルリブマックスBUDGET横浜鶴見",
+    "brand": "LiveMax",
+    "region": "tokyo",
+    "lat": 35.509815,
+    "lng": 139.679339,
+    "station_name": "京急鶴見",
+    "station_dist": 305,
+    "airport_lines": [
+      "KEIKYU"
+    ],
+    "amenities": {
+      "lawson": 161,
+      "seven": 118,
+      "familymart": 66,
+      "mcdonalds": 469,
+      "drugstore": 467,
+      "supermarket": 308
+    }
+  },
+  {
+    "id": "tokyo_226",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.560974,
+    "lng": 139.711452,
+    "station_name": "蒲田",
+    "station_dist": 309,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 241,
+      "seven": 149,
+      "familymart": 323,
+      "mcdonalds": 127,
+      "drugstore": 182,
+      "supermarket": 173
+    }
+  },
+  {
+    "id": "tokyo_61",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.506891,
+    "lng": 139.61402,
+    "station_name": "新横浜",
+    "station_dist": 310,
+    "airport_lines": [
+      "JR_NEX",
+      "KEIKYU"
+    ],
+    "amenities": {
+      "lawson": 23,
+      "seven": 129,
+      "familymart": 177,
+      "mcdonalds": 409,
+      "drugstore": 143,
+      "supermarket": 78
+    }
+  },
+  {
+    "id": "tokyo_116",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.756298,
+    "lng": 139.735653,
+    "station_name": "王子",
+    "station_dist": 310,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 218,
+      "seven": 158,
+      "familymart": 288,
+      "mcdonalds": 419,
+      "drugstore": 132,
+      "supermarket": 177
+    }
+  },
+  {
+    "id": "tokyo_118",
+    "name": "スーパーホテル",
+    "brand": "Super Hotel",
+    "region": "tokyo",
+    "lat": 35.564766,
+    "lng": 139.714137,
+    "station_name": "蒲田",
+    "station_dist": 310,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 163,
+      "seven": 66,
+      "familymart": 77,
+      "mcdonalds": 333,
+      "drugstore": 57,
+      "supermarket": 179
+    }
+  },
+  {
+    "id": "tokyo_244",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.666119,
+    "lng": 139.775047,
+    "station_name": "築地",
+    "station_dist": 311,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 404,
+      "seven": 39,
+      "familymart": 268,
+      "mcdonalds": 796,
+      "drugstore": 373,
+      "supermarket": 347
     }
   },
   {
@@ -2131,6 +6729,46 @@
     }
   },
   {
+    "id": "tokyo_308",
+    "name": "ダイワロイネットホテル西新宿",
+    "brand": "Daiwa Roynet",
+    "region": "tokyo",
+    "lat": 35.694329,
+    "lng": 139.689301,
+    "station_name": "西新宿",
+    "station_dist": 313,
+    "airport_lines": [
+      "JR_NEX"
+    ],
+    "amenities": {
+      "lawson": 181,
+      "seven": 135,
+      "familymart": 140,
+      "mcdonalds": 442,
+      "drugstore": 229,
+      "supermarket": 228
+    }
+  },
+  {
+    "id": "tokyo_285",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.799099,
+    "lng": 139.717651,
+    "station_name": "川口",
+    "station_dist": 314,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 543,
+      "seven": 193,
+      "familymart": 407,
+      "mcdonalds": 1503,
+      "drugstore": 421,
+      "supermarket": 236
+    }
+  },
+  {
     "id": "kansai_72",
     "name": "ダイワロイネットホテル大阪心斎橋",
     "brand": "Daiwa Roynet",
@@ -2147,6 +6785,25 @@
       "mcdonalds": 65,
       "drugstore": 71,
       "supermarket": 243
+    }
+  },
+  {
+    "id": "tokyo_288",
+    "name": "ホテルリブマックス",
+    "brand": "LiveMax",
+    "region": "tokyo",
+    "lat": 35.79751,
+    "lng": 139.596778,
+    "station_name": "朝霞",
+    "station_dist": 315,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 86,
+      "seven": 243,
+      "familymart": 372,
+      "mcdonalds": 1509,
+      "drugstore": 219,
+      "supermarket": 199
     }
   },
   {
@@ -2168,6 +6825,46 @@
       "mcdonalds": 316,
       "drugstore": 120,
       "supermarket": 147
+    }
+  },
+  {
+    "id": "tokyo_151",
+    "name": "三井ガーデンホテル横浜みなとみらいプレミア",
+    "brand": "Mitsui Garden",
+    "region": "tokyo",
+    "lat": 35.456606,
+    "lng": 139.629415,
+    "station_name": "みなとみらい",
+    "station_dist": 318,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 250,
+      "seven": 221,
+      "familymart": 254,
+      "mcdonalds": 270,
+      "drugstore": 280,
+      "supermarket": 223
+    }
+  },
+  {
+    "id": "tokyo_128",
+    "name": "ヴィアイン新宿",
+    "brand": "Via Inn",
+    "region": "tokyo",
+    "lat": 35.693326,
+    "lng": 139.707415,
+    "station_name": "新宿三丁目",
+    "station_dist": 320,
+    "airport_lines": [
+      "JR_NEX"
+    ],
+    "amenities": {
+      "lawson": 31,
+      "seven": 80,
+      "familymart": 170,
+      "mcdonalds": 485,
+      "drugstore": 147,
+      "supermarket": 51
     }
   },
   {
@@ -2211,6 +6908,25 @@
     }
   },
   {
+    "id": "tokyo_136",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.692008,
+    "lng": 139.775165,
+    "station_name": "小伝馬町",
+    "station_dist": 328,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 273,
+      "seven": 96,
+      "familymart": 38,
+      "mcdonalds": 663,
+      "drugstore": 238,
+      "supermarket": 305
+    }
+  },
+  {
     "id": "kansai_49",
     "name": "東横イン",
     "brand": "Toyoko Inn",
@@ -2227,6 +6943,86 @@
       "mcdonalds": 80,
       "drugstore": 95,
       "supermarket": 405
+    }
+  },
+  {
+    "id": "tokyo_39",
+    "name": "相鉄フレッサイン",
+    "brand": "Fresa Inn",
+    "region": "tokyo",
+    "lat": 35.642729,
+    "lng": 139.747851,
+    "station_name": "田町",
+    "station_dist": 335,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 114,
+      "seven": 77,
+      "familymart": 136,
+      "mcdonalds": 491,
+      "drugstore": 134,
+      "supermarket": 59
+    }
+  },
+  {
+    "id": "tokyo_132",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.69803,
+    "lng": 139.703838,
+    "station_name": "東新宿",
+    "station_dist": 335,
+    "airport_lines": [
+      "JR_NEX"
+    ],
+    "amenities": {
+      "lawson": 146,
+      "seven": 98,
+      "familymart": 47,
+      "mcdonalds": 350,
+      "drugstore": 93,
+      "supermarket": 20
+    }
+  },
+  {
+    "id": "tokyo_262",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.652866,
+    "lng": 139.551341,
+    "station_name": "布田",
+    "station_dist": 336,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 385,
+      "seven": 249,
+      "familymart": 474,
+      "mcdonalds": 642,
+      "drugstore": 200,
+      "supermarket": 248
+    }
+  },
+  {
+    "id": "tokyo_246",
+    "name": "スーパーホテル",
+    "brand": "Super Hotel",
+    "region": "tokyo",
+    "lat": 35.687565,
+    "lng": 139.778803,
+    "station_name": "人形町 (都営地下鉄浅草線)",
+    "station_dist": 337,
+    "airport_lines": [
+      "KEIKYU"
+    ],
+    "amenities": {
+      "lawson": 318,
+      "seven": 194,
+      "familymart": 171,
+      "mcdonalds": 525,
+      "drugstore": 102,
+      "supermarket": 85
     }
   },
   {
@@ -2270,6 +7066,107 @@
     }
   },
   {
+    "id": "tokyo_75",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.683361,
+    "lng": 139.781036,
+    "station_name": "人形町",
+    "station_dist": 338,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 61,
+      "seven": 171,
+      "familymart": 206,
+      "mcdonalds": 302,
+      "drugstore": 290,
+      "supermarket": 397
+    }
+  },
+  {
+    "id": "tokyo_230",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.687064,
+    "lng": 139.778575,
+    "station_name": "人形町 (都営地下鉄浅草線)",
+    "station_dist": 338,
+    "airport_lines": [
+      "KEIKYU"
+    ],
+    "amenities": {
+      "lawson": 305,
+      "seven": 217,
+      "familymart": 229,
+      "mcdonalds": 516,
+      "drugstore": 138,
+      "supermarket": 99
+    }
+  },
+  {
+    "id": "tokyo_58",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.700166,
+    "lng": 139.787879,
+    "station_name": "浅草橋",
+    "station_dist": 339,
+    "airport_lines": [
+      "KEIKYU"
+    ],
+    "amenities": {
+      "lawson": 533,
+      "seven": 100,
+      "familymart": 12,
+      "mcdonalds": 531,
+      "drugstore": 73,
+      "supermarket": 43
+    }
+  },
+  {
+    "id": "tokyo_121",
+    "name": "スーパーホテル",
+    "brand": "Super Hotel",
+    "region": "tokyo",
+    "lat": 35.71501,
+    "lng": 139.798211,
+    "station_name": "浅草",
+    "station_dist": 340,
+    "airport_lines": [
+      "KEIKYU"
+    ],
+    "amenities": {
+      "lawson": 245,
+      "seven": 123,
+      "familymart": 399,
+      "mcdonalds": 366,
+      "drugstore": 26,
+      "supermarket": 164
+    }
+  },
+  {
+    "id": "tokyo_174",
+    "name": "東横INN三ノ輪駅",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.726807,
+    "lng": 139.789627,
+    "station_name": "三ノ輪",
+    "station_dist": 340,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 221,
+      "seven": 120,
+      "familymart": 385,
+      "mcdonalds": 373,
+      "drugstore": 226,
+      "supermarket": 69
+    }
+  },
+  {
     "id": "kansai_151",
     "name": "東横イン",
     "brand": "Toyoko Inn",
@@ -2307,6 +7204,27 @@
       "mcdonalds": 490,
       "drugstore": 398,
       "supermarket": 528
+    }
+  },
+  {
+    "id": "tokyo_219",
+    "name": "東横INN池袋北口2",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.734031,
+    "lng": 139.710276,
+    "station_name": "池袋",
+    "station_dist": 343,
+    "airport_lines": [
+      "JR_NEX"
+    ],
+    "amenities": {
+      "lawson": 76,
+      "seven": 74,
+      "familymart": 67,
+      "mcdonalds": 324,
+      "drugstore": 157,
+      "supermarket": 142
     }
   },
   {
@@ -2350,6 +7268,25 @@
     }
   },
   {
+    "id": "tokyo_87",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.560998,
+    "lng": 139.719388,
+    "station_name": "蒲田",
+    "station_dist": 346,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 134,
+      "seven": 225,
+      "familymart": 51,
+      "mcdonalds": 129,
+      "drugstore": 135,
+      "supermarket": 119
+    }
+  },
+  {
     "id": "kansai_129",
     "name": "東横INN",
     "brand": "Toyoko Inn",
@@ -2366,6 +7303,82 @@
       "mcdonalds": 784,
       "drugstore": 249,
       "supermarket": 222
+    }
+  },
+  {
+    "id": "tokyo_130",
+    "name": "LiveMAX",
+    "brand": "LiveMax",
+    "region": "tokyo",
+    "lat": 35.670108,
+    "lng": 139.733384,
+    "station_name": "赤坂",
+    "station_dist": 350,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 32,
+      "seven": 41,
+      "familymart": 184,
+      "mcdonalds": 342,
+      "drugstore": 48,
+      "supermarket": 438
+    }
+  },
+  {
+    "id": "tokyo_41",
+    "name": "東横インさいたま新都心",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.896451,
+    "lng": 139.632177,
+    "station_name": "さいたま新都心",
+    "station_dist": 351,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 412,
+      "seven": 79,
+      "familymart": 26,
+      "mcdonalds": 157,
+      "drugstore": 118,
+      "supermarket": 289
+    }
+  },
+  {
+    "id": "tokyo_185",
+    "name": "ホテルメトロポリタン エドモント EAST WING",
+    "brand": "Hotel Metropolitan",
+    "region": "tokyo",
+    "lat": 35.700791,
+    "lng": 139.749708,
+    "station_name": "飯田橋",
+    "station_dist": 351,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 278,
+      "seven": 44,
+      "familymart": 88,
+      "mcdonalds": 493,
+      "drugstore": 235,
+      "supermarket": 462
+    }
+  },
+  {
+    "id": "tokyo_47",
+    "name": "アパホテル〈神田神保町駅東〉",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.694539,
+    "lng": 139.762137,
+    "station_name": "神保町",
+    "station_dist": 353,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 158,
+      "seven": 250,
+      "familymart": 134,
+      "mcdonalds": 248,
+      "drugstore": 100,
+      "supermarket": 223
     }
   },
   {
@@ -2445,6 +7458,44 @@
     }
   },
   {
+    "id": "tokyo_190",
+    "name": "アパホテル新橋御成門",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.661402,
+    "lng": 139.755284,
+    "station_name": "御成門",
+    "station_dist": 361,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 81,
+      "seven": 164,
+      "familymart": 91,
+      "mcdonalds": 536,
+      "drugstore": 514,
+      "supermarket": 87
+    }
+  },
+  {
+    "id": "tokyo_263",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.70174,
+    "lng": 139.776054,
+    "station_name": "秋葉原",
+    "station_dist": 361,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 119,
+      "seven": 167,
+      "familymart": 169,
+      "mcdonalds": 346,
+      "drugstore": 138,
+      "supermarket": 152
+    }
+  },
+  {
     "id": "kansai_12",
     "name": "ダイワロイネットホテル",
     "brand": "Daiwa Roynet",
@@ -2463,6 +7514,63 @@
       "mcdonalds": 174,
       "drugstore": 53,
       "supermarket": 167
+    }
+  },
+  {
+    "id": "tokyo_269",
+    "name": "TOKYU STAY",
+    "brand": "Tokyu Stay",
+    "region": "tokyo",
+    "lat": 35.671322,
+    "lng": 139.798972,
+    "station_name": "門前仲町",
+    "station_dist": 369,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 393,
+      "seven": 351,
+      "familymart": 50,
+      "mcdonalds": 400,
+      "drugstore": 29,
+      "supermarket": 162
+    }
+  },
+  {
+    "id": "tokyo_177",
+    "name": "ホテルリブマックスBUDGET横浜関内",
+    "brand": "LiveMax",
+    "region": "tokyo",
+    "lat": 35.441099,
+    "lng": 139.628716,
+    "station_name": "伊勢佐木長者町",
+    "station_dist": 370,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 173,
+      "seven": 53,
+      "familymart": 100,
+      "mcdonalds": 163,
+      "drugstore": 40,
+      "supermarket": 121
+    }
+  },
+  {
+    "id": "tokyo_290",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.544135,
+    "lng": 139.570489,
+    "station_name": "センター南",
+    "station_dist": 370,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 140,
+      "seven": 199,
+      "familymart": 413,
+      "mcdonalds": 382,
+      "drugstore": 243,
+      "supermarket": 127
     }
   },
   {
@@ -2506,6 +7614,25 @@
     }
   },
   {
+    "id": "tokyo_65",
+    "name": "ダイワロイネットホテル 横浜公園",
+    "brand": "Daiwa Roynet",
+    "region": "tokyo",
+    "lat": 35.443427,
+    "lng": 139.642088,
+    "station_name": "日本大通り",
+    "station_dist": 372,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 20,
+      "seven": 353,
+      "familymart": 101,
+      "mcdonalds": 423,
+      "drugstore": 392,
+      "supermarket": 203
+    }
+  },
+  {
     "id": "kansai_77",
     "name": "ホテルリブマックスBudget梅田",
     "brand": "LiveMax",
@@ -2544,6 +7671,86 @@
     }
   },
   {
+    "id": "tokyo_196",
+    "name": "相鉄フレッサイン 銀座七丁目",
+    "brand": "Fresa Inn",
+    "region": "tokyo",
+    "lat": 35.668083,
+    "lng": 139.763297,
+    "station_name": "東銀座",
+    "station_dist": 375,
+    "airport_lines": [
+      "KEIKYU"
+    ],
+    "amenities": {
+      "lawson": 132,
+      "seven": 41,
+      "familymart": 19,
+      "mcdonalds": 540,
+      "drugstore": 325,
+      "supermarket": 456
+    }
+  },
+  {
+    "id": "tokyo_224",
+    "name": "スーパーホテル",
+    "brand": "Super Hotel",
+    "region": "tokyo",
+    "lat": 35.64994,
+    "lng": 139.751226,
+    "station_name": "三田",
+    "station_dist": 380,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 294,
+      "seven": 139,
+      "familymart": 187,
+      "mcdonalds": 468,
+      "drugstore": 130,
+      "supermarket": 144
+    }
+  },
+  {
+    "id": "tokyo_53",
+    "name": "スーパーホテル",
+    "brand": "Super Hotel",
+    "region": "tokyo",
+    "lat": 35.71535,
+    "lng": 139.780031,
+    "station_name": "上野",
+    "station_dist": 382,
+    "airport_lines": [
+      "KEISEI"
+    ],
+    "amenities": {
+      "lawson": 86,
+      "seven": 221,
+      "familymart": 204,
+      "mcdonalds": 527,
+      "drugstore": 268,
+      "supermarket": 302
+    }
+  },
+  {
+    "id": "tokyo_104",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.818522,
+    "lng": 139.702272,
+    "station_name": "西川口",
+    "station_dist": 382,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 331,
+      "seven": 232,
+      "familymart": 338,
+      "mcdonalds": 425,
+      "drugstore": 673,
+      "supermarket": 471
+    }
+  },
+  {
     "id": "kansai_93",
     "name": "スーパーホテル",
     "brand": "Super Hotel",
@@ -2563,6 +7770,25 @@
     }
   },
   {
+    "id": "tokyo_44",
+    "name": "ホテルリブマックス府中",
+    "brand": "LiveMax",
+    "region": "tokyo",
+    "lat": 35.671838,
+    "lng": 139.475774,
+    "station_name": "府中",
+    "station_dist": 385,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 153,
+      "seven": 259,
+      "familymart": 160,
+      "mcdonalds": 330,
+      "drugstore": 187,
+      "supermarket": 209
+    }
+  },
+  {
     "id": "kansai_119",
     "name": "アパホテル",
     "brand": "APA Hotel",
@@ -2579,6 +7805,25 @@
       "mcdonalds": 499,
       "drugstore": 72,
       "supermarket": 512
+    }
+  },
+  {
+    "id": "tokyo_171",
+    "name": "Mitsui Garden Hotel",
+    "brand": "Mitsui Garden",
+    "region": "tokyo",
+    "lat": 35.66212,
+    "lng": 139.735873,
+    "station_name": "六本木",
+    "station_dist": 388,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 98,
+      "seven": 214,
+      "familymart": 91,
+      "mcdonalds": 709,
+      "drugstore": 353,
+      "supermarket": 138
     }
   },
   {
@@ -2603,6 +7848,44 @@
     }
   },
   {
+    "id": "tokyo_197",
+    "name": "アパホテル＆リゾート六本木駅東",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.661626,
+    "lng": 139.737582,
+    "station_name": "六本木一丁目",
+    "station_dist": 389,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 70,
+      "seven": 376,
+      "familymart": 206,
+      "mcdonalds": 671,
+      "drugstore": 516,
+      "supermarket": 29
+    }
+  },
+  {
+    "id": "tokyo_73",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.686337,
+    "lng": 139.791588,
+    "station_name": "浜町",
+    "station_dist": 392,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 345,
+      "seven": 389,
+      "familymart": 270,
+      "mcdonalds": 604,
+      "drugstore": 355,
+      "supermarket": 248
+    }
+  },
+  {
     "id": "kansai_38",
     "name": "コンフォートホテル大阪心斎橋",
     "brand": "Comfort Hotel",
@@ -2619,6 +7902,124 @@
       "mcdonalds": 355,
       "drugstore": 163,
       "supermarket": 213
+    }
+  },
+  {
+    "id": "tokyo_83",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.73429,
+    "lng": 139.710939,
+    "station_name": "池袋",
+    "station_dist": 394,
+    "airport_lines": [
+      "JR_NEX"
+    ],
+    "amenities": {
+      "lawson": 74,
+      "seven": 140,
+      "familymart": 47,
+      "mcdonalds": 355,
+      "drugstore": 130,
+      "supermarket": 119
+    }
+  },
+  {
+    "id": "tokyo_191",
+    "name": "Mitsui Garden Hotel Shiodome Italia-gai",
+    "brand": "Mitsui Garden",
+    "region": "tokyo",
+    "lat": 35.660232,
+    "lng": 139.757069,
+    "station_name": "汐留",
+    "station_dist": 398,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 56,
+      "seven": 103,
+      "familymart": 191,
+      "mcdonalds": 488,
+      "drugstore": 387,
+      "supermarket": 72
+    }
+  },
+  {
+    "id": "tokyo_306",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.690334,
+    "lng": 139.766809,
+    "station_name": "大手町",
+    "station_dist": 398,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 105,
+      "seven": 52,
+      "familymart": 74,
+      "mcdonalds": 878,
+      "drugstore": 226,
+      "supermarket": 133
+    }
+  },
+  {
+    "id": "tokyo_217",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.703123,
+    "lng": 139.767211,
+    "station_name": "御茶ノ水",
+    "station_dist": 400,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 197,
+      "seven": 87,
+      "familymart": 36,
+      "mcdonalds": 446,
+      "drugstore": 113,
+      "supermarket": 200
+    }
+  },
+  {
+    "id": "tokyo_138",
+    "name": "ダイワロイネットホテル",
+    "brand": "Daiwa Roynet",
+    "region": "tokyo",
+    "lat": 35.902985,
+    "lng": 139.620996,
+    "station_name": "大宮",
+    "station_dist": 402,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 63,
+      "seven": 28,
+      "familymart": 203,
+      "mcdonalds": 279,
+      "drugstore": 27,
+      "supermarket": 421
+    }
+  },
+  {
+    "id": "tokyo_234",
+    "name": "ダイワロイネットホテル川崎",
+    "brand": "Daiwa Roynet",
+    "region": "tokyo",
+    "lat": 35.528782,
+    "lng": 139.699966,
+    "station_name": "川崎",
+    "station_dist": 403,
+    "airport_lines": [
+      "KEIKYU"
+    ],
+    "amenities": {
+      "lawson": 98,
+      "seven": 103,
+      "familymart": 17,
+      "mcdonalds": 229,
+      "drugstore": 37,
+      "supermarket": 116
     }
   },
   {
@@ -2683,6 +8084,25 @@
     }
   },
   {
+    "id": "tokyo_301",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.86002,
+    "lng": 139.974605,
+    "station_name": "柏",
+    "station_dist": 409,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 190,
+      "seven": 114,
+      "familymart": 294,
+      "mcdonalds": 207,
+      "drugstore": 111,
+      "supermarket": 42
+    }
+  },
+  {
     "id": "kansai_2",
     "name": "東横イン五条烏丸 (Toyoko Inn)",
     "brand": "Toyoko Inn",
@@ -2699,6 +8119,63 @@
       "mcdonalds": 245,
       "drugstore": 57,
       "supermarket": 169
+    }
+  },
+  {
+    "id": "tokyo_27",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.443113,
+    "lng": 139.641658,
+    "station_name": "日本大通り",
+    "station_dist": 413,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 39,
+      "seven": 373,
+      "familymart": 60,
+      "mcdonalds": 375,
+      "drugstore": 363,
+      "supermarket": 234
+    }
+  },
+  {
+    "id": "tokyo_49",
+    "name": "Premium Dormy Inn Hotel",
+    "brand": "Dormy Inn",
+    "region": "tokyo",
+    "lat": 35.665656,
+    "lng": 139.702253,
+    "station_name": "明治神宮前〈原宿〉",
+    "station_dist": 415,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 265,
+      "seven": 353,
+      "familymart": 99,
+      "mcdonalds": 437,
+      "drugstore": 364,
+      "supermarket": 335
+    }
+  },
+  {
+    "id": "tokyo_4",
+    "name": "新宿ワシントンホテル",
+    "brand": "Washington Hotel",
+    "region": "tokyo",
+    "lat": 35.686832,
+    "lng": 139.692856,
+    "station_name": "都庁前",
+    "station_dist": 420,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 132,
+      "seven": 124,
+      "familymart": 27,
+      "mcdonalds": 554,
+      "drugstore": 406,
+      "supermarket": 477
     }
   },
   {
@@ -2837,6 +8314,65 @@
     }
   },
   {
+    "id": "tokyo_296",
+    "name": "アパホテル東京木場",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.667151,
+    "lng": 139.810633,
+    "station_name": "木場",
+    "station_dist": 447,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 131,
+      "seven": 246,
+      "familymart": 258,
+      "mcdonalds": 557,
+      "drugstore": 490,
+      "supermarket": 434
+    }
+  },
+  {
+    "id": "tokyo_260",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.675267,
+    "lng": 139.791249,
+    "station_name": "門前仲町",
+    "station_dist": 449,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 75,
+      "seven": 85,
+      "familymart": 253,
+      "mcdonalds": 425,
+      "drugstore": 439,
+      "supermarket": 478
+    }
+  },
+  {
+    "id": "tokyo_52",
+    "name": "アパホテル 上野野駅北",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.715952,
+    "lng": 139.780467,
+    "station_name": "上野",
+    "station_dist": 453,
+    "airport_lines": [
+      "KEISEI"
+    ],
+    "amenities": {
+      "lawson": 44,
+      "seven": 189,
+      "familymart": 280,
+      "mcdonalds": 573,
+      "drugstore": 207,
+      "supermarket": 321
+    }
+  },
+  {
     "id": "kansai_84",
     "name": "東横イン 大阪なんば",
     "brand": "Toyoko Inn",
@@ -2874,6 +8410,27 @@
       "mcdonalds": 406,
       "drugstore": 265,
       "supermarket": 346
+    }
+  },
+  {
+    "id": "tokyo_135",
+    "name": "Tokyu Stay",
+    "brand": "Tokyu Stay",
+    "region": "tokyo",
+    "lat": 35.654784,
+    "lng": 139.705154,
+    "station_name": "渋谷",
+    "station_dist": 458,
+    "airport_lines": [
+      "JR_NEX"
+    ],
+    "amenities": {
+      "lawson": 324,
+      "seven": 154,
+      "familymart": 19,
+      "mcdonalds": 422,
+      "drugstore": 142,
+      "supermarket": 209
     }
   },
   {
@@ -2915,6 +8472,46 @@
     }
   },
   {
+    "id": "tokyo_225",
+    "name": "ホテルリブマックス",
+    "brand": "LiveMax",
+    "region": "tokyo",
+    "lat": 35.531739,
+    "lng": 139.691743,
+    "station_name": "川崎",
+    "station_dist": 468,
+    "airport_lines": [
+      "KEIKYU"
+    ],
+    "amenities": {
+      "lawson": 33,
+      "seven": 322,
+      "familymart": 84,
+      "mcdonalds": 314,
+      "drugstore": 105,
+      "supermarket": 66
+    }
+  },
+  {
+    "id": "tokyo_218",
+    "name": "HOTEL LiVEMAX",
+    "brand": "LiveMax",
+    "region": "tokyo",
+    "lat": 35.702636,
+    "lng": 139.778311,
+    "station_name": "仲御徒町",
+    "station_dist": 469,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 195,
+      "seven": 211,
+      "familymart": 267,
+      "mcdonalds": 557,
+      "drugstore": 215,
+      "supermarket": 203
+    }
+  },
+  {
     "id": "kansai_21",
     "name": "スーパーホテル神戸",
     "brand": "Super Hotel",
@@ -2931,6 +8528,66 @@
       "mcdonalds": 484,
       "drugstore": 178,
       "supermarket": 230
+    }
+  },
+  {
+    "id": "tokyo_101",
+    "name": "Hotel Livemax",
+    "brand": "LiveMax",
+    "region": "tokyo",
+    "lat": 35.673594,
+    "lng": 139.474931,
+    "station_name": "府中",
+    "station_dist": 484,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 57,
+      "seven": 216,
+      "familymart": 317,
+      "mcdonalds": 467,
+      "drugstore": 55,
+      "supermarket": 46
+    }
+  },
+  {
+    "id": "tokyo_100",
+    "name": "ホテルリブマックス横浜西口",
+    "brand": "LiveMax",
+    "region": "tokyo",
+    "lat": 35.465778,
+    "lng": 139.614831,
+    "station_name": "横浜 (横浜市交通局)",
+    "station_dist": 485,
+    "airport_lines": [
+      "JR_NEX",
+      "KEIKYU"
+    ],
+    "amenities": {
+      "lawson": 248,
+      "seven": 63,
+      "familymart": 191,
+      "mcdonalds": 304,
+      "drugstore": 200,
+      "supermarket": 138
+    }
+  },
+  {
+    "id": "tokyo_255",
+    "name": "ホテルリブマックス東京木場",
+    "brand": "LiveMax",
+    "region": "tokyo",
+    "lat": 35.668332,
+    "lng": 139.811791,
+    "station_name": "木場",
+    "station_dist": 489,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 67,
+      "seven": 93,
+      "familymart": 376,
+      "mcdonalds": 525,
+      "drugstore": 332,
+      "supermarket": 467
     }
   },
   {
@@ -2969,6 +8626,107 @@
       "mcdonalds": 121,
       "drugstore": 286,
       "supermarket": 123
+    }
+  },
+  {
+    "id": "tokyo_33",
+    "name": "スーパーホテル",
+    "brand": "Super Hotel",
+    "region": "tokyo",
+    "lat": 35.613085,
+    "lng": 139.745015,
+    "station_name": "新馬場",
+    "station_dist": 498,
+    "airport_lines": [
+      "KEIKYU"
+    ],
+    "amenities": {
+      "lawson": 79,
+      "seven": 84,
+      "familymart": 219,
+      "mcdonalds": 388,
+      "drugstore": 195,
+      "supermarket": 361
+    }
+  },
+  {
+    "id": "tokyo_69",
+    "name": "東急ステイ 渋谷新南口",
+    "brand": "Tokyu Stay",
+    "region": "tokyo",
+    "lat": 35.65445,
+    "lng": 139.705336,
+    "station_name": "渋谷",
+    "station_dist": 499,
+    "airport_lines": [
+      "JR_NEX"
+    ],
+    "amenities": {
+      "lawson": 364,
+      "seven": 173,
+      "familymart": 59,
+      "mcdonalds": 458,
+      "drugstore": 178,
+      "supermarket": 196
+    }
+  },
+  {
+    "id": "tokyo_149",
+    "name": "ドーミーイン川崎",
+    "brand": "Dormy Inn",
+    "region": "tokyo",
+    "lat": 35.528838,
+    "lng": 139.703474,
+    "station_name": "京急川崎",
+    "station_dist": 506,
+    "airport_lines": [
+      "KEIKYU"
+    ],
+    "amenities": {
+      "lawson": 74,
+      "seven": 7,
+      "familymart": 189,
+      "mcdonalds": 422,
+      "drugstore": 203,
+      "supermarket": 96
+    }
+  },
+  {
+    "id": "tokyo_267",
+    "name": "ホテルルートイン五反田",
+    "brand": "Route Inn",
+    "region": "tokyo",
+    "lat": 35.620293,
+    "lng": 139.717669,
+    "station_name": "大崎広小路",
+    "station_dist": 509,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 124,
+      "seven": 231,
+      "familymart": 110,
+      "mcdonalds": 559,
+      "drugstore": 521,
+      "supermarket": 192
+    }
+  },
+  {
+    "id": "tokyo_181",
+    "name": "スーパーホテル",
+    "brand": "Super Hotel",
+    "region": "tokyo",
+    "lat": 35.902573,
+    "lng": 139.619593,
+    "station_name": "大宮",
+    "station_dist": 511,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 144,
+      "seven": 119,
+      "familymart": 270,
+      "mcdonalds": 398,
+      "drugstore": 151,
+      "supermarket": 468
     }
   },
   {
@@ -3012,6 +8770,65 @@
     }
   },
   {
+    "id": "tokyo_19",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.71841,
+    "lng": 139.792417,
+    "station_name": "浅草",
+    "station_dist": 533,
+    "airport_lines": [
+      "KEIKYU"
+    ],
+    "amenities": {
+      "lawson": 235,
+      "seven": 244,
+      "familymart": 54,
+      "mcdonalds": 682,
+      "drugstore": 373,
+      "supermarket": 238
+    }
+  },
+  {
+    "id": "tokyo_253",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.464272,
+    "lng": 139.613693,
+    "station_name": "平沼橋",
+    "station_dist": 566,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 229,
+      "seven": 63,
+      "familymart": 88,
+      "mcdonalds": 334,
+      "drugstore": 104,
+      "supermarket": 65
+    }
+  },
+  {
+    "id": "tokyo_72",
+    "name": "ホテルリブマックス後楽園",
+    "brand": "LiveMax",
+    "region": "tokyo",
+    "lat": 35.710781,
+    "lng": 139.746198,
+    "station_name": "後楽園",
+    "station_dist": 578,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 514,
+      "seven": 120,
+      "familymart": 40,
+      "mcdonalds": 635,
+      "drugstore": 430,
+      "supermarket": 199
+    }
+  },
+  {
     "id": "kansai_24",
     "name": "東横イン",
     "brand": "Toyoko Inn",
@@ -3050,6 +8867,44 @@
     }
   },
   {
+    "id": "tokyo_103",
+    "name": "ルートイン千葉浜野",
+    "brand": "Route Inn",
+    "region": "tokyo",
+    "lat": 35.553354,
+    "lng": 140.125544,
+    "station_name": "浜野",
+    "station_dist": 612,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 1808,
+      "seven": 368,
+      "familymart": 892,
+      "mcdonalds": 1959,
+      "drugstore": 1361,
+      "supermarket": 1405
+    }
+  },
+  {
+    "id": "tokyo_297",
+    "name": "アパホテル＆リゾート（東京ベイ幕張）",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.644055,
+    "lng": 140.037681,
+    "station_name": "海浜幕張",
+    "station_dist": 619,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 67,
+      "seven": 504,
+      "familymart": 683,
+      "mcdonalds": 1038,
+      "drugstore": 627,
+      "supermarket": 714
+    }
+  },
+  {
     "id": "kansai_154",
     "name": "東横イン",
     "brand": "Toyoko Inn",
@@ -3085,6 +8940,25 @@
       "mcdonalds": 650,
       "drugstore": 488,
       "supermarket": 270
+    }
+  },
+  {
+    "id": "tokyo_222",
+    "name": "ドーミーイン池袋",
+    "brand": "Dormy Inn",
+    "region": "tokyo",
+    "lat": 35.731886,
+    "lng": 139.719,
+    "station_name": "向原",
+    "station_dist": 635,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 220,
+      "seven": 57,
+      "familymart": 64,
+      "mcdonalds": 435,
+      "drugstore": 80,
+      "supermarket": 102
     }
   },
   {
@@ -3144,6 +9018,205 @@
       "mcdonalds": 1193,
       "drugstore": 226,
       "supermarket": 470
+    }
+  },
+  {
+    "id": "tokyo_238",
+    "name": "アパホテルさいたま新都心駅北",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.899008,
+    "lng": 139.630045,
+    "station_name": "さいたま新都心",
+    "station_dist": 693,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 685,
+      "seven": 194,
+      "familymart": 369,
+      "mcdonalds": 497,
+      "drugstore": 453,
+      "supermarket": 632
+    }
+  },
+  {
+    "id": "tokyo_277",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.702325,
+    "lng": 139.952264,
+    "station_name": "西船橋",
+    "station_dist": 813,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 426,
+      "seven": 601,
+      "familymart": 464,
+      "mcdonalds": 895,
+      "drugstore": 681,
+      "supermarket": 560
+    }
+  },
+  {
+    "id": "tokyo_110",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.781498,
+    "lng": 140.383963,
+    "station_name": "空港第2ビル",
+    "station_dist": 966,
+    "airport_lines": [
+      "JR_NEX",
+      "KEISEI"
+    ],
+    "amenities": {
+      "lawson": 475,
+      "seven": 333,
+      "familymart": 933,
+      "mcdonalds": 1009,
+      "drugstore": 956,
+      "supermarket": 4452
+    }
+  },
+  {
+    "id": "tokyo_198",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.782117,
+    "lng": 140.384231,
+    "station_name": "空港第2ビル",
+    "station_dist": 1025,
+    "airport_lines": [
+      "JR_NEX",
+      "KEISEI"
+    ],
+    "amenities": {
+      "lawson": 456,
+      "seven": 260,
+      "familymart": 1002,
+      "mcdonalds": 1063,
+      "drugstore": 1013,
+      "supermarket": 4379
+    }
+  },
+  {
+    "id": "tokyo_286",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.78229,
+    "lng": 140.38456,
+    "station_name": "空港第2ビル",
+    "station_dist": 1035,
+    "airport_lines": [
+      "JR_NEX",
+      "KEISEI"
+    ],
+    "amenities": {
+      "lawson": 473,
+      "seven": 234,
+      "familymart": 1036,
+      "mcdonalds": 1070,
+      "drugstore": 1023,
+      "supermarket": 4349
+    }
+  },
+  {
+    "id": "tokyo_264",
+    "name": "ルートイン木更津",
+    "brand": "Route Inn",
+    "region": "tokyo",
+    "lat": 35.38206,
+    "lng": 139.94273,
+    "station_name": "祇園",
+    "station_dist": 1167,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 715,
+      "seven": 88,
+      "familymart": 783,
+      "mcdonalds": 649,
+      "drugstore": 449,
+      "supermarket": 521
+    }
+  },
+  {
+    "id": "tokyo_287",
+    "name": "三井ガーデンホテル 柏の葉パークサイド",
+    "brand": "Mitsui Garden",
+    "region": "tokyo",
+    "lat": 35.899406,
+    "lng": 139.940499,
+    "station_name": "柏の葉キャンパス",
+    "station_dist": 1270,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 1117,
+      "seven": 28,
+      "familymart": 401,
+      "mcdonalds": 1256,
+      "drugstore": 329,
+      "supermarket": 874
+    }
+  },
+  {
+    "id": "tokyo_300",
+    "name": "三井ガーデンホテルプラナ東京ベイ",
+    "brand": "Mitsui Garden",
+    "region": "tokyo",
+    "lat": 35.63612,
+    "lng": 139.924296,
+    "station_name": "新浦安",
+    "station_dist": 1834,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 47,
+      "seven": 701,
+      "familymart": 1200,
+      "mcdonalds": 774,
+      "drugstore": 514,
+      "supermarket": 561
+    }
+  },
+  {
+    "id": "tokyo_261",
+    "name": "アパホテル町田駅東",
+    "brand": "APA Hotel",
+    "region": "tokyo",
+    "lat": 35.542105,
+    "lng": 139.450595,
+    "station_name": "成瀬",
+    "station_dist": 2147,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 309,
+      "seven": 664,
+      "familymart": 216,
+      "mcdonalds": 2254,
+      "drugstore": 30,
+      "supermarket": 1313
+    }
+  },
+  {
+    "id": "tokyo_77",
+    "name": "東横インさいたま岩槻駅前",
+    "brand": "Toyoko Inn",
+    "region": "tokyo",
+    "lat": 35.949432,
+    "lng": 139.693195,
+    "station_name": "七里",
+    "station_dist": 2860,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 593,
+      "seven": 460,
+      "familymart": 40,
+      "mcdonalds": 1300,
+      "drugstore": 265,
+      "supermarket": 104
     }
   },
   {
