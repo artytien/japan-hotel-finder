@@ -2,41 +2,33 @@ import json
 import math
 import os
 import re
+import sys
 import time
 from collections import defaultdict
 import requests
 
 # ==========================================
-# 1. 設定區：日本 7 大地理分區與輸出路徑
+# 1. 設定區：日本 7 大地理分區定義
 # ==========================================
-OUTPUT_DIR = "./data"
-OUTPUT_FILES = {
-    "kansai": os.path.join(OUTPUT_DIR, "hotels_kansai.json"),
-    "tokyo": os.path.join(OUTPUT_DIR, "hotels_tokyo.json"),
-    "all": os.path.join(OUTPUT_DIR, "hotels_all.json"),
+DATA_DIR = "./data"
+REGIONS_MAP = {
+    "kansai":   {"name": "關西圈(京阪神)",   "bbox": (34.40, 135.10, 35.08, 135.85)},
+    "tokyo":    {"name": "關東(首都圈)",     "bbox": (35.35, 139.45, 35.95, 140.42)},
+    "tokai":    {"name": "東海(名古屋・静岡)", "bbox": (34.65, 136.60, 35.45, 138.50)},
+    "kyushu":   {"name": "九州(福岡・熊本)",   "bbox": (32.60, 130.15, 33.95, 131.70)},
+    "hokkaido": {"name": "北海道(札幌・函館)", "bbox": (41.70, 140.65, 43.85, 142.50)},
+    "chugoku":  {"name": "中國・四國(廣島岡山)", "bbox": (33.80, 132.30, 34.75, 134.10)},
+    "tohoku":   {"name": "東北(仙台・青森)",   "bbox": (38.15, 140.70, 40.90, 141.20)},
 }
 
-REGIONS_CONFIG = [
-    {"key": "kansai",   "name": "關西圈",     "bbox": (34.20, 135.00, 35.15, 135.95)},
-    {"key": "tokyo",    "name": "首都圈",     "bbox": (35.25, 139.25, 36.05, 140.45)},
-    {"key": "chubu",    "name": "中部・北陸", "bbox": (34.60, 136.00, 37.00, 139.10)},
-    {"key": "kyushu",   "name": "九州・沖繩", "bbox": (26.00, 127.50, 34.00, 131.90)},
-    {"key": "chugoku",  "name": "中國・四國", "bbox": (32.80, 130.90, 35.60, 134.95)},
-    {"key": "tohoku",   "name": "東北地區",   "bbox": (37.00, 139.00, 41.55, 142.10)},
-    {"key": "hokkaido", "name": "北海道",     "bbox": (41.35, 139.80, 45.55, 145.80)},
-]
-
-# 修正：使用支援度最高的官方主節點與日本/歐洲鏡像節點
 OVERPASS_URLS = [
     "https://overpass-api.de/api/interpreter",
-    "https://maps.mail.ru/osm/tools/overpass/api/interpreter",
     "https://overpass.kumi.systems/api/interpreter"
 ]
 
-# 關鍵修正：補上符合 OSM 規範的 User-Agent 與 Accept 標頭，解決 406 Not Acceptable 阻擋
 REQUEST_HEADERS = {
-    "User-Agent": "JapanHotelFinderPWA/1.0 (https://github.com/artytien/japan-hotel-finder)",
-    "Accept": "application/json, text/plain, */*",
+    "User-Agent": "JapanHotelFinderPWA/1.2 (https://github.com/artytien/japan-hotel-finder)",
+    "Accept": "application/json",
     "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
 }
 
@@ -67,9 +59,6 @@ AIRPORT_STATION_RULES = {
     "MONORAIL": ["浜松町", "天王洲アイル", "大井競馬場前", "流通センター", "羽田空港"]
 }
 
-# ==========================================
-# 2. 地理距離計算與空間網格索引
-# ==========================================
 GRID_SIZE = 0.02
 
 def get_grid_cell(lat, lng):
@@ -78,15 +67,13 @@ def get_grid_cell(lat, lng):
 def build_spatial_grid(points):
     grid = defaultdict(list)
     for pt in points:
-        cell = get_grid_cell(pt["lat"], pt["lng"])
-        grid[cell].append(pt)
+        grid[get_grid_cell(pt["lat"], pt["lng"])].append(pt)
     return grid
 
 def find_nearest_in_grid(lat, lng, grid, max_search_dist=9999):
     cx, cy = get_grid_cell(lat, lng)
     min_dist = max_search_dist
     nearest_item = None
-
     for dx in (-1, 0, 1):
         for dy in (-1, 0, 1):
             for item in grid.get((cx + dx, cy + dy), []):
@@ -120,20 +107,17 @@ def query_overpass(query_str, region_name):
                     url,
                     data={"data": query_str},
                     headers=REQUEST_HEADERS,
-                    timeout=180
+                    timeout=55
                 )
                 resp.raise_for_status()
                 return resp.json().get("elements", [])
             except Exception as e:
-                print(f"⚠️ [{region_name}] 節點 {url} 異常 ({e})，切換備援節點...")
+                print(f"⚠️ [{region_name}] 節點異常 ({e})，5 秒後切換...")
                 time.sleep(5)
-        print(f"⏳ [{region_name}] 第 {attempt + 1} 輪節點皆忙碌，等待 15 秒後重試...")
-        time.sleep(15)
-    raise RuntimeError(f"❌ [{region_name}] 所有 Overpass API 節點皆無法完成查詢。")
+        print(f"⏳ [{region_name}] 等待 10 秒後重試...")
+        time.sleep(10)
+    raise RuntimeError(f"❌ [{region_name}] 無法完成查詢。")
 
-# ==========================================
-# 3. 品牌、路線與周邊機能分類器
-# ==========================================
 def detect_hotel_brand(tags):
     search_text = " ".join([
         tags.get("name", ""), tags.get("name:ja", ""), tags.get("name:en", ""),
@@ -212,28 +196,25 @@ def detect_airport_lines(station_name, station_tags, region_key):
 
     return sorted(list(lines))
 
-# ==========================================
-# 4. 單一區域抓取與配對處理函式
-# ==========================================
-def process_region(region_cfg, global_seen_keys):
-    r_key = region_cfg["key"]
-    r_name = region_cfg["name"]
-    s, w, n, e = region_cfg["bbox"]
+def fetch_and_save_region(r_key):
+    cfg = REGIONS_MAP[r_key]
+    r_name = cfg["name"]
+    s, w, n, e = cfg["bbox"]
     bbox_str = f"{s},{w},{n},{e}"
 
     overpass_query = f"""
-    [out:json][timeout:180];
+    [out:json][timeout:45];
     (
-      nwr["tourism"~"hotel|hostel|guest_house|motel"]({bbox_str});
-      nwr["railway"~"station|halt"]({bbox_str});
-      nwr["shop"~"convenience|supermarket|chemist|pharmacy"]({bbox_str});
+      nwr["tourism"="hotel"]({bbox_str});
+      nwr["railway"="station"]({bbox_str});
+      nwr["shop"~"convenience|supermarket|chemist"]({bbox_str});
       nwr["amenity"~"fast_food|pharmacy"]({bbox_str});
     );
     out center tags;
     """
 
     elements = query_overpass(overpass_query, r_name)
-    print(f"✅ [{r_name}] 取回 {len(elements)} 筆節點，進行空間網格配對...")
+    print(f"✅ [{r_name}] 取回 {len(elements)} 筆節點，開始空間配對...")
 
     raw_hotels = []
     stations = []
@@ -245,12 +226,12 @@ def process_region(region_cfg, global_seen_keys):
         if lat is None or lon is None:
             continue
 
-        if tags.get("railway") in ["station", "halt"]:
+        if tags.get("railway") == "station":
             st_name = tags.get("name:ja") or tags.get("name") or "周邊車站"
             stations.append({"name": st_name, "lat": lat, "lng": lon, "tags": tags})
             continue
 
-        if tags.get("tourism") in ["hotel", "hostel", "guest_house", "motel"]:
+        if tags.get("tourism") == "hotel":
             brand = detect_hotel_brand(tags)
             if brand:
                 name = tags.get("name:ja") or tags.get("name") or f"{brand} ({r_name})"
@@ -270,15 +251,15 @@ def process_region(region_cfg, global_seen_keys):
     station_grid = build_spatial_grid(stations)
     amenity_grids = {k: build_spatial_grid(v) for k, v in amenities_pool.items()}
 
+    seen_keys = set()
     region_results = []
     for h in raw_hotels:
         grid_key = (h["brand"], round(h["lat"], 3), round(h["lng"], 3))
-        if grid_key in global_seen_keys:
+        if grid_key in seen_keys:
             continue
-        global_seen_keys.add(grid_key)
+        seen_keys.add(grid_key)
 
         h_lat, h_lng = h["lat"], h["lng"]
-
         min_st_dist, nearest_st = find_nearest_in_grid(h_lat, h_lng, station_grid)
         station_name = nearest_st["name"] if nearest_st else "周邊車站"
         airport_lines = detect_airport_lines(station_name, nearest_st["tags"], r_key) if nearest_st else []
@@ -304,42 +285,52 @@ def process_region(region_cfg, global_seen_keys):
         })
 
     region_results.sort(key=lambda x: x["station_dist"])
-    print(f"🏨 [{r_name}] 完成！共收錄 {len(region_results)} 間不重複商務飯店。")
-    return region_results
 
-# ==========================================
-# 5. 主程序：依序執行並輸出 3 個 JSON 檔案
-# ==========================================
-def save_json(filepath, data):
-    os.makedirs(os.path.dirname(filepath), exist_ok=True)
-    with open(filepath, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
-    print(f"💾 已寫入 {filepath} (共 {len(data)} 筆)")
+    os.makedirs(DATA_DIR, exist_ok=True)
+    out_file = os.path.join(DATA_DIR, f"hotels_{r_key}.json")
+    with open(out_file, "w", encoding="utf-8") as f:
+        json.dump(region_results, f, ensure_ascii=False, indent=2)
+    print(f"💾 [{r_name}] 已儲存至 {out_file} (共 {len(region_results)} 筆)")
 
-def main():
-    global_seen_keys = set()
+def merge_all_regions():
+    """自動掃描 ./data/ 下所有已抓取的區域 JSON，去重後合併成 hotels_all.json"""
     all_hotels = []
-    kansai_hotels = []
-    tokyo_hotels = []
+    seen_keys = set()
 
-    for idx, region_cfg in enumerate(REGIONS_CONFIG):
-        r_key = region_cfg["key"]
-        results = process_region(region_cfg, global_seen_keys)
-        all_hotels.extend(results)
-
-        if r_key == "kansai":
-            kansai_hotels = results
-            save_json(OUTPUT_FILES["kansai"], kansai_hotels)
-        elif r_key == "tokyo":
-            tokyo_hotels = results
-            save_json(OUTPUT_FILES["tokyo"], tokyo_hotels)
-
-        if idx < len(REGIONS_CONFIG) - 1:
-            time.sleep(5)
+    for r_key in REGIONS_MAP.keys():
+        filepath = os.path.join(DATA_DIR, f"hotels_{r_key}.json")
+        if os.path.exists(filepath):
+            with open(filepath, "r", encoding="utf-8") as f:
+                data = json.load(f)
+                for h in data:
+                    g_key = (h["brand"], round(h["lat"], 3), round(h["lng"], 3))
+                    if g_key not in seen_keys:
+                        seen_keys.add(g_key)
+                        all_hotels.append(h)
 
     all_hotels.sort(key=lambda x: x["station_dist"])
-    save_json(OUTPUT_FILES["all"], all_hotels)
-    print(f"\n🎉 全國三區檔案全數生成完畢！總計收錄全日本 {len(all_hotels)} 間商務飯店。")
+    all_path = os.path.join(DATA_DIR, "hotels_all.json")
+    with open(all_path, "w", encoding="utf-8") as f:
+        json.dump(all_hotels, f, ensure_ascii=False, indent=2)
+    print(f"🎉 已自動更新全國總檔 {all_path} (目前累計收錄 {len(all_hotels)} 間商務飯店)")
+
+def main():
+    # 讀取命令列參數：預設為 'all'（全部依序抓），或指定單一區域如 'kansai'
+    target = sys.argv[1].strip().lower() if len(sys.argv) > 1 else "all"
+
+    if target == "all":
+        keys = list(REGIONS_MAP.keys())
+        for idx, k in enumerate(keys):
+            fetch_and_save_region(k)
+            if idx < len(keys) - 1:
+                time.sleep(3)
+    elif target in REGIONS_MAP:
+        fetch_and_save_region(target)
+    else:
+        raise ValueError(f"不支援的區域名稱: {target}")
+
+    # 無論只抓哪一區，都自動重新合併更新 hotels_all.json
+    merge_all_regions()
 
 if __name__ == "__main__":
     main()
