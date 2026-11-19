@@ -1,0 +1,572 @@
+[
+  {
+    "id": "kyushu_south_26",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "other",
+    "lat": 31.914657,
+    "lng": 131.431842,
+    "station_name": "宮崎",
+    "station_dist": 122,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 183,
+      "seven": 203,
+      "familymart": 85,
+      "mcdonalds": 28,
+      "drugstore": 51,
+      "supermarket": 294
+    }
+  },
+  {
+    "id": "kyushu_south_28",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "other",
+    "lat": 31.585357,
+    "lng": 130.541697,
+    "station_name": "鹿児島中央",
+    "station_dist": 183,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 184,
+      "seven": 223,
+      "familymart": 37,
+      "mcdonalds": 197,
+      "drugstore": 20,
+      "supermarket": 228
+    }
+  },
+  {
+    "id": "kyushu_south_21",
+    "name": "リッチモンドホテル宮崎駅前",
+    "brand": "Richmond Hotel",
+    "region": "other",
+    "lat": 31.916017,
+    "lng": 131.434008,
+    "station_name": "宮崎",
+    "station_dist": 196,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 240,
+      "seven": 352,
+      "familymart": 191,
+      "mcdonalds": 226,
+      "drugstore": 202,
+      "supermarket": 298
+    }
+  },
+  {
+    "id": "kyushu_south_20",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "other",
+    "lat": 32.788299,
+    "lng": 130.689199,
+    "station_name": "熊本",
+    "station_dist": 225,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 1164,
+      "seven": 1291,
+      "familymart": 253,
+      "mcdonalds": 1746,
+      "drugstore": 716,
+      "supermarket": 212
+    }
+  },
+  {
+    "id": "kyushu_south_12",
+    "name": "ホテルルートイン熊本駅前",
+    "brand": "Route Inn",
+    "region": "other",
+    "lat": 32.790774,
+    "lng": 130.691624,
+    "station_name": "熊本",
+    "station_dist": 253,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 1092,
+      "seven": 937,
+      "familymart": 291,
+      "mcdonalds": 1741,
+      "drugstore": 420,
+      "supermarket": 312
+    }
+  },
+  {
+    "id": "kyushu_south_18",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "other",
+    "lat": 31.581954,
+    "lng": 130.543523,
+    "station_name": "鹿児島中央",
+    "station_dist": 255,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 58,
+      "seven": 86,
+      "familymart": 227,
+      "mcdonalds": 219,
+      "drugstore": 95,
+      "supermarket": 150
+    }
+  },
+  {
+    "id": "kyushu_south_15",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "other",
+    "lat": 31.586521,
+    "lng": 130.541858,
+    "station_name": "鹿児島中央",
+    "station_dist": 312,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 211,
+      "seven": 96,
+      "familymart": 94,
+      "mcdonalds": 316,
+      "drugstore": 111,
+      "supermarket": 287
+    }
+  },
+  {
+    "id": "kyushu_south_13",
+    "name": "ホテルリブマックス",
+    "brand": "LiveMax",
+    "region": "other",
+    "lat": 31.598839,
+    "lng": 130.560844,
+    "station_name": "鹿児島",
+    "station_dist": 479,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 293,
+      "seven": 557,
+      "familymart": 418,
+      "mcdonalds": 375,
+      "drugstore": 188,
+      "supermarket": 77
+    }
+  },
+  {
+    "id": "kyushu_south_24",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "other",
+    "lat": 32.802715,
+    "lng": 130.712432,
+    "station_name": "藤崎宮前",
+    "station_dist": 666,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 524,
+      "seven": 98,
+      "familymart": 75,
+      "mcdonalds": 262,
+      "drugstore": 212,
+      "supermarket": 96
+    }
+  },
+  {
+    "id": "kyushu_south_23",
+    "name": "アパホテル宮崎駅橘通",
+    "brand": "APA Hotel",
+    "region": "other",
+    "lat": 31.915507,
+    "lng": 131.423412,
+    "station_name": "宮崎",
+    "station_dist": 807,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 181,
+      "seven": 142,
+      "familymart": 258,
+      "mcdonalds": 819,
+      "drugstore": 174,
+      "supermarket": 88
+    }
+  },
+  {
+    "id": "kyushu_south_22",
+    "name": "ホテルルートイン宮崎橘通",
+    "brand": "Route Inn",
+    "region": "other",
+    "lat": 31.917234,
+    "lng": 131.422963,
+    "station_name": "宮崎",
+    "station_dist": 864,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 242,
+      "seven": 98,
+      "familymart": 446,
+      "mcdonalds": 899,
+      "drugstore": 273,
+      "supermarket": 121
+    }
+  },
+  {
+    "id": "kyushu_south_27",
+    "name": "コンフォートホテル宮崎",
+    "brand": "Comfort Hotel",
+    "region": "other",
+    "lat": 31.915429,
+    "lng": 131.42163,
+    "station_name": "宮崎",
+    "station_dist": 975,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 208,
+      "seven": 253,
+      "familymart": 273,
+      "mcdonalds": 986,
+      "drugstore": 40,
+      "supermarket": 116
+    }
+  },
+  {
+    "id": "kyushu_south_25",
+    "name": "Dormy Inn",
+    "brand": "Dormy Inn",
+    "region": "other",
+    "lat": 31.911628,
+    "lng": 131.421954,
+    "station_name": "宮崎",
+    "station_dist": 1049,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 177,
+      "seven": 594,
+      "familymart": 199,
+      "mcdonalds": 1018,
+      "drugstore": 344,
+      "supermarket": 194
+    }
+  },
+  {
+    "id": "kyushu_south_3",
+    "name": "リッチモンドホテル",
+    "brand": "Richmond Hotel",
+    "region": "other",
+    "lat": 31.594197,
+    "lng": 130.557757,
+    "station_name": "鹿児島",
+    "station_dist": 1068,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 65,
+      "seven": 116,
+      "familymart": 146,
+      "mcdonalds": 294,
+      "drugstore": 185,
+      "supermarket": 344
+    }
+  },
+  {
+    "id": "kyushu_south_14",
+    "name": "スーパーホテル 熊本商工会議所前",
+    "brand": "Super Hotel",
+    "region": "other",
+    "lat": 32.795347,
+    "lng": 130.699015,
+    "station_name": "熊本",
+    "station_dist": 1093,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 519,
+      "seven": 135,
+      "familymart": 869,
+      "mcdonalds": 889,
+      "drugstore": 217,
+      "supermarket": 360
+    }
+  },
+  {
+    "id": "kyushu_south_16",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "other",
+    "lat": 31.587874,
+    "lng": 130.552292,
+    "station_name": "鹿児島中央",
+    "station_dist": 1097,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 174,
+      "seven": 176,
+      "familymart": 88,
+      "mcdonalds": 600,
+      "drugstore": 184,
+      "supermarket": 310
+    }
+  },
+  {
+    "id": "kyushu_south_4",
+    "name": "ドーミーイン鹿児島",
+    "brand": "Dormy Inn",
+    "region": "other",
+    "lat": 31.58922,
+    "lng": 130.551555,
+    "station_name": "鹿児島中央",
+    "station_dist": 1109,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 26,
+      "seven": 75,
+      "familymart": 51,
+      "mcdonalds": 566,
+      "drugstore": 104,
+      "supermarket": 173
+    }
+  },
+  {
+    "id": "kyushu_south_6",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "other",
+    "lat": 32.799733,
+    "lng": 130.706783,
+    "station_name": "藤崎宮前",
+    "station_dist": 1162,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 292,
+      "seven": 124,
+      "familymart": 83,
+      "mcdonalds": 99,
+      "drugstore": 86,
+      "supermarket": 44
+    }
+  },
+  {
+    "id": "kyushu_south_30",
+    "name": "御宿 野乃熊本",
+    "brand": "Dormy Inn",
+    "region": "other",
+    "lat": 32.79897,
+    "lng": 130.708486,
+    "station_name": "藤崎宮前",
+    "station_dist": 1166,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 407,
+      "seven": 75,
+      "familymart": 119,
+      "mcdonalds": 97,
+      "drugstore": 69,
+      "supermarket": 73
+    }
+  },
+  {
+    "id": "kyushu_south_1",
+    "name": "ワシントンホテル",
+    "brand": "Washington Hotel",
+    "region": "other",
+    "lat": 31.589152,
+    "lng": 130.552648,
+    "station_name": "鹿児島中央",
+    "station_dist": 1193,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 88,
+      "seven": 58,
+      "familymart": 59,
+      "mcdonalds": 482,
+      "drugstore": 161,
+      "supermarket": 275
+    }
+  },
+  {
+    "id": "kyushu_south_5",
+    "name": "熊本ワシントンホテルプラザ",
+    "brand": "Washington Hotel",
+    "region": "other",
+    "lat": 32.798558,
+    "lng": 130.708677,
+    "station_name": "藤崎宮前",
+    "station_dist": 1202,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 456,
+      "seven": 101,
+      "familymart": 151,
+      "mcdonalds": 127,
+      "drugstore": 108,
+      "supermarket": 104
+    }
+  },
+  {
+    "id": "kyushu_south_17",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "other",
+    "lat": 31.589759,
+    "lng": 130.552334,
+    "station_name": "鹿児島中央",
+    "station_dist": 1204,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 69,
+      "seven": 25,
+      "familymart": 87,
+      "mcdonalds": 472,
+      "drugstore": 87,
+      "supermarket": 238
+    }
+  },
+  {
+    "id": "kyushu_south_10",
+    "name": "リッチモンドホテル 熊本新市街",
+    "brand": "Richmond Hotel",
+    "region": "other",
+    "lat": 32.799085,
+    "lng": 130.707049,
+    "station_name": "藤崎宮前",
+    "station_dist": 1212,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 364,
+      "seven": 62,
+      "familymart": 13,
+      "mcdonalds": 38,
+      "drugstore": 72,
+      "supermarket": 62
+    }
+  },
+  {
+    "id": "kyushu_south_11",
+    "name": "Dormy Inn Kumamoto Natural Hot Spring",
+    "brand": "Dormy Inn",
+    "region": "other",
+    "lat": 32.799343,
+    "lng": 130.702718,
+    "station_name": "藤崎宮前",
+    "station_dist": 1428,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 53,
+      "seven": 100,
+      "familymart": 419,
+      "mcdonalds": 443,
+      "drugstore": 467,
+      "supermarket": 94
+    }
+  },
+  {
+    "id": "kyushu_south_9",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "region": "other",
+    "lat": 32.797686,
+    "lng": 130.70506,
+    "station_name": "藤崎宮前",
+    "station_dist": 1440,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 262,
+      "seven": 156,
+      "familymart": 251,
+      "mcdonalds": 269,
+      "drugstore": 307,
+      "supermarket": 214
+    }
+  },
+  {
+    "id": "kyushu_south_8",
+    "name": "三井ガーデンホテル熊本",
+    "brand": "Mitsui Garden",
+    "region": "other",
+    "lat": 32.797229,
+    "lng": 130.70501,
+    "station_name": "藤崎宮前",
+    "station_dist": 1486,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 287,
+      "seven": 207,
+      "familymart": 289,
+      "mcdonalds": 304,
+      "drugstore": 341,
+      "supermarket": 254
+    }
+  },
+  {
+    "id": "kyushu_south_2",
+    "name": "リッチモンドホテル",
+    "brand": "Richmond Hotel",
+    "region": "other",
+    "lat": 31.589925,
+    "lng": 130.555866,
+    "station_name": "鹿児島中央",
+    "station_dist": 1502,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 59,
+      "seven": 80,
+      "familymart": 32,
+      "mcdonalds": 214,
+      "drugstore": 46,
+      "supermarket": 206
+    }
+  },
+  {
+    "id": "kyushu_south_7",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "other",
+    "lat": 32.796751,
+    "lng": 130.703468,
+    "station_name": "南熊本",
+    "station_dist": 1510,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 248,
+      "seven": 213,
+      "familymart": 433,
+      "mcdonalds": 451,
+      "drugstore": 488,
+      "supermarket": 277
+    }
+  },
+  {
+    "id": "kyushu_south_29",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "region": "other",
+    "lat": 31.588884,
+    "lng": 130.556679,
+    "station_name": "鹿児島中央",
+    "station_dist": 1523,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 198,
+      "seven": 62,
+      "familymart": 94,
+      "mcdonalds": 312,
+      "drugstore": 40,
+      "supermarket": 94
+    }
+  },
+  {
+    "id": "kyushu_south_19",
+    "name": "リブマックス",
+    "brand": "LiveMax",
+    "region": "other",
+    "lat": 31.588413,
+    "lng": 130.557074,
+    "station_name": "鹿児島中央",
+    "station_dist": 1539,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 263,
+      "seven": 126,
+      "familymart": 135,
+      "mcdonalds": 366,
+      "drugstore": 102,
+      "supermarket": 37
+    }
+  }
+]
