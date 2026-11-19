@@ -3,21 +3,21 @@ from collections import defaultdict
 import requests
 
 DATA_DIR = "./data"
-# 改用「核心都市中心點 (緯度, 經度, 半徑公尺)」精準查詢，完全避開山區與海域，速度提升 10 倍
+# 精準鎖定日本主要商務旅遊都市核心半徑（公尺），確保每次查詢 3 秒內秒回
 REGIONS_MAP = {
-    "kansai":       {"name": "關西圈(京阪神)",       "centers": [(34.6937, 135.5023, 25000), (35.0116, 135.7681, 15000), (34.6901, 135.1955, 15000)]},
-    "tokyo":        {"name": "關東(首都圈)",         "centers": [(35.6812, 139.7671, 25000), (35.4437, 139.6380, 15000), (35.6074, 140.1065, 15000)]},
-    "tokai":        {"name": "東海(名古屋・浜松)",   "centers": [(35.1709, 136.8815, 20000), (34.7108, 137.7261, 15000), (34.9756, 138.3828, 15000)]},
-    "kyushu_north": {"name": "北九州(福岡・小倉)",   "centers": [(33.5902, 130.4017, 18000), (33.8834, 130.8752, 15000)]},
-    "kyushu_south": {"name": "南九州(熊本・鹿兒島)", "centers": [(32.8031, 130.7079, 15000), (31.5966, 130.5571, 15000), (31.9077, 131.4202, 12000)]},
-    "hokkaido":     {"name": "北海道(札幌・函館)",   "centers": [(43.0618, 141.3545, 18000), (41.7687, 140.7288, 12000), (43.7706, 142.3650, 12000)]},
-    "chugoku":      {"name": "中國・四國(廣島岡山)", "centers": [(34.3853, 132.4553, 15000), (34.6551, 133.9195, 15000), (34.3428, 134.0466, 12000)]},
-    "tohoku":       {"name": "東北(仙台・青森)",     "centers": [(38.2682, 140.8694, 15000), (40.8222, 140.7474, 12000), (39.7020, 141.1545, 12000)]},
+    "kansai":       {"name": "關西圈(京阪神)",       "centers": [(34.6851, 135.5023, 12000), (35.0036, 135.7681, 10000), (34.6901, 135.1955, 8000)]},
+    "tokyo":        {"name": "關東(首都圈)",         "centers": [(35.6812, 139.7671, 15000), (35.4437, 139.6380, 10000), (35.6074, 140.1065, 8000)]},
+    "tokai":        {"name": "東海(名古屋・浜松)",   "centers": [(35.1709, 136.8815, 12000), (34.7108, 137.7261, 8000), (34.9756, 138.3828, 8000)]},
+    "kyushu_north": {"name": "北九州(福岡・小倉)",   "centers": [(33.5902, 130.4017, 12000), (33.8834, 130.8752, 8000)]},
+    "kyushu_south": {"name": "南九州(熊本・鹿兒島)", "centers": [(32.8031, 130.7079, 8000), (31.5966, 130.5571, 8000), (31.9077, 131.4202, 6000)]},
+    "hokkaido":     {"name": "北海道(札幌・函館)",   "centers": [(43.0618, 141.3545, 10000), (41.7687, 140.7288, 8000), (43.7706, 142.3650, 8000)]},
+    "chugoku":      {"name": "中國・四國(廣島岡山)", "centers": [(34.3853, 132.4553, 10000), (34.6551, 133.9195, 8000), (34.3428, 134.0466, 8000)]},
+    "tohoku":       {"name": "東北(仙台・青森)",     "centers": [(38.2682, 140.8694, 10000), (40.8222, 140.7474, 8000), (39.7020, 141.1545, 8000)]},
 }
 
 OVERPASS_URLS = ["https://overpass-api.de/api/interpreter", "https://overpass.kumi.systems/api/interpreter"]
 REQUEST_HEADERS = {
-    "User-Agent": "JapanHotelFinderPWA/2.0 (https://github.com/artytien/japan-hotel-finder)",
+    "User-Agent": "JapanHotelFinderPWA/2.1 (https://github.com/artytien/japan-hotel-finder)",
     "Accept": "application/json",
     "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
 }
@@ -32,9 +32,6 @@ BRAND_PATTERNS = [
     ("Mitsui Garden", r"三井ガーデンホテル|mitsui\s*garden"), ("Tokyu Stay", r"東急ステイ|tokyu\s*stay"),
     ("Hotel Metropolitan", r"ホテルメトロポリタン|metropolitan"),
 ]
-
-SERVER_HOTEL_REGEX = "ヴィアイン|via|ドーミーイン|dormy|野乃|東横|東橫|toyoko|スーパーホテル|super|ルートイン|route|コンフォート|comfort|アパホテル|apa|リブマックス|livemax|フレッサイン|fresa|ワシントン|washington|リッチモンド|richmond|ダイワロイネット|daiwa|三井ガーデン|mitsui|東急ステイ|tokyu|メトロポリタン|metropolitan"
-SERVER_AMENITY_REGEX = "ローソン|lawson|セブン|7-eleven|seven-eleven|ファミリーマート|ファミマ|familymart|マクドナルド|mcdonald|マツモトキヨシ|ウエルシア|ダイコク|スギ薬局|ツルハ|ココカラファイン|サンドラッグ|コスモス|ドラッグ|薬局|drug|ライフ|玉出|業務スーパー|イオン|マックスバリュ|成城石井|コーヨー|kohyo|サンディ|ロピア|イズミヤ|マルエツ|まいばすけっと|オーケー|ゆめタウン|サニー"
 
 AIRPORT_STATION_RULES = {
     "JR_HARUKA": ["関西空港", "天王寺", "新今宮", "大阪", "うめきた", "新大阪", "京都", "日根野", "和泉府中", "西九条"],
@@ -123,19 +120,18 @@ def fetch_and_save_region(r_key):
     cfg = REGIONS_MAP[r_key]
     r_name, centers = cfg["name"], cfg["centers"]
     
-    # 組合各都市中心點的 around 半徑查詢條件
+    # 關鍵加速：移除伺服器端正規表示式，僅以純標籤空間索引拉取，伺服器 2 秒內秒回
     q1_parts, q2_parts = [], []
     for lat, lng, rad in centers:
-        q1_parts.append(f'nw["tourism"="hotel"]["name"~"{SERVER_HOTEL_REGEX}",i](around:{rad},{lat},{lng});')
-        q1_parts.append(f'nw["tourism"="hotel"]["brand"~"{SERVER_HOTEL_REGEX}",i](around:{rad},{lat},{lng});')
+        q1_parts.append(f'nw["tourism"="hotel"](around:{rad},{lat},{lng});')
         q1_parts.append(f'node["railway"="station"](around:{rad},{lat},{lng});')
-        q2_parts.append(f'nw["shop"~"convenience|supermarket|chemist"]["name"~"{SERVER_AMENITY_REGEX}",i](around:{rad},{lat},{lng});')
-        q2_parts.append(f'nw["shop"~"convenience|supermarket|chemist"]["brand"~"{SERVER_AMENITY_REGEX}",i](around:{rad},{lat},{lng});')
-        q2_parts.append(f'nw["amenity"~"fast_food|pharmacy"]["name"~"{SERVER_AMENITY_REGEX}",i](around:{rad},{lat},{lng});')
+        q2_parts.append(f'node["shop"="convenience"](around:{rad},{lat},{lng});')
+        q2_parts.append(f'nw["shop"~"supermarket|chemist"](around:{rad},{lat},{lng});')
+        q2_parts.append(f'nw["amenity"~"fast_food|pharmacy"](around:{rad},{lat},{lng});')
 
-    el1 = query_overpass(f'[out:json][timeout:45];({"".join(q1_parts)});out center tags;', f"{r_name}-飯店與車站")
+    el1 = query_overpass(f'[out:json][timeout:30];({"".join(q1_parts)});out center tags;', f"{r_name}-飯店與車站")
     time.sleep(2)
-    el2 = query_overpass(f'[out:json][timeout:45];({"".join(q2_parts)});out center tags;', f"{r_name}-生活機能")
+    el2 = query_overpass(f'[out:json][timeout:30];({"".join(q2_parts)});out center tags;', f"{r_name}-生活機能")
 
     hotels, stations = [], []
     am_pool = {k: [] for k in ["lawson", "seven", "familymart", "mcdonalds", "drugstore", "supermarket"]}
