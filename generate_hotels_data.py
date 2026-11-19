@@ -1,9 +1,22 @@
-import json, math, os, re, sys, time
+import json
+import math
+import os
+import re
+import socket
+import sys
+import time
 from collections import defaultdict
 import requests
+import urllib3.util.connection as urllib3_cn
+
+# 強制 requests/urllib3 僅使用 IPv4，避免 GitHub Actions Runner 走 IPv6 發生 Network is unreachable
+def allowed_gai_family():
+    return socket.AF_INET
+
+urllib3_cn.allowed_gai_family = allowed_gai_family
 
 DATA_DIR = "./data"
-# 精準鎖定日本主要商務旅遊都市核心半徑（公尺），確保每次查詢 3 秒內秒回
+# 精準鎖定日本主要商務旅遊都市核心半徑（公尺）
 REGIONS_MAP = {
     "kansai":       {"name": "關西圈(京阪神)",       "centers": [(34.6851, 135.5023, 12000), (35.0036, 135.7681, 10000), (34.6901, 135.1955, 8000)]},
     "tokyo":        {"name": "關東(首都圈)",         "centers": [(35.6812, 139.7671, 15000), (35.4437, 139.6380, 10000), (35.6074, 140.1065, 8000)]},
@@ -15,7 +28,12 @@ REGIONS_MAP = {
     "tohoku":       {"name": "東北(仙台・青森)",     "centers": [(38.2682, 140.8694, 10000), (40.8222, 140.7474, 8000), (39.7020, 141.1545, 8000)]},
 }
 
-OVERPASS_URLS = ["https://overpass-api.de/api/interpreter", "https://overpass.kumi.systems/api/interpreter"]
+OVERPASS_URLS = [
+    "https://overpass-api.de/api/interpreter",
+    "https://overpass.kumi.systems/api/interpreter",
+    "https://overpass.openstreetmap.fr/api/interpreter"
+]
+
 REQUEST_HEADERS = {
     "User-Agent": "JapanHotelFinderPWA/2.1 (https://github.com/artytien/japan-hotel-finder)",
     "Accept": "application/json",
@@ -76,13 +94,13 @@ def query_overpass(q, label):
         for url in OVERPASS_URLS:
             try:
                 print(f"📡 [{label}] 請求 {url} ...")
-                r = requests.post(url, data={"data": q}, headers=REQUEST_HEADERS, timeout=60)
+                r = requests.post(url, data={"data": q}, headers=REQUEST_HEADERS, timeout=120)
                 r.raise_for_status()
                 return r.json().get("elements", [])
             except Exception as e:
-                print(f"⚠️ [{label}] 節點異常 ({e})，5秒後切換...")
-                time.sleep(5)
-        time.sleep(10)
+                print(f"⚠️ [{label}] 節點異常 ({e})，8秒後切換...")
+                time.sleep(8)
+        time.sleep(15)
     raise RuntimeError(f"❌ [{label}] 無法完成查詢。")
 
 def detect_hotel_brand(tags):
@@ -120,7 +138,7 @@ def fetch_and_save_region(r_key):
     cfg = REGIONS_MAP[r_key]
     r_name, centers = cfg["name"], cfg["centers"]
     
-    # 關鍵加速：移除伺服器端正規表示式，僅以純標籤空間索引拉取，伺服器 2 秒內秒回
+    # 僅以純標籤空間索引拉取，放寬 timeout 至 90 秒避免尖峰時段中斷
     q1_parts, q2_parts = [], []
     for lat, lng, rad in centers:
         q1_parts.append(f'nw["tourism"="hotel"](around:{rad},{lat},{lng});')
@@ -129,9 +147,9 @@ def fetch_and_save_region(r_key):
         q2_parts.append(f'nw["shop"~"supermarket|chemist"](around:{rad},{lat},{lng});')
         q2_parts.append(f'nw["amenity"~"fast_food|pharmacy"](around:{rad},{lat},{lng});')
 
-    el1 = query_overpass(f'[out:json][timeout:30];({"".join(q1_parts)});out center tags;', f"{r_name}-飯店與車站")
-    time.sleep(2)
-    el2 = query_overpass(f'[out:json][timeout:30];({"".join(q2_parts)});out center tags;', f"{r_name}-生活機能")
+    el1 = query_overpass(f'[out:json][timeout:90];({"".join(q1_parts)});out center;', f"{r_name}-飯店與車站")
+    time.sleep(3)
+    el2 = query_overpass(f'[out:json][timeout:90];({"".join(q2_parts)});out center;', f"{r_name}-生活機能")
 
     hotels, stations = [], []
     am_pool = {k: [] for k in ["lawson", "seven", "familymart", "mcdonalds", "drugstore", "supermarket"]}
@@ -190,7 +208,7 @@ def main():
     if t == "all":
         for i, k in enumerate(REGIONS_MAP):
             fetch_and_save_region(k)
-            if i < len(REGIONS_MAP) - 1: time.sleep(2)
+            if i < len(REGIONS_MAP) - 1: time.sleep(3)
     elif t in REGIONS_MAP: fetch_and_save_region(t)
     else: raise ValueError(f"不支援區域: {t}")
     merge_all_regions()
