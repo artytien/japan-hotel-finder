@@ -1,4 +1,4 @@
-const CACHE_NAME = 'japan-hotel-pwa-v1';
+const CACHE_NAME = 'japan-hotel-pwa-v2';
 const STATIC_ASSETS = [
   './',
   './index.html',
@@ -18,27 +18,23 @@ self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((keys) =>
       Promise.all(keys.filter((k) => k !== CACHE_NAME).map((k) => caches.delete(k)))
-    )
+    ).then(() => self.clients.claim())
   );
 });
 
 self.addEventListener('fetch', (event) => {
-  const url = new URL(event.request.url);
+  if (event.request.method !== 'GET') return;
 
-  if (url.pathname.includes('/data/') && url.pathname.endsWith('.json')) {
-    event.respondWith(
-      fetch(event.request)
-        .then((res) => {
+  // 全部資源皆採用「網路優先 (Network First)」，有網路時永遠抓最新版，離線時自動退回快取
+  event.respondWith(
+    fetch(event.request)
+      .then((res) => {
+        if (res && res.status === 200) {
           const resClone = res.clone();
           caches.open(CACHE_NAME).then((cache) => cache.put(event.request, resClone));
-          return res;
-        })
-        .catch(() => caches.match(event.request))
-    );
-    return;
-  }
-
-  event.respondWith(
-    caches.match(event.request).then((cached) => cached || fetch(event.request))
+        }
+        return res;
+      })
+      .catch(() => caches.match(event.request))
   );
 });
