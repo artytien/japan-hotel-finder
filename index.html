@@ -12,30 +12,45 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <style>
     body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-    #map { height: 48vh; min-height: 300px; z-index: 1; }
+    #map { height: 48vh; min-height: 300px; z-index: 1; background: #e2e8f0; }
     .chip-active { background-color: #0f172a; color: #ffffff; border-color: #0f172a; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800 pb-10">
 
-  <!-- 頂部導覽與圖資狀態列 -->
   <header class="bg-slate-900 text-white px-4 py-3 sticky top-0 z-30 shadow-md">
-    <div class="max-w-5xl mx-auto flex flex-wrap items-center justify-between gap-2">
-      <div>
-        <h1 class="text-base font-bold tracking-wide">🇯🇵 日本連鎖商務飯店篩選器</h1>
-        <p id="data-status" class="text-xs text-emerald-400 mt-0.5">⏳ 正在載入雲端最新圖資...</p>
+    <div class="max-w-5xl mx-auto space-y-2">
+      <div class="flex items-center justify-between">
+        <div>
+          <h1 class="text-base font-bold tracking-wide">🇯🇵 日本連鎖商務飯店篩選器</h1>
+          <p id="data-status" class="text-xs text-emerald-400 mt-0.5">⏳ 正在載入雲端最新圖資...</p>
+        </div>
       </div>
-      <div class="flex gap-1.5 text-xs">
-        <button onclick="switchDataset('all')" id="btn-ds-all" class="ds-btn px-2.5 py-1.5 rounded bg-emerald-600 text-white font-medium">全國總覽</button>
-        <button onclick="switchDataset('kansai')" id="btn-ds-kansai" class="ds-btn px-2.5 py-1.5 rounded bg-slate-700 text-slate-200">關西圈</button>
-        <button onclick="switchDataset('tokyo')" id="btn-ds-tokyo" class="ds-btn px-2.5 py-1.5 rounded bg-slate-700 text-slate-200">首都圈</button>
+      <!-- 全國與 8 大地理分區切換列（支援手機橫向滑動） -->
+      <div class="flex gap-1.5 text-xs overflow-x-auto no-scrollbar pb-0.5">
+        <button onclick="switchDataset('all')" id="btn-ds-all" class="ds-btn shrink-0 px-2.5 py-1.5 rounded bg-emerald-600 text-white font-medium">全國總覽</button>
+        <button onclick="switchDataset('kansai')" id="btn-ds-kansai" class="ds-btn shrink-0 px-2.5 py-1.5 rounded bg-slate-700 text-slate-200">關西圈</button>
+        <button onclick="switchDataset('tokyo')" id="btn-ds-tokyo" class="ds-btn shrink-0 px-2.5 py-1.5 rounded bg-slate-700 text-slate-200">關東首都圈</button>
+        <button onclick="switchDataset('tokai')" id="btn-ds-tokai" class="ds-btn shrink-0 px-2.5 py-1.5 rounded bg-slate-700 text-slate-200">東海(名古屋)</button>
+        <button onclick="switchDataset('kyushu_north')" id="btn-ds-kyushu_north" class="ds-btn shrink-0 px-2.5 py-1.5 rounded bg-slate-700 text-slate-200">北九州(福岡)</button>
+        <button onclick="switchDataset('kyushu_south')" id="btn-ds-kyushu_south" class="ds-btn shrink-0 px-2.5 py-1.5 rounded bg-slate-700 text-slate-200">南九州(熊本鹿兒島)</button>
+        <button onclick="switchDataset('hokkaido')" id="btn-ds-hokkaido" class="ds-btn shrink-0 px-2.5 py-1.5 rounded bg-slate-700 text-slate-200">北海道</button>
+        <button onclick="switchDataset('chugoku')" id="btn-ds-chugoku" class="ds-btn shrink-0 px-2.5 py-1.5 rounded bg-slate-700 text-slate-200">中國・四國</button>
+        <button onclick="switchDataset('tohoku')" id="btn-ds-tohoku" class="ds-btn shrink-0 px-2.5 py-1.5 rounded bg-slate-700 text-slate-200">東北</button>
       </div>
     </div>
   </header>
 
   <main class="max-w-5xl mx-auto px-3 pt-3 space-y-3">
-    <!-- 篩選條件面板 -->
     <section class="bg-white rounded-xl p-3.5 shadow-sm border border-slate-200 space-y-3">
+      <!-- 關鍵字搜尋（支援都道府縣、區域、站名、飯店名） -->
+      <div>
+        <label class="block text-xs font-semibold text-slate-700 mb-1">🔍 搜尋都道府縣、區域、車站或飯店（如：大阪府、梅田、博多、札幌、新宿）</label>
+        <input type="text" id="keyword-input" placeholder="輸入都道府縣、商圈區域、車站或飯店名稱..." oninput="applyFilters()" class="w-full text-sm px-3 py-1.5 border border-slate-300 rounded-lg focus:outline-none focus:border-slate-900">
+      </div>
+
       <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
         <!-- 離車站距離滑桿 -->
         <div>
@@ -46,10 +61,13 @@
           <input type="range" id="station-dist" min="100" max="2000" step="100" value="500" oninput="applyFilters()" class="w-full accent-slate-900">
         </div>
 
-        <!-- 關鍵字搜尋（飯店名/站名） -->
+        <!-- 生活機能距離滑桿 (100m - 1000m) -->
         <div>
-          <label class="block text-xs font-semibold text-slate-700 mb-1">🔍 搜尋飯店名稱或車站（如：難波、新宿、博多）</label>
-          <input type="text" id="keyword-input" placeholder="輸入日文或中文關鍵字..." oninput="applyFilters()" class="w-full text-sm px-3 py-1.5 border border-slate-300 rounded-lg focus:outline-none focus:border-slate-900">
+          <div class="flex justify-between text-xs font-semibold text-slate-700 mb-1">
+            <span>🏪 生活機能步行距離上限</span>
+            <span id="amenity-dist-label" class="text-emerald-600">300 公尺內</span>
+          </div>
+          <input type="range" id="amenity-dist" min="100" max="1000" step="100" value="300" oninput="applyFilters()" class="w-full accent-emerald-600">
         </div>
       </div>
 
@@ -66,16 +84,21 @@
         </div>
       </div>
 
-      <!-- 周邊生活機能（300m 內必備） -->
+      <!-- 周邊生活機能（超商 + Top3咖啡 + Top3速食 + 藥妝超市） -->
       <div>
-        <div class="text-xs font-semibold text-slate-700 mb-1.5">🏪 步行 300 公尺內必備機能（可複選）</div>
+        <div class="text-xs font-semibold text-slate-700 mb-1.5">🏪 指定距離內必備機能（可複選）</div>
         <div class="flex flex-wrap gap-1.5 text-xs" id="amenity-filters">
           <button type="button" data-am="lawson" onclick="toggleChip(this)" class="filter-chip px-2.5 py-1 rounded-full border border-slate-300 bg-slate-50">Lawson</button>
           <button type="button" data-am="seven" onclick="toggleChip(this)" class="filter-chip px-2.5 py-1 rounded-full border border-slate-300 bg-slate-50">7-Eleven</button>
           <button type="button" data-am="familymart" onclick="toggleChip(this)" class="filter-chip px-2.5 py-1 rounded-full border border-slate-300 bg-slate-50">FamilyMart</button>
-          <button type="button" data-am="drugstore" onclick="toggleChip(this)" class="filter-chip px-2.5 py-1 rounded-full border border-slate-300 bg-slate-50">藥妝店</button>
-          <button type="button" data-am="supermarket" onclick="toggleChip(this)" class="filter-chip px-2.5 py-1 rounded-full border border-slate-300 bg-slate-50">超市</button>
-          <button type="button" data-am="mcdonalds" onclick="toggleChip(this)" class="filter-chip px-2.5 py-1 rounded-full border border-slate-300 bg-slate-50">麥當勞</button>
+          <button type="button" data-am="starbucks" onclick="toggleChip(this)" class="filter-chip px-2.5 py-1 rounded-full border border-amber-300 bg-amber-50">☕ 星巴克</button>
+          <button type="button" data-am="doutor" onclick="toggleChip(this)" class="filter-chip px-2.5 py-1 rounded-full border border-amber-300 bg-amber-50">☕ 羅多倫 Doutor</button>
+          <button type="button" data-am="komeda" onclick="toggleChip(this)" class="filter-chip px-2.5 py-1 rounded-full border border-amber-300 bg-amber-50">☕ 客美多 Komeda</button>
+          <button type="button" data-am="mcdonalds" onclick="toggleChip(this)" class="filter-chip px-2.5 py-1 rounded-full border border-orange-300 bg-orange-50">🍔 麥當勞</button>
+          <button type="button" data-am="mos" onclick="toggleChip(this)" class="filter-chip px-2.5 py-1 rounded-full border border-orange-300 bg-orange-50">🍔 摩斯漢堡</button>
+          <button type="button" data-am="kfc" onclick="toggleChip(this)" class="filter-chip px-2.5 py-1 rounded-full border border-orange-300 bg-orange-50">🍗 肯德基 KFC</button>
+          <button type="button" data-am="drugstore" onclick="toggleChip(this)" class="filter-chip px-2.5 py-1 rounded-full border border-slate-300 bg-slate-50">💊 藥妝店</button>
+          <button type="button" data-am="supermarket" onclick="toggleChip(this)" class="filter-chip px-2.5 py-1 rounded-full border border-slate-300 bg-slate-50">🛒 超市</button>
         </div>
       </div>
 
@@ -118,11 +141,25 @@
       "KEIKYU": "京急線", "MONORAIL": "東京單軌"
     };
 
+    const REGION_VIEWS = {
+      "all": [36.2, 137.5, 5], "kansai": [34.69, 135.50, 11], "tokyo": [35.68, 139.76, 11],
+      "tokai": [35.17, 136.88, 10], "kyushu_north": [33.59, 130.40, 11], "kyushu_south": [32.30, 130.70, 9],
+      "hokkaido": [43.06, 141.35, 10], "chugoku": [34.45, 133.20, 9], "tohoku": [38.90, 140.90, 8]
+    };
+
+    const FALLBACK_AREAS = [
+      [34.69, 135.50, "大阪府 大阪市 梅田 難波 心齋橋"], [35.01, 135.76, "京都府 京都市 河原町 烏丸"],
+      [34.69, 135.19, "兵庫県 兵庫縣 神戶市 三宮"], [35.68, 139.76, "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川"],
+      [35.44, 139.63, "神奈川県 神奈川縣 橫濱市"], [35.60, 140.10, "千葉県 千葉縣 千葉市"],
+      [35.17, 136.88, "愛知県 愛知縣 名古屋市 榮"], [34.71, 137.72, "静岡県 靜岡縣 濱松市 靜岡市"],
+      [33.59, 130.40, "福岡県 福岡縣 福岡市 博多 天神 小倉"], [32.80, 130.70, "熊本県 熊本縣 熊本市"],
+      [31.59, 130.55, "鹿児島県 鹿兒島縣 鹿兒島市 宮崎県 宮崎縣"], [43.06, 141.35, "北海道 札幌市 すすきの 薄野 函館 旭川"],
+      [34.38, 132.45, "広島県 廣島縣 廣島市 岡山県 岡山縣 高松市"], [38.26, 140.86, "宮城県 宮城縣 仙台市 青森 盛岡"]
+    ];
+
     let allHotels = [];
-    let currentDataset = 'all';
     let map, markersLayer;
 
-    // 初始化品牌按鈕
     const brandContainer = document.getElementById('brand-filters');
     BRANDS.forEach(b => {
       const btn = document.createElement('button');
@@ -134,11 +171,11 @@
       brandContainer.appendChild(btn);
     });
 
-    // 初始化地圖
-    map = L.map('map').setView([35.6812, 139.7671], 6);
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-      attribution: '&copy; OpenStreetMap & CARTO',
-      maxZoom: 19
+    // 改用日本國土地理院 (GSI) 標準地圖圖磚（免金鑰、無浮水印、日本車站街道最清晰）
+    map = L.map('map').setView([36.2, 137.5], 5);
+    L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://maps.gsi.go.jp/development/ichiran.html">国土地理院</a>',
+      maxZoom: 18
     }).addTo(map);
     markersLayer = L.layerGroup().addTo(map);
 
@@ -150,19 +187,31 @@
     function resetAllFilters() {
       document.querySelectorAll('.filter-chip').forEach(el => el.classList.remove('chip-active'));
       document.getElementById('station-dist').value = 500;
+      document.getElementById('amenity-dist').value = 300;
       document.getElementById('keyword-input').value = '';
       applyFilters();
     }
 
+    function inferArea(h) {
+      if (h.area) return h.area;
+      let best = "", minD = 999999;
+      for (const [lat, lng, label] of FALLBACK_AREAS) {
+        const d = Math.hypot(h.lat - lat, h.lng - lng);
+        if (d < minD) { minD = d; best = label; }
+      }
+      return best;
+    }
+
     async function switchDataset(ds) {
-      currentDataset = ds;
       document.querySelectorAll('.ds-btn').forEach(b => {
         b.classList.remove('bg-emerald-600', 'text-white');
         b.classList.add('bg-slate-700', 'text-slate-200');
       });
       const activeBtn = document.getElementById(`btn-ds-${ds}`);
-      activeBtn.classList.remove('bg-slate-700', 'text-slate-200');
-      activeBtn.classList.add('bg-emerald-600', 'text-white');
+      if (activeBtn) {
+        activeBtn.classList.remove('bg-slate-700', 'text-slate-200');
+        activeBtn.classList.add('bg-emerald-600', 'text-white');
+      }
 
       const statusEl = document.getElementById('data-status');
       statusEl.textContent = '⏳ 讀取圖資中...';
@@ -171,13 +220,14 @@
       try {
         const res = await fetch(`./data/hotels_${ds}.json?t=${Date.now()}`);
         if (!res.ok) throw new Error('JSON 尚未建立');
-        allHotels = await res.json();
+        const raw = await res.json();
+        allHotels = raw.map(h => ({ ...h, _searchStr: `${h.name} ${h.station_name} ${h.brand} ${inferArea(h)}`.toLowerCase() }));
         statusEl.textContent = `🟢 已連線真實圖資（共載入 ${allHotels.length} 間飯店）`;
         statusEl.className = 'text-xs text-emerald-400 mt-0.5';
 
-        if (ds === 'kansai') map.setView([34.6937, 135.5023], 12);
-        else if (ds === 'tokyo') map.setView([35.6812, 139.7671], 12);
-        else map.setView([35.5, 137.0], 6);
+        const view = REGION_VIEWS[ds] || [36.2, 137.5, 5];
+        map.setView([view[0], view[1]], view[2]);
+        setTimeout(() => map.invalidateSize(), 200);
 
         applyFilters();
       } catch (err) {
@@ -187,42 +237,49 @@
     }
 
     function applyFilters() {
-      const maxDist = parseInt(document.getElementById('station-dist').value, 10);
-      document.getElementById('station-dist-label').textContent = `${maxDist} 公尺內`;
-      const kw = document.getElementById('keyword-input').value.trim().toLowerCase();
+      const maxStationDist = parseInt(document.getElementById('station-dist').value, 10);
+      const maxAmenityDist = parseInt(document.getElementById('amenity-dist').value, 10);
+      document.getElementById('station-dist-label').textContent = `${maxStationDist} 公尺內`;
+      document.getElementById('amenity-dist-label').textContent = `${maxAmenityDist} 公尺內`;
 
+      const kw = document.getElementById('keyword-input').value.trim().toLowerCase();
       const selLines = Array.from(document.querySelectorAll('#airport-filters .chip-active')).map(el => el.dataset.line);
       const selAms = Array.from(document.querySelectorAll('#amenity-filters .chip-active')).map(el => el.dataset.am);
       const selBrands = Array.from(document.querySelectorAll('#brand-filters .chip-active')).map(el => el.dataset.brand);
 
       const filtered = allHotels.filter(h => {
-        if (h.station_dist > maxDist) return false;
+        if (h.station_dist > maxStationDist) return false;
         if (selBrands.length > 0 && !selBrands.includes(h.brand)) return false;
         if (selLines.length > 0 && !selLines.some(l => (h.airport_lines || []).includes(l))) return false;
-        if (selAms.length > 0 && !selAms.every(am => (h.amenities?.[am] ?? 9999) <= 300)) return false;
-        if (kw && !`${h.name} ${h.station_name} ${h.brand}`.toLowerCase().includes(kw)) return false;
+        if (selAms.length > 0 && !selAms.every(am => (h.amenities?.[am] ?? 9999) <= maxAmenityDist)) return false;
+        if (kw && !h._searchStr.includes(kw)) return false;
         return true;
       });
 
-      renderResults(filtered);
+      renderResults(filtered, maxAmenityDist);
     }
 
-    function renderResults(list) {
+    function renderResults(list, maxAmenityDist) {
       document.getElementById('result-count').textContent = list.length;
       markersLayer.clearLayers();
       const listEl = document.getElementById('hotel-list');
       listEl.innerHTML = '';
 
-      const displayList = list.slice(0, 80);
-      displayList.forEach(h => {
-        const gmapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(h.name)}&query_place_id=&center=${h.lat},${h.lng}`;
+      const amLabels = {
+        lawson: 'Lawson', seven: '7-11', familymart: '全家',
+        starbucks: '星巴克', doutor: '羅多倫', komeda: '客美多',
+        mcdonalds: '麥當勞', mos: '摩斯', kfc: 'KFC',
+        drugstore: '藥妝', supermarket: '超市'
+      };
+
+      list.slice(0, 80).forEach(h => {
+        const gmapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(h.name)}&center=${h.lat},${h.lng}`;
         const linesHtml = (h.airport_lines || []).map(l => `<span class="px-1.5 py-0.5 bg-sky-100 text-sky-800 rounded text-[11px] font-medium">✈️ ${LINE_NAMES[l] || l}</span>`).join(' ');
 
         const amBadges = [];
-        const amLabels = { lawson: 'Lawson', seven: '7-11', familymart: '全家', drugstore: '藥妝', supermarket: '超市', mcdonalds: '麥當勞' };
         for (const [k, label] of Object.entries(amLabels)) {
           const d = h.amenities?.[k];
-          if (d !== undefined && d <= 300) {
+          if (d !== undefined && d <= maxAmenityDist) {
             amBadges.push(`<span class="px-1.5 py-0.5 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded text-[11px]">${label} ${d}m</span>`);
           }
         }
@@ -256,12 +313,10 @@
       });
     }
 
-    // 註冊 Service Worker 啟用離線 PWA
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('./sw.js').catch(() => {});
     }
 
-    // 預設載入全國總覽
     switchDataset('all');
   </script>
 </body>
