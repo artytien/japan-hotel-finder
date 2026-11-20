@@ -371,4 +371,126 @@
         statusEl.textContent = `🟢 已連線真實圖資（共載入 ${allHotels.length} 間飯店）`;
         statusEl.className = 'text-xs text-emerald-400 mt-0.5';
 
-        cons
+        const view = REGION_VIEWS[ds] || [36.2, 137.5, 5];
+        map.setView([view[0], view[1]], view[2]);
+        setTimeout(() => map.invalidateSize(), 200);
+
+        applyFilters();
+      } catch (err) {
+        statusEl.textContent = `🔴 載入 hotels_${ds}.json 失敗（請確認 Actions 是否已抓取該區）`;
+        statusEl.className = 'text-xs text-rose-400 mt-0.5';
+      }
+    }
+
+    function applyFilters() {
+      clearDirty();
+      const stEnabled = document.getElementById('enable-station-dist').checked;
+      const maxStationDist = stEnabled ? parseInt(document.getElementById('station-dist').value, 10) : Infinity;
+
+      const amEnabled = document.getElementById('enable-amenity-dist').checked;
+      const sliderAmDist = parseInt(document.getElementById('amenity-dist').value, 10);
+      const effectiveAmDist = amEnabled ? sliderAmDist : 300;
+
+      const kw = document.getElementById('keyword-input').value.trim().toLowerCase();
+      const selLines = Array.from(document.querySelectorAll('#airport-filters .chip-active')).map(el => el.dataset.line);
+      const selAms = Array.from(document.querySelectorAll('#amenity-filters .chip-active')).map(el => el.dataset.am);
+      const selBrands = Array.from(document.querySelectorAll('#brand-filters .chip-active')).map(el => el.dataset.brand);
+
+      const filtered = allHotels
+        .filter(h => {
+          if (h.station_dist > maxStationDist) return false;
+          if (selBrands.length > 0 && !selBrands.includes(h.brand)) return false;
+          if (selLines.length > 0 && !selLines.some(l => (h.airport_lines || []).includes(l))) return false;
+          if (selAms.length > 0 && !selAms.every(am => (h.amenities?.[am] ?? 9999) <= effectiveAmDist)) return false;
+          if (kw && !h._searchStr.includes(kw)) return false;
+          return true;
+        })
+        .map(h => ({
+          ...h,
+          _userDist: userPos ? calcDistanceM(userPos.lat, userPos.lng, h.lat, h.lng) : null
+        }));
+
+      const sortLabel = document.getElementById('sort-status-label');
+      if (sortByUser && userPos) {
+        filtered.sort((a, b) => a._userDist - b._userDist);
+        sortLabel.textContent = '🔵 依距離我目前位置由近到遠排序';
+        sortLabel.className = 'text-xs text-blue-600 font-semibold';
+      } else {
+        filtered.sort((a, b) => a.station_dist - b.station_dist);
+        sortLabel.textContent = '依距離車站由近到遠排序';
+        sortLabel.className = 'text-xs text-slate-500';
+      }
+
+      renderResults(filtered, effectiveAmDist);
+    }
+
+    function renderResults(list, badgeMaxDist) {
+      document.getElementById('result-count').textContent = list.length;
+      markersLayer.clearLayers();
+      const listEl = document.getElementById('hotel-list');
+      listEl.innerHTML = '';
+
+      const amLabels = {
+        lawson: 'Lawson', seven: '7-11', familymart: '全家',
+        starbucks: '星巴克', doutor: '羅多倫', komeda: '客美多',
+        mcdonalds: '麥當勞', mos: '摩斯', kfc: 'KFC',
+        drugstore: '藥妝', supermarket: '超市'
+      };
+
+      list.slice(0, 80).forEach(h => {
+        const gmapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(h.name)}&center=${h.lat},${h.lng}`;
+        const linesHtml = (h.airport_lines || []).map(l => `<span class="px-1.5 py-0.5 bg-sky-100 text-sky-800 rounded text-[11px] font-medium">✈️ ${LINE_NAMES[l] || l}</span>`).join(' ');
+
+        const amBadges = [];
+        for (const [k, label] of Object.entries(amLabels)) {
+          const d = h.amenities?.[k];
+          if (d !== undefined && d <= badgeMaxDist) {
+            amBadges.push(`<span class="px-1.5 py-0.5 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded text-[11px]">${label} ${d}m</span>`);
+          }
+        }
+
+        const userDistBadge = h._userDist !== null
+          ? `<span class="text-[11px] font-bold px-1.5 py-0.5 rounded bg-blue-100 text-blue-800">📍 距我 ${formatDist(h._userDist)}</span>`
+          : '';
+
+        const marker = L.marker([h.lat, h.lng]).bindPopup(`
+          <div class="text-xs space-y-1.5">
+            <div class="font-bold text-slate-900">${h.name}</div>
+            <div class="text-slate-600">🚉 ${h.station_name}（約 ${h.station_dist}m）</div>
+            ${h._userDist !== null ? `<div class="text-blue-700 font-semibold">📍 距離目前位置約 ${formatDist(h._userDist)}</div>` : ''}
+            <a href="${gmapUrl}" target="_blank" class="gmap-popup-btn inline-block mt-1 px-2.5 py-1.5 bg-blue-600 rounded text-[11px] font-bold shadow-sm">🗺️ 開啟 Google 地圖</a>
+          </div>
+        `);
+        markersLayer.addLayer(marker);
+
+        const card = document.createElement('div');
+        card.className = 'bg-white p-3 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between gap-2';
+        card.innerHTML = `
+          <div>
+            <div class="flex items-start justify-between gap-2">
+              <div class="flex flex-wrap items-center gap-1">
+                <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-slate-800 text-white">${h.brand}</span>
+                ${userDistBadge}
+              </div>
+              <span class="text-xs font-semibold text-blue-600 shrink-0">🚉 ${h.station_name} (${h.station_dist}m)</span>
+            </div>
+            <h3 class="font-bold text-sm text-slate-900 mt-1.5">${h.name}</h3>
+            <div class="flex flex-wrap gap-1 mt-1.5">${linesHtml} ${amBadges.join(' ')}</div>
+          </div>
+          <div class="flex gap-2 pt-1 border-t border-slate-100 text-xs">
+            <button onclick="map.setView([${h.lat}, ${h.lng}], 16)" class="flex-1 py-1.5 rounded bg-slate-100 hover:bg-slate-200 font-medium text-slate-700">📍 地圖定位</button>
+            <a href="${gmapUrl}" target="_blank" class="flex-1 py-1.5 rounded bg-blue-600 text-white text-center font-medium">🗺️ Google Maps</a>
+          </div>
+        `;
+        listEl.appendChild(card);
+      });
+    }
+
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./sw.js').catch(() => {});
+    }
+
+    switchDataset('all');
+  </script>
+</body>
+</html>
