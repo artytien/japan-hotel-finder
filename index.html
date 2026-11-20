@@ -13,7 +13,6 @@
   <style>
     body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
     #map { height: 48vh; min-height: 300px; z-index: 1; background: #e2e8f0; }
-    /* 使用 !important 確保已選取狀態高對比顯示，不被 Tailwind 淺色背景蓋過 */
     .chip-active {
       background-color: #0f172a !important;
       color: #ffffff !important;
@@ -22,7 +21,6 @@
       box-shadow: 0 1px 3px rgba(15, 23, 42, 0.3);
     }
     .chip-active::before { content: "✓ "; }
-    /* 修正 Leaflet 預設將連結強制染藍導致藍底藍字看不清的問題 */
     .leaflet-popup-content a.gmap-popup-btn {
       color: #ffffff !important;
       text-decoration: none !important;
@@ -57,13 +55,11 @@
 
   <main class="max-w-5xl mx-auto px-3 pt-3 space-y-3">
     <section class="bg-white rounded-xl p-3.5 shadow-sm border border-slate-200 space-y-3.5">
-      <!-- 關鍵字搜尋 -->
       <div>
-        <label class="block text-xs font-semibold text-slate-700 mb-1">🔍 搜尋都道府縣、區域、車站或飯店（如：大阪府、梅田、博多、札幌、新宿）</label>
-        <input type="text" id="keyword-input" placeholder="輸入都道府縣、商圈區域、車站或飯店名稱..." oninput="markDirty()" onkeydown="if(event.key==='Enter') applyFilters()" class="w-full text-sm px-3 py-1.5 border border-slate-300 rounded-lg focus:outline-none focus:border-slate-900">
+        <label class="block text-xs font-semibold text-slate-700 mb-1">🔍 搜尋都道府縣、區域、車站或飯店（如：熊本車站、梅田、博多、廣島、澀谷）</label>
+        <input type="text" id="keyword-input" placeholder="輸入中文或日文關鍵字（支援自動轉換繁日漢字與車站名稱）..." oninput="markDirty()" onkeydown="if(event.key==='Enter') applyFilters()" class="w-full text-sm px-3 py-1.5 border border-slate-300 rounded-lg focus:outline-none focus:border-slate-900">
       </div>
 
-      <!-- 車站與生活機能距離（可獨立勾選是否啟用） -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
         <div class="p-2.5 rounded-lg border border-slate-200 bg-slate-50/70">
           <div class="flex items-center justify-between text-xs font-semibold text-slate-700 mb-1.5">
@@ -88,7 +84,6 @@
         </div>
       </div>
 
-      <!-- 機場直達路線篩選 -->
       <div>
         <div class="text-xs font-semibold text-slate-700 mb-1.5">✈️ 機場直達鐵道站點過濾（可複選）</div>
         <div class="flex flex-wrap gap-1.5 text-xs" id="airport-filters">
@@ -101,7 +96,6 @@
         </div>
       </div>
 
-      <!-- 周邊生活機能 -->
       <div>
         <div class="text-xs font-semibold text-slate-700 mb-1.5">🏪 必備生活機能（勾選上方距離限制則套用該上限，未勾選則預設 300m 內）</div>
         <div class="flex flex-wrap gap-1.5 text-xs" id="amenity-filters">
@@ -119,13 +113,11 @@
         </div>
       </div>
 
-      <!-- 連鎖品牌過濾 -->
       <div>
         <div class="text-xs font-semibold text-slate-700 mb-1.5">🏨 連鎖商務飯店品牌（未選則顯示全部 15 品牌）</div>
         <div class="flex flex-wrap gap-1.5 text-xs" id="brand-filters"></div>
       </div>
 
-      <!-- 底部操作按鈕列：手動搜尋 + 清除重設 -->
       <div class="flex gap-2 pt-2 border-t border-slate-100">
         <button type="button" id="btn-search" onclick="applyFilters()" class="flex-1 py-2.5 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 active:scale-[0.99] text-white font-bold text-sm shadow-sm transition flex items-center justify-center gap-1.5">
           <span>🔍</span>
@@ -137,7 +129,6 @@
       </div>
     </section>
 
-    <!-- 互動地圖 -->
     <section class="relative bg-white rounded-xl overflow-hidden shadow-sm border border-slate-200">
       <div id="map"></div>
       <button type="button" id="btn-locate" onclick="locateUser()" class="absolute top-2.5 right-2.5 z-[500] flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/95 hover:bg-white text-slate-800 border border-slate-300 shadow-md text-xs font-semibold active:scale-95 transition">
@@ -146,7 +137,6 @@
       </button>
     </section>
 
-    <!-- 篩選結果列表 -->
     <section id="results-section" class="space-y-2">
       <div class="flex flex-wrap justify-between items-center gap-2 px-1">
         <h2 class="text-sm font-bold text-slate-800">符合條件飯店 (<span id="result-count">0</span> 間)</h2>
@@ -188,6 +178,27 @@
       [31.59, 130.55, "鹿児島県 鹿兒島縣 鹿兒島市 宮崎県 宮崎縣"], [43.06, 141.35, "北海道 札幌市 すすきの 薄野 函館 旭川"],
       [34.38, 132.45, "広島県 廣島縣 廣島市 岡山県 岡山縣 高松市"], [38.26, 140.86, "宮城県 宮城縣 仙台市 青森 盛岡"]
     ];
+
+    // 繁體中文地名自動轉日文漢字對照表
+    const ZH_TO_JA_MAP = [
+      [/廣島/g, "広島"], [/澀谷/g, "渋谷"], [/橫濱/g, "横浜"], [/淺草/g, "浅草"],
+      [/關西/g, "関西"], [/關東/g, "関東"], [/靜岡/g, "静岡"], [/濱松/g, "浜松"],
+      [/鹿兒島/g, "鹿児島"], [/兒島/g, "児島"], [/豐橋/g, "豊橋"], [/澤/g, "沢"],
+      [/瀧/g, "滝"], [/鐵/g, "鉄"], [/東橫/g, "東横"], [/榮町/g, "栄町"], [/榮/g, "栄"],
+      [/心齋橋/g, "心斎橋"], [/齋/g, "斎"], [/縣/g, "県"], [/區/g, "区"], [/駅/g, ""]
+    ];
+
+    // 將使用者輸入正規化為可同時匹配日文 OSM 與中文區域的關鍵字陣列
+    function normalizeSearchTokens(rawInput) {
+      let cleaned = rawInput.trim().toLowerCase();
+      if (!cleaned) return [];
+      // 去除中文常見「車站、站」字尾（例如「熊本車站」->「熊本」、「新大阪站」->「新大阪」）
+      cleaned = cleaned.replace(/車站|火車站|地鐵站|站/g, " ");
+      for (const [re, ja] of ZH_TO_JA_MAP) {
+        cleaned = cleaned.replace(re, ja);
+      }
+      return cleaned.split(/\s+/).filter(Boolean);
+    }
 
     let allHotels = [];
     let map, markersLayer, userLayer;
@@ -391,7 +402,7 @@
       const sliderAmDist = parseInt(document.getElementById('amenity-dist').value, 10);
       const effectiveAmDist = amEnabled ? sliderAmDist : 300;
 
-      const kw = document.getElementById('keyword-input').value.trim().toLowerCase();
+      const tokens = normalizeSearchTokens(document.getElementById('keyword-input').value);
       const selLines = Array.from(document.querySelectorAll('#airport-filters .chip-active')).map(el => el.dataset.line);
       const selAms = Array.from(document.querySelectorAll('#amenity-filters .chip-active')).map(el => el.dataset.am);
       const selBrands = Array.from(document.querySelectorAll('#brand-filters .chip-active')).map(el => el.dataset.brand);
@@ -402,7 +413,7 @@
           if (selBrands.length > 0 && !selBrands.includes(h.brand)) return false;
           if (selLines.length > 0 && !selLines.some(l => (h.airport_lines || []).includes(l))) return false;
           if (selAms.length > 0 && !selAms.every(am => (h.amenities?.[am] ?? 9999) <= effectiveAmDist)) return false;
-          if (kw && !h._searchStr.includes(kw)) return false;
+          if (tokens.length > 0 && !tokens.every(tk => h._searchStr.includes(tk))) return false;
           return true;
         })
         .map(h => ({
@@ -419,6 +430,11 @@
         filtered.sort((a, b) => a.station_dist - b.station_dist);
         sortLabel.textContent = '依距離車站由近到遠排序';
         sortLabel.className = 'text-xs text-slate-500';
+      }
+
+      // 若有輸入關鍵字且找到飯店，自動將地圖視野移向第一筆結果
+      if (tokens.length > 0 && filtered.length > 0) {
+        map.setView([filtered[0].lat, filtered[0].lng], 14);
       }
 
       renderResults(filtered, effectiveAmDist);
