@@ -56,8 +56,8 @@
   <main class="max-w-5xl mx-auto px-3 pt-3 space-y-3">
     <section class="bg-white rounded-xl p-3.5 shadow-sm border border-slate-200 space-y-3.5">
       <div>
-        <label class="block text-xs font-semibold text-slate-700 mb-1">🔍 搜尋都道府縣、區域、車站或飯店（如：熊本車站、梅田、博多、廣島、澀谷）</label>
-        <input type="text" id="keyword-input" placeholder="輸入中文或日文關鍵字（支援自動轉換繁日漢字與車站名稱）..." oninput="markDirty()" onkeydown="if(event.key==='Enter') applyFilters()" class="w-full text-sm px-3 py-1.5 border border-slate-300 rounded-lg focus:outline-none focus:border-slate-900">
+        <label class="block text-xs font-semibold text-slate-700 mb-1">🔍 搜尋車站、區域或都道府縣（加「站」字＝精準搜該車站周邊；不加「站」＝搜全區）</label>
+        <input type="text" id="keyword-input" placeholder="例如輸入「熊本站」只找熊本駅周邊；輸入「熊本」找全熊本市..." oninput="markDirty()" onkeydown="if(event.key==='Enter') applyFilters()" class="w-full text-sm px-3 py-1.5 border border-slate-300 rounded-lg focus:outline-none focus:border-slate-900">
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -179,25 +179,29 @@
       [34.38, 132.45, "広島県 廣島縣 廣島市 岡山県 岡山縣 高松市"], [38.26, 140.86, "宮城県 宮城縣 仙台市 青森 盛岡"]
     ];
 
-    // 繁體中文地名自動轉日文漢字對照表
     const ZH_TO_JA_MAP = [
       [/廣島/g, "広島"], [/澀谷/g, "渋谷"], [/橫濱/g, "横浜"], [/淺草/g, "浅草"],
       [/關西/g, "関西"], [/關東/g, "関東"], [/靜岡/g, "静岡"], [/濱松/g, "浜松"],
       [/鹿兒島/g, "鹿児島"], [/兒島/g, "児島"], [/豐橋/g, "豊橋"], [/澤/g, "沢"],
       [/瀧/g, "滝"], [/鐵/g, "鉄"], [/東橫/g, "東横"], [/榮町/g, "栄町"], [/榮/g, "栄"],
-      [/心齋橋/g, "心斎橋"], [/齋/g, "斎"], [/縣/g, "県"], [/區/g, "区"], [/駅/g, ""]
+      [/心齋橋/g, "心斎橋"], [/齋/g, "斎"], [/縣/g, "県"], [/區/g, "区"]
     ];
 
-    // 將使用者輸入正規化為可同時匹配日文 OSM 與中文區域的關鍵字陣列
-    function normalizeSearchTokens(rawInput) {
-      let cleaned = rawInput.trim().toLowerCase();
-      if (!cleaned) return [];
-      // 去除中文常見「車站、站」字尾（例如「熊本車站」->「熊本」、「新大阪站」->「新大阪」）
-      cleaned = cleaned.replace(/車站|火車站|地鐵站|站/g, " ");
+    // 解析使用者輸入：判斷是否帶有「站/駅」字眼，並轉換繁日漢字
+    function parseSearchQuery(rawInput) {
+      let raw = rawInput.trim().toLowerCase();
+      if (!raw) return { tokens: [], isStationMode: false };
+
+      // 只要輸入包含「站」或「駅」，就啟動車站專屬精準模式（只比對最近車站名稱）
+      const isStationMode = /車站|火車站|地鐵站|站|駅/.test(raw);
+      let cleaned = raw.replace(/車站|火車站|地鐵站|站|駅/g, " ");
       for (const [re, ja] of ZH_TO_JA_MAP) {
         cleaned = cleaned.replace(re, ja);
       }
-      return cleaned.split(/\s+/).filter(Boolean);
+      return {
+        tokens: cleaned.split(/\s+/).filter(Boolean),
+        isStationMode
+      };
     }
 
     let allHotels = [];
@@ -378,7 +382,11 @@
         const res = await fetch(`./data/hotels_${ds}.json?t=${Date.now()}`);
         if (!res.ok) throw new Error('JSON 尚未建立');
         const raw = await res.json();
-        allHotels = raw.map(h => ({ ...h, _searchStr: `${h.name} ${h.station_name} ${h.brand} ${inferArea(h)}`.toLowerCase() }));
+        allHotels = raw.map(h => ({
+          ...h,
+          _stationLower: (h.station_name || '').toLowerCase(),
+          _fullSearchStr: `${h.name} ${h.station_name} ${h.brand} ${inferArea(h)}`.toLowerCase()
+        }));
         statusEl.textContent = `🟢 已連線真實圖資（共載入 ${allHotels.length} 間飯店）`;
         statusEl.className = 'text-xs text-emerald-400 mt-0.5';
 
@@ -402,7 +410,7 @@
       const sliderAmDist = parseInt(document.getElementById('amenity-dist').value, 10);
       const effectiveAmDist = amEnabled ? sliderAmDist : 300;
 
-      const tokens = normalizeSearchTokens(document.getElementById('keyword-input').value);
+      const { tokens, isStationMode } = parseSearchQuery(document.getElementById('keyword-input').value);
       const selLines = Array.from(document.querySelectorAll('#airport-filters .chip-active')).map(el => el.dataset.line);
       const selAms = Array.from(document.querySelectorAll('#amenity-filters .chip-active')).map(el => el.dataset.am);
       const selBrands = Array.from(document.querySelectorAll('#brand-filters .chip-active')).map(el => el.dataset.brand);
@@ -413,7 +421,16 @@
           if (selBrands.length > 0 && !selBrands.includes(h.brand)) return false;
           if (selLines.length > 0 && !selLines.some(l => (h.airport_lines || []).includes(l))) return false;
           if (selAms.length > 0 && !selAms.every(am => (h.amenities?.[am] ?? 9999) <= effectiveAmDist)) return false;
-          if (tokens.length > 0 && !tokens.every(tk => h._searchStr.includes(tk))) return false;
+
+          if (tokens.length > 0) {
+            if (isStationMode) {
+              // 若輸入包含「站/駅」，僅比對該飯店的最近車站名稱（排除同市其他遠距離車站）
+              if (!tokens.every(tk => h._stationLower.includes(tk))) return false;
+            } else {
+              // 若未加「站」，則全域搜尋飯店名、車站名與都道府縣行政區
+              if (!tokens.every(tk => h._fullSearchStr.includes(tk))) return false;
+            }
+          }
           return true;
         })
         .map(h => ({
@@ -428,13 +445,16 @@
         sortLabel.className = 'text-xs text-blue-600 font-semibold';
       } else {
         filtered.sort((a, b) => a.station_dist - b.station_dist);
-        sortLabel.textContent = '依距離車站由近到遠排序';
-        sortLabel.className = 'text-xs text-slate-500';
+        sortLabel.textContent = isStationMode && tokens.length > 0
+          ? '🚉 已鎖定該車站周邊（依距離車站排序）'
+          : '依距離車站由近到遠排序';
+        sortLabel.className = isStationMode && tokens.length > 0
+          ? 'text-xs text-blue-600 font-semibold'
+          : 'text-xs text-slate-500';
       }
 
-      // 若有輸入關鍵字且找到飯店，自動將地圖視野移向第一筆結果
       if (tokens.length > 0 && filtered.length > 0) {
-        map.setView([filtered[0].lat, filtered[0].lng], 14);
+        map.setView([filtered[0].lat, filtered[0].lng], 15);
       }
 
       renderResults(filtered, effectiveAmDist);
