@@ -4,14 +4,14 @@ import requests
 
 DATA_DIR = "./data"
 REGIONS_MAP = {
-    "kansai":       {"name": "關西圈(京阪神)",       "centers": [(34.6851, 135.5023, 12000), (35.0036, 135.7681, 10000), (34.6901, 135.1955, 8000)]},
-    "tokyo":        {"name": "關東(首都圈)",         "centers": [(35.6812, 139.7671, 15000), (35.4437, 139.6380, 10000), (35.6074, 140.1065, 8000)]},
-    "tokai":        {"name": "東海(名古屋・浜松)",   "centers": [(35.1709, 136.8815, 12000), (34.7108, 137.7261, 8000), (34.9756, 138.3828, 8000)]},
-    "kyushu_north": {"name": "北九州(福岡・小倉)",   "centers": [(33.5902, 130.4017, 12000), (33.8834, 130.8752, 8000)]},
-    "kyushu_south": {"name": "南九州(熊本・鹿兒島)", "centers": [(32.8031, 130.7079, 8000), (31.5966, 130.5571, 8000), (31.9077, 131.4202, 6000)]},
-    "hokkaido":     {"name": "北海道(札幌・函館)",   "centers": [(43.0618, 141.3545, 10000), (41.7687, 140.7288, 8000), (43.7706, 142.3650, 8000)]},
-    "chugoku":      {"name": "中國・四國(廣島岡山)", "centers": [(34.3853, 132.4553, 10000), (34.6551, 133.9195, 8000), (34.3428, 134.0466, 8000)]},
-    "tohoku":       {"name": "東北(仙台・青森)",     "centers": [(38.2682, 140.8694, 10000), (40.8222, 140.7474, 8000), (39.7020, 141.1545, 8000)]},
+    "kansai":       {"name": "關西圈(京阪神)",       "centers": [(34.6851, 135.5023, 10000), (35.0036, 135.7681, 8000), (34.6901, 135.1955, 6000)]},
+    "tokyo":        {"name": "關東(首都圈)",         "centers": [(35.6812, 139.7671, 12000), (35.4437, 139.6380, 8000), (35.6074, 140.1065, 6000)]},
+    "tokai":        {"name": "東海(名古屋・浜松)",   "centers": [(35.1709, 136.8815, 10000), (34.7108, 137.7261, 6000), (34.9756, 138.3828, 6000)]},
+    "kyushu_north": {"name": "北九州(福岡・小倉)",   "centers": [(33.5902, 130.4017, 10000), (33.8834, 130.8752, 6000)]},
+    "kyushu_south": {"name": "南九州(熊本・鹿兒島)", "centers": [(32.8031, 130.7079, 7000), (31.5966, 130.5571, 7000), (31.9077, 131.4202, 5000)]},
+    "hokkaido":     {"name": "北海道(札幌・函館)",   "centers": [(43.0618, 141.3545, 8000), (41.7687, 140.7288, 6000), (43.7706, 142.3650, 6000)]},
+    "chugoku":      {"name": "中國・四國(廣島岡山)", "centers": [(34.3853, 132.4553, 8000), (34.6551, 133.9195, 6000), (34.3428, 134.0466, 6000)]},
+    "tohoku":       {"name": "東北(仙台・青森)",     "centers": [(38.2682, 140.8694, 8000), (40.8222, 140.7474, 6000), (39.7020, 141.1545, 6000)]},
 }
 
 CITY_AREAS = [
@@ -30,7 +30,7 @@ CITY_AREAS = [
 ]
 
 OVERPASS_URLS = ["https://overpass-api.de/api/interpreter", "https://overpass.kumi.systems/api/interpreter"]
-REQUEST_HEADERS = {"User-Agent": "JapanHotelFinderPWA/3.0 (https://github.com/artytien/japan-hotel-finder)", "Accept": "application/json"}
+REQUEST_HEADERS = {"User-Agent": "JapanHotelFinderPWA/3.1 (https://github.com/artytien/japan-hotel-finder)", "Accept": "application/json"}
 
 BRAND_PATTERNS = [
     ("Via Inn", r"ヴィアイン|via\s*inn"), ("Dormy Inn", r"ドーミーイン|dormy\s*inn|野乃|nono"),
@@ -82,17 +82,17 @@ def get_coords(el):
     return None, None
 
 def query_overpass(q, label):
-    for attempt in range(3):
+    for attempt in range(2):
         for url in OVERPASS_URLS:
             try:
                 print(f"📡 [{label}] 請求 {url} ...")
-                r = requests.post(url, data={"data": q}, headers=REQUEST_HEADERS, timeout=60)
+                r = requests.post(url, data={"data": q}, headers=REQUEST_HEADERS, timeout=45)
                 r.raise_for_status()
                 return r.json().get("elements", [])
             except Exception as e:
-                print(f"⚠️ [{label}] 異常 ({e})，5秒後切換...")
-                time.sleep(5)
-        time.sleep(10)
+                print(f"⚠️ [{label}] 異常 ({e})，4秒後切換...")
+                time.sleep(4)
+        time.sleep(8)
     raise RuntimeError(f"❌ [{label}] 無法完成查詢。")
 
 def detect_hotel_brand(tags):
@@ -207,8 +207,11 @@ def main():
     t = sys.argv[1].strip().lower() if len(sys.argv) > 1 else "all"
     if t == "all":
         for i, k in enumerate(REGIONS_MAP):
-            fetch_and_save_region(k)
-            if i < len(REGIONS_MAP) - 1: time.sleep(2)
+            try:
+                fetch_and_save_region(k)
+            except Exception as e:
+                print(f"⚠️ 跳過異常區域 {k}，保留既有舊檔 ({e})")
+            if i < len(REGIONS_MAP) - 1: time.sleep(3)
     elif t in REGIONS_MAP: fetch_and_save_region(t)
     else: raise ValueError(f"不支援區域: {t}")
     merge_all_regions()
