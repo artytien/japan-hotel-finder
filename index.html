@@ -7,12 +7,14 @@
   <meta name="theme-color" content="#0f172a">
   <link rel="manifest" href="./manifest.json">
   <link rel="apple-touch-icon" href="./icon-192.png">
+  <!-- 載入 Tailwind CSS 與 Leaflet 地圖套件 -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-    #map { height: 48vh; min-height: 300px; z-index: 1; background: #e2e8f0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", sans-serif; }
+    #map { height: 48vh; min-height: 320px; z-index: 1; background: #f1f5f9; }
+    /* 高對比已選取狀態，確保深底白字清晰可辨 */
     .chip-active {
       background-color: #0f172a !important;
       color: #ffffff !important;
@@ -21,16 +23,19 @@
       box-shadow: 0 1px 3px rgba(15, 23, 42, 0.3);
     }
     .chip-active::before { content: "✓ "; }
+    /* 修正 Leaflet Popup 內連結預設強制藍字，確保 Google 地圖按鈕白字清晰 */
     .leaflet-popup-content a.gmap-popup-btn {
       color: #ffffff !important;
       text-decoration: none !important;
     }
+    /* 隱藏橫向分區列捲軸 */
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-800 pb-10">
+<body class="bg-slate-50 text-slate-800 pb-12">
 
+  <!-- 頂部導覽列與 9 個全國／區域資料集切換鈕 -->
   <header class="bg-slate-900 text-white px-4 py-3 sticky top-0 z-30 shadow-md">
     <div class="max-w-5xl mx-auto space-y-2">
       <div class="flex items-center justify-between">
@@ -54,12 +59,15 @@
   </header>
 
   <main class="max-w-5xl mx-auto px-3 pt-3 space-y-3">
+    <!-- 篩選條件設定面板 -->
     <section class="bg-white rounded-xl p-3.5 shadow-sm border border-slate-200 space-y-3.5">
+      <!-- 關鍵字搜尋列 -->
       <div>
         <label class="block text-xs font-semibold text-slate-700 mb-1">🔍 搜尋車站、分店名、區域或都道府縣（加「站」字＝精準搜該車站周邊；不加「站」＝搜全區）</label>
         <input type="text" id="keyword-input" placeholder="例如「熊本站」、「櫻町」、「梅田」、「博多」..." oninput="markDirty()" onkeydown="if(event.key==='Enter') applyFilters()" class="w-full text-sm px-3 py-1.5 border border-slate-300 rounded-lg focus:outline-none focus:border-slate-900">
       </div>
 
+      <!-- 車站距離上限與生活機能距離上限（獨立勾選開關） -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
         <div class="p-2.5 rounded-lg border border-slate-200 bg-slate-50/70">
           <div class="flex items-center justify-between text-xs font-semibold text-slate-700 mb-1.5">
@@ -84,6 +92,7 @@
         </div>
       </div>
 
+      <!-- 機場直達交通（2 顆主分類開關 + 隨分區動態切換之細節路線） -->
       <div class="space-y-2">
         <div class="text-xs font-semibold text-slate-700">✈️ 機場直達交通（可一鍵篩選全區鐵路／利木津巴士停靠點，或細選該區路線）</div>
         <div class="flex flex-wrap gap-1.5 text-xs" id="airport-main-filters">
@@ -93,6 +102,7 @@
         <div class="flex flex-wrap gap-1.5 text-xs pt-0.5" id="airport-sub-filters"></div>
       </div>
 
+      <!-- 必備生活機能（11 項：3 大超商 + Top 3 咖啡 + Top 3 速食 + 藥妝超市） -->
       <div>
         <div class="text-xs font-semibold text-slate-700 mb-1.5">🏪 必備生活機能（勾選上方距離限制則套用該上限，未勾選則預設 300m 內）</div>
         <div class="flex flex-wrap gap-1.5 text-xs" id="amenity-filters">
@@ -110,11 +120,13 @@
         </div>
       </div>
 
+      <!-- 15 大連鎖商務飯店品牌 -->
       <div>
         <div class="text-xs font-semibold text-slate-700 mb-1.5">🏨 連鎖商務飯店品牌（未選則顯示全部 15 品牌）</div>
         <div class="flex flex-wrap gap-1.5 text-xs" id="brand-filters"></div>
       </div>
 
+      <!-- 底部手動套用搜尋與清除重設按鈕 -->
       <div class="flex gap-2 pt-2 border-t border-slate-100">
         <button type="button" id="btn-search" onclick="applyFilters()" class="flex-1 py-2.5 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 active:scale-[0.99] text-white font-bold text-sm shadow-sm transition flex items-center justify-center gap-1.5">
           <span>🔍</span>
@@ -126,7 +138,7 @@
       </div>
     </section>
 
-    <!-- 互動地圖（淡色清爽預設 + 3種圖層切換） -->
+    <!-- 互動地圖區塊（預設 GSI 淡色簡潔 + 左下角三種底圖切換 + 右上角手動 GPS 定位） -->
     <section class="relative bg-white rounded-xl overflow-hidden shadow-sm border border-slate-200">
       <div id="map"></div>
       <button type="button" id="btn-locate" onclick="locateUser()" class="absolute top-2.5 right-2.5 z-[500] flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/95 hover:bg-white text-slate-800 border border-slate-300 shadow-md text-xs font-semibold active:scale-95 transition">
@@ -135,11 +147,12 @@
       </button>
       <div class="absolute bottom-2.5 left-2.5 z-[500] flex gap-1 bg-white/95 p-1 rounded-lg border border-slate-300 shadow-sm text-[11px]">
         <button type="button" onclick="setBaseMap('pale')" id="map-style-pale" class="map-style-btn px-2 py-1 rounded bg-slate-900 text-white font-semibold">淡色簡潔</button>
-        <button type="button" onclick="setBaseMap('osm')" id="map-style-osm" class="map-style-btn px-2 py-1 rounded text-slate-700 hover:bg-slate-100">經典街道</button>
-        <button type="button" onclick="setBaseMap('std')" id="map-style-std" class="map-style-btn px-2 py-1 rounded text-slate-700 hover:bg-slate-100">詳細地形</button>
+        <button type="button" onclick="setBaseMap('osm')" id="map-style-osm" class="map-style-btn px-2 py-1 rounded text-slate-700 hover:bg-slate-100">經典街道 (OSM)</button>
+        <button type="button" onclick="setBaseMap('std')" id="map-style-std" class="map-style-btn px-2 py-1 rounded text-slate-700 hover:bg-slate-100">詳細地形 (GSI std)</button>
       </div>
     </section>
 
+    <!-- 篩選結果列表 -->
     <section id="results-section" class="space-y-2">
       <div class="flex flex-wrap justify-between items-center gap-2 px-1">
         <h2 class="text-sm font-bold text-slate-800">符合條件飯店 (<span id="result-count">0</span> 間)</h2>
@@ -153,6 +166,9 @@
   </main>
 
   <script>
+    // ==========================================
+    // 1. 基礎品牌、交通路線與分區常數設定
+    // ==========================================
     const BRANDS = [
       "Toyoko Inn", "Dormy Inn", "APA Hotel", "Super Hotel", "Via Inn",
       "Route Inn", "Comfort Hotel", "Daiwa Roynet", "Richmond Hotel",
@@ -193,7 +209,10 @@
       "hokkaido": [43.06, 141.35, 10], "chugoku": [34.45, 133.20, 9], "tohoku": [38.90, 140.90, 8]
     };
 
-    // OSM 漏標之新建分店補充清單
+    // ==========================================
+    // 2. 補充飯店清單與東橫 INN 分店名稱自動補全對照
+    // ==========================================
+    // OSM 漏標之新建分店補充清單（確保如「スーパーホテル熊本駅前天然温泉」必定顯示）
     const SUPPLEMENTAL_HOTELS = [
       {
         id: "supp_kumamoto_superhotel",
@@ -215,12 +234,134 @@
       }
     ];
 
-    // 已知無分店後綴之重點東橫 INN 座標對照表（即時將純「東横イン」補全為正式店名）
+    // 已知無分店後綴之重點東橫 INN 座標對照表（即時將純「東横イン」補全為正式分店名）
     const KNOWN_BRANCH_OVERRIDES = [
       [32.8012, 130.7032, "Toyoko Inn", "東横INN 熊本桜町バスターミナル前"],
       [32.7905, 130.6901, "Toyoko Inn", "東横INN 熊本駅前"],
       [32.7972, 130.7061, "Toyoko Inn", "東横INN 熊本新市街"],
       [32.7988, 130.7078, "Toyoko Inn", "東横INN 熊本城通町筋"]
+    ];
+
+    // 獨立預覽環境無外部 ./data/*.json 時自動啟用的內建代表飯店示範資料集
+    const PREVIEW_SAMPLE_HOTELS = [
+      ...SUPPLEMENTAL_HOTELS,
+      {
+        id: "prev_kumamoto_tyk_sakuramachi",
+        name: "東横イン",
+        brand: "Toyoko Inn",
+        area: "熊本県 熊本市 中央区 桜町",
+        region: "kyushu_south",
+        lat: 32.8012,
+        lng: 130.7032,
+        station_name: "藤崎宮前",
+        station_dist: 666,
+        airport_lines: ["BUS_KMJ"],
+        amenities: { lawson: 150, seven: 98, familymart: 75, starbucks: 180, mcdonalds: 262, drugstore: 212, supermarket: 96 }
+      },
+      {
+        id: "prev_kumamoto_tyk_ekimae",
+        name: "東横イン",
+        brand: "Toyoko Inn",
+        area: "熊本県 熊本市 西区 春日",
+        region: "kyushu_south",
+        lat: 32.7905,
+        lng: 130.6901,
+        station_name: "熊本",
+        station_dist: 225,
+        airport_lines: ["BUS_KMJ"],
+        amenities: { seven: 130, familymart: 253, starbucks: 195, mcdonalds: 210, supermarket: 212 }
+      },
+      {
+        id: "prev_kumamoto_sh_shoko",
+        name: "スーパーホテル 熊本商工会議所前",
+        brand: "Super Hotel",
+        area: "熊本県 熊本市 中央区 魚屋町",
+        region: "kyushu_south",
+        lat: 32.7968,
+        lng: 130.7011,
+        station_name: "熊本",
+        station_dist: 1093,
+        airport_lines: ["BUS_KMJ"],
+        amenities: { seven: 135, familymart: 240, drugstore: 217, supermarket: 290 }
+      },
+      {
+        id: "prev_kumamoto_nono",
+        name: "御宿 野乃熊本",
+        brand: "Dormy Inn",
+        area: "熊本県 熊本市 中央区 下通",
+        region: "kyushu_south",
+        lat: 32.7995,
+        lng: 130.7082,
+        station_name: "藤崎宮前",
+        station_dist: 780,
+        airport_lines: ["BUS_KMJ"],
+        amenities: { seven: 75, familymart: 119, starbucks: 160, mcdonalds: 97, drugstore: 69, supermarket: 73 }
+      },
+      {
+        id: "prev_osaka_namba",
+        name: "天然温泉 夕霧の湯 ドーミーインPREMIUMなんば",
+        brand: "Dormy Inn",
+        area: "大阪府 大阪市 中央区 難波 心齋橋 日本橋",
+        region: "kansai",
+        lat: 34.6698,
+        lng: 135.5065,
+        station_name: "難波",
+        station_dist: 350,
+        airport_lines: ["RAIL_NANKAI", "BUS_KIX"],
+        amenities: { lawson: 60, seven: 110, familymart: 85, starbucks: 220, doutor: 180, mcdonalds: 240, drugstore: 90, supermarket: 260 }
+      },
+      {
+        id: "prev_osaka_umeda",
+        name: "ヴィアイン梅田（JR西日本グループ）",
+        brand: "Via Inn",
+        area: "大阪府 大阪市 北区 梅田 大阪站",
+        region: "kansai",
+        lat: 34.7029,
+        lng: 135.5015,
+        station_name: "大阪",
+        station_dist: 280,
+        airport_lines: ["RAIL_HARUKA", "BUS_KIX"],
+        amenities: { lawson: 50, seven: 95, familymart: 120, starbucks: 140, doutor: 160, mcdonalds: 190, drugstore: 110, supermarket: 290 }
+      },
+      {
+        id: "prev_tokyo_shinjuku",
+        name: "東横INN新宿御苑前駅3番出口",
+        brand: "Toyoko Inn",
+        area: "東京都 新宿区 新宿",
+        region: "tokyo",
+        lat: 35.6885,
+        lng: 139.7112,
+        station_name: "新宿",
+        station_dist: 480,
+        airport_lines: ["RAIL_NEX", "BUS_TYO"],
+        amenities: { lawson: 80, seven: 70, familymart: 110, starbucks: 130, doutor: 95, mcdonalds: 250, mos: 210, drugstore: 140, supermarket: 280 }
+      },
+      {
+        id: "prev_fukuoka_hakata",
+        name: "ダイワロイネットホテル博多祇園",
+        brand: "Daiwa Roynet",
+        area: "福岡県 福岡縣 福岡市 博多 祇園",
+        region: "kyushu_north",
+        lat: 33.5936,
+        lng: 130.4148,
+        station_name: "博多",
+        station_dist: 420,
+        airport_lines: ["RAIL_FUKUOKA", "BUS_FUK"],
+        amenities: { lawson: 90, seven: 65, familymart: 110, starbucks: 180, komeda: 220, mcdonalds: 270, drugstore: 160, supermarket: 240 }
+      },
+      {
+        id: "prev_sapporo_station",
+        name: "三井ガーデンホテル札幌",
+        brand: "Mitsui Garden",
+        area: "北海道 札幌市 中央区 札幌站 大通",
+        region: "hokkaido",
+        lat: 43.0665,
+        lng: 141.3482,
+        station_name: "札幌",
+        station_dist: 260,
+        airport_lines: ["RAIL_CTS", "BUS_CTS"],
+        amenities: { lawson: 75, seven: 95, familymart: 130, starbucks: 160, doutor: 190, mcdonalds: 230, drugstore: 150, supermarket: 270 }
+      }
     ];
 
     const FALLBACK_AREAS = [
@@ -233,6 +374,7 @@
       [34.38, 132.45, "広島県 廣島縣 廣島市 岡山県 岡山縣 高松市"], [38.26, 140.86, "宮城県 宮城縣 仙台市 青森 盛岡"]
     ];
 
+    // 繁體中文轉日文漢字對照表
     const ZH_TO_JA_MAP = [
       [/廣島/g, "広島"], [/澀谷/g, "渋谷"], [/橫濱/g, "横浜"], [/淺草/g, "浅草"],
       [/關西/g, "関西"], [/關東/g, "関東"], [/靜岡/g, "静岡"], [/濱松/g, "浜松"],
@@ -242,9 +384,13 @@
       [/縣/g, "県"], [/區/g, "区"]
     ];
 
+    // ==========================================
+    // 3. 空間計算、關鍵字正規化與分店名補全函式
+    // ==========================================
     function parseSearchQuery(rawInput) {
       let raw = rawInput.trim().toLowerCase();
       if (!raw) return { tokens: [], isStationMode: false };
+      // 含「站/車站/駅」且非「巴士總站」時，啟動車站專屬精準模式（僅比對最近車站名稱）
       const isStationMode = /車站|火車站|地鐵站|站|駅/.test(raw) && !/巴士總站|バスターミナル/.test(raw);
       let cleaned = raw.replace(/車站|火車站|地鐵站|站|駅/g, " ");
       for (const [re, ja] of ZH_TO_JA_MAP) {
@@ -279,6 +425,9 @@
       return rawName;
     }
 
+    // ==========================================
+    // 4. 初始化地圖（預設國土地理院淡色地圖 + 三種底圖切換）
+    // ==========================================
     let allHotels = [];
     let map, markersLayer, userLayer, currentTileLayer;
     let userPos = null;
@@ -345,6 +494,9 @@
       }
     }
 
+    // ==========================================
+    // 5. 篩選控制、GPS 定位與渲染列表
+    // ==========================================
     function markDirty() {
       const btn = document.getElementById('btn-search');
       const txt = document.getElementById('btn-search-text');
@@ -355,718 +507,329 @@
 
     function clearDirty() {
       const btn = document.getElementById('btn-search');
-      const txt = docume<!DOCTYPE html>
-<html lang="zh-TW">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>日本連鎖商務飯店地圖篩選器</title>
-  <meta name="theme-color" content="#0f172a">
-  <link rel="manifest" href="./manifest.json">
-  <link rel="apple-touch-icon" href="./icon-192.png">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-    #map { height: 48vh; min-height: 300px; z-index: 1; background: #e2e8f0; }
-    .chip-active {
-      background-color: #0f172a !important;
-      color: #ffffff !important;
-      border-color: #0f172a !important;
-      font-weight: 700 !important;
-      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.3);
-    }
-    .chip-active::before { content: "✓ "; }
-    .leaflet-popup-content a.gmap-popup-btn {
-      color: #ffffff !important;
-      text-decoration: none !important;
-    }
-    .no-scrollbar::-webkit-scrollbar { display: none; }
-    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-  </style>
-</head>
-<body class="bg-slate-50 text-slate-800 pb-10">
-
-  <header class="bg-slate-900 text-white px-4 py-3 sticky top-0 z-30 shadow-md">
-    <div class="max-w-5xl mx-auto space-y-2">
-      <div class="flex items-center justify-between">
-        <div>
-          <h1 class="text-base font-bold tracking-wide">🇯🇵 日本連鎖商務飯店篩選器</h1>
-          <p id="data-status" class="text-xs text-emerald-400 mt-0.5">⏳ 正在載入雲端最新圖資...</p>
-        </div>
-      </div>
-      <div class="flex gap-1.5 text-xs overflow-x-auto no-scrollbar pb-0.5">
-        <button onclick="switchDataset('all')" id="btn-ds-all" class="ds-btn shrink-0 px-2.5 py-1.5 rounded bg-emerald-600 text-white font-medium">全國總覽</button>
-        <button onclick="switchDataset('kansai')" id="btn-ds-kansai" class="ds-btn shrink-0 px-2.5 py-1.5 rounded bg-slate-700 text-slate-200">關西圈</button>
-        <button onclick="switchDataset('tokyo')" id="btn-ds-tokyo" class="ds-btn shrink-0 px-2.5 py-1.5 rounded bg-slate-700 text-slate-200">關東首都圈</button>
-        <button onclick="switchDataset('tokai')" id="btn-ds-tokai" class="ds-btn shrink-0 px-2.5 py-1.5 rounded bg-slate-700 text-slate-200">東海(名古屋)</button>
-        <button onclick="switchDataset('kyushu_north')" id="btn-ds-kyushu_north" class="ds-btn shrink-0 px-2.5 py-1.5 rounded bg-slate-700 text-slate-200">北九州(福岡)</button>
-        <button onclick="switchDataset('kyushu_south')" id="btn-ds-kyushu_south" class="ds-btn shrink-0 px-2.5 py-1.5 rounded bg-slate-700 text-slate-200">南九州(熊本鹿兒島)</button>
-        <button onclick="switchDataset('hokkaido')" id="btn-ds-hokkaido" class="ds-btn shrink-0 px-2.5 py-1.5 rounded bg-slate-700 text-slate-200">北海道</button>
-        <button onclick="switchDataset('chugoku')" id="btn-ds-chugoku" class="ds-btn shrink-0 px-2.5 py-1.5 rounded bg-slate-700 text-slate-200">中國・四國</button>
-        <button onclick="switchDataset('tohoku')" id="btn-ds-tohoku" class="ds-btn shrink-0 px-2.5 py-1.5 rounded bg-slate-700 text-slate-200">東北</button>
-      </div>
-    </div>
-  </header>
-
-  <main class="max-w-5xl mx-auto px-3 pt-3 space-y-3">
-    <section class="bg-white rounded-xl p-3.5 shadow-sm border border-slate-200 space-y-3.5">
-      <div>
-        <label class="block text-xs font-semibold text-slate-700 mb-1">🔍 搜尋車站、分店名、區域或都道府縣（加「站」字＝精準搜該車站周邊；不加「站」＝搜全區）</label>
-        <input type="text" id="keyword-input" placeholder="例如「熊本站」、「櫻町」、「梅田」、「博多」..." oninput="markDirty()" onkeydown="if(event.key==='Enter') applyFilters()" class="w-full text-sm px-3 py-1.5 border border-slate-300 rounded-lg focus:outline-none focus:border-slate-900">
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-        <div class="p-2.5 rounded-lg border border-slate-200 bg-slate-50/70">
-          <div class="flex items-center justify-between text-xs font-semibold text-slate-700 mb-1.5">
-            <label class="flex items-center gap-1.5 cursor-pointer select-none">
-              <input type="checkbox" id="enable-station-dist" onchange="toggleSliderState('station'); markDirty()" class="w-4 h-4 accent-slate-900 rounded">
-              <span>🚉 限制離車站距離</span>
-            </label>
-            <span id="station-dist-label" class="text-slate-400 font-medium">不限距離</span>
-          </div>
-          <input type="range" id="station-dist" min="100" max="2000" step="100" value="500" disabled oninput="updateSliderLabels(); markDirty()" class="w-full accent-slate-900 opacity-40">
-        </div>
-
-        <div class="p-2.5 rounded-lg border border-slate-200 bg-slate-50/70">
-          <div class="flex items-center justify-between text-xs font-semibold text-slate-700 mb-1.5">
-            <label class="flex items-center gap-1.5 cursor-pointer select-none">
-              <input type="checkbox" id="enable-amenity-dist" onchange="toggleSliderState('amenity'); markDirty()" class="w-4 h-4 accent-emerald-600 rounded">
-              <span>🏪 限制機能步行距離</span>
-            </label>
-            <span id="amenity-dist-label" class="text-slate-400 font-medium">不限距離（預設 300m）</span>
-          </div>
-          <input type="range" id="amenity-dist" min="100" max="1000" step="100" value="300" disabled oninput="updateSliderLabels(); markDirty()" class="w-full accent-emerald-600 opacity-40">
-        </div>
-      </div>
-
-      <div class="space-y-2">
-        <div class="text-xs font-semibold text-slate-700">✈️ 機場直達交通（可一鍵篩選全區鐵路／利木津巴士停靠點，或細選該區路線）</div>
-        <div class="flex flex-wrap gap-1.5 text-xs" id="airport-main-filters">
-          <button type="button" data-airmode="ANY_RAIL" onclick="toggleChip(this)" class="filter-chip px-3 py-1.5 rounded-full border border-sky-300 bg-sky-50 text-sky-900 font-medium">🚆 直達機場鐵路站點</button>
-          <button type="button" data-airmode="ANY_BUS" onclick="toggleChip(this)" class="filter-chip px-3 py-1.5 rounded-full border border-indigo-300 bg-indigo-50 text-indigo-900 font-medium">🚌 機場利木津巴士站點</button>
-        </div>
-        <div class="flex flex-wrap gap-1.5 text-xs pt-0.5" id="airport-sub-filters"></div>
-      </div>
-
-      <div>
-        <div class="text-xs font-semibold text-slate-700 mb-1.5">🏪 必備生活機能（勾選上方距離限制則套用該上限，未勾選則預設 300m 內）</div>
-        <div class="flex flex-wrap gap-1.5 text-xs" id="amenity-filters">
-          <button type="button" data-am="lawson" onclick="toggleChip(this)" class="filter-chip px-2.5 py-1 rounded-full border border-slate-300 bg-slate-50 text-slate-700">Lawson</button>
-          <button type="button" data-am="seven" onclick="toggleChip(this)" class="filter-chip px-2.5 py-1 rounded-full border border-slate-300 bg-slate-50 text-slate-700">7-Eleven</button>
-          <button type="button" data-am="familymart" onclick="toggleChip(this)" class="filter-chip px-2.5 py-1 rounded-full border border-slate-300 bg-slate-50 text-slate-700">FamilyMart</button>
-          <button type="button" data-am="starbucks" onclick="toggleChip(this)" class="filter-chip px-2.5 py-1 rounded-full border border-amber-300 bg-amber-50 text-slate-800">☕ 星巴克</button>
-          <button type="button" data-am="doutor" onclick="toggleChip(this)" class="filter-chip px-2.5 py-1 rounded-full border border-amber-300 bg-amber-50 text-slate-800">☕ 羅多倫 Doutor</button>
-          <button type="button" data-am="komeda" onclick="toggleChip(this)" class="filter-chip px-2.5 py-1 rounded-full border border-amber-300 bg-amber-50 text-slate-800">☕ 客美多 Komeda</button>
-          <button type="button" data-am="mcdonalds" onclick="toggleChip(this)" class="filter-chip px-2.5 py-1 rounded-full border border-orange-300 bg-orange-50 text-slate-800">🍔 麥當勞</button>
-          <button type="button" data-am="mos" onclick="toggleChip(this)" class="filter-chip px-2.5 py-1 rounded-full border border-orange-300 bg-orange-50 text-slate-800">🍔 摩斯漢堡</button>
-          <button type="button" data-am="kfc" onclick="toggleChip(this)" class="filter-chip px-2.5 py-1 rounded-full border border-orange-300 bg-orange-50 text-slate-800">🍗 肯德基 KFC</button>
-          <button type="button" data-am="drugstore" onclick="toggleChip(this)" class="filter-chip px-2.5 py-1 rounded-full border border-slate-300 bg-slate-50 text-slate-700">💊 藥妝店</button>
-          <button type="button" data-am="supermarket" onclick="toggleChip(this)" class="filter-chip px-2.5 py-1 rounded-full border border-slate-300 bg-slate-50 text-slate-700">🛒 超市</button>
-        </div>
-      </div>
-
-      <div>
-        <div class="text-xs font-semibold text-slate-700 mb-1.5">🏨 連鎖商務飯店品牌（未選則顯示全部 15 品牌）</div>
-        <div class="flex flex-wrap gap-1.5 text-xs" id="brand-filters"></div>
-      </div>
-
-      <div class="flex gap-2 pt-2 border-t border-slate-100">
-        <button type="button" id="btn-search" onclick="applyFilters()" class="flex-1 py-2.5 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 active:scale-[0.99] text-white font-bold text-sm shadow-sm transition flex items-center justify-center gap-1.5">
-          <span>🔍</span>
-          <span id="btn-search-text">套用條件並搜尋</span>
-        </button>
-        <button type="button" onclick="resetAllFilters()" class="py-2.5 px-3.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs border border-slate-300">
-          清除重設
-        </button>
-      </div>
-    </section>
-
-    <!-- 互動地圖（淡色清爽預設 + 3種圖層切換） -->
-    <section class="relative bg-white rounded-xl overflow-hidden shadow-sm border border-slate-200">
-      <div id="map"></div>
-      <button type="button" id="btn-locate" onclick="locateUser()" class="absolute top-2.5 right-2.5 z-[500] flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/95 hover:bg-white text-slate-800 border border-slate-300 shadow-md text-xs font-semibold active:scale-95 transition">
-        <span id="locate-icon">📍</span>
-        <span id="locate-text">定位我的位置</span>
-      </button>
-      <div class="absolute bottom-2.5 left-2.5 z-[500] flex gap-1 bg-white/95 p-1 rounded-lg border border-slate-300 shadow-sm text-[11px]">
-        <button type="button" onclick="setBaseMap('pale')" id="map-style-pale" class="map-style-btn px-2 py-1 rounded bg-slate-900 text-white font-semibold">淡色簡潔</button>
-        <button type="button" onclick="setBaseMap('osm')" id="map-style-osm" class="map-style-btn px-2 py-1 rounded text-slate-700 hover:bg-slate-100">經典街道</button>
-        <button type="button" onclick="setBaseMap('std')" id="map-style-std" class="map-style-btn px-2 py-1 rounded text-slate-700 hover:bg-slate-100">詳細地形</button>
-      </div>
-    </section>
-
-    <section id="results-section" class="space-y-2">
-      <div class="flex flex-wrap justify-between items-center gap-2 px-1">
-        <h2 class="text-sm font-bold text-slate-800">符合條件飯店 (<span id="result-count">0</span> 間)</h2>
-        <div class="flex items-center gap-2">
-          <span id="sort-status-label" class="text-xs text-slate-500">依距離車站由近到遠排序</span>
-          <button type="button" id="btn-toggle-sort" onclick="toggleSortMode()" class="hidden text-xs px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200 font-medium">切換排序</button>
-        </div>
-      </div>
-      <div id="hotel-list" class="grid grid-cols-1 md:grid-cols-2 gap-2.5"></div>
-    </section>
-  </main>
-
-  <script>
-    const BRANDS = [
-      "Toyoko Inn", "Dormy Inn", "APA Hotel", "Super Hotel", "Via Inn",
-      "Route Inn", "Comfort Hotel", "Daiwa Roynet", "Richmond Hotel",
-      "Fresa Inn", "Mitsui Garden", "Tokyu Stay", "Washington Hotel",
-      "LiveMax", "Hotel Metropolitan"
-    ];
-
-    const LINE_NAMES = {
-      "RAIL_HARUKA": "關空 JR HARUKA", "RAIL_NANKAI": "關空 南海電鐵",
-      "RAIL_NEX": "成田 JR N'EX", "RAIL_KEISEI": "成田 京成電鐵",
-      "RAIL_KEIKYU": "羽田 京急線", "RAIL_MONO": "羽田 東京單軌",
-      "RAIL_MEITETSU": "中部 名鐵機場線", "RAIL_FUKUOKA": "福岡地下鐵機場線",
-      "RAIL_CTS": "新千歲 JR快速Airport", "RAIL_SENDAI": "仙台機場Access線",
-      "RAIL_MIYAZAKI": "宮崎機場線",
-      "BUS_KIX": "關空利木津巴士", "BUS_TYO": "成田/羽田利木津巴士",
-      "BUS_NGO": "中部機場巴士", "BUS_FUK": "福岡機場巴士", "BUS_KKJ": "北九州機場巴士",
-      "BUS_KMJ": "阿蘇熊本機場巴士", "BUS_KOJ": "鹿兒島機場巴士",
-      "BUS_CTS": "新千歲機場巴士", "BUS_HKD": "函館機場巴士",
-      "BUS_HIJ": "廣島機場巴士", "BUS_OKJ": "岡山機場巴士",
-      "BUS_TAK": "高松機場巴士", "BUS_AOJ": "青森機場巴士"
-    };
-
-    const REGION_AIRPORT_SUBS = {
-      "all": ["RAIL_HARUKA", "RAIL_NANKAI", "RAIL_NEX", "RAIL_KEISEI", "RAIL_KEIKYU", "RAIL_MEITETSU", "RAIL_FUKUOKA", "RAIL_CTS", "BUS_KMJ"],
-      "kansai": ["RAIL_HARUKA", "RAIL_NANKAI", "BUS_KIX"],
-      "tokyo": ["RAIL_NEX", "RAIL_KEISEI", "RAIL_KEIKYU", "RAIL_MONO", "BUS_TYO"],
-      "tokai": ["RAIL_MEITETSU", "BUS_NGO"],
-      "kyushu_north": ["RAIL_FUKUOKA", "BUS_FUK", "BUS_KKJ"],
-      "kyushu_south": ["RAIL_MIYAZAKI", "BUS_KMJ", "BUS_KOJ"],
-      "hokkaido": ["RAIL_CTS", "BUS_CTS", "BUS_HKD"],
-      "chugoku": ["BUS_HIJ", "BUS_OKJ", "BUS_TAK"],
-      "tohoku": ["RAIL_SENDAI", "BUS_AOJ"]
-    };
-
-    const REGION_VIEWS = {
-      "all": [36.2, 137.5, 5], "kansai": [34.69, 135.50, 11], "tokyo": [35.68, 139.76, 11],
-      "tokai": [35.17, 136.88, 10], "kyushu_north": [33.59, 130.40, 11], "kyushu_south": [32.30, 130.70, 9],
-      "hokkaido": [43.06, 141.35, 10], "chugoku": [34.45, 133.20, 9], "tohoku": [38.90, 140.90, 8]
-    };
-
-    // OSM 漏標之新建分店補充清單
-    const SUPPLEMENTAL_HOTELS = [
-      {
-        id: "supp_kumamoto_superhotel",
-        name: "スーパーホテル熊本駅前天然温泉",
-        brand: "Super Hotel",
-        area: "熊本県 熊本市 西区 春日",
-        region: "kyushu_south",
-        lat: 32.7905,
-        lng: 130.6908,
-        station_name: "熊本",
-        station_dist: 160,
-        airport_lines: ["BUS_KMJ"],
-        amenities: {
-          lawson: 180, seven: 140, familymart: 120,
-          starbucks: 190, doutor: 9999, komeda: 9999,
-          mcdonalds: 210, mos: 9999, kfc: 230,
-          drugstore: 180, supermarket: 220
-        }
-      }
-    ];
-
-    // 已知無分店後綴之重點東橫 INN 座標對照表（即時將純「東横イン」補全為正式店名）
-    const KNOWN_BRANCH_OVERRIDES = [
-      [32.8012, 130.7032, "Toyoko Inn", "東横INN 熊本桜町バスターミナル前"],
-      [32.7905, 130.6901, "Toyoko Inn", "東横INN 熊本駅前"],
-      [32.7972, 130.7061, "Toyoko Inn", "東横INN 熊本新市街"],
-      [32.7988, 130.7078, "Toyoko Inn", "東横INN 熊本城通町筋"]
-    ];
-
-    const FALLBACK_AREAS = [
-      [34.69, 135.50, "大阪府 大阪市 梅田 難波 心齋橋"], [35.01, 135.76, "京都府 京都市 河原町 烏丸"],
-      [34.69, 135.19, "兵庫県 兵庫縣 神戶市 三宮"], [35.68, 139.76, "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川"],
-      [35.44, 139.63, "神奈川県 神奈川縣 橫濱市"], [35.60, 140.10, "千葉県 千葉縣 千葉市"],
-      [35.17, 136.88, "愛知県 愛知縣 名古屋市 榮"], [34.71, 137.72, "静岡県 靜岡縣 濱松市 靜岡市"],
-      [33.59, 130.40, "福岡県 福岡縣 福岡市 博多 天神 小倉"], [32.80, 130.70, "熊本県 熊本縣 熊本市"],
-      [31.59, 130.55, "鹿児島県 鹿兒島縣 鹿兒島市 宮崎県 宮崎縣"], [43.06, 141.35, "北海道 札幌市 すすきの 薄野 函館 旭川"],
-      [34.38, 132.45, "広島県 廣島縣 廣島市 岡山県 岡山縣 高松市"], [38.26, 140.86, "宮城県 宮城縣 仙台市 青森 盛岡"]
-    ];
-
-    const ZH_TO_JA_MAP = [
-      [/廣島/g, "広島"], [/澀谷/g, "渋谷"], [/橫濱/g, "横浜"], [/淺草/g, "浅草"],
-      [/關西/g, "関西"], [/關東/g, "関東"], [/靜岡/g, "静岡"], [/濱松/g, "浜松"],
-      [/鹿兒島/g, "鹿児島"], [/兒島/g, "児島"], [/豐橋/g, "豊橋"], [/澤/g, "沢"],
-      [/瀧/g, "滝"], [/鐵/g, "鉄"], [/東橫/g, "東横"], [/榮町/g, "栄町"], [/榮/g, "栄"],
-      [/心齋橋/g, "心斎橋"], [/齋/g, "斎"], [/櫻町/g, "桜町"], [/總站/g, "ターミナル"],
-      [/縣/g, "県"], [/區/g, "区"]
-    ];
-
-    function parseSearchQuery(rawInput) {
-      let raw = rawInput.trim().toLowerCase();
-      if (!raw) return { tokens: [], isStationMode: false };
-      const isStationMode = /車站|火車站|地鐵站|站|駅/.test(raw) && !/巴士總站|バスターミナル/.test(raw);
-      let cleaned = raw.replace(/車站|火車站|地鐵站|站|駅/g, " ");
-      for (const [re, ja] of ZH_TO_JA_MAP) {
-        cleaned = cleaned.replace(re, ja);
-      }
-      return { tokens: cleaned.split(/\s+/).filter(Boolean), isStationMode };
+      const txt = document.getElementById('btn-search-text');
+      btn.classList.remove('bg-amber-600', 'hover:bg-amber-700');
+      btn.classList.add('bg-blue-600', 'hover:bg-blue-700');
+      txt.textContent = '套用條件並搜尋';
     }
 
-    function calcDistanceM(lat1, lon1, lat2, lon2) {
-      const R = 6371000;
-      const toRad = deg => deg * Math.PI / 180;
-      const dLat = toRad(lat2 - lat1);
-      const dLon = toRad(lon2 - lon1);
-      const a = Math.sin(dLat / 2) ** 2 + Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLon / 2) ** 2;
-      return Math.round(R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)));
+    function toggleSliderState(type) {
+      const cb = document.getElementById(`enable-${type}-dist`);
+      const slider = document.getElementById(`${type}-dist`);
+      slider.disabled = !cb.checked;
+      slider.classList.toggle('opacity-40', !cb.checked);
+      updateSliderLabels();
     }
 
-    // 自動為缺少分店後綴的純「東横イン」補上分店名稱
-    function enrichHotelName(h) {
-      for (const [oLat, oLng, oBrand, oTitle] of KNOWN_BRANCH_OVERRIDES) {
-        if (oBrand === h.brand && calcDistanceM(h.lat, h.lng, oLat, oLng) <= 150) {
-          return oTitle;
-        }
-      }
-      const rawName = (h.name || "").trim();
-      if (/^(東横イン|東橫イン|東横inn|toyoko\s*inn)$/i.test(rawName)) {
-        const cleanSt = (h.station_name || "").replace(/駅$/, "");
-        if (cleanSt && cleanSt !== "周邊車站") {
-          return h.station_dist <= 350 ? `東横INN ${cleanSt}駅前` : `東横INN（${cleanSt}駅周邊）`;
-        }
-      }
-      return rawName;
+    function updateSliderLabels() {
+      const stEnabled = document.getElementById('enable-station-dist').checked;
+      const stVal = document.getElementById('station-dist').value;
+      const stLabel = document.getElementById('station-dist-label');
+      stLabel.textContent = stEnabled ? `${stVal} 公尺內` : '不限距離';
+      stLabel.className = stEnabled ? 'text-blue-600 font-bold' : 'text-slate-400 font-medium';
+
+      const amEnabled = document.getElementById('enable-amenity-dist').checked;
+      const amVal = document.getElementById('amenity-dist').value;
+      const amLabel = document.getElementById('amenity-dist-label');
+      amLabel.textContent = amEnabled ? `${amVal} 公尺內` : '不限距離（預設 300m）';
+      amLabel.className = amEnabled ? 'text-emerald-600 font-bold' : 'text-slate-400 font-medium';
     }
 
-    let allHotels = [];
-    let map, markersLayer, userLayer, currentTileLayer;
-    let userPos = null;
-    let sortByUser = false;
+    function formatDist(m) {
+      return m >= 1000 ? `${(m / 1000).toFixed(1)}km` : `${m}m`;
+    }
 
-    const TILE_LAYERS = {
-      pale: {
-        url: 'https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png',
-        attr: '&copy; <a href="https://maps.gsi.go.jp/development/ichiran.html">国土地理院 (淡色)</a>'
-      },
-      osm: {
-        url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-        attr: '&copy; OpenStreetMap contributors'
-      },
-      std: {
-        url: 'https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png',
-        attr: '&copy; <a href="https://maps.gsi.go.jp/development/ichiran.html">国土地理院 (標準)</a>'
+    function showNotice(msg) {
+      const statusEl = document.getElementById('data-status');
+      const prevText = statusEl.textContent;
+      const prevClass = statusEl.className;
+      statusEl.textContent = `⚠️ ${msg}`;
+      statusEl.className = 'text-xs text-amber-300 mt-0.5';
+      setTimeout(() => {
+        statusEl.textContent = prevText;
+        statusEl.className = prevClass;
+      }, 4000);
+    }
+
+    function locateUser() {
+      if (!navigator.geolocation) {
+        showNotice('您的瀏覽器不支援 GPS 定位功能');
+        return;
       }
-    };
+      const textEl = document.getElementById('locate-text');
+      const iconEl = document.getElementById('locate-icon');
+      textEl.textContent = '定位中...';
+      iconEl.textContent = '⏳';
 
-    const brandContainer = document.getElementById('brand-filters');
-    BRANDS.forEach(b => {
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.dataset.brand = b;
-      btn.textContent = b;
-      btn.className = 'filter-chip px-2.5 py-1 rounded-full border border-slate-300 bg-slate-50 text-slate-700';
-      btn.onclick = () => toggleChip(btn);
-      brandContainer.appendChild(btn);
-    });
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          userPos = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+          const acc = Math.min(pos.coords.accuracy || 50, 300);
 
-    function renderAirportSubChips(regionKey) {
-      const container = document.getElementById('airport-sub-filters');
-      container.innerHTML = '';
-      const codes = REGION_AIRPORT_SUBS[regionKey] || REGION_AIRPORT_SUBS["all"];
-      codes.forEach(code => {
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.dataset.line = code;
-        btn.textContent = LINE_NAMES[code] || code;
-        btn.className = 'filter-chip px-2.5 py-1 rounded-full border border-slate-300 bg-slate-50 text-slate-700';
-        btn.onclick = () => toggleChip(btn);
-        container.appendChild(btn);
+          userLayer.clearLayers();
+          L.circle([userPos.lat, userPos.lng], {
+            radius: acc, color: '#2563eb', fillColor: '#3b82f6', fillOpacity: 0.15, weight: 1
+          }).addTo(userLayer);
+
+          L.circleMarker([userPos.lat, userPos.lng], {
+            radius: 7, color: '#ffffff', weight: 2, fillColor: '#2563eb', fillOpacity: 1
+          }).bindPopup('<div class="text-xs font-bold text-blue-700">📍 您目前所在位置</div>').addTo(userLayer).openPopup();
+
+          map.setView([userPos.lat, userPos.lng], 15);
+          textEl.textContent = '重新定位';
+          iconEl.textContent = '🔵';
+
+          sortByUser = true;
+          document.getElementById('btn-toggle-sort').classList.remove('hidden');
+          applyFilters();
+        },
+        (err) => {
+          textEl.textContent = '定位我的位置';
+          iconEl.textContent = '📍';
+          showNotice('無法取得目前位置，請確認已開啟瀏覽器定位權限');
+        },
+        { enableHighAccuracy: true, timeout: 10000, maximumAge: 30000 }
+      );
+    }
+
+    function toggleSortMode() {
+      if (!userPos) return;
+      sortByUser = !sortByUser;
+      applyFilters();
+    }
+
+    function toggleChip(el) {
+      el.classList.toggle('chip-active');
+      markDirty();
+    }
+
+    function resetAllFilters() {
+      document.querySelectorAll('.filter-chip').forEach(el => el.classList.remove('chip-active'));
+      document.getElementById('enable-station-dist').checked = false;
+      document.getElementById('enable-amenity-dist').checked = false;
+      document.getElementById('station-dist').value = 500;
+      document.getElementById('amenity-dist').value = 300;
+      toggleSliderState('station');
+      toggleSliderState('amenity');
+      document.getElementById('keyword-input').value = '';
+      applyFilters();
+    }
+
+    function inferArea(h) {
+      if (h.area) return h.area;
+      let best = "", minD = 999999;
+      for (const [lat, lng, label] of FALLBACK_AREAS) {
+        const d = Math.hypot(h.lat - lat, h.lng - lng);
+        if (d < minD) { minD = d; best = label; }
+      }
+      return best;
+    }
+
+    function mergeSupplemental(rawList, regionKey) {
+      const merged = [...rawList];
+      const relevantSupps = SUPPLEMENTAL_HOTELS.filter(s => regionKey === 'all' || s.region === regionKey);
+      for (const s of relevantSupps) {
+        const exists = merged.some(h => h.brand === s.brand && calcDistanceM(h.lat, h.lng, s.lat, s.lng) < 120);
+        if (!exists) merged.push(s);
+      }
+      return merged;
+    }
+
+    async function switchDataset(ds) {
+      document.querySelectorAll('.ds-btn').forEach(b => {
+        b.classList.remove('bg-emerald-600', 'text-white');
+        b.classList.add('bg-slate-700', 'text-slate-200');
       });
-    }
-
-    map = L.map('map').setView([36.2, 137.5], 5);
-    currentTileLayer = L.tileLayer(TILE_LAYERS.pale.url, { attribution: TILE_LAYERS.pale.attr, maxZoom: 18 }).addTo(map);
-    markersLayer = L.layerGroup().addTo(map);
-    userLayer = L.layerGroup().addTo(map);
-
-    function setBaseMap(styleKey) {
-      const cfg = TILE_LAYERS[styleKey] || TILE_LAYERS.pale;
-      if (currentTileLayer) map.removeLayer(currentTileLayer);
-      currentTileLayer = L.tileLayer(cfg.url, { attribution: cfg.attr, maxZoom: 18 }).addTo(map);
-      document.querySelectorAll('.map-style-btn').forEach(b => {
-        b.classList.remove('bg-slate-900', 'text-white', 'font-semibold');
-        b.classList.add('text-slate-700', 'hover:bg-slate-100');
-      });
-      const activeBtn = document.getElementById(`map-style-${styleKey}`);
+      const activeBtn = document.getElementById(`btn-ds-${ds}`);
       if (activeBtn) {
-        activeBtn.classList.remove('text-slate-700', 'hover:bg-slate-100');
-        activeBtn.classList.add('bg-slate-900', 'text-white', 'font-semibold');
+        activeBtn.classList.remove('bg-slate-700', 'text-slate-200');
+        activeBtn.classList.add('bg-emerald-600', 'text-white');
       }
+
+      renderAirportSubChips(ds);
+
+      const statusEl = document.getElementById('data-status');
+      statusEl.textContent = '⏳ 讀取圖資中...';
+      statusEl.className = 'text-xs text-amber-300 mt-0.5';
+
+      try {
+        const res = await fetch(`./data/hotels_${ds}.json?t=${Date.now()}`);
+        if (!res.ok) throw new Error('JSON_UNAVAILABLE');
+        const raw = mergeSupplemental(await res.json(), ds);
+        allHotels = raw.map(h => {
+          const displayName = enrichHotelName(h);
+          return {
+            ...h,
+            name: displayName,
+            _stationLower: (h.station_name || '').toLowerCase(),
+            _fullSearchStr: `${displayName} ${h.station_name} ${h.brand} ${inferArea(h)}`.toLowerCase()
+          };
+        });
+        statusEl.textContent = `🟢 已連線真實圖資（共載入 ${allHotels.length} 間飯店）`;
+        statusEl.className = 'text-xs text-emerald-400 mt-0.5';
+      } catch (err) {
+        // 在獨立預覽環境無法讀取外部 JSON 時，自動無縫載入內建示範資料集
+        const sampleBase = ds === 'all'
+          ? PREVIEW_SAMPLE_HOTELS
+          : PREVIEW_SAMPLE_HOTELS.filter(h => h.region === ds);
+        allHotels = sampleBase.map(h => {
+          const displayName = enrichHotelName(h);
+          return {
+            ...h,
+            name: displayName,
+            _stationLower: (h.station_name || '').toLowerCase(),
+            _fullSearchStr: `${displayName} ${h.station_name} ${h.brand} ${inferArea(h)}`.toLowerCase()
+          };
+        });
+        statusEl.textContent = `🟡 預覽示範模式（已載入 ${allHotels.length} 間精選代表飯店，部署後自動連線全國圖資）`;
+        statusEl.className = 'text-xs text-amber-300 mt-0.5';
+      }
+
+      const view = REGION_VIEWS[ds] || [36.2, 137.5, 5];
+      map.setView([view[0], view[1]], view[2]);
+      setTimeout(() => map.invalidateSize(), 200);
+      applyFilters();
     }
 
-    function markDirty() {
-      const btn = document.getElementById('btn-search');
-      const txt = document.getElementById('btn-search-text');
-      btn.classList.remove('bg-blue-600', 'hover:bg-blue-700');
-      btn.classList.add('bg-amber-600', 'hover:bg-amber-700');
-      txt.textContent = '條件已變更，點此搜尋更新';
+    function applyFilters() {
+      clearDirty();
+      const stEnabled = document.getElementById('enable-station-dist').checked;
+      const maxStationDist = stEnabled ? parseInt(document.getElementById('station-dist').value, 10) : Infinity;
+
+      const amEnabled = document.getElementById('enable-amenity-dist').checked;
+      const sliderAmDist = parseInt(document.getElementById('amenity-dist').value, 10);
+      const effectiveAmDist = amEnabled ? sliderAmDist : 300;
+
+      const { tokens, isStationMode } = parseSearchQuery(document.getElementById('keyword-input').value);
+      const selAirModes = Array.from(document.querySelectorAll('#airport-main-filters .chip-active')).map(el => el.dataset.airmode);
+      const selSubLines = Array.from(document.querySelectorAll('#airport-sub-filters .chip-active')).map(el => el.dataset.line);
+      const selAms = Array.from(document.querySelectorAll('#amenity-filters .chip-active')).map(el => el.dataset.am);
+      const selBrands = Array.from(document.querySelectorAll('#brand-filters .chip-active')).map(el => el.dataset.brand);
+
+      const filtered = allHotels
+        .filter(h => {
+          if (h.station_dist > maxStationDist) return false;
+          if (selBrands.length > 0 && !selBrands.includes(h.brand)) return false;
+
+          const lines = h.airport_lines || [];
+          if (selAirModes.length > 0) {
+            const hasRail = lines.some(l => l.startsWith('RAIL_') || ['JR_HARUKA', 'NANKAI', 'JR_NEX', 'KEISEI', 'KEIKYU', 'MONORAIL'].includes(l));
+            const hasBus = lines.some(l => l.startsWith('BUS_'));
+            const matchMode = selAirModes.some(m => (m === 'ANY_RAIL' && hasRail) || (m === 'ANY_BUS' && hasBus));
+            if (!matchMode) return false;
+          }
+          if (selSubLines.length > 0 && !selSubLines.some(l => lines.includes(l))) return false;
+
+          if (selAms.length > 0 && !selAms.every(am => (h.amenities?.[am] ?? 9999) <= effectiveAmDist)) return false;
+
+          if (tokens.length > 0) {
+            if (isStationMode) {
+              if (!tokens.every(tk => h._stationLower.includes(tk))) return false;
+            } else {
+              if (!tokens.every(tk => h._fullSearchStr.includes(tk))) return false;
+            }
+          }
+          return true;
+        })
+        .map(h => ({
+          ...h,
+          _userDist: userPos ? calcDistanceM(userPos.lat, userPos.lng, h.lat, h.lng) : null
+        }));
+
+      const sortLabel = document.getElementById('sort-status-label');
+      if (sortByUser && userPos) {
+        filtered.sort((a, b) => a._userDist - b._userDist);
+        sortLabel.textContent = '🔵 依距離我目前位置由近到遠排序';
+        sortLabel.className = 'text-xs text-blue-600 font-semibold';
+      } else {
+        filtered.sort((a, b) => a.station_dist - b.station_dist);
+        sortLabel.textContent = isStationMode && tokens.length > 0
+          ? '🚉 已鎖定該車站周邊（依距離車站排序）'
+          : '依距離車站由近到遠排序';
+        sortLabel.className = isStationMode && tokens.length > 0
+          ? 'text-xs text-blue-600 font-semibold'
+          : 'text-xs text-slate-500';
+      }
+
+      if (tokens.length > 0 && filtered.length > 0) {
+        map.setView([filtered[0].lat, filtered[0].lng], 15);
+      }
+
+      renderResults(filtered, effectiveAmDist);
     }
 
-    function clearDirty() {
-      const btn = document.getElementById('btn-search');
-      const txt = docume<!DOCTYPE html>
-<html lang="zh-TW">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>日本連鎖商務飯店地圖篩選器</title>
-  <meta name="theme-color" content="#0f172a">
-  <link rel="manifest" href="./manifest.json">
-  <link rel="apple-touch-icon" href="./icon-192.png">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-    #map { height: 48vh; min-height: 300px; z-index: 1; background: #e2e8f0; }
-    .chip-active {
-      background-color: #0f172a !important;
-      color: #ffffff !important;
-      border-color: #0f172a !important;
-      font-weight: 700 !important;
-      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.3);
-    }
-    .chip-active::before { content: "✓ "; }
-    .leaflet-popup-content a.gmap-popup-btn {
-      color: #ffffff !important;
-      text-decoration: none !important;
-    }
-    .no-scrollbar::-webkit-scrollbar { display: none; }
-    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-  </style>
-</head>
-<body class="bg-slate-50 text-slate-800 pb-10">
+    function renderResults(list, badgeMaxDist) {
+      document.getElementById('result-count').textContent = list.length;
+      markersLayer.clearLayers();
+      const listEl = document.getElementById('hotel-list');
+      listEl.innerHTML = '';
 
-  <header class="bg-slate-900 text-white px-4 py-3 sticky top-0 z-30 shadow-md">
-    <div class="max-w-5xl mx-auto space-y-2">
-      <div class="flex items-center justify-between">
-        <div>
-          <h1 class="text-base font-bold tracking-wide">🇯🇵 日本連鎖商務飯店篩選器</h1>
-          <p id="data-status" class="text-xs text-emerald-400 mt-0.5">⏳ 正在載入雲端最新圖資...</p>
-        </div>
-      </div>
-      <div class="flex gap-1.5 text-xs overflow-x-auto no-scrollbar pb-0.5">
-        <button onclick="switchDataset('all')" id="btn-ds-all" class="ds-btn shrink-0 px-2.5 py-1.5 rounded bg-emerald-600 text-white font-medium">全國總覽</button>
-        <button onclick="switchDataset('kansai')" id="btn-ds-kansai" class="ds-btn shrink-0 px-2.5 py-1.5 rounded bg-slate-700 text-slate-200">關西圈</button>
-        <button onclick="switchDataset('tokyo')" id="btn-ds-tokyo" class="ds-btn shrink-0 px-2.5 py-1.5 rounded bg-slate-700 text-slate-200">關東首都圈</button>
-        <button onclick="switchDataset('tokai')" id="btn-ds-tokai" class="ds-btn shrink-0 px-2.5 py-1.5 rounded bg-slate-700 text-slate-200">東海(名古屋)</button>
-        <button onclick="switchDataset('kyushu_north')" id="btn-ds-kyushu_north" class="ds-btn shrink-0 px-2.5 py-1.5 rounded bg-slate-700 text-slate-200">北九州(福岡)</button>
-        <button onclick="switchDataset('kyushu_south')" id="btn-ds-kyushu_south" class="ds-btn shrink-0 px-2.5 py-1.5 rounded bg-slate-700 text-slate-200">南九州(熊本鹿兒島)</button>
-        <button onclick="switchDataset('hokkaido')" id="btn-ds-hokkaido" class="ds-btn shrink-0 px-2.5 py-1.5 rounded bg-slate-700 text-slate-200">北海道</button>
-        <button onclick="switchDataset('chugoku')" id="btn-ds-chugoku" class="ds-btn shrink-0 px-2.5 py-1.5 rounded bg-slate-700 text-slate-200">中國・四國</button>
-        <button onclick="switchDataset('tohoku')" id="btn-ds-tohoku" class="ds-btn shrink-0 px-2.5 py-1.5 rounded bg-slate-700 text-slate-200">東北</button>
-      </div>
-    </div>
-  </header>
+      const amLabels = {
+        lawson: 'Lawson', seven: '7-11', familymart: '全家',
+        starbucks: '星巴克', doutor: '羅多倫', komeda: '客美多',
+        mcdonalds: '麥當勞', mos: '摩斯', kfc: 'KFC',
+        drugstore: '藥妝', supermarket: '超市'
+      };
 
-  <main class="max-w-5xl mx-auto px-3 pt-3 space-y-3">
-    <section class="bg-white rounded-xl p-3.5 shadow-sm border border-slate-200 space-y-3.5">
-      <div>
-        <label class="block text-xs font-semibold text-slate-700 mb-1">🔍 搜尋車站、分店名、區域或都道府縣（加「站」字＝精準搜該車站周邊；不加「站」＝搜全區）</label>
-        <input type="text" id="keyword-input" placeholder="例如「熊本站」、「櫻町」、「梅田」、「博多」..." oninput="markDirty()" onkeydown="if(event.key==='Enter') applyFilters()" class="w-full text-sm px-3 py-1.5 border border-slate-300 rounded-lg focus:outline-none focus:border-slate-900">
-      </div>
+      list.slice(0, 80).forEach(h => {
+        const gmapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(h.name)}&center=${h.lat},${h.lng}`;
+        const linesHtml = (h.airport_lines || []).map(l => {
+          const isBus = l.startsWith('BUS_');
+          const icon = isBus ? '🚌' : '🚆';
+          const color = isBus ? 'bg-indigo-100 text-indigo-800' : 'bg-sky-100 text-sky-800';
+          return `<span class="px-1.5 py-0.5 ${color} rounded text-[11px] font-medium">${icon} ${LINE_NAMES[l] || l}</span>`;
+        }).join(' ');
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-        <div class="p-2.5 rounded-lg border border-slate-200 bg-slate-50/70">
-          <div class="flex items-center justify-between text-xs font-semibold text-slate-700 mb-1.5">
-            <label class="flex items-center gap-1.5 cursor-pointer select-none">
-              <input type="checkbox" id="enable-station-dist" onchange="toggleSliderState('station'); markDirty()" class="w-4 h-4 accent-slate-900 rounded">
-              <span>🚉 限制離車站距離</span>
-            </label>
-            <span id="station-dist-label" class="text-slate-400 font-medium">不限距離</span>
+        const amBadges = [];
+        for (const [k, label] of Object.entries(amLabels)) {
+          const d = h.amenities?.[k];
+          if (d !== undefined && d <= badgeMaxDist) {
+            amBadges.push(`<span class="px-1.5 py-0.5 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded text-[11px]">${label} ${d}m</span>`);
+          }
+        }
+
+        const userDistBadge = h._userDist !== null
+          ? `<span class="text-[11px] font-bold px-1.5 py-0.5 rounded bg-blue-100 text-blue-800">📍 距我 ${formatDist(h._userDist)}</span>`
+          : '';
+
+        const marker = L.marker([h.lat, h.lng]).bindPopup(`
+          <div class="text-xs space-y-1.5">
+            <div class="font-bold text-slate-900">${h.name}</div>
+            <div class="text-slate-600">🚉 ${h.station_name}（約 ${h.station_dist}m）</div>
+            ${h._userDist !== null ? `<div class="text-blue-700 font-semibold">📍 距離目前位置約 ${formatDist(h._userDist)}</div>` : ''}
+            <a href="${gmapUrl}" target="_blank" class="gmap-popup-btn inline-block mt-1 px-2.5 py-1.5 bg-blue-600 rounded text-[11px] font-bold shadow-sm">🗺️ 開啟 Google 地圖</a>
           </div>
-          <input type="range" id="station-dist" min="100" max="2000" step="100" value="500" disabled oninput="updateSliderLabels(); markDirty()" class="w-full accent-slate-900 opacity-40">
-        </div>
+        `);
+        markersLayer.addLayer(marker);
 
-        <div class="p-2.5 rounded-lg border border-slate-200 bg-slate-50/70">
-          <div class="flex items-center justify-between text-xs font-semibold text-slate-700 mb-1.5">
-            <label class="flex items-center gap-1.5 cursor-pointer select-none">
-              <input type="checkbox" id="enable-amenity-dist" onchange="toggleSliderState('amenity'); markDirty()" class="w-4 h-4 accent-emerald-600 rounded">
-              <span>🏪 限制機能步行距離</span>
-            </label>
-            <span id="amenity-dist-label" class="text-slate-400 font-medium">不限距離（預設 300m）</span>
+        const card = document.createElement('div');
+        card.className = 'bg-white p-3 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between gap-2';
+        card.innerHTML = `
+          <div>
+            <div class="flex items-start justify-between gap-2">
+              <div class="flex flex-wrap items-center gap-1">
+                <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-slate-800 text-white">${h.brand}</span>
+                ${userDistBadge}
+              </div>
+              <span class="text-xs font-semibold text-blue-600 shrink-0">🚉 ${h.station_name} (${h.station_dist}m)</span>
+            </div>
+            <h3 class="font-bold text-sm text-slate-900 mt-1.5">${h.name}</h3>
+            <div class="flex flex-wrap gap-1 mt-1.5">${linesHtml} ${amBadges.join(' ')}</div>
           </div>
-          <input type="range" id="amenity-dist" min="100" max="1000" step="100" value="300" disabled oninput="updateSliderLabels(); markDirty()" class="w-full accent-emerald-600 opacity-40">
-        </div>
-      </div>
-
-      <div class="space-y-2">
-        <div class="text-xs font-semibold text-slate-700">✈️ 機場直達交通（可一鍵篩選全區鐵路／利木津巴士停靠點，或細選該區路線）</div>
-        <div class="flex flex-wrap gap-1.5 text-xs" id="airport-main-filters">
-          <button type="button" data-airmode="ANY_RAIL" onclick="toggleChip(this)" class="filter-chip px-3 py-1.5 rounded-full border border-sky-300 bg-sky-50 text-sky-900 font-medium">🚆 直達機場鐵路站點</button>
-          <button type="button" data-airmode="ANY_BUS" onclick="toggleChip(this)" class="filter-chip px-3 py-1.5 rounded-full border border-indigo-300 bg-indigo-50 text-indigo-900 font-medium">🚌 機場利木津巴士站點</button>
-        </div>
-        <div class="flex flex-wrap gap-1.5 text-xs pt-0.5" id="airport-sub-filters"></div>
-      </div>
-
-      <div>
-        <div class="text-xs font-semibold text-slate-700 mb-1.5">🏪 必備生活機能（勾選上方距離限制則套用該上限，未勾選則預設 300m 內）</div>
-        <div class="flex flex-wrap gap-1.5 text-xs" id="amenity-filters">
-          <button type="button" data-am="lawson" onclick="toggleChip(this)" class="filter-chip px-2.5 py-1 rounded-full border border-slate-300 bg-slate-50 text-slate-700">Lawson</button>
-          <button type="button" data-am="seven" onclick="toggleChip(this)" class="filter-chip px-2.5 py-1 rounded-full border border-slate-300 bg-slate-50 text-slate-700">7-Eleven</button>
-          <button type="button" data-am="familymart" onclick="toggleChip(this)" class="filter-chip px-2.5 py-1 rounded-full border border-slate-300 bg-slate-50 text-slate-700">FamilyMart</button>
-          <button type="button" data-am="starbucks" onclick="toggleChip(this)" class="filter-chip px-2.5 py-1 rounded-full border border-amber-300 bg-amber-50 text-slate-800">☕ 星巴克</button>
-          <button type="button" data-am="doutor" onclick="toggleChip(this)" class="filter-chip px-2.5 py-1 rounded-full border border-amber-300 bg-amber-50 text-slate-800">☕ 羅多倫 Doutor</button>
-          <button type="button" data-am="komeda" onclick="toggleChip(this)" class="filter-chip px-2.5 py-1 rounded-full border border-amber-300 bg-amber-50 text-slate-800">☕ 客美多 Komeda</button>
-          <button type="button" data-am="mcdonalds" onclick="toggleChip(this)" class="filter-chip px-2.5 py-1 rounded-full border border-orange-300 bg-orange-50 text-slate-800">🍔 麥當勞</button>
-          <button type="button" data-am="mos" onclick="toggleChip(this)" class="filter-chip px-2.5 py-1 rounded-full border border-orange-300 bg-orange-50 text-slate-800">🍔 摩斯漢堡</button>
-          <button type="button" data-am="kfc" onclick="toggleChip(this)" class="filter-chip px-2.5 py-1 rounded-full border border-orange-300 bg-orange-50 text-slate-800">🍗 肯德基 KFC</button>
-          <button type="button" data-am="drugstore" onclick="toggleChip(this)" class="filter-chip px-2.5 py-1 rounded-full border border-slate-300 bg-slate-50 text-slate-700">💊 藥妝店</button>
-          <button type="button" data-am="supermarket" onclick="toggleChip(this)" class="filter-chip px-2.5 py-1 rounded-full border border-slate-300 bg-slate-50 text-slate-700">🛒 超市</button>
-        </div>
-      </div>
-
-      <div>
-        <div class="text-xs font-semibold text-slate-700 mb-1.5">🏨 連鎖商務飯店品牌（未選則顯示全部 15 品牌）</div>
-        <div class="flex flex-wrap gap-1.5 text-xs" id="brand-filters"></div>
-      </div>
-
-      <div class="flex gap-2 pt-2 border-t border-slate-100">
-        <button type="button" id="btn-search" onclick="applyFilters()" class="flex-1 py-2.5 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 active:scale-[0.99] text-white font-bold text-sm shadow-sm transition flex items-center justify-center gap-1.5">
-          <span>🔍</span>
-          <span id="btn-search-text">套用條件並搜尋</span>
-        </button>
-        <button type="button" onclick="resetAllFilters()" class="py-2.5 px-3.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold text-xs border border-slate-300">
-          清除重設
-        </button>
-      </div>
-    </section>
-
-    <!-- 互動地圖（淡色清爽預設 + 3種圖層切換） -->
-    <section class="relative bg-white rounded-xl overflow-hidden shadow-sm border border-slate-200">
-      <div id="map"></div>
-      <button type="button" id="btn-locate" onclick="locateUser()" class="absolute top-2.5 right-2.5 z-[500] flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/95 hover:bg-white text-slate-800 border border-slate-300 shadow-md text-xs font-semibold active:scale-95 transition">
-        <span id="locate-icon">📍</span>
-        <span id="locate-text">定位我的位置</span>
-      </button>
-      <div class="absolute bottom-2.5 left-2.5 z-[500] flex gap-1 bg-white/95 p-1 rounded-lg border border-slate-300 shadow-sm text-[11px]">
-        <button type="button" onclick="setBaseMap('pale')" id="map-style-pale" class="map-style-btn px-2 py-1 rounded bg-slate-900 text-white font-semibold">淡色簡潔</button>
-        <button type="button" onclick="setBaseMap('osm')" id="map-style-osm" class="map-style-btn px-2 py-1 rounded text-slate-700 hover:bg-slate-100">經典街道</button>
-        <button type="button" onclick="setBaseMap('std')" id="map-style-std" class="map-style-btn px-2 py-1 rounded text-slate-700 hover:bg-slate-100">詳細地形</button>
-      </div>
-    </section>
-
-    <section id="results-section" class="space-y-2">
-      <div class="flex flex-wrap justify-between items-center gap-2 px-1">
-        <h2 class="text-sm font-bold text-slate-800">符合條件飯店 (<span id="result-count">0</span> 間)</h2>
-        <div class="flex items-center gap-2">
-          <span id="sort-status-label" class="text-xs text-slate-500">依距離車站由近到遠排序</span>
-          <button type="button" id="btn-toggle-sort" onclick="toggleSortMode()" class="hidden text-xs px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200 font-medium">切換排序</button>
-        </div>
-      </div>
-      <div id="hotel-list" class="grid grid-cols-1 md:grid-cols-2 gap-2.5"></div>
-    </section>
-  </main>
-
-  <script>
-    const BRANDS = [
-      "Toyoko Inn", "Dormy Inn", "APA Hotel", "Super Hotel", "Via Inn",
-      "Route Inn", "Comfort Hotel", "Daiwa Roynet", "Richmond Hotel",
-      "Fresa Inn", "Mitsui Garden", "Tokyu Stay", "Washington Hotel",
-      "LiveMax", "Hotel Metropolitan"
-    ];
-
-    const LINE_NAMES = {
-      "RAIL_HARUKA": "關空 JR HARUKA", "RAIL_NANKAI": "關空 南海電鐵",
-      "RAIL_NEX": "成田 JR N'EX", "RAIL_KEISEI": "成田 京成電鐵",
-      "RAIL_KEIKYU": "羽田 京急線", "RAIL_MONO": "羽田 東京單軌",
-      "RAIL_MEITETSU": "中部 名鐵機場線", "RAIL_FUKUOKA": "福岡地下鐵機場線",
-      "RAIL_CTS": "新千歲 JR快速Airport", "RAIL_SENDAI": "仙台機場Access線",
-      "RAIL_MIYAZAKI": "宮崎機場線",
-      "BUS_KIX": "關空利木津巴士", "BUS_TYO": "成田/羽田利木津巴士",
-      "BUS_NGO": "中部機場巴士", "BUS_FUK": "福岡機場巴士", "BUS_KKJ": "北九州機場巴士",
-      "BUS_KMJ": "阿蘇熊本機場巴士", "BUS_KOJ": "鹿兒島機場巴士",
-      "BUS_CTS": "新千歲機場巴士", "BUS_HKD": "函館機場巴士",
-      "BUS_HIJ": "廣島機場巴士", "BUS_OKJ": "岡山機場巴士",
-      "BUS_TAK": "高松機場巴士", "BUS_AOJ": "青森機場巴士"
-    };
-
-    const REGION_AIRPORT_SUBS = {
-      "all": ["RAIL_HARUKA", "RAIL_NANKAI", "RAIL_NEX", "RAIL_KEISEI", "RAIL_KEIKYU", "RAIL_MEITETSU", "RAIL_FUKUOKA", "RAIL_CTS", "BUS_KMJ"],
-      "kansai": ["RAIL_HARUKA", "RAIL_NANKAI", "BUS_KIX"],
-      "tokyo": ["RAIL_NEX", "RAIL_KEISEI", "RAIL_KEIKYU", "RAIL_MONO", "BUS_TYO"],
-      "tokai": ["RAIL_MEITETSU", "BUS_NGO"],
-      "kyushu_north": ["RAIL_FUKUOKA", "BUS_FUK", "BUS_KKJ"],
-      "kyushu_south": ["RAIL_MIYAZAKI", "BUS_KMJ", "BUS_KOJ"],
-      "hokkaido": ["RAIL_CTS", "BUS_CTS", "BUS_HKD"],
-      "chugoku": ["BUS_HIJ", "BUS_OKJ", "BUS_TAK"],
-      "tohoku": ["RAIL_SENDAI", "BUS_AOJ"]
-    };
-
-    const REGION_VIEWS = {
-      "all": [36.2, 137.5, 5], "kansai": [34.69, 135.50, 11], "tokyo": [35.68, 139.76, 11],
-      "tokai": [35.17, 136.88, 10], "kyushu_north": [33.59, 130.40, 11], "kyushu_south": [32.30, 130.70, 9],
-      "hokkaido": [43.06, 141.35, 10], "chugoku": [34.45, 133.20, 9], "tohoku": [38.90, 140.90, 8]
-    };
-
-    // OSM 漏標之新建分店補充清單
-    const SUPPLEMENTAL_HOTELS = [
-      {
-        id: "supp_kumamoto_superhotel",
-        name: "スーパーホテル熊本駅前天然温泉",
-        brand: "Super Hotel",
-        area: "熊本県 熊本市 西区 春日",
-        region: "kyushu_south",
-        lat: 32.7905,
-        lng: 130.6908,
-        station_name: "熊本",
-        station_dist: 160,
-        airport_lines: ["BUS_KMJ"],
-        amenities: {
-          lawson: 180, seven: 140, familymart: 120,
-          starbucks: 190, doutor: 9999, komeda: 9999,
-          mcdonalds: 210, mos: 9999, kfc: 230,
-          drugstore: 180, supermarket: 220
-        }
-      }
-    ];
-
-    // 已知無分店後綴之重點東橫 INN 座標對照表（即時將純「東横イン」補全為正式店名）
-    const KNOWN_BRANCH_OVERRIDES = [
-      [32.8012, 130.7032, "Toyoko Inn", "東横INN 熊本桜町バスターミナル前"],
-      [32.7905, 130.6901, "Toyoko Inn", "東横INN 熊本駅前"],
-      [32.7972, 130.7061, "Toyoko Inn", "東横INN 熊本新市街"],
-      [32.7988, 130.7078, "Toyoko Inn", "東横INN 熊本城通町筋"]
-    ];
-
-    const FALLBACK_AREAS = [
-      [34.69, 135.50, "大阪府 大阪市 梅田 難波 心齋橋"], [35.01, 135.76, "京都府 京都市 河原町 烏丸"],
-      [34.69, 135.19, "兵庫県 兵庫縣 神戶市 三宮"], [35.68, 139.76, "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川"],
-      [35.44, 139.63, "神奈川県 神奈川縣 橫濱市"], [35.60, 140.10, "千葉県 千葉縣 千葉市"],
-      [35.17, 136.88, "愛知県 愛知縣 名古屋市 榮"], [34.71, 137.72, "静岡県 靜岡縣 濱松市 靜岡市"],
-      [33.59, 130.40, "福岡県 福岡縣 福岡市 博多 天神 小倉"], [32.80, 130.70, "熊本県 熊本縣 熊本市"],
-      [31.59, 130.55, "鹿児島県 鹿兒島縣 鹿兒島市 宮崎県 宮崎縣"], [43.06, 141.35, "北海道 札幌市 すすきの 薄野 函館 旭川"],
-      [34.38, 132.45, "広島県 廣島縣 廣島市 岡山県 岡山縣 高松市"], [38.26, 140.86, "宮城県 宮城縣 仙台市 青森 盛岡"]
-    ];
-
-    const ZH_TO_JA_MAP = [
-      [/廣島/g, "広島"], [/澀谷/g, "渋谷"], [/橫濱/g, "横浜"], [/淺草/g, "浅草"],
-      [/關西/g, "関西"], [/關東/g, "関東"], [/靜岡/g, "静岡"], [/濱松/g, "浜松"],
-      [/鹿兒島/g, "鹿児島"], [/兒島/g, "児島"], [/豐橋/g, "豊橋"], [/澤/g, "沢"],
-      [/瀧/g, "滝"], [/鐵/g, "鉄"], [/東橫/g, "東横"], [/榮町/g, "栄町"], [/榮/g, "栄"],
-      [/心齋橋/g, "心斎橋"], [/齋/g, "斎"], [/櫻町/g, "桜町"], [/總站/g, "ターミナル"],
-      [/縣/g, "県"], [/區/g, "区"]
-    ];
-
-    function parseSearchQuery(rawInput) {
-      let raw = rawInput.trim().toLowerCase();
-      if (!raw) return { tokens: [], isStationMode: false };
-      const isStationMode = /車站|火車站|地鐵站|站|駅/.test(raw) && !/巴士總站|バスターミナル/.test(raw);
-      let cleaned = raw.replace(/車站|火車站|地鐵站|站|駅/g, " ");
-      for (const [re, ja] of ZH_TO_JA_MAP) {
-        cleaned = cleaned.replace(re, ja);
-      }
-      return { tokens: cleaned.split(/\s+/).filter(Boolean), isStationMode };
-    }
-
-    function calcDistanceM(lat1, lon1, lat2, lon2) {
-      const R = 6371000;
-      const toRad = deg => deg * Math.PI / 180;
-      const dLat = toRad(lat2 - lat1);
-      const dLon = toRad(lon2 - lon1);
-      const a = Math.sin(dLat / 2) ** 2 + Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLon / 2) ** 2;
-      return Math.round(R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)));
-    }
-
-    // 自動為缺少分店後綴的純「東横イン」補上分店名稱
-    function enrichHotelName(h) {
-      for (const [oLat, oLng, oBrand, oTitle] of KNOWN_BRANCH_OVERRIDES) {
-        if (oBrand === h.brand && calcDistanceM(h.lat, h.lng, oLat, oLng) <= 150) {
-          return oTitle;
-        }
-      }
-      const rawName = (h.name || "").trim();
-      if (/^(東横イン|東橫イン|東横inn|toyoko\s*inn)$/i.test(rawName)) {
-        const cleanSt = (h.station_name || "").replace(/駅$/, "");
-        if (cleanSt && cleanSt !== "周邊車站") {
-          return h.station_dist <= 350 ? `東横INN ${cleanSt}駅前` : `東横INN（${cleanSt}駅周邊）`;
-        }
-      }
-      return rawName;
-    }
-
-    let allHotels = [];
-    let map, markersLayer, userLayer, currentTileLayer;
-    let userPos = null;
-    let sortByUser = false;
-
-    const TILE_LAYERS = {
-      pale: {
-        url: 'https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png',
-        attr: '&copy; <a href="https://maps.gsi.go.jp/development/ichiran.html">国土地理院 (淡色)</a>'
-      },
-      osm: {
-        url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-        attr: '&copy; OpenStreetMap contributors'
-      },
-      std: {
-        url: 'https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png',
-        attr: '&copy; <a href="https://maps.gsi.go.jp/development/ichiran.html">国土地理院 (標準)</a>'
-      }
-    };
-
-    const brandContainer = document.getElementById('brand-filters');
-    BRANDS.forEach(b => {
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.dataset.brand = b;
-      btn.textContent = b;
-      btn.className = 'filter-chip px-2.5 py-1 rounded-full border border-slate-300 bg-slate-50 text-slate-700';
-      btn.onclick = () => toggleChip(btn);
-      brandContainer.appendChild(btn);
-    });
-
-    function renderAirportSubChips(regionKey) {
-      const container = document.getElementById('airport-sub-filters');
-      container.innerHTML = '';
-      const codes = REGION_AIRPORT_SUBS[regionKey] || REGION_AIRPORT_SUBS["all"];
-      codes.forEach(code => {
-        const btn = document.createElement('button');
-        btn.type = 'button';
-        btn.dataset.line = code;
-        btn.textContent = LINE_NAMES[code] || code;
-        btn.className = 'filter-chip px-2.5 py-1 rounded-full border border-slate-300 bg-slate-50 text-slate-700';
-        btn.onclick = () => toggleChip(btn);
-        container.appendChild(btn);
+          <div class="flex gap-2 pt-1 border-t border-slate-100 text-xs">
+            <button onclick="map.setView([${h.lat}, ${h.lng}], 16)" class="flex-1 py-1.5 rounded bg-slate-100 hover:bg-slate-200 font-medium text-slate-700">📍 地圖定位</button>
+            <a href="${gmapUrl}" target="_blank" class="flex-1 py-1.5 rounded bg-blue-600 text-white text-center font-medium">🗺️ Google Maps</a>
+          </div>
+        `;
+        listEl.appendChild(card);
       });
     }
 
-    map = L.map('map').setView([36.2, 137.5], 5);
-    currentTileLayer = L.tileLayer(TILE_LAYERS.pale.url, { attribution: TILE_LAYERS.pale.attr, maxZoom: 18 }).addTo(map);
-    markersLayer = L.layerGroup().addTo(map);
-    userLayer = L.layerGroup().addTo(map);
-
-    function setBaseMap(styleKey) {
-      const cfg = TILE_LAYERS[styleKey] || TILE_LAYERS.pale;
-      if (currentTileLayer) map.removeLayer(currentTileLayer);
-      currentTileLayer = L.tileLayer(cfg.url, { attribution: cfg.attr, maxZoom: 18 }).addTo(map);
-      document.querySelectorAll('.map-style-btn').forEach(b => {
-        b.classList.remove('bg-slate-900', 'text-white', 'font-semibold');
-        b.classList.add('text-slate-700', 'hover:bg-slate-100');
-      });
-      const activeBtn = document.getElementById(`map-style-${styleKey}`);
-      if (activeBtn) {
-        activeBtn.classList.remove('text-slate-700', 'hover:bg-slate-100');
-        activeBtn.classList.add('bg-slate-900', 'text-white', 'font-semibold');
-      }
+    if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
+      navigator.serviceWorker.register('./sw.js').catch(() => {});
     }
 
-    function markDirty() {
-      const btn = document.getElementById('btn-search');
-      const txt = document.getElementById('btn-search-text');
-      btn.classList.remove('bg-blue-600', 'hover:bg-blue-700');
-      btn.classList.add('bg-amber-600', 'hover:bg-amber-700');
-      txt.textContent = '條件已變更，點此搜尋更新';
-    }
-
-    function clearDirty() {
-      const btn = document.getElementById('btn-search');
-      const txt = docume
+    switchDataset('all');
+  </script>
+</body>
+</html>
