@@ -1,6 +1,6 @@
 [
   {
-    "id": "tohoku_22",
+    "id": "tohoku_24",
     "name": "杜の湯 ドーミーインEXPRESS仙台広瀬通",
     "brand": "Dormy Inn",
     "area": "仙台市  青葉区 中央  宮城県 宮城縣 仙台市",
@@ -50,7 +50,7 @@
     }
   },
   {
-    "id": "tohoku_20",
+    "id": "tohoku_22",
     "name": "天然温泉 杜都の湯 御宿 野乃仙台",
     "brand": "Dormy Inn",
     "area": "仙台市  青葉区 本町  宮城県 宮城縣 仙台市",
@@ -100,7 +100,32 @@
     }
   },
   {
-    "id": "tohoku_33",
+    "id": "tohoku_21",
+    "name": "R&Bホテル仙台広瀬駅前",
+    "brand": "Washington Hotel",
+    "area": "仙台市  青葉区 本町  宮城県 宮城縣 仙台市",
+    "region": "tohoku",
+    "lat": 38.26353,
+    "lng": 140.875942,
+    "station_name": "広瀬通",
+    "station_dist": 84,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 350,
+      "seven": 15,
+      "familymart": 104,
+      "starbucks": 242,
+      "doutor": 241,
+      "komeda": 415,
+      "mcdonalds": 203,
+      "mos": 449,
+      "kfc": 439,
+      "drugstore": 128,
+      "supermarket": 68
+    }
+  },
+  {
+    "id": "tohoku_35",
     "name": "スーパーホテル 仙台 広瀬通り",
     "brand": "Super Hotel",
     "area": "仙台市  青葉区 中央  宮城県 宮城縣 仙台市",
@@ -125,7 +150,7 @@
     }
   },
   {
-    "id": "tohoku_19",
+    "id": "tohoku_20",
     "name": "ホテルメトロポリタン仙台イースト",
     "brand": "Hotel Metropolitan",
     "area": "仙台市  青葉区   宮城県 宮城縣 仙台市",
@@ -134,7 +159,9 @@
     "lng": 140.883465,
     "station_name": "仙台",
     "station_dist": 105,
-    "airport_lines": [],
+    "airport_lines": [
+      "RAIL_SENDAI"
+    ],
     "amenities": {
       "lawson": 273,
       "seven": 177,
@@ -150,7 +177,7 @@
     }
   },
   {
-    "id": "tohoku_46",
+    "id": "tohoku_49",
     "name": "ダイワロイネットホテル仙台西口",
     "brand": "Daiwa Roynet",
     "area": "仙台市  青葉区   宮城県 宮城縣 仙台市",
@@ -159,7 +186,9 @@
     "lng": 140.879041,
     "station_name": "仙台",
     "station_dist": 107,
-    "airport_lines": [],
+    "airport_lines": [
+      "RAIL_SENDAI"
+    ],
     "amenities": {
       "lawson": 78,
       "seven": 10,
@@ -175,7 +204,7 @@
     }
   },
   {
-    "id": "tohoku_35",
+    "id": "tohoku_37",
     "name": "ダイワロイネットホテル",
     "brand": "Daiwa Roynet",
     "area": "仙台市  宮城野区   宮城県 宮城縣 仙台市",
@@ -200,7 +229,7 @@
     }
   },
   {
-    "id": "tohoku_21",
+    "id": "tohoku_23",
     "name": "ホテルメトロポリタン仙台",
     "brand": "Hotel Metropolitan",
     "area": "宮城県 宮城縣 仙台市",
@@ -209,7 +238,9 @@
     "lng": 140.881118,
     "station_name": "仙台",
     "station_dist": 135,
-    "airport_lines": [],
+    "airport_lines": [
+      "RAIL_SENDAI"
+    ],
     "amenities": {
       "lawson": 169,
       "seven": 78,
@@ -225,7 +256,7 @@
     }
   },
   {
-    "id": "tohoku_14",
+    "id": "tohoku_15",
     "name": "ホテルリブマックス仙台広瀬通",
     "brand": "LiveMax",
     "area": "仙台市  青葉区 本町  宮城県 宮城縣 仙台市",
@@ -275,7 +306,7 @@
     }
   },
   {
-    "id": "tohoku_36",
+    "id": "tohoku_38",
     "name": "ホテル ルートイン",
     "brand": "Route Inn",
     "area": "岩手県 岩手縣 盛岡市",
@@ -300,7 +331,32 @@
     }
   },
   {
-    "id": "tohoku_44",
+    "id": "tohoku_40",
+    "name": "R&Bホテル盛岡駅前",
+    "brand": "Washington Hotel",
+    "area": "岩手県 岩手縣 盛岡市",
+    "region": "tohoku",
+    "lat": 39.70251,
+    "lng": 141.137891,
+    "station_name": "盛岡",
+    "station_dist": 160,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 88,
+      "seven": 107,
+      "familymart": 140,
+      "starbucks": 179,
+      "doutor": 617,
+      "komeda": 9999,
+      "mcdonalds": 2020,
+      "mos": 2537,
+      "kfc": 1572,
+      "drugstore": 62,
+      "supermarket": 574
+    }
+  },
+  {
+    "id": "tohoku_47",
     "name": "東横イン",
     "brand": "Toyoko Inn",
     "area": "青森県 青森縣 青森市",
@@ -325,7 +381,7 @@
     }
   },
   {
-    "id": "tohoku_47",
+    "id": "tohoku_50",
     "name": "スーパーホテル仙台駅東口天然温泉",
     "brand": "Super Hotel",
     "area": "宮城県 宮城縣 仙台市",
@@ -334,7 +390,9 @@
     "lng": 140.883333,
     "station_name": "仙台",
     "station_dist": 186,
-    "airport_lines": [],
+    "airport_lines": [
+      "RAIL_SENDAI"
+    ],
     "amenities": {
       "lawson": 73,
       "seven": 141,
@@ -375,7 +433,7 @@
     }
   },
   {
-    "id": "tohoku_34",
+    "id": "tohoku_36",
     "name": "天然温泉 青葉の湯 ドーミーイン 仙台ANNEX",
     "brand": "Dormy Inn",
     "area": "仙台市  青葉区 中央  宮城県 宮城縣 仙台市",
@@ -400,7 +458,7 @@
     }
   },
   {
-    "id": "tohoku_50",
+    "id": "tohoku_53",
     "name": "ホテルメトロポリタンベース仙台",
     "brand": "Hotel Metropolitan",
     "area": "仙台市  青葉区   宮城県 宮城縣 仙台市",
@@ -409,7 +467,9 @@
     "lng": 140.881242,
     "station_name": "仙台",
     "station_dist": 203,
-    "airport_lines": [],
+    "airport_lines": [
+      "RAIL_SENDAI"
+    ],
     "amenities": {
       "lawson": 230,
       "seven": 71,
@@ -434,7 +494,9 @@
     "lng": 140.736029,
     "station_name": "青森",
     "station_dist": 205,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_AOJ"
+    ],
     "amenities": {
       "lawson": 179,
       "seven": 247,
@@ -459,7 +521,9 @@
     "lng": 140.735782,
     "station_name": "青森",
     "station_dist": 207,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_AOJ"
+    ],
     "amenities": {
       "lawson": 167,
       "seven": 217,
@@ -475,7 +539,7 @@
     }
   },
   {
-    "id": "tohoku_23",
+    "id": "tohoku_25",
     "name": "ダイワロイネットホテル 盛岡駅前",
     "brand": "Daiwa Roynet",
     "area": "盛岡市   盛岡駅前通  岩手県 岩手縣 盛岡市",
@@ -500,7 +564,32 @@
     }
   },
   {
-    "id": "tohoku_15",
+    "id": "tohoku_14",
+    "name": "R&Bホテル 仙台東口",
+    "brand": "Washington Hotel",
+    "area": "仙台市  若林区 新寺  宮城県 宮城縣 仙台市",
+    "region": "tohoku",
+    "lat": 38.256137,
+    "lng": 140.884995,
+    "station_name": "宮城野通",
+    "station_dist": 214,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 148,
+      "seven": 57,
+      "familymart": 39,
+      "starbucks": 376,
+      "doutor": 771,
+      "komeda": 1156,
+      "mcdonalds": 534,
+      "mos": 693,
+      "kfc": 710,
+      "drugstore": 171,
+      "supermarket": 225
+    }
+  },
+  {
+    "id": "tohoku_16",
     "name": "東横イン",
     "brand": "Toyoko Inn",
     "area": "岩手県 岩手縣 盛岡市",
@@ -525,7 +614,7 @@
     }
   },
   {
-    "id": "tohoku_40",
+    "id": "tohoku_43",
     "name": "ホテルメトロポリタン盛岡 ニューウイング",
     "brand": "Hotel Metropolitan",
     "area": "岩手県 岩手縣 盛岡市",
@@ -550,7 +639,7 @@
     }
   },
   {
-    "id": "tohoku_45",
+    "id": "tohoku_48",
     "name": "アパホテル",
     "brand": "APA Hotel",
     "area": "仙台市  宮城野区 名掛丁  宮城県 宮城縣 仙台市",
@@ -559,7 +648,9 @@
     "lng": 140.882992,
     "station_name": "仙台",
     "station_dist": 266,
-    "airport_lines": [],
+    "airport_lines": [
+      "RAIL_SENDAI"
+    ],
     "amenities": {
       "lawson": 26,
       "seven": 221,
@@ -600,7 +691,7 @@
     }
   },
   {
-    "id": "tohoku_31",
+    "id": "tohoku_33",
     "name": "相鉄フレッサイン 仙台",
     "brand": "Fresa Inn",
     "area": "仙台市  青葉区 中央  宮城県 宮城縣 仙台市",
@@ -609,7 +700,9 @@
     "lng": 140.877572,
     "station_name": "仙台",
     "station_dist": 283,
-    "airport_lines": [],
+    "airport_lines": [
+      "RAIL_SENDAI"
+    ],
     "amenities": {
       "lawson": 149,
       "seven": 168,
@@ -625,7 +718,7 @@
     }
   },
   {
-    "id": "tohoku_27",
+    "id": "tohoku_29",
     "name": "仙台ワシントンホテル",
     "brand": "Washington Hotel",
     "area": "仙台市  青葉区   宮城県 宮城縣 仙台市",
@@ -634,7 +727,9 @@
     "lng": 140.881018,
     "station_name": "仙台",
     "station_dist": 288,
-    "airport_lines": [],
+    "airport_lines": [
+      "RAIL_SENDAI"
+    ],
     "amenities": {
       "lawson": 258,
       "seven": 126,
@@ -650,7 +745,7 @@
     }
   },
   {
-    "id": "tohoku_25",
+    "id": "tohoku_27",
     "name": "ダイワロイネットホテル仙台一番町 プレミア",
     "brand": "Daiwa Roynet",
     "area": "宮城県 宮城縣 仙台市",
@@ -684,7 +779,9 @@
     "lng": 140.884948,
     "station_name": "仙台",
     "station_dist": 334,
-    "airport_lines": [],
+    "airport_lines": [
+      "RAIL_SENDAI"
+    ],
     "amenities": {
       "lawson": 167,
       "seven": 124,
@@ -700,7 +797,7 @@
     }
   },
   {
-    "id": "tohoku_29",
+    "id": "tohoku_31",
     "name": "東横INN",
     "brand": "Toyoko Inn",
     "area": "仙台市  青葉区 本町  宮城県 宮城縣 仙台市",
@@ -725,7 +822,7 @@
     }
   },
   {
-    "id": "tohoku_32",
+    "id": "tohoku_34",
     "name": "アパヴィラホテル 仙台駅五橋",
     "brand": "APA Hotel",
     "area": "仙台市  若林区   宮城県 宮城縣 仙台市",
@@ -775,7 +872,7 @@
     }
   },
   {
-    "id": "tohoku_28",
+    "id": "tohoku_30",
     "name": "天然温泉 萩の湯 ドーミーイン仙台駅前",
     "brand": "Dormy Inn",
     "area": "仙台市  青葉区 本町  宮城県 宮城縣 仙台市",
@@ -800,7 +897,7 @@
     }
   },
   {
-    "id": "tohoku_30",
+    "id": "tohoku_32",
     "name": "東横イン",
     "brand": "Toyoko Inn",
     "area": "仙台市  青葉区   宮城県 宮城縣 仙台市",
@@ -825,7 +922,7 @@
     }
   },
   {
-    "id": "tohoku_39",
+    "id": "tohoku_42",
     "name": "スーパーホテル",
     "brand": "Super Hotel",
     "area": "仙台市  青葉区   宮城県 宮城縣 仙台市",
@@ -850,7 +947,7 @@
     }
   },
   {
-    "id": "tohoku_49",
+    "id": "tohoku_52",
     "name": "ホテルリブマックス",
     "brand": "LiveMax",
     "area": "仙台市  青葉区   宮城県 宮城縣 仙台市",
@@ -900,7 +997,7 @@
     }
   },
   {
-    "id": "tohoku_42",
+    "id": "tohoku_45",
     "name": "アパホテル 青森駅東",
     "brand": "APA Hotel",
     "area": "青森県 青森縣 青森市",
@@ -909,7 +1006,9 @@
     "lng": 140.738972,
     "station_name": "青森",
     "station_dist": 466,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_AOJ"
+    ],
     "amenities": {
       "lawson": 119,
       "seven": 363,
@@ -925,7 +1024,7 @@
     }
   },
   {
-    "id": "tohoku_17",
+    "id": "tohoku_18",
     "name": "アパホテル 仙台勾当台公園",
     "brand": "APA Hotel",
     "area": "仙台市  青葉区 二日町  宮城県 宮城縣 仙台市",
@@ -975,7 +1074,7 @@
     }
   },
   {
-    "id": "tohoku_16",
+    "id": "tohoku_17",
     "name": "スーパーホテル盛岡",
     "brand": "Super Hotel",
     "area": "岩手県 岩手縣 盛岡市",
@@ -1009,7 +1108,9 @@
     "lng": 140.739386,
     "station_name": "青森",
     "station_dist": 554,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_AOJ"
+    ],
     "amenities": {
       "lawson": 12,
       "seven": 304,
@@ -1025,7 +1126,7 @@
     }
   },
   {
-    "id": "tohoku_41",
+    "id": "tohoku_44",
     "name": "アパホテル 青森駅県庁通",
     "brand": "APA Hotel",
     "area": "青森県 青森縣 青森市",
@@ -1034,7 +1135,9 @@
     "lng": 140.741532,
     "station_name": "青森",
     "station_dist": 681,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_AOJ"
+    ],
     "amenities": {
       "lawson": 45,
       "seven": 307,
@@ -1050,7 +1153,7 @@
     }
   },
   {
-    "id": "tohoku_48",
+    "id": "tohoku_51",
     "name": "ドーミーイン盛岡",
     "brand": "Dormy Inn",
     "area": "岩手県 岩手縣 盛岡市",
@@ -1075,7 +1178,7 @@
     }
   },
   {
-    "id": "tohoku_26",
+    "id": "tohoku_28",
     "name": "ドーミーイン青森",
     "brand": "Dormy Inn",
     "area": "青森市     青森県 青森縣 青森市",
@@ -1084,7 +1187,9 @@
     "lng": 140.741665,
     "station_name": "青森",
     "station_dist": 769,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_AOJ"
+    ],
     "amenities": {
       "lawson": 143,
       "seven": 149,
@@ -1100,7 +1205,7 @@
     }
   },
   {
-    "id": "tohoku_18",
+    "id": "tohoku_19",
     "name": "ダイワロイネットホテル盛岡",
     "brand": "Daiwa Roynet",
     "area": "岩手県 岩手縣 盛岡市",
@@ -1125,7 +1230,7 @@
     }
   },
   {
-    "id": "tohoku_37",
+    "id": "tohoku_39",
     "name": "ホテルルートイン盛岡南インター",
     "brand": "Route Inn",
     "area": "岩手県 岩手縣 盛岡市",
@@ -1175,7 +1280,7 @@
     }
   },
   {
-    "id": "tohoku_24",
+    "id": "tohoku_26",
     "name": "ホテルルートイン長町インター",
     "brand": "Route Inn",
     "area": "仙台市  太白区   宮城県 宮城縣 仙台市",
@@ -1184,7 +1289,9 @@
     "lng": 140.898507,
     "station_name": "長町",
     "station_dist": 1258,
-    "airport_lines": [],
+    "airport_lines": [
+      "RAIL_SENDAI"
+    ],
     "amenities": {
       "lawson": 1251,
       "seven": 643,
@@ -1200,7 +1307,7 @@
     }
   },
   {
-    "id": "tohoku_38",
+    "id": "tohoku_41",
     "name": "ホテルルートイン",
     "brand": "Route Inn",
     "area": "青森県 青森縣 青森市",
@@ -1225,7 +1332,7 @@
     }
   },
   {
-    "id": "tohoku_43",
+    "id": "tohoku_46",
     "name": "スーパーホテル青森",
     "brand": "Super Hotel",
     "area": "青森県 青森縣 青森市",

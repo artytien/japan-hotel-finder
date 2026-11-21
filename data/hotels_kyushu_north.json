@@ -9,7 +9,10 @@
     "lng": 130.414566,
     "station_name": "祇園",
     "station_dist": 91,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_FUK",
+      "RAIL_FUKUOKA"
+    ],
     "amenities": {
       "lawson": 64,
       "seven": 185,
@@ -25,7 +28,7 @@
     }
   },
   {
-    "id": "kyushu_north_32",
+    "id": "kyushu_north_35",
     "name": "ドーミーイン PREMIUM 博多キャナルシティ前",
     "brand": "Dormy Inn",
     "area": "福岡県 福岡縣 福岡市 博多 天神",
@@ -50,7 +53,34 @@
     }
   },
   {
-    "id": "kyushu_north_34",
+    "id": "kyushu_north_38",
+    "name": "ホテルリブマックス小倉駅前",
+    "brand": "LiveMax",
+    "area": "福岡県 福岡縣 北九州市 小倉",
+    "region": "kyushu_north",
+    "lat": 33.886812,
+    "lng": 130.880968,
+    "station_name": "小倉",
+    "station_dist": 110,
+    "airport_lines": [
+      "BUS_KKJ"
+    ],
+    "amenities": {
+      "lawson": 346,
+      "seven": 57,
+      "familymart": 123,
+      "starbucks": 126,
+      "doutor": 119,
+      "komeda": 539,
+      "mcdonalds": 94,
+      "mos": 9999,
+      "kfc": 9999,
+      "drugstore": 132,
+      "supermarket": 190
+    }
+  },
+  {
+    "id": "kyushu_north_37",
     "name": "Daiwa Roynet Hotel Hakata-Gion",
     "brand": "Daiwa Roynet",
     "area": "Fukoka     福岡県 福岡縣 福岡市 博多 天神",
@@ -59,7 +89,9 @@
     "lng": 130.413714,
     "station_name": "祇園",
     "station_dist": 118,
-    "airport_lines": [],
+    "airport_lines": [
+      "RAIL_FUKUOKA"
+    ],
     "amenities": {
       "lawson": 130,
       "seven": 150,
@@ -109,7 +141,9 @@
     "lng": 130.41305,
     "station_name": "祇園",
     "station_dist": 130,
-    "airport_lines": [],
+    "airport_lines": [
+      "RAIL_FUKUOKA"
+    ],
     "amenities": {
       "lawson": 202,
       "seven": 91,
@@ -125,6 +159,33 @@
     }
   },
   {
+    "id": "kyushu_north_33",
+    "name": "ホテルリブマックス 福岡天神 WEST",
+    "brand": "LiveMax",
+    "area": "福岡県 福岡縣 福岡市 博多 天神",
+    "region": "kyushu_north",
+    "lat": 33.59014,
+    "lng": 130.391148,
+    "station_name": "赤坂",
+    "station_dist": 138,
+    "airport_lines": [
+      "RAIL_FUKUOKA"
+    ],
+    "amenities": {
+      "lawson": 100,
+      "seven": 215,
+      "familymart": 201,
+      "starbucks": 135,
+      "doutor": 555,
+      "komeda": 106,
+      "mcdonalds": 179,
+      "mos": 555,
+      "kfc": 672,
+      "drugstore": 97,
+      "supermarket": 297
+    }
+  },
+  {
     "id": "kyushu_north_23",
     "name": "Comfort INN",
     "brand": "Comfort Hotel",
@@ -134,7 +195,9 @@
     "lng": 130.403612,
     "station_name": "天神南",
     "station_dist": 140,
-    "airport_lines": [],
+    "airport_lines": [
+      "RAIL_FUKUOKA"
+    ],
     "amenities": {
       "lawson": 87,
       "seven": 91,
@@ -159,7 +222,9 @@
     "lng": 130.882363,
     "station_name": "小倉",
     "station_dist": 140,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_KKJ"
+    ],
     "amenities": {
       "lawson": 213,
       "seven": 87,
@@ -184,7 +249,9 @@
     "lng": 130.881268,
     "station_name": "平和通",
     "station_dist": 152,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_KKJ"
+    ],
     "amenities": {
       "lawson": 134,
       "seven": 85,
@@ -209,7 +276,10 @@
     "lng": 130.418222,
     "station_name": "博多",
     "station_dist": 159,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_FUK",
+      "RAIL_FUKUOKA"
+    ],
     "amenities": {
       "lawson": 133,
       "seven": 34,
@@ -225,6 +295,33 @@
     }
   },
   {
+    "id": "kyushu_north_30",
+    "name": "ダイワロイネットホテル小倉駅前",
+    "brand": "Daiwa Roynet",
+    "area": "福岡県 福岡縣 北九州市 小倉",
+    "region": "kyushu_north",
+    "lat": 33.884519,
+    "lng": 130.881103,
+    "station_name": "平和通",
+    "station_dist": 160,
+    "airport_lines": [
+      "BUS_KKJ"
+    ],
+    "amenities": {
+      "lawson": 126,
+      "seven": 91,
+      "familymart": 43,
+      "starbucks": 131,
+      "doutor": 96,
+      "komeda": 447,
+      "mcdonalds": 162,
+      "mos": 9999,
+      "kfc": 9999,
+      "drugstore": 94,
+      "supermarket": 293
+    }
+  },
+  {
     "id": "kyushu_north_19",
     "name": "アパホテル",
     "brand": "APA Hotel",
@@ -234,7 +331,10 @@
     "lng": 130.415475,
     "station_name": "祇園",
     "station_dist": 191,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_FUK",
+      "RAIL_FUKUOKA"
+    ],
     "amenities": {
       "lawson": 47,
       "seven": 135,
@@ -250,7 +350,7 @@
     }
   },
   {
-    "id": "kyushu_north_31",
+    "id": "kyushu_north_34",
     "name": "ホテルルートイン博多駅前",
     "brand": "Route Inn",
     "area": "福岡県 福岡縣 福岡市 博多 天神",
@@ -259,7 +359,10 @@
     "lng": 130.418877,
     "station_name": "博多",
     "station_dist": 194,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_FUK",
+      "RAIL_FUKUOKA"
+    ],
     "amenities": {
       "lawson": 58,
       "seven": 100,
@@ -284,7 +387,9 @@
     "lng": 130.403424,
     "station_name": "天神南",
     "station_dist": 203,
-    "airport_lines": [],
+    "airport_lines": [
+      "RAIL_FUKUOKA"
+    ],
     "amenities": {
       "lawson": 119,
       "seven": 97,
@@ -309,7 +414,9 @@
     "lng": 130.885518,
     "station_name": "小倉",
     "station_dist": 212,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_KKJ"
+    ],
     "amenities": {
       "lawson": 103,
       "seven": 202,
@@ -325,7 +432,7 @@
     }
   },
   {
-    "id": "kyushu_north_33",
+    "id": "kyushu_north_36",
     "name": "三井ガーデンホテル福岡祇園",
     "brand": "Mitsui Garden",
     "area": "福岡県 福岡縣 福岡市 博多 天神",
@@ -334,7 +441,9 @@
     "lng": 130.413641,
     "station_name": "櫛田神社前",
     "station_dist": 216,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_FUK"
+    ],
     "amenities": {
       "lawson": 162,
       "seven": 55,
@@ -359,7 +468,9 @@
     "lng": 130.391778,
     "station_name": "赤坂",
     "station_dist": 222,
-    "airport_lines": [],
+    "airport_lines": [
+      "RAIL_FUKUOKA"
+    ],
     "amenities": {
       "lawson": 204,
       "seven": 99,
@@ -384,7 +495,10 @@
     "lng": 130.422072,
     "station_name": "博多",
     "station_dist": 226,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_FUK",
+      "RAIL_FUKUOKA"
+    ],
     "amenities": {
       "lawson": 200,
       "seven": 65,
@@ -400,6 +514,33 @@
     }
   },
   {
+    "id": "kyushu_north_32",
+    "name": "リッチモンドホテル",
+    "brand": "Richmond Hotel",
+    "area": "福岡県 福岡縣 福岡市 博多 天神",
+    "region": "kyushu_north",
+    "lat": 33.586611,
+    "lng": 130.401881,
+    "station_name": "天神南",
+    "station_dist": 226,
+    "airport_lines": [
+      "RAIL_FUKUOKA"
+    ],
+    "amenities": {
+      "lawson": 155,
+      "seven": 70,
+      "familymart": 94,
+      "starbucks": 103,
+      "doutor": 416,
+      "komeda": 128,
+      "mcdonalds": 511,
+      "mos": 563,
+      "kfc": 495,
+      "drugstore": 73,
+      "supermarket": 327
+    }
+  },
+  {
     "id": "kyushu_north_28",
     "name": "アパホテル 博多駅筑紫口 West",
     "brand": "APA Hotel",
@@ -409,7 +550,10 @@
     "lng": 130.422958,
     "station_name": "博多",
     "station_dist": 228,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_FUK",
+      "RAIL_FUKUOKA"
+    ],
     "amenities": {
       "lawson": 113,
       "seven": 152,
@@ -434,7 +578,10 @@
     "lng": 130.418793,
     "station_name": "博多",
     "station_dist": 244,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_FUK",
+      "RAIL_FUKUOKA"
+    ],
     "amenities": {
       "lawson": 94,
       "seven": 78,
@@ -459,7 +606,9 @@
     "lng": 130.404922,
     "station_name": "天神南",
     "station_dist": 253,
-    "airport_lines": [],
+    "airport_lines": [
+      "RAIL_FUKUOKA"
+    ],
     "amenities": {
       "lawson": 25,
       "seven": 75,
@@ -484,7 +633,9 @@
     "lng": 130.396544,
     "station_name": "西鉄福岡 (天神)",
     "station_dist": 267,
-    "airport_lines": [],
+    "airport_lines": [
+      "RAIL_FUKUOKA"
+    ],
     "amenities": {
       "lawson": 167,
       "seven": 227,
@@ -509,7 +660,9 @@
     "lng": 130.880258,
     "station_name": "小倉",
     "station_dist": 276,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_KKJ"
+    ],
     "amenities": {
       "lawson": 411,
       "seven": 233,
@@ -534,7 +687,10 @@
     "lng": 130.4238,
     "station_name": "博多",
     "station_dist": 279,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_FUK",
+      "RAIL_FUKUOKA"
+    ],
     "amenities": {
       "lawson": 157,
       "seven": 228,
@@ -559,7 +715,9 @@
     "lng": 130.40346,
     "station_name": "中洲川端",
     "station_dist": 280,
-    "airport_lines": [],
+    "airport_lines": [
+      "RAIL_FUKUOKA"
+    ],
     "amenities": {
       "lawson": 287,
       "seven": 64,
@@ -575,7 +733,7 @@
     }
   },
   {
-    "id": "kyushu_north_30",
+    "id": "kyushu_north_31",
     "name": "東横イン",
     "brand": "Toyoko Inn",
     "area": "福岡県 福岡縣 北九州市 小倉",
@@ -584,7 +742,9 @@
     "lng": 130.884842,
     "station_name": "小倉",
     "station_dist": 291,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_KKJ"
+    ],
     "amenities": {
       "lawson": 240,
       "seven": 200,
@@ -609,7 +769,9 @@
     "lng": 130.405239,
     "station_name": "天神南",
     "station_dist": 305,
-    "airport_lines": [],
+    "airport_lines": [
+      "RAIL_FUKUOKA"
+    ],
     "amenities": {
       "lawson": 46,
       "seven": 78,
@@ -659,7 +821,9 @@
     "lng": 130.878767,
     "station_name": "小倉",
     "station_dist": 326,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_KKJ"
+    ],
     "amenities": {
       "lawson": 269,
       "seven": 208,
@@ -684,7 +848,10 @@
     "lng": 130.424669,
     "station_name": "博多",
     "station_dist": 330,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_FUK",
+      "RAIL_FUKUOKA"
+    ],
     "amenities": {
       "lawson": 141,
       "seven": 291,
@@ -709,7 +876,10 @@
     "lng": 130.415742,
     "station_name": "祇園",
     "station_dist": 336,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_FUK",
+      "RAIL_FUKUOKA"
+    ],
     "amenities": {
       "lawson": 88,
       "seven": 23,
@@ -725,7 +895,7 @@
     }
   },
   {
-    "id": "kyushu_north_35",
+    "id": "kyushu_north_39",
     "name": "東横イン",
     "brand": "Toyoko Inn",
     "area": "北九州市  小倉北区 浅野  福岡県 福岡縣 北九州市 小倉",
@@ -734,7 +904,9 @@
     "lng": 130.887159,
     "station_name": "小倉",
     "station_dist": 370,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_KKJ"
+    ],
     "amenities": {
       "lawson": 242,
       "seven": 358,
@@ -784,7 +956,9 @@
     "lng": 130.887418,
     "station_name": "小倉",
     "station_dist": 409,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_KKJ"
+    ],
     "amenities": {
       "lawson": 319,
       "seven": 401,
@@ -809,7 +983,9 @@
     "lng": 130.887631,
     "station_name": "小倉",
     "station_dist": 421,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_KKJ"
+    ],
     "amenities": {
       "lawson": 324,
       "seven": 413,
@@ -834,7 +1010,10 @@
     "lng": 130.421218,
     "station_name": "博多",
     "station_dist": 511,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_FUK",
+      "RAIL_FUKUOKA"
+    ],
     "amenities": {
       "lawson": 36,
       "seven": 226,
@@ -850,7 +1029,7 @@
     }
   },
   {
-    "id": "kyushu_north_36",
+    "id": "kyushu_north_40",
     "name": "ホテルルートイン",
     "brand": "Route Inn",
     "area": "福岡県 福岡縣 福岡市 博多 天神",
@@ -859,7 +1038,9 @@
     "lng": 130.423751,
     "station_name": "博多",
     "station_dist": 902,
-    "airport_lines": [],
+    "airport_lines": [
+      "RAIL_FUKUOKA"
+    ],
     "amenities": {
       "lawson": 395,
       "seven": 185,
@@ -884,7 +1065,9 @@
     "lng": 130.422224,
     "station_name": "博多",
     "station_dist": 918,
-    "airport_lines": [],
+    "airport_lines": [
+      "RAIL_FUKUOKA"
+    ],
     "amenities": {
       "lawson": 355,
       "seven": 81,

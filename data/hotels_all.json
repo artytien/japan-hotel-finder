@@ -1,6 +1,6 @@
 [
   {
-    "id": "tohoku_22",
+    "id": "tohoku_24",
     "name": "杜の湯 ドーミーインEXPRESS仙台広瀬通",
     "brand": "Dormy Inn",
     "area": "仙台市  青葉区 中央  宮城県 宮城縣 仙台市",
@@ -75,7 +75,7 @@
     }
   },
   {
-    "id": "tokyo_84",
+    "id": "tokyo_85",
     "name": "アパホテル",
     "brand": "APA Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -100,7 +100,7 @@
     }
   },
   {
-    "id": "tokyo_93",
+    "id": "tokyo_94",
     "name": "Dormy Inn Korakuen",
     "brand": "Dormy Inn",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -125,7 +125,7 @@
     }
   },
   {
-    "id": "tokyo_34",
+    "id": "tokyo_35",
     "name": "相鉄フレッサイン",
     "brand": "Fresa Inn",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -150,7 +150,7 @@
     }
   },
   {
-    "id": "tokyo_197",
+    "id": "tokyo_203",
     "name": "東急ステイ新宿",
     "brand": "Tokyu Stay",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -160,7 +160,8 @@
     "station_name": "新宿三丁目",
     "station_dist": 36,
     "airport_lines": [
-      "JR_NEX"
+      "BUS_TYO",
+      "RAIL_NEX"
     ],
     "amenities": {
       "lawson": 141,
@@ -202,7 +203,7 @@
     }
   },
   {
-    "id": "tokyo_65",
+    "id": "tokyo_66",
     "name": "アパホテル",
     "brand": "APA Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -227,7 +228,7 @@
     }
   },
   {
-    "id": "tokyo_202",
+    "id": "tokyo_211",
     "name": "アパホテル",
     "brand": "APA Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -237,7 +238,7 @@
     "station_name": "東新宿",
     "station_dist": 42,
     "airport_lines": [
-      "JR_NEX"
+      "RAIL_NEX"
     ],
     "amenities": {
       "lawson": 66,
@@ -254,7 +255,7 @@
     }
   },
   {
-    "id": "tokyo_166",
+    "id": "tokyo_171",
     "name": "スーパーホテル",
     "brand": "Super Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -279,6 +280,33 @@
     }
   },
   {
+    "id": "tokyo_159",
+    "name": "Fresa Inn",
+    "brand": "Fresa Inn",
+    "area": "台東区   上野  東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
+    "region": "tokyo",
+    "lat": 35.707822,
+    "lng": 139.77249,
+    "station_name": "上野広小路",
+    "station_dist": 45,
+    "airport_lines": [
+      "RAIL_KEISEI"
+    ],
+    "amenities": {
+      "lawson": 173,
+      "seven": 65,
+      "familymart": 108,
+      "starbucks": 286,
+      "doutor": 209,
+      "komeda": 103,
+      "mcdonalds": 127,
+      "mos": 633,
+      "kfc": 208,
+      "drugstore": 48,
+      "supermarket": 97
+    }
+  },
+  {
     "id": "tokyo_1",
     "name": "東横イン",
     "brand": "Toyoko Inn",
@@ -289,7 +317,7 @@
     "station_name": "千葉みなと",
     "station_dist": 46,
     "airport_lines": [
-      "JR_NEX"
+      "RAIL_NEX"
     ],
     "amenities": {
       "lawson": 267,
@@ -316,7 +344,7 @@
     "station_name": "東新宿",
     "station_dist": 46,
     "airport_lines": [
-      "JR_NEX"
+      "RAIL_NEX"
     ],
     "amenities": {
       "lawson": 84,
@@ -333,7 +361,7 @@
     }
   },
   {
-    "id": "tokyo_46",
+    "id": "tokyo_47",
     "name": "アパホテル",
     "brand": "APA Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -383,7 +411,7 @@
     }
   },
   {
-    "id": "tokyo_71",
+    "id": "tokyo_72",
     "name": "doemy inn premium",
     "brand": "Dormy Inn",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -408,7 +436,7 @@
     }
   },
   {
-    "id": "tokyo_119",
+    "id": "tokyo_120",
     "name": "アパホテル",
     "brand": "APA Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -433,7 +461,7 @@
     }
   },
   {
-    "id": "tohoku_20",
+    "id": "tohoku_22",
     "name": "天然温泉 杜都の湯 御宿 野乃仙台",
     "brand": "Dormy Inn",
     "area": "仙台市  青葉区 本町  宮城県 宮城縣 仙台市",
@@ -468,7 +496,7 @@
     "station_name": "上野",
     "station_dist": 58,
     "airport_lines": [
-      "KEISEI"
+      "RAIL_KEISEI"
     ],
     "amenities": {
       "lawson": 91,
@@ -510,7 +538,7 @@
     }
   },
   {
-    "id": "tokyo_55",
+    "id": "tokyo_56",
     "name": "相鉄フレッサイン",
     "brand": "Fresa Inn",
     "area": "神奈川県 神奈川縣 橫濱市",
@@ -535,7 +563,7 @@
     }
   },
   {
-    "id": "tokyo_196",
+    "id": "tokyo_202",
     "name": "WASHINGTON HOTEL",
     "brand": "Washington Hotel",
     "area": "神奈川県 神奈川縣 橫濱市",
@@ -585,7 +613,7 @@
     }
   },
   {
-    "id": "tokyo_66",
+    "id": "tokyo_67",
     "name": "APA Hotel (關東(首都圈))",
     "brand": "APA Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -610,7 +638,7 @@
     }
   },
   {
-    "id": "tokyo_215",
+    "id": "tokyo_223",
     "name": "東急ステイ銀座",
     "brand": "Tokyu Stay",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -620,7 +648,7 @@
     "station_name": "東銀座",
     "station_dist": 67,
     "airport_lines": [
-      "KEIKYU"
+      "RAIL_KEIKYU"
     ],
     "amenities": {
       "lawson": 68,
@@ -637,7 +665,7 @@
     }
   },
   {
-    "id": "tokyo_165",
+    "id": "tokyo_170",
     "name": "アパホテル",
     "brand": "APA Hotel",
     "area": "上野  東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -647,7 +675,7 @@
     "station_name": "京成上野",
     "station_dist": 70,
     "airport_lines": [
-      "KEISEI"
+      "RAIL_KEISEI"
     ],
     "amenities": {
       "lawson": 153,
@@ -691,7 +719,7 @@
     }
   },
   {
-    "id": "tokyo_113",
+    "id": "tokyo_114",
     "name": "アパホテル〈浅草 新御徒町駅前〉",
     "brand": "APA Hotel",
     "area": "台東区     東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -716,7 +744,7 @@
     }
   },
   {
-    "id": "tokyo_227",
+    "id": "tokyo_240",
     "name": "東急ステイ",
     "brand": "Tokyu Stay",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -726,7 +754,7 @@
     "station_name": "泉岳寺",
     "station_dist": 73,
     "airport_lines": [
-      "KEIKYU"
+      "RAIL_KEIKYU"
     ],
     "amenities": {
       "lawson": 207,
@@ -803,7 +831,7 @@
     "station_name": "青物横丁",
     "station_dist": 76,
     "airport_lines": [
-      "KEIKYU"
+      "RAIL_KEIKYU"
     ],
     "amenities": {
       "lawson": 327,
@@ -845,7 +873,7 @@
     }
   },
   {
-    "id": "tokyo_151",
+    "id": "tokyo_153",
     "name": "ミレニアム三井ガーデンホテル東京",
     "brand": "Mitsui Garden",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -855,7 +883,7 @@
     "station_name": "東銀座",
     "station_dist": 83,
     "airport_lines": [
-      "KEIKYU"
+      "RAIL_KEIKYU"
     ],
     "amenities": {
       "lawson": 85,
@@ -899,6 +927,31 @@
     }
   },
   {
+    "id": "tohoku_21",
+    "name": "R&Bホテル仙台広瀬駅前",
+    "brand": "Washington Hotel",
+    "area": "仙台市  青葉区 本町  宮城県 宮城縣 仙台市",
+    "region": "tohoku",
+    "lat": 38.26353,
+    "lng": 140.875942,
+    "station_name": "広瀬通",
+    "station_dist": 84,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 350,
+      "seven": 15,
+      "familymart": 104,
+      "starbucks": 242,
+      "doutor": 241,
+      "komeda": 415,
+      "mcdonalds": 203,
+      "mos": 449,
+      "kfc": 439,
+      "drugstore": 128,
+      "supermarket": 68
+    }
+  },
+  {
     "id": "kansai_85",
     "name": "Hotel Livemax",
     "brand": "LiveMax",
@@ -924,7 +977,7 @@
     }
   },
   {
-    "id": "tokyo_159",
+    "id": "tokyo_164",
     "name": "相鉄フレッサイン 日本橋茅場町",
     "brand": "Fresa Inn",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -974,7 +1027,32 @@
     }
   },
   {
-    "id": "tokyo_219",
+    "id": "tokyo_229",
+    "name": "アパホテルTKP東京西葛西",
+    "brand": "APA Hotel",
+    "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
+    "region": "tokyo",
+    "lat": 35.664242,
+    "lng": 139.860202,
+    "station_name": "西葛西",
+    "station_dist": 88,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 144,
+      "seven": 125,
+      "familymart": 79,
+      "starbucks": 3045,
+      "doutor": 72,
+      "komeda": 1224,
+      "mcdonalds": 186,
+      "mos": 135,
+      "kfc": 576,
+      "drugstore": 90,
+      "supermarket": 90
+    }
+  },
+  {
+    "id": "tokyo_232",
     "name": "アパホテル＆リゾート西新宿五丁目駅タワー",
     "brand": "APA Hotel",
     "area": "渋谷区     東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -984,7 +1062,7 @@
     "station_name": "西新宿五丁目",
     "station_dist": 88,
     "airport_lines": [
-      "JR_NEX"
+      "RAIL_NEX"
     ],
     "amenities": {
       "lawson": 89,
@@ -1001,7 +1079,7 @@
     }
   },
   {
-    "id": "tohoku_33",
+    "id": "tohoku_35",
     "name": "スーパーホテル 仙台 広瀬通り",
     "brand": "Super Hotel",
     "area": "仙台市  青葉区 中央  宮城県 宮城縣 仙台市",
@@ -1060,7 +1138,10 @@
     "lng": 130.414566,
     "station_name": "祇園",
     "station_dist": 91,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_FUK",
+      "RAIL_FUKUOKA"
+    ],
     "amenities": {
       "lawson": 64,
       "seven": 185,
@@ -1076,7 +1157,7 @@
     }
   },
   {
-    "id": "tokyo_228",
+    "id": "tokyo_241",
     "name": "アパホテル〈品川 泉岳寺駅前〉",
     "brand": "APA Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -1086,7 +1167,7 @@
     "station_name": "泉岳寺",
     "station_dist": 94,
     "airport_lines": [
-      "KEIKYU"
+      "RAIL_KEIKYU"
     ],
     "amenities": {
       "lawson": 194,
@@ -1103,7 +1184,7 @@
     }
   },
   {
-    "id": "tokyo_133",
+    "id": "tokyo_134",
     "name": "No.412 APA Hotel Keisei Ueno Ekimae Minami",
     "brand": "APA Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -1113,7 +1194,7 @@
     "station_name": "上野御徒町",
     "station_dist": 95,
     "airport_lines": [
-      "KEISEI"
+      "RAIL_KEISEI"
     ],
     "amenities": {
       "lawson": 109,
@@ -1130,7 +1211,7 @@
     }
   },
   {
-    "id": "tokyo_210",
+    "id": "tokyo_219",
     "name": "アパホテル",
     "brand": "APA Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -1230,7 +1311,7 @@
     }
   },
   {
-    "id": "tokyo_19",
+    "id": "tokyo_20",
     "name": "コンフォートホテル東京東日本橋",
     "brand": "Comfort Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -1255,7 +1336,7 @@
     }
   },
   {
-    "id": "tokyo_37",
+    "id": "tokyo_38",
     "name": "東横イン",
     "brand": "Toyoko Inn",
     "area": "神奈川県 神奈川縣 橫濱市",
@@ -1280,7 +1361,7 @@
     }
   },
   {
-    "id": "tokyo_58",
+    "id": "tokyo_59",
     "name": "ホテル リブマックス 日暮里",
     "brand": "LiveMax",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -1305,7 +1386,7 @@
     }
   },
   {
-    "id": "tokyo_117",
+    "id": "tokyo_118",
     "name": "東横INN浅草蔵前2",
     "brand": "Toyoko Inn",
     "area": "台東区     東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -1330,7 +1411,7 @@
     }
   },
   {
-    "id": "tokyo_171",
+    "id": "tokyo_176",
     "name": "東横イン",
     "brand": "Toyoko Inn",
     "area": "神奈川県 神奈川縣 橫濱市",
@@ -1355,7 +1436,7 @@
     }
   },
   {
-    "id": "tokyo_79",
+    "id": "tokyo_80",
     "name": "ダイワロイネットホテル千葉中央",
     "brand": "Daiwa Roynet",
     "area": "千葉県 千葉縣 千葉市 舞濱",
@@ -1365,8 +1446,8 @@
     "station_name": "千葉中央",
     "station_dist": 101,
     "airport_lines": [
-      "JR_NEX",
-      "KEISEI"
+      "RAIL_KEISEI",
+      "RAIL_NEX"
     ],
     "amenities": {
       "lawson": 68,
@@ -1380,6 +1461,33 @@
       "kfc": 2674,
       "drugstore": 73,
       "supermarket": 152
+    }
+  },
+  {
+    "id": "tokyo_178",
+    "name": "三井ガーデンホテル銀座五丁目",
+    "brand": "Mitsui Garden",
+    "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
+    "region": "tokyo",
+    "lat": 35.668788,
+    "lng": 139.766711,
+    "station_name": "東銀座",
+    "station_dist": 102,
+    "airport_lines": [
+      "RAIL_KEIKYU"
+    ],
+    "amenities": {
+      "lawson": 59,
+      "seven": 115,
+      "familymart": 88,
+      "starbucks": 112,
+      "doutor": 154,
+      "komeda": 256,
+      "mcdonalds": 420,
+      "mos": 1094,
+      "kfc": 954,
+      "drugstore": 135,
+      "supermarket": 538
     }
   },
   {
@@ -1408,7 +1516,7 @@
     }
   },
   {
-    "id": "tokyo_214",
+    "id": "tokyo_222",
     "name": "三井ガーデンホテル五反田",
     "brand": "Mitsui Garden",
     "area": "品川区 五反田  東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -1458,7 +1566,7 @@
     }
   },
   {
-    "id": "kyushu_north_32",
+    "id": "kyushu_north_35",
     "name": "ドーミーイン PREMIUM 博多キャナルシティ前",
     "brand": "Dormy Inn",
     "area": "福岡県 福岡縣 福岡市 博多 天神",
@@ -1483,7 +1591,7 @@
     }
   },
   {
-    "id": "tohoku_19",
+    "id": "tohoku_20",
     "name": "ホテルメトロポリタン仙台イースト",
     "brand": "Hotel Metropolitan",
     "area": "仙台市  青葉区   宮城県 宮城縣 仙台市",
@@ -1492,7 +1600,9 @@
     "lng": 140.883465,
     "station_name": "仙台",
     "station_dist": 105,
-    "airport_lines": [],
+    "airport_lines": [
+      "RAIL_SENDAI"
+    ],
     "amenities": {
       "lawson": 273,
       "seven": 177,
@@ -1508,7 +1618,7 @@
     }
   },
   {
-    "id": "tokyo_60",
+    "id": "tokyo_61",
     "name": "アパホテル 巣鴨駅前",
     "brand": "APA Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -1533,7 +1643,7 @@
     }
   },
   {
-    "id": "tokyo_189",
+    "id": "tokyo_195",
     "name": "相鉄フレッサイン 東京京橋",
     "brand": "Fresa Inn",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -1542,7 +1652,9 @@
     "lng": 139.771817,
     "station_name": "宝町",
     "station_dist": 106,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_TYO"
+    ],
     "amenities": {
       "lawson": 309,
       "seven": 149,
@@ -1583,7 +1695,7 @@
     }
   },
   {
-    "id": "tohoku_46",
+    "id": "tohoku_49",
     "name": "ダイワロイネットホテル仙台西口",
     "brand": "Daiwa Roynet",
     "area": "仙台市  青葉区   宮城県 宮城縣 仙台市",
@@ -1592,7 +1704,9 @@
     "lng": 140.879041,
     "station_name": "仙台",
     "station_dist": 107,
-    "airport_lines": [],
+    "airport_lines": [
+      "RAIL_SENDAI"
+    ],
     "amenities": {
       "lawson": 78,
       "seven": 10,
@@ -1633,7 +1747,7 @@
     }
   },
   {
-    "id": "tokyo_126",
+    "id": "tokyo_127",
     "name": "三井ガーデンホテル日本橋プレミア",
     "brand": "Mitsui Garden",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -1708,6 +1822,33 @@
     }
   },
   {
+    "id": "kyushu_north_38",
+    "name": "ホテルリブマックス小倉駅前",
+    "brand": "LiveMax",
+    "area": "福岡県 福岡縣 北九州市 小倉",
+    "region": "kyushu_north",
+    "lat": 33.886812,
+    "lng": 130.880968,
+    "station_name": "小倉",
+    "station_dist": 110,
+    "airport_lines": [
+      "BUS_KKJ"
+    ],
+    "amenities": {
+      "lawson": 346,
+      "seven": 57,
+      "familymart": 123,
+      "starbucks": 126,
+      "doutor": 119,
+      "komeda": 539,
+      "mcdonalds": 94,
+      "mos": 9999,
+      "kfc": 9999,
+      "drugstore": 132,
+      "supermarket": 190
+    }
+  },
+  {
     "id": "chugoku_37",
     "name": "ヴィアイン岡山",
     "brand": "Via Inn",
@@ -1717,7 +1858,9 @@
     "lng": 133.916905,
     "station_name": "岡山",
     "station_dist": 110,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_OKJ"
+    ],
     "amenities": {
       "lawson": 279,
       "seven": 58,
@@ -1733,7 +1876,7 @@
     }
   },
   {
-    "id": "tokyo_85",
+    "id": "tokyo_86",
     "name": "アパホテル",
     "brand": "APA Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -1758,7 +1901,7 @@
     }
   },
   {
-    "id": "tokyo_120",
+    "id": "tokyo_121",
     "name": "ダイワロイネットホテル",
     "brand": "Daiwa Roynet",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -1767,7 +1910,9 @@
     "lng": 139.7708,
     "station_name": "京橋",
     "station_dist": 111,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_TYO"
+    ],
     "amenities": {
       "lawson": 262,
       "seven": 17,
@@ -1808,7 +1953,7 @@
     }
   },
   {
-    "id": "tokyo_112",
+    "id": "tokyo_113",
     "name": "アパホテル",
     "brand": "APA Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -1818,7 +1963,7 @@
     "station_name": "浅草",
     "station_dist": 115,
     "airport_lines": [
-      "KEIKYU"
+      "RAIL_KEIKYU"
     ],
     "amenities": {
       "lawson": 91,
@@ -1835,7 +1980,7 @@
     }
   },
   {
-    "id": "tokyo_191",
+    "id": "tokyo_197",
     "name": "アパホテル 銀座 新富町駅前",
     "brand": "APA Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -1860,7 +2005,7 @@
     }
   },
   {
-    "id": "kyushu_north_34",
+    "id": "kyushu_north_37",
     "name": "Daiwa Roynet Hotel Hakata-Gion",
     "brand": "Daiwa Roynet",
     "area": "Fukoka     福岡県 福岡縣 福岡市 博多 天神",
@@ -1869,7 +2014,9 @@
     "lng": 130.413714,
     "station_name": "祇園",
     "station_dist": 118,
-    "airport_lines": [],
+    "airport_lines": [
+      "RAIL_FUKUOKA"
+    ],
     "amenities": {
       "lawson": 130,
       "seven": 150,
@@ -1935,7 +2082,7 @@
     }
   },
   {
-    "id": "tokyo_221",
+    "id": "tokyo_234",
     "name": "アパホテル",
     "brand": "APA Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -1960,7 +2107,7 @@
     }
   },
   {
-    "id": "tokyo_143",
+    "id": "tokyo_144",
     "name": "ホテルリブマックス",
     "brand": "LiveMax",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -1985,7 +2132,7 @@
     }
   },
   {
-    "id": "tokyo_148",
+    "id": "tokyo_150",
     "name": "アパホテル新宿歌舞伎町タワー",
     "brand": "APA Hotel",
     "area": "新宿区     東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -1995,7 +2142,8 @@
     "station_name": "西武新宿",
     "station_dist": 122,
     "airport_lines": [
-      "JR_NEX"
+      "BUS_TYO",
+      "RAIL_NEX"
     ],
     "amenities": {
       "lawson": 81,
@@ -2012,7 +2160,7 @@
     }
   },
   {
-    "id": "tokyo_194",
+    "id": "tokyo_200",
     "name": "アパホテル",
     "brand": "APA Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -2037,26 +2185,34 @@
     }
   },
   {
-    "id": "kyushu_south_26",
+    "id": "kyushu_south_28",
     "name": "東横イン",
     "brand": "Toyoko Inn",
-    "region": "other",
+    "area": "宮崎県 宮崎縣 宮崎市",
+    "region": "kyushu_south",
     "lat": 31.914657,
     "lng": 131.431842,
     "station_name": "宮崎",
     "station_dist": 122,
-    "airport_lines": [],
+    "airport_lines": [
+      "RAIL_MIYAZAKI"
+    ],
     "amenities": {
       "lawson": 183,
       "seven": 203,
       "familymart": 85,
+      "starbucks": 667,
+      "doutor": 867,
+      "komeda": 1340,
       "mcdonalds": 28,
+      "mos": 815,
+      "kfc": 68,
       "drugstore": 51,
       "supermarket": 294
     }
   },
   {
-    "id": "tohoku_35",
+    "id": "tohoku_37",
     "name": "ダイワロイネットホテル",
     "brand": "Daiwa Roynet",
     "area": "仙台市  宮城野区   宮城県 宮城縣 仙台市",
@@ -2131,7 +2287,7 @@
     }
   },
   {
-    "id": "tokyo_169",
+    "id": "tokyo_174",
     "name": "アパホテル",
     "brand": "APA Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -2140,7 +2296,9 @@
     "lng": 139.770522,
     "station_name": "宝町",
     "station_dist": 127,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_TYO"
+    ],
     "amenities": {
       "lawson": 185,
       "seven": 102,
@@ -2206,7 +2364,7 @@
     }
   },
   {
-    "id": "tokyo_204",
+    "id": "tokyo_213",
     "name": "アパホテル",
     "brand": "APA Hotel",
     "area": "千代田区   鍛冶町  東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -2231,7 +2389,7 @@
     }
   },
   {
-    "id": "tokyo_142",
+    "id": "tokyo_143",
     "name": "相鉄フレッサイン",
     "brand": "Fresa Inn",
     "area": "Minato-ku, Akasaka     東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -2265,7 +2423,9 @@
     "lng": 130.41305,
     "station_name": "祇園",
     "station_dist": 130,
-    "airport_lines": [],
+    "airport_lines": [
+      "RAIL_FUKUOKA"
+    ],
     "amenities": {
       "lawson": 202,
       "seven": 91,
@@ -2331,7 +2491,7 @@
     }
   },
   {
-    "id": "tokyo_24",
+    "id": "tokyo_25",
     "name": "アパホテル横浜関内",
     "brand": "APA Hotel",
     "area": "神奈川県 神奈川縣 橫濱市",
@@ -2356,7 +2516,7 @@
     }
   },
   {
-    "id": "tohoku_21",
+    "id": "tohoku_23",
     "name": "ホテルメトロポリタン仙台",
     "brand": "Hotel Metropolitan",
     "area": "宮城県 宮城縣 仙台市",
@@ -2365,7 +2525,9 @@
     "lng": 140.881118,
     "station_name": "仙台",
     "station_dist": 135,
-    "airport_lines": [],
+    "airport_lines": [
+      "RAIL_SENDAI"
+    ],
     "amenities": {
       "lawson": 169,
       "seven": 78,
@@ -2381,7 +2543,7 @@
     }
   },
   {
-    "id": "tohoku_14",
+    "id": "tohoku_15",
     "name": "ホテルリブマックス仙台広瀬通",
     "brand": "LiveMax",
     "area": "仙台市  青葉区 本町  宮城県 宮城縣 仙台市",
@@ -2406,7 +2568,7 @@
     }
   },
   {
-    "id": "tokyo_123",
+    "id": "tokyo_124",
     "name": "Keisei Richmond Hotel Tokyo Monzennakacho",
     "brand": "Richmond Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -2431,7 +2593,34 @@
     }
   },
   {
-    "id": "tokyo_96",
+    "id": "kyushu_north_33",
+    "name": "ホテルリブマックス 福岡天神 WEST",
+    "brand": "LiveMax",
+    "area": "福岡県 福岡縣 福岡市 博多 天神",
+    "region": "kyushu_north",
+    "lat": 33.59014,
+    "lng": 130.391148,
+    "station_name": "赤坂",
+    "station_dist": 138,
+    "airport_lines": [
+      "RAIL_FUKUOKA"
+    ],
+    "amenities": {
+      "lawson": 100,
+      "seven": 215,
+      "familymart": 201,
+      "starbucks": 135,
+      "doutor": 555,
+      "komeda": 106,
+      "mcdonalds": 179,
+      "mos": 555,
+      "kfc": 672,
+      "drugstore": 97,
+      "supermarket": 297
+    }
+  },
+  {
+    "id": "tokyo_97",
     "name": "スーパーホテル",
     "brand": "Super Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -2456,7 +2645,7 @@
     }
   },
   {
-    "id": "tokyo_129",
+    "id": "tokyo_130",
     "name": "Hotel LiVEMAX 浅草橋駅前",
     "brand": "LiveMax",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -2466,7 +2655,7 @@
     "station_name": "浅草橋",
     "station_dist": 139,
     "airport_lines": [
-      "KEIKYU"
+      "RAIL_KEIKYU"
     ],
     "amenities": {
       "lawson": 187,
@@ -2517,7 +2706,9 @@
     "lng": 130.403612,
     "station_name": "天神南",
     "station_dist": 140,
-    "airport_lines": [],
+    "airport_lines": [
+      "RAIL_FUKUOKA"
+    ],
     "amenities": {
       "lawson": 87,
       "seven": 91,
@@ -2542,7 +2733,9 @@
     "lng": 130.882363,
     "station_name": "小倉",
     "station_dist": 140,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_KKJ"
+    ],
     "amenities": {
       "lawson": 213,
       "seven": 87,
@@ -2617,7 +2810,9 @@
     "lng": 132.474863,
     "station_name": "広島",
     "station_dist": 143,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_HIJ"
+    ],
     "amenities": {
       "lawson": 61,
       "seven": 66,
@@ -2633,7 +2828,7 @@
     }
   },
   {
-    "id": "tokyo_18",
+    "id": "tokyo_19",
     "name": "秋葉原ワシントンホテル",
     "brand": "Washington Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -2685,7 +2880,7 @@
     }
   },
   {
-    "id": "tokyo_122",
+    "id": "tokyo_123",
     "name": "三井ガーデンホテル豊洲プレミア",
     "brand": "Mitsui Garden",
     "area": "江東区     東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -2787,7 +2982,7 @@
     }
   },
   {
-    "id": "tokyo_110",
+    "id": "tokyo_111",
     "name": "アパホテル",
     "brand": "APA Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -2837,7 +3032,7 @@
     }
   },
   {
-    "id": "tokyo_70",
+    "id": "tokyo_71",
     "name": "横浜桜木町ワシントンホテル",
     "brand": "Washington Hotel",
     "area": "神奈川県 神奈川縣 橫濱市",
@@ -2862,7 +3057,7 @@
     }
   },
   {
-    "id": "tokyo_163",
+    "id": "tokyo_168",
     "name": "ドーミーイン秋葉原",
     "brand": "Dormy Inn",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -2887,7 +3082,7 @@
     }
   },
   {
-    "id": "tokyo_164",
+    "id": "tokyo_169",
     "name": "スーパーホテル",
     "brand": "Super Hotel",
     "area": "上野  東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -2912,7 +3107,7 @@
     }
   },
   {
-    "id": "tokyo_82",
+    "id": "tokyo_83",
     "name": "リッチモンドホテルプレミア浅草",
     "brand": "Richmond Hotel",
     "area": "台東区   浅草  東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -2922,7 +3117,7 @@
     "station_name": "浅草",
     "station_dist": 152,
     "airport_lines": [
-      "KEIKYU"
+      "RAIL_KEIKYU"
     ],
     "amenities": {
       "lawson": 60,
@@ -2939,7 +3134,7 @@
     }
   },
   {
-    "id": "tokyo_109",
+    "id": "tokyo_110",
     "name": "Tokyu Stay Nihombashi",
     "brand": "Tokyu Stay",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -2973,7 +3168,9 @@
     "lng": 130.881268,
     "station_name": "平和通",
     "station_dist": 152,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_KKJ"
+    ],
     "amenities": {
       "lawson": 134,
       "seven": 85,
@@ -2989,7 +3186,7 @@
     }
   },
   {
-    "id": "tokyo_62",
+    "id": "tokyo_63",
     "name": "東横イン",
     "brand": "Toyoko Inn",
     "area": "台東区   駒形  東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -3089,7 +3286,7 @@
     }
   },
   {
-    "id": "tohoku_36",
+    "id": "tohoku_38",
     "name": "ホテル ルートイン",
     "brand": "Route Inn",
     "area": "岩手県 岩手縣 盛岡市",
@@ -3114,7 +3311,7 @@
     }
   },
   {
-    "id": "tokyo_29",
+    "id": "tokyo_30",
     "name": "東横INN山手線大塚駅北口2",
     "brand": "Toyoko Inn",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -3164,7 +3361,7 @@
     }
   },
   {
-    "id": "tokyo_23",
+    "id": "tokyo_24",
     "name": "コンフォートホテル",
     "brand": "Comfort Hotel",
     "area": "神奈川県 神奈川縣 橫濱市",
@@ -3189,7 +3386,7 @@
     }
   },
   {
-    "id": "tokyo_217",
+    "id": "tokyo_230",
     "name": "Mitsui Garden Hotel Jingugaien Tokyo Premier",
     "brand": "Mitsui Garden",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -3223,7 +3420,10 @@
     "lng": 130.418222,
     "station_name": "博多",
     "station_dist": 159,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_FUK",
+      "RAIL_FUKUOKA"
+    ],
     "amenities": {
       "lawson": 133,
       "seven": 34,
@@ -3239,7 +3439,7 @@
     }
   },
   {
-    "id": "tokyo_198",
+    "id": "tokyo_206",
     "name": "アパホテル横浜鶴見",
     "brand": "APA Hotel",
     "area": "神奈川県 神奈川縣 橫濱市",
@@ -3249,7 +3449,7 @@
     "station_name": "京急鶴見",
     "station_dist": 160,
     "airport_lines": [
-      "KEIKYU"
+      "RAIL_KEIKYU"
     ],
     "amenities": {
       "lawson": 64,
@@ -3266,7 +3466,59 @@
     }
   },
   {
-    "id": "tokyo_52",
+    "id": "kyushu_north_30",
+    "name": "ダイワロイネットホテル小倉駅前",
+    "brand": "Daiwa Roynet",
+    "area": "福岡県 福岡縣 北九州市 小倉",
+    "region": "kyushu_north",
+    "lat": 33.884519,
+    "lng": 130.881103,
+    "station_name": "平和通",
+    "station_dist": 160,
+    "airport_lines": [
+      "BUS_KKJ"
+    ],
+    "amenities": {
+      "lawson": 126,
+      "seven": 91,
+      "familymart": 43,
+      "starbucks": 131,
+      "doutor": 96,
+      "komeda": 447,
+      "mcdonalds": 162,
+      "mos": 9999,
+      "kfc": 9999,
+      "drugstore": 94,
+      "supermarket": 293
+    }
+  },
+  {
+    "id": "tohoku_40",
+    "name": "R&Bホテル盛岡駅前",
+    "brand": "Washington Hotel",
+    "area": "岩手県 岩手縣 盛岡市",
+    "region": "tohoku",
+    "lat": 39.70251,
+    "lng": 141.137891,
+    "station_name": "盛岡",
+    "station_dist": 160,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 88,
+      "seven": 107,
+      "familymart": 140,
+      "starbucks": 179,
+      "doutor": 617,
+      "komeda": 9999,
+      "mcdonalds": 2020,
+      "mos": 2537,
+      "kfc": 1572,
+      "drugstore": 62,
+      "supermarket": 574
+    }
+  },
+  {
+    "id": "tokyo_53",
     "name": "リッチモンドホテル東京",
     "brand": "Richmond Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -3291,7 +3543,7 @@
     }
   },
   {
-    "id": "tokyo_144",
+    "id": "tokyo_145",
     "name": "Sotetsu Fresa Inn Shimbashi-Hibiyaguchi",
     "brand": "Fresa Inn",
     "area": "港区     東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -3301,7 +3553,7 @@
     "station_name": "新橋",
     "station_dist": 163,
     "airport_lines": [
-      "KEIKYU"
+      "RAIL_KEIKYU"
     ],
     "amenities": {
       "lawson": 44,
@@ -3393,7 +3645,7 @@
     }
   },
   {
-    "id": "tokyo_61",
+    "id": "tokyo_62",
     "name": "アパホテル",
     "brand": "APA Hotel",
     "area": "台東区   駒形  東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -3418,7 +3670,7 @@
     }
   },
   {
-    "id": "tokyo_41",
+    "id": "tokyo_42",
     "name": "アパホテル",
     "brand": "APA Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -3443,7 +3695,7 @@
     }
   },
   {
-    "id": "tokyo_90",
+    "id": "tokyo_91",
     "name": "Daiwa Roynet Hotel",
     "brand": "Daiwa Roynet",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -3453,7 +3705,8 @@
     "station_name": "池袋",
     "station_dist": 166,
     "airport_lines": [
-      "JR_NEX"
+      "BUS_TYO",
+      "RAIL_NEX"
     ],
     "amenities": {
       "lawson": 201,
@@ -3495,7 +3748,7 @@
     }
   },
   {
-    "id": "tokyo_20",
+    "id": "tokyo_21",
     "name": "ホテル ルートイン 横浜馬車道",
     "brand": "Route Inn",
     "area": "神奈川県 神奈川縣 橫濱市",
@@ -3606,7 +3859,9 @@
     "lng": 133.91665,
     "station_name": "岡山",
     "station_dist": 169,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_OKJ"
+    ],
     "amenities": {
       "lawson": 415,
       "seven": 63,
@@ -3622,7 +3877,7 @@
     }
   },
   {
-    "id": "tokyo_105",
+    "id": "tokyo_106",
     "name": "APA Hotel (關東(首都圈))",
     "brand": "APA Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -3632,7 +3887,7 @@
     "station_name": "上野",
     "station_dist": 170,
     "airport_lines": [
-      "KEISEI"
+      "RAIL_KEISEI"
     ],
     "amenities": {
       "lawson": 66,
@@ -3671,6 +3926,33 @@
       "kfc": 1790,
       "drugstore": 228,
       "supermarket": 285
+    }
+  },
+  {
+    "id": "tokyo_224",
+    "name": "東急ステイ目黒・祐天寺",
+    "brand": "Tokyu Stay",
+    "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
+    "region": "tokyo",
+    "lat": 35.636065,
+    "lng": 139.690608,
+    "station_name": "祐天寺",
+    "station_dist": 172,
+    "airport_lines": [
+      "RAIL_KEIKYU"
+    ],
+    "amenities": {
+      "lawson": 143,
+      "seven": 145,
+      "familymart": 186,
+      "starbucks": 958,
+      "doutor": 259,
+      "komeda": 1914,
+      "mcdonalds": 165,
+      "mos": 1611,
+      "kfc": 223,
+      "drugstore": 111,
+      "supermarket": 98
     }
   },
   {
@@ -3724,7 +4006,7 @@
     }
   },
   {
-    "id": "tokyo_102",
+    "id": "tokyo_103",
     "name": "相鉄フレッサイン 大門駅前",
     "brand": "Fresa Inn",
     "area": "港区 芝大門2丁目  東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -3734,7 +4016,7 @@
     "station_name": "大門",
     "station_dist": 174,
     "airport_lines": [
-      "KEIKYU"
+      "RAIL_KEIKYU"
     ],
     "amenities": {
       "lawson": 90,
@@ -3776,7 +4058,7 @@
     }
   },
   {
-    "id": "tokyo_92",
+    "id": "tokyo_93",
     "name": "アパホテル",
     "brand": "APA Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -3801,7 +4083,7 @@
     }
   },
   {
-    "id": "tokyo_134",
+    "id": "tokyo_135",
     "name": "No.220 APA Hotel Shinjuku Gyoemmae",
     "brand": "APA Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -3811,7 +4093,8 @@
     "station_name": "新宿御苑前",
     "station_dist": 175,
     "airport_lines": [
-      "JR_NEX"
+      "BUS_TYO",
+      "RAIL_NEX"
     ],
     "amenities": {
       "lawson": 140,
@@ -3828,7 +4111,7 @@
     }
   },
   {
-    "id": "tokyo_77",
+    "id": "tokyo_78",
     "name": "HOTEL LiVEMAX",
     "brand": "LiveMax",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -3878,7 +4161,7 @@
     }
   },
   {
-    "id": "tokyo_160",
+    "id": "tokyo_165",
     "name": "東横イン品川駅高輪口",
     "brand": "Toyoko Inn",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -3888,8 +4171,8 @@
     "station_name": "品川",
     "station_dist": 177,
     "airport_lines": [
-      "JR_NEX",
-      "KEIKYU"
+      "RAIL_KEIKYU",
+      "RAIL_NEX"
     ],
     "amenities": {
       "lawson": 413,
@@ -3956,7 +4239,7 @@
     }
   },
   {
-    "id": "tokyo_73",
+    "id": "tokyo_74",
     "name": "アパホテル",
     "brand": "APA Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -3981,7 +4264,7 @@
     }
   },
   {
-    "id": "tokyo_78",
+    "id": "tokyo_79",
     "name": "アパホテル",
     "brand": "APA Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -3991,7 +4274,7 @@
     "station_name": "浅草",
     "station_dist": 179,
     "airport_lines": [
-      "KEIKYU"
+      "RAIL_KEIKYU"
     ],
     "amenities": {
       "lawson": 188,
@@ -4042,7 +4325,9 @@
     "lng": 133.919988,
     "station_name": "岡山",
     "station_dist": 180,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_OKJ"
+    ],
     "amenities": {
       "lawson": 86,
       "seven": 149,
@@ -4058,7 +4343,7 @@
     }
   },
   {
-    "id": "tohoku_44",
+    "id": "tohoku_47",
     "name": "東横イン",
     "brand": "Toyoko Inn",
     "area": "青森県 青森縣 青森市",
@@ -4158,20 +4443,28 @@
     }
   },
   {
-    "id": "kyushu_south_28",
+    "id": "kyushu_south_30",
     "name": "東横イン",
     "brand": "Toyoko Inn",
-    "region": "other",
+    "area": "鹿児島県 鹿兒島縣 鹿兒島市",
+    "region": "kyushu_south",
     "lat": 31.585357,
     "lng": 130.541697,
     "station_name": "鹿児島中央",
     "station_dist": 183,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_KOJ"
+    ],
     "amenities": {
       "lawson": 184,
       "seven": 223,
       "familymart": 37,
+      "starbucks": 209,
+      "doutor": 185,
+      "komeda": 1349,
       "mcdonalds": 197,
+      "mos": 1565,
+      "kfc": 215,
       "drugstore": 20,
       "supermarket": 228
     }
@@ -4204,7 +4497,7 @@
     }
   },
   {
-    "id": "tokyo_83",
+    "id": "tokyo_84",
     "name": "アパホテル",
     "brand": "APA Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -4279,7 +4572,7 @@
     }
   },
   {
-    "id": "tohoku_47",
+    "id": "tohoku_50",
     "name": "スーパーホテル仙台駅東口天然温泉",
     "brand": "Super Hotel",
     "area": "宮城県 宮城縣 仙台市",
@@ -4288,7 +4581,9 @@
     "lng": 140.883333,
     "station_name": "仙台",
     "station_dist": 186,
-    "airport_lines": [],
+    "airport_lines": [
+      "RAIL_SENDAI"
+    ],
     "amenities": {
       "lawson": 73,
       "seven": 141,
@@ -4304,7 +4599,7 @@
     }
   },
   {
-    "id": "tokyo_80",
+    "id": "tokyo_81",
     "name": "ダイワロイネットホテル千葉駅前",
     "brand": "Daiwa Roynet",
     "area": "千葉県 千葉縣 千葉市 舞濱",
@@ -4529,7 +4824,7 @@
     }
   },
   {
-    "id": "tokyo_181",
+    "id": "tokyo_187",
     "name": "東横イン",
     "brand": "Toyoko Inn",
     "area": "中央区   日本橋大伝馬町  東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -4563,7 +4858,10 @@
     "lng": 130.415475,
     "station_name": "祇園",
     "station_dist": 191,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_FUK",
+      "RAIL_FUKUOKA"
+    ],
     "amenities": {
       "lawson": 47,
       "seven": 135,
@@ -4629,7 +4927,7 @@
     }
   },
   {
-    "id": "tokyo_139",
+    "id": "tokyo_140",
     "name": "東急ステイ",
     "brand": "Tokyu Stay",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -4654,7 +4952,7 @@
     }
   },
   {
-    "id": "tokyo_218",
+    "id": "tokyo_231",
     "name": "Hotel Livemax",
     "brand": "LiveMax",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -4664,7 +4962,7 @@
     "station_name": "浅草橋",
     "station_dist": 194,
     "airport_lines": [
-      "KEIKYU"
+      "RAIL_KEIKYU"
     ],
     "amenities": {
       "lawson": 419,
@@ -4706,7 +5004,7 @@
     }
   },
   {
-    "id": "kyushu_north_31",
+    "id": "kyushu_north_34",
     "name": "ホテルルートイン博多駅前",
     "brand": "Route Inn",
     "area": "福岡県 福岡縣 福岡市 博多 天神",
@@ -4715,7 +5013,10 @@
     "lng": 130.418877,
     "station_name": "博多",
     "station_dist": 194,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_FUK",
+      "RAIL_FUKUOKA"
+    ],
     "amenities": {
       "lawson": 58,
       "seven": 100,
@@ -4731,7 +5032,7 @@
     }
   },
   {
-    "id": "tokyo_182",
+    "id": "tokyo_188",
     "name": "アパホテル",
     "brand": "APA Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -4756,7 +5057,7 @@
     }
   },
   {
-    "id": "tokyo_216",
+    "id": "tokyo_226",
     "name": "アパホテル",
     "brand": "APA Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -4781,7 +5082,7 @@
     }
   },
   {
-    "id": "tokyo_187",
+    "id": "tokyo_193",
     "name": "東横イン",
     "brand": "Toyoko Inn",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -4834,17 +5135,25 @@
     "id": "kyushu_south_21",
     "name": "リッチモンドホテル宮崎駅前",
     "brand": "Richmond Hotel",
-    "region": "other",
+    "area": "宮崎県 宮崎縣 宮崎市",
+    "region": "kyushu_south",
     "lat": 31.916017,
     "lng": 131.434008,
     "station_name": "宮崎",
     "station_dist": 196,
-    "airport_lines": [],
+    "airport_lines": [
+      "RAIL_MIYAZAKI"
+    ],
     "amenities": {
       "lawson": 240,
       "seven": 352,
       "familymart": 191,
+      "starbucks": 429,
+      "doutor": 1050,
+      "komeda": 1150,
       "mcdonalds": 226,
+      "mos": 987,
+      "kfc": 208,
       "drugstore": 202,
       "supermarket": 298
     }
@@ -4925,7 +5234,7 @@
     }
   },
   {
-    "id": "tokyo_72",
+    "id": "tokyo_73",
     "name": "スーパーホテル",
     "brand": "Super Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -4950,7 +5259,7 @@
     }
   },
   {
-    "id": "tohoku_34",
+    "id": "tohoku_36",
     "name": "天然温泉 青葉の湯 ドーミーイン 仙台ANNEX",
     "brand": "Dormy Inn",
     "area": "仙台市  青葉区 中央  宮城県 宮城縣 仙台市",
@@ -4975,7 +5284,7 @@
     }
   },
   {
-    "id": "tokyo_180",
+    "id": "tokyo_186",
     "name": "dormy inn",
     "brand": "Dormy Inn",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -5025,7 +5334,7 @@
     }
   },
   {
-    "id": "tokyo_150",
+    "id": "tokyo_152",
     "name": "アパホテル",
     "brand": "APA Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -5050,7 +5359,7 @@
     }
   },
   {
-    "id": "tokyo_186",
+    "id": "tokyo_192",
     "name": "相鉄フレッサイン お茶の水神保町",
     "brand": "Fresa Inn",
     "area": "千代田区   神田神保町  東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -5072,6 +5381,31 @@
       "kfc": 990,
       "drugstore": 35,
       "supermarket": 175
+    }
+  },
+  {
+    "id": "tokyo_227",
+    "name": "アパホテル〈山手大塚駅タワー〉",
+    "brand": "APA Hotel",
+    "area": "豊島区   南大塚  東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
+    "region": "tokyo",
+    "lat": 35.731515,
+    "lng": 139.726384,
+    "station_name": "大塚",
+    "station_dist": 200,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 77,
+      "seven": 208,
+      "familymart": 55,
+      "starbucks": 187,
+      "doutor": 229,
+      "komeda": 199,
+      "mcdonalds": 219,
+      "mos": 330,
+      "kfc": 451,
+      "drugstore": 213,
+      "supermarket": 113
     }
   },
   {
@@ -5099,6 +5433,31 @@
       "kfc": 320,
       "drugstore": 93,
       "supermarket": 300
+    }
+  },
+  {
+    "id": "tokyo_228",
+    "name": "ホテルルートインGrand東京東陽町",
+    "brand": "Route Inn",
+    "area": "江東区   東陽  東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
+    "region": "tokyo",
+    "lat": 35.667855,
+    "lng": 139.816891,
+    "station_name": "東陽町",
+    "station_dist": 201,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 245,
+      "seven": 129,
+      "familymart": 169,
+      "starbucks": 1155,
+      "doutor": 278,
+      "komeda": 841,
+      "mcdonalds": 217,
+      "mos": 1890,
+      "kfc": 434,
+      "drugstore": 86,
+      "supermarket": 550
     }
   },
   {
@@ -5161,7 +5520,9 @@
     "lng": 130.403424,
     "station_name": "天神南",
     "station_dist": 203,
-    "airport_lines": [],
+    "airport_lines": [
+      "RAIL_FUKUOKA"
+    ],
     "amenities": {
       "lawson": 119,
       "seven": 97,
@@ -5177,7 +5538,7 @@
     }
   },
   {
-    "id": "tohoku_50",
+    "id": "tohoku_53",
     "name": "ホテルメトロポリタンベース仙台",
     "brand": "Hotel Metropolitan",
     "area": "仙台市  青葉区   宮城県 宮城縣 仙台市",
@@ -5186,7 +5547,9 @@
     "lng": 140.881242,
     "station_name": "仙台",
     "station_dist": 203,
-    "airport_lines": [],
+    "airport_lines": [
+      "RAIL_SENDAI"
+    ],
     "amenities": {
       "lawson": 230,
       "seven": 71,
@@ -5254,7 +5617,7 @@
     }
   },
   {
-    "id": "tokyo_75",
+    "id": "tokyo_76",
     "name": "ホテルリブマックス高田馬場駅前",
     "brand": "LiveMax",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -5279,7 +5642,7 @@
     }
   },
   {
-    "id": "tokyo_192",
+    "id": "tokyo_198",
     "name": "アパホテル",
     "brand": "APA Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -5329,7 +5692,7 @@
     }
   },
   {
-    "id": "tokyo_170",
+    "id": "tokyo_175",
     "name": "東横イン",
     "brand": "Toyoko Inn",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -5338,7 +5701,9 @@
     "lng": 139.771127,
     "station_name": "日本橋",
     "station_dist": 205,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_TYO"
+    ],
     "amenities": {
       "lawson": 117,
       "seven": 62,
@@ -5388,7 +5753,9 @@
     "lng": 140.736029,
     "station_name": "青森",
     "station_dist": 205,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_AOJ"
+    ],
     "amenities": {
       "lawson": 179,
       "seven": 247,
@@ -5413,7 +5780,9 @@
     "lng": 132.4739,
     "station_name": "広島",
     "station_dist": 206,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_HIJ"
+    ],
     "amenities": {
       "lawson": 141,
       "seven": 116,
@@ -5429,7 +5798,7 @@
     }
   },
   {
-    "id": "tokyo_74",
+    "id": "tokyo_75",
     "name": "ホテルメトロポリタン丸の内",
     "brand": "Hotel Metropolitan",
     "area": "千代田区   丸の内  東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -5438,7 +5807,9 @@
     "lng": 139.768499,
     "station_name": "大手町",
     "station_dist": 207,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_TYO"
+    ],
     "amenities": {
       "lawson": 144,
       "seven": 189,
@@ -5454,7 +5825,7 @@
     }
   },
   {
-    "id": "tokyo_124",
+    "id": "tokyo_125",
     "name": "Mitsui Garden Hotel Kyobashi",
     "brand": "Mitsui Garden",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -5463,7 +5834,9 @@
     "lng": 139.770909,
     "station_name": "京橋",
     "station_dist": 207,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_TYO"
+    ],
     "amenities": {
       "lawson": 203,
       "seven": 120,
@@ -5479,7 +5852,7 @@
     }
   },
   {
-    "id": "tokyo_149",
+    "id": "tokyo_151",
     "name": "ホテルメトロポリタン",
     "brand": "Hotel Metropolitan",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -5489,7 +5862,8 @@
     "station_name": "池袋",
     "station_dist": 207,
     "airport_lines": [
-      "JR_NEX"
+      "BUS_TYO",
+      "RAIL_NEX"
     ],
     "amenities": {
       "lawson": 127,
@@ -5506,7 +5880,7 @@
     }
   },
   {
-    "id": "tokyo_176",
+    "id": "tokyo_182",
     "name": "スーパーホテル",
     "brand": "Super Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -5516,7 +5890,8 @@
     "station_name": "池袋",
     "station_dist": 207,
     "airport_lines": [
-      "JR_NEX"
+      "BUS_TYO",
+      "RAIL_NEX"
     ],
     "amenities": {
       "lawson": 256,
@@ -5542,7 +5917,9 @@
     "lng": 140.735782,
     "station_name": "青森",
     "station_dist": 207,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_AOJ"
+    ],
     "amenities": {
       "lawson": 167,
       "seven": 217,
@@ -5585,7 +5962,35 @@
     }
   },
   {
-    "id": "tokyo_106",
+    "id": "tokyo_14",
+    "name": "R&Bホテル",
+    "brand": "Washington Hotel",
+    "area": "神奈川県 神奈川縣 橫濱市",
+    "region": "tokyo",
+    "lat": 35.510092,
+    "lng": 139.615531,
+    "station_name": "新横浜",
+    "station_dist": 209,
+    "airport_lines": [
+      "RAIL_KEIKYU",
+      "RAIL_NEX"
+    ],
+    "amenities": {
+      "lawson": 62,
+      "seven": 67,
+      "familymart": 34,
+      "starbucks": 150,
+      "doutor": 11,
+      "komeda": 9999,
+      "mcdonalds": 243,
+      "mos": 2529,
+      "kfc": 349,
+      "drugstore": 165,
+      "supermarket": 108
+    }
+  },
+  {
+    "id": "tokyo_107",
     "name": "アパホテル",
     "brand": "APA Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -5610,7 +6015,7 @@
     }
   },
   {
-    "id": "tokyo_111",
+    "id": "tokyo_112",
     "name": "スーパーホテル",
     "brand": "Super Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -5635,7 +6040,7 @@
     }
   },
   {
-    "id": "tokyo_30",
+    "id": "tokyo_31",
     "name": "Tokyu Stay",
     "brand": "Tokyu Stay",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -5660,7 +6065,7 @@
     }
   },
   {
-    "id": "tokyo_175",
+    "id": "tokyo_181",
     "name": "ホテル・東急ステイ",
     "brand": "Tokyu Stay",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -5670,7 +6075,8 @@
     "station_name": "池袋",
     "station_dist": 210,
     "airport_lines": [
-      "JR_NEX"
+      "BUS_TYO",
+      "RAIL_NEX"
     ],
     "amenities": {
       "lawson": 226,
@@ -5714,7 +6120,7 @@
     }
   },
   {
-    "id": "tokyo_21",
+    "id": "tokyo_22",
     "name": "ワシントンホテル",
     "brand": "Washington Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -5739,7 +6145,7 @@
     }
   },
   {
-    "id": "tokyo_54",
+    "id": "tokyo_55",
     "name": "スーパーホテル",
     "brand": "Super Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -5764,7 +6170,7 @@
     }
   },
   {
-    "id": "tokyo_190",
+    "id": "tokyo_196",
     "name": "ホテルリブマックス茅場町",
     "brand": "LiveMax",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -5789,7 +6195,7 @@
     }
   },
   {
-    "id": "tohoku_23",
+    "id": "tohoku_25",
     "name": "ダイワロイネットホテル 盛岡駅前",
     "brand": "Daiwa Roynet",
     "area": "盛岡市   盛岡駅前通  岩手県 岩手縣 盛岡市",
@@ -5823,7 +6229,9 @@
     "lng": 130.885518,
     "station_name": "小倉",
     "station_dist": 212,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_KKJ"
+    ],
     "amenities": {
       "lawson": 103,
       "seven": 202,
@@ -5839,7 +6247,7 @@
     }
   },
   {
-    "id": "tokyo_14",
+    "id": "tokyo_15",
     "name": "ダイワロイネットホテル",
     "brand": "Daiwa Roynet",
     "area": "神奈川県 神奈川縣 橫濱市",
@@ -5849,8 +6257,8 @@
     "station_name": "新横浜",
     "station_dist": 213,
     "airport_lines": [
-      "JR_NEX",
-      "KEIKYU"
+      "RAIL_KEIKYU",
+      "RAIL_NEX"
     ],
     "amenities": {
       "lawson": 42,
@@ -5867,7 +6275,7 @@
     }
   },
   {
-    "id": "tokyo_50",
+    "id": "tokyo_51",
     "name": "アパホテル",
     "brand": "APA Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -5877,7 +6285,7 @@
     "station_name": "東新宿",
     "station_dist": 213,
     "airport_lines": [
-      "JR_NEX"
+      "RAIL_NEX"
     ],
     "amenities": {
       "lawson": 24,
@@ -5894,7 +6302,7 @@
     }
   },
   {
-    "id": "tokyo_127",
+    "id": "tokyo_128",
     "name": "アパホテル",
     "brand": "APA Hotel",
     "area": "千葉県 千葉縣 千葉市 舞濱",
@@ -5904,8 +6312,8 @@
     "station_name": "千葉中央",
     "station_dist": 213,
     "airport_lines": [
-      "JR_NEX",
-      "KEISEI"
+      "RAIL_KEISEI",
+      "RAIL_NEX"
     ],
     "amenities": {
       "lawson": 14,
@@ -5922,7 +6330,7 @@
     }
   },
   {
-    "id": "tokyo_224",
+    "id": "tokyo_237",
     "name": "アパホテル",
     "brand": "APA Hotel",
     "area": "墨田区   横網  東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -5957,7 +6365,7 @@
     "station_name": "大門",
     "station_dist": 214,
     "airport_lines": [
-      "KEIKYU"
+      "RAIL_KEIKYU"
     ],
     "amenities": {
       "lawson": 191,
@@ -5974,7 +6382,32 @@
     }
   },
   {
-    "id": "tokyo_188",
+    "id": "tohoku_14",
+    "name": "R&Bホテル 仙台東口",
+    "brand": "Washington Hotel",
+    "area": "仙台市  若林区 新寺  宮城県 宮城縣 仙台市",
+    "region": "tohoku",
+    "lat": 38.256137,
+    "lng": 140.884995,
+    "station_name": "宮城野通",
+    "station_dist": 214,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 148,
+      "seven": 57,
+      "familymart": 39,
+      "starbucks": 376,
+      "doutor": 771,
+      "komeda": 1156,
+      "mcdonalds": 534,
+      "mos": 693,
+      "kfc": 710,
+      "drugstore": 171,
+      "supermarket": 225
+    }
+  },
+  {
+    "id": "tokyo_194",
     "name": "ヴィアイン東銀座",
     "brand": "Via Inn",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -6049,7 +6482,7 @@
     }
   },
   {
-    "id": "kyushu_north_33",
+    "id": "kyushu_north_36",
     "name": "三井ガーデンホテル福岡祇園",
     "brand": "Mitsui Garden",
     "area": "福岡県 福岡縣 福岡市 博多 天神",
@@ -6058,7 +6491,9 @@
     "lng": 130.413641,
     "station_name": "櫛田神社前",
     "station_dist": 216,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_FUK"
+    ],
     "amenities": {
       "lawson": 162,
       "seven": 55,
@@ -6099,7 +6534,7 @@
     }
   },
   {
-    "id": "tokyo_43",
+    "id": "tokyo_44",
     "name": "ダイワロイネットホテル銀座プレミア",
     "brand": "Daiwa Roynet",
     "area": "中央区     東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -6124,7 +6559,7 @@
     }
   },
   {
-    "id": "tokyo_51",
+    "id": "tokyo_52",
     "name": "Via Inn",
     "brand": "Via Inn",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -6149,7 +6584,7 @@
     }
   },
   {
-    "id": "tokyo_225",
+    "id": "tokyo_238",
     "name": "Via Inn Prime Akasaka",
     "brand": "Via Inn",
     "area": "港区   赤坂  東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -6199,7 +6634,7 @@
     }
   },
   {
-    "id": "tokyo_118",
+    "id": "tokyo_119",
     "name": "アパホテル",
     "brand": "APA Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -6224,7 +6659,7 @@
     }
   },
   {
-    "id": "tokyo_167",
+    "id": "tokyo_172",
     "name": "ダイワロイネットホテル東京大崎",
     "brand": "Daiwa Roynet",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -6249,7 +6684,7 @@
     }
   },
   {
-    "id": "tohoku_15",
+    "id": "tohoku_16",
     "name": "東横イン",
     "brand": "Toyoko Inn",
     "area": "岩手県 岩手縣 盛岡市",
@@ -6301,7 +6736,7 @@
     }
   },
   {
-    "id": "tokyo_156",
+    "id": "tokyo_161",
     "name": "アパホテル",
     "brand": "APA Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -6311,7 +6746,7 @@
     "station_name": "日暮里",
     "station_dist": 222,
     "airport_lines": [
-      "KEISEI"
+      "RAIL_KEISEI"
     ],
     "amenities": {
       "lawson": 598,
@@ -6337,7 +6772,9 @@
     "lng": 130.391778,
     "station_name": "赤坂",
     "station_dist": 222,
-    "airport_lines": [],
+    "airport_lines": [
+      "RAIL_FUKUOKA"
+    ],
     "amenities": {
       "lawson": 204,
       "seven": 99,
@@ -6362,7 +6799,9 @@
     "lng": 133.917373,
     "station_name": "岡山",
     "station_dist": 222,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_OKJ"
+    ],
     "amenities": {
       "lawson": 84,
       "seven": 85,
@@ -6378,7 +6817,7 @@
     }
   },
   {
-    "id": "tokyo_26",
+    "id": "tokyo_27",
     "name": "ドーミーイン千葉City Soga",
     "brand": "Dormy Inn",
     "area": "千葉県 千葉縣 千葉市 舞濱",
@@ -6403,7 +6842,7 @@
     }
   },
   {
-    "id": "tokyo_87",
+    "id": "tokyo_88",
     "name": "Наш хотель ヴィアイン 日本橋人形町",
     "brand": "Via Inn",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -6413,7 +6852,7 @@
     "station_name": "人形町 (都営地下鉄浅草線)",
     "station_dist": 223,
     "airport_lines": [
-      "KEIKYU"
+      "RAIL_KEIKYU"
     ],
     "amenities": {
       "lawson": 159,
@@ -6430,7 +6869,7 @@
     }
   },
   {
-    "id": "tokyo_222",
+    "id": "tokyo_235",
     "name": "相鉄フレッサイン 銀座三丁目",
     "brand": "Fresa Inn",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -6485,17 +6924,25 @@
     "id": "kyushu_south_20",
     "name": "東横イン",
     "brand": "Toyoko Inn",
-    "region": "other",
+    "area": "熊本県 熊本縣 熊本市 春日",
+    "region": "kyushu_south",
     "lat": 32.788299,
     "lng": 130.689199,
     "station_name": "熊本",
     "station_dist": 225,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_KMJ"
+    ],
     "amenities": {
       "lawson": 1164,
       "seven": 1291,
       "familymart": 253,
+      "starbucks": 204,
+      "doutor": 2498,
+      "komeda": 1149,
       "mcdonalds": 1746,
+      "mos": 9999,
+      "kfc": 1140,
       "drugstore": 716,
       "supermarket": 212
     }
@@ -6535,7 +6982,10 @@
     "lng": 130.422072,
     "station_name": "博多",
     "station_dist": 226,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_FUK",
+      "RAIL_FUKUOKA"
+    ],
     "amenities": {
       "lawson": 200,
       "seven": 65,
@@ -6551,7 +7001,34 @@
     }
   },
   {
-    "id": "tokyo_136",
+    "id": "kyushu_north_32",
+    "name": "リッチモンドホテル",
+    "brand": "Richmond Hotel",
+    "area": "福岡県 福岡縣 福岡市 博多 天神",
+    "region": "kyushu_north",
+    "lat": 33.586611,
+    "lng": 130.401881,
+    "station_name": "天神南",
+    "station_dist": 226,
+    "airport_lines": [
+      "RAIL_FUKUOKA"
+    ],
+    "amenities": {
+      "lawson": 155,
+      "seven": 70,
+      "familymart": 94,
+      "starbucks": 103,
+      "doutor": 416,
+      "komeda": 128,
+      "mcdonalds": 511,
+      "mos": 563,
+      "kfc": 495,
+      "drugstore": 73,
+      "supermarket": 327
+    }
+  },
+  {
+    "id": "tokyo_137",
     "name": "三井ガーデンホテル千葉",
     "brand": "Mitsui Garden",
     "area": "千葉市  中央区   千葉県 千葉縣 千葉市 舞濱",
@@ -6576,7 +7053,34 @@
     }
   },
   {
-    "id": "tokyo_199",
+    "id": "tokyo_156",
+    "name": "東横INN",
+    "brand": "Toyoko Inn",
+    "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
+    "region": "tokyo",
+    "lat": 35.621894,
+    "lng": 139.74851,
+    "station_name": "天王洲アイル",
+    "station_dist": 227,
+    "airport_lines": [
+      "RAIL_MONO"
+    ],
+    "amenities": {
+      "lawson": 348,
+      "seven": 66,
+      "familymart": 142,
+      "starbucks": 181,
+      "doutor": 781,
+      "komeda": 1693,
+      "mcdonalds": 713,
+      "mos": 1375,
+      "kfc": 1425,
+      "drugstore": 285,
+      "supermarket": 612
+    }
+  },
+  {
+    "id": "tokyo_207",
     "name": "アパホテル",
     "brand": "APA Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -6586,7 +7090,7 @@
     "station_name": "人形町 (都営地下鉄浅草線)",
     "station_dist": 227,
     "airport_lines": [
-      "KEIKYU"
+      "RAIL_KEIKYU"
     ],
     "amenities": {
       "lawson": 265,
@@ -6603,7 +7107,7 @@
     }
   },
   {
-    "id": "tokyo_107",
+    "id": "tokyo_108",
     "name": "天然温泉 凌雲の湯 御宿 野乃 浅草",
     "brand": "Dormy Inn",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -6613,7 +7117,7 @@
     "station_name": "浅草",
     "station_dist": 228,
     "airport_lines": [
-      "KEIKYU"
+      "RAIL_KEIKYU"
     ],
     "amenities": {
       "lawson": 95,
@@ -6639,7 +7143,10 @@
     "lng": 130.422958,
     "station_name": "博多",
     "station_dist": 228,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_FUK",
+      "RAIL_FUKUOKA"
+    ],
     "amenities": {
       "lawson": 113,
       "seven": 152,
@@ -6664,7 +7171,9 @@
     "lng": 133.91611,
     "station_name": "岡山",
     "station_dist": 230,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_OKJ"
+    ],
     "amenities": {
       "lawson": 430,
       "seven": 84,
@@ -6730,7 +7239,7 @@
     }
   },
   {
-    "id": "tokyo_128",
+    "id": "tokyo_129",
     "name": "APA Hotel 茅場町八丁堀駅前",
     "brand": "APA Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -6780,7 +7289,32 @@
     }
   },
   {
-    "id": "tokyo_200",
+    "id": "tokyo_205",
+    "name": "ヴィアイン東京大井町",
+    "brand": "Via Inn",
+    "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
+    "region": "tokyo",
+    "lat": 35.604375,
+    "lng": 139.734151,
+    "station_name": "大井町",
+    "station_dist": 234,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 294,
+      "seven": 18,
+      "familymart": 118,
+      "starbucks": 155,
+      "doutor": 1030,
+      "komeda": 1212,
+      "mcdonalds": 776,
+      "mos": 1047,
+      "kfc": 991,
+      "drugstore": 141,
+      "supermarket": 260
+    }
+  },
+  {
+    "id": "tokyo_208",
     "name": "東横INN神田秋葉原",
     "brand": "Toyoko Inn",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -6830,7 +7364,7 @@
     }
   },
   {
-    "id": "tokyo_205",
+    "id": "tokyo_214",
     "name": "東横INN 東西線西葛西",
     "brand": "Toyoko Inn",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -6882,7 +7416,7 @@
     }
   },
   {
-    "id": "tokyo_178",
+    "id": "tokyo_184",
     "name": "東横INN日本橋浜町明治座前",
     "brand": "Toyoko Inn",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -6932,7 +7466,7 @@
     }
   },
   {
-    "id": "tokyo_16",
+    "id": "tokyo_17",
     "name": "東急ステイ",
     "brand": "Tokyu Stay",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -6942,7 +7476,7 @@
     "station_name": "西新宿五丁目",
     "station_dist": 238,
     "airport_lines": [
-      "JR_NEX"
+      "RAIL_NEX"
     ],
     "amenities": {
       "lawson": 245,
@@ -6959,7 +7493,7 @@
     }
   },
   {
-    "id": "tokyo_157",
+    "id": "tokyo_162",
     "name": "Sotetsu Fresa Inn",
     "brand": "Fresa Inn",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -7034,7 +7568,7 @@
     }
   },
   {
-    "id": "tokyo_32",
+    "id": "tokyo_33",
     "name": "アパホテル",
     "brand": "APA Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -7059,7 +7593,7 @@
     }
   },
   {
-    "id": "tokyo_116",
+    "id": "tokyo_117",
     "name": "相鉄フレッサイン",
     "brand": "Fresa Inn",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -7069,7 +7603,7 @@
     "station_name": "新橋",
     "station_dist": 242,
     "airport_lines": [
-      "KEIKYU"
+      "RAIL_KEIKYU"
     ],
     "amenities": {
       "lawson": 23,
@@ -7170,7 +7704,10 @@
     "lng": 130.418793,
     "station_name": "博多",
     "station_dist": 244,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_FUK",
+      "RAIL_FUKUOKA"
+    ],
     "amenities": {
       "lawson": 94,
       "seven": 78,
@@ -7186,7 +7723,7 @@
     }
   },
   {
-    "id": "tokyo_230",
+    "id": "tokyo_243",
     "name": "アパホテル",
     "brand": "APA Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -7261,7 +7798,7 @@
     }
   },
   {
-    "id": "tokyo_184",
+    "id": "tokyo_190",
     "name": "ホテルルートインGrand東京浅草橋",
     "brand": "Route Inn",
     "area": "浅草橋  東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -7271,7 +7808,7 @@
     "station_name": "浅草橋",
     "station_dist": 246,
     "airport_lines": [
-      "KEIKYU"
+      "RAIL_KEIKYU"
     ],
     "amenities": {
       "lawson": 442,
@@ -7288,7 +7825,7 @@
     }
   },
   {
-    "id": "tokyo_212",
+    "id": "tokyo_220",
     "name": "東横INN赤羽駅東口",
     "brand": "Toyoko Inn",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -7313,7 +7850,7 @@
     }
   },
   {
-    "id": "tokyo_220",
+    "id": "tokyo_233",
     "name": "アパホテル＆リゾート〈横浜ベイタワー〉",
     "brand": "APA Hotel",
     "area": "横浜市  中区 海岸通  神奈川県 神奈川縣 橫濱市",
@@ -7347,7 +7884,9 @@
     "lng": 133.920946,
     "station_name": "岡山",
     "station_dist": 247,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_OKJ"
+    ],
     "amenities": {
       "lawson": 151,
       "seven": 233,
@@ -7388,7 +7927,7 @@
     }
   },
   {
-    "id": "tokyo_17",
+    "id": "tokyo_18",
     "name": "東横イン",
     "brand": "Toyoko Inn",
     "area": "神奈川県 神奈川縣 橫濱市",
@@ -7413,7 +7952,7 @@
     }
   },
   {
-    "id": "tokyo_125",
+    "id": "tokyo_126",
     "name": "Sotetsu Fresa Inn Yokohama-Higashiguchi",
     "brand": "Fresa Inn",
     "area": "神奈川県 神奈川縣 橫濱市",
@@ -7423,8 +7962,9 @@
     "station_name": "横浜",
     "station_dist": 248,
     "airport_lines": [
-      "JR_NEX",
-      "KEIKYU"
+      "BUS_TYO",
+      "RAIL_KEIKYU",
+      "RAIL_NEX"
     ],
     "amenities": {
       "lawson": 182,
@@ -7518,7 +8058,7 @@
     }
   },
   {
-    "id": "tokyo_154",
+    "id": "tokyo_157",
     "name": "東横イン",
     "brand": "Toyoko Inn",
     "area": "神奈川県 神奈川縣 橫濱市",
@@ -7528,8 +8068,9 @@
     "station_name": "横浜 (相模鉄道)",
     "station_dist": 252,
     "airport_lines": [
-      "JR_NEX",
-      "KEIKYU"
+      "BUS_TYO",
+      "RAIL_KEIKYU",
+      "RAIL_NEX"
     ],
     "amenities": {
       "lawson": 158,
@@ -7546,7 +8087,7 @@
     }
   },
   {
-    "id": "tokyo_185",
+    "id": "tokyo_191",
     "name": "相鉄フレッサイン",
     "brand": "Fresa Inn",
     "area": "千代田区     東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -7605,7 +8146,9 @@
     "lng": 130.404922,
     "station_name": "天神南",
     "station_dist": 253,
-    "airport_lines": [],
+    "airport_lines": [
+      "RAIL_FUKUOKA"
+    ],
     "amenities": {
       "lawson": 25,
       "seven": 75,
@@ -7624,23 +8167,31 @@
     "id": "kyushu_south_12",
     "name": "ホテルルートイン熊本駅前",
     "brand": "Route Inn",
-    "region": "other",
+    "area": "熊本県 熊本縣 熊本市 春日",
+    "region": "kyushu_south",
     "lat": 32.790774,
     "lng": 130.691624,
     "station_name": "熊本",
     "station_dist": 253,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_KMJ"
+    ],
     "amenities": {
       "lawson": 1092,
       "seven": 937,
       "familymart": 291,
+      "starbucks": 249,
+      "doutor": 2148,
+      "komeda": 1477,
       "mcdonalds": 1741,
+      "mos": 9999,
+      "kfc": 1467,
       "drugstore": 420,
       "supermarket": 312
     }
   },
   {
-    "id": "tokyo_121",
+    "id": "tokyo_122",
     "name": "APA Hotel Hatchobori Eki Minami",
     "brand": "APA Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -7665,7 +8216,7 @@
     }
   },
   {
-    "id": "tohoku_40",
+    "id": "tohoku_43",
     "name": "ホテルメトロポリタン盛岡 ニューウイング",
     "brand": "Hotel Metropolitan",
     "area": "岩手県 岩手縣 盛岡市",
@@ -7690,7 +8241,7 @@
     }
   },
   {
-    "id": "tokyo_76",
+    "id": "tokyo_77",
     "name": "リッチモンドホテル横浜駅前店",
     "brand": "Richmond Hotel",
     "area": "神奈川県 神奈川縣 橫濱市",
@@ -7700,8 +8251,9 @@
     "station_name": "横浜",
     "station_dist": 255,
     "airport_lines": [
-      "JR_NEX",
-      "KEIKYU"
+      "BUS_TYO",
+      "RAIL_KEIKYU",
+      "RAIL_NEX"
     ],
     "amenities": {
       "lawson": 123,
@@ -7721,17 +8273,25 @@
     "id": "kyushu_south_18",
     "name": "東横イン",
     "brand": "Toyoko Inn",
-    "region": "other",
+    "area": "鹿児島県 鹿兒島縣 鹿兒島市",
+    "region": "kyushu_south",
     "lat": 31.581954,
     "lng": 130.543523,
     "station_name": "鹿児島中央",
     "station_dist": 255,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_KOJ"
+    ],
     "amenities": {
       "lawson": 58,
       "seven": 86,
       "familymart": 227,
+      "starbucks": 209,
+      "doutor": 233,
+      "komeda": 1420,
       "mcdonalds": 219,
+      "mos": 1629,
+      "kfc": 208,
       "drugstore": 95,
       "supermarket": 150
     }
@@ -7764,7 +8324,7 @@
     }
   },
   {
-    "id": "tokyo_162",
+    "id": "tokyo_167",
     "name": "アパホテル",
     "brand": "APA Hotel",
     "area": "上野  東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -7789,7 +8349,7 @@
     }
   },
   {
-    "id": "tokyo_44",
+    "id": "tokyo_45",
     "name": "スーパーホテルLOHAS",
     "brand": "Super Hotel",
     "area": "中央区     東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -7799,7 +8359,8 @@
     "station_name": "東京",
     "station_dist": 257,
     "airport_lines": [
-      "JR_NEX"
+      "BUS_TYO",
+      "RAIL_NEX"
     ],
     "amenities": {
       "lawson": 285,
@@ -7893,7 +8454,7 @@
     }
   },
   {
-    "id": "tokyo_114",
+    "id": "tokyo_115",
     "name": "アパホテル",
     "brand": "APA Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -7903,7 +8464,8 @@
     "station_name": "西武新宿",
     "station_dist": 258,
     "airport_lines": [
-      "JR_NEX"
+      "BUS_TYO",
+      "RAIL_NEX"
     ],
     "amenities": {
       "lawson": 46,
@@ -7920,7 +8482,7 @@
     }
   },
   {
-    "id": "tokyo_100",
+    "id": "tokyo_101",
     "name": "スーパーホテル",
     "brand": "Super Hotel",
     "area": "神奈川県 神奈川縣 橫濱市",
@@ -7930,8 +8492,8 @@
     "station_name": "新横浜",
     "station_dist": 259,
     "airport_lines": [
-      "JR_NEX",
-      "KEIKYU"
+      "RAIL_KEIKYU",
+      "RAIL_NEX"
     ],
     "amenities": {
       "lawson": 72,
@@ -8026,7 +8588,7 @@
     }
   },
   {
-    "id": "tokyo_226",
+    "id": "tokyo_239",
     "name": "御宿 野乃浅草別邸",
     "brand": "Dormy Inn",
     "area": "大東区   浅草  東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -8036,7 +8598,7 @@
     "station_name": "浅草",
     "station_dist": 260,
     "airport_lines": [
-      "KEIKYU"
+      "RAIL_KEIKYU"
     ],
     "amenities": {
       "lawson": 132,
@@ -8053,7 +8615,7 @@
     }
   },
   {
-    "id": "tokyo_64",
+    "id": "tokyo_65",
     "name": "アパホテル",
     "brand": "APA Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -8078,7 +8640,7 @@
     }
   },
   {
-    "id": "tokyo_86",
+    "id": "tokyo_87",
     "name": "Richmond Hotel",
     "brand": "Richmond Hotel",
     "area": "神奈川県 神奈川縣 橫濱市",
@@ -8103,7 +8665,7 @@
     }
   },
   {
-    "id": "tokyo_63",
+    "id": "tokyo_64",
     "name": "Tokyu Stay Yotsuya",
     "brand": "Tokyu Stay",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -8128,7 +8690,7 @@
     }
   },
   {
-    "id": "tokyo_97",
+    "id": "tokyo_98",
     "name": "ドーミーイン",
     "brand": "Dormy Inn",
     "area": "台東区     東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -8153,7 +8715,7 @@
     }
   },
   {
-    "id": "tokyo_208",
+    "id": "tokyo_217",
     "name": "スーパーホテル",
     "brand": "Super Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -8163,7 +8725,7 @@
     "station_name": "新馬場",
     "station_dist": 265,
     "airport_lines": [
-      "KEIKYU"
+      "RAIL_KEIKYU"
     ],
     "amenities": {
       "lawson": 312,
@@ -8180,7 +8742,7 @@
     }
   },
   {
-    "id": "tokyo_94",
+    "id": "tokyo_95",
     "name": "アパホテル",
     "brand": "APA Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -8205,7 +8767,7 @@
     }
   },
   {
-    "id": "tokyo_137",
+    "id": "tokyo_138",
     "name": "アパホテル",
     "brand": "APA Hotel",
     "area": "千代田区     東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -8230,7 +8792,7 @@
     }
   },
   {
-    "id": "tohoku_45",
+    "id": "tohoku_48",
     "name": "アパホテル",
     "brand": "APA Hotel",
     "area": "仙台市  宮城野区 名掛丁  宮城県 宮城縣 仙台市",
@@ -8239,7 +8801,9 @@
     "lng": 140.882992,
     "station_name": "仙台",
     "station_dist": 266,
-    "airport_lines": [],
+    "airport_lines": [
+      "RAIL_SENDAI"
+    ],
     "amenities": {
       "lawson": 26,
       "seven": 221,
@@ -8264,7 +8828,9 @@
     "lng": 130.396544,
     "station_name": "西鉄福岡 (天神)",
     "station_dist": 267,
-    "airport_lines": [],
+    "airport_lines": [
+      "RAIL_FUKUOKA"
+    ],
     "amenities": {
       "lawson": 167,
       "seven": 227,
@@ -8335,7 +8901,7 @@
     }
   },
   {
-    "id": "tokyo_40",
+    "id": "tokyo_41",
     "name": "東横イン",
     "brand": "Toyoko Inn",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -8345,7 +8911,7 @@
     "station_name": "浅草橋",
     "station_dist": 269,
     "airport_lines": [
-      "KEIKYU"
+      "RAIL_KEIKYU"
     ],
     "amenities": {
       "lawson": 486,
@@ -8462,7 +9028,7 @@
     }
   },
   {
-    "id": "tokyo_138",
+    "id": "tokyo_139",
     "name": "三井ガーデンホテル大手町",
     "brand": "Mitsui Garden",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -8512,7 +9078,7 @@
     }
   },
   {
-    "id": "tokyo_145",
+    "id": "tokyo_146",
     "name": "東急ステイ新橋",
     "brand": "Tokyu Stay",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -8571,7 +9137,9 @@
     "lng": 130.880258,
     "station_name": "小倉",
     "station_dist": 276,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_KKJ"
+    ],
     "amenities": {
       "lawson": 411,
       "seven": 233,
@@ -8612,7 +9180,7 @@
     }
   },
   {
-    "id": "tokyo_155",
+    "id": "tokyo_160",
     "name": "アパホテル",
     "brand": "APA Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -8622,7 +9190,7 @@
     "station_name": "上野",
     "station_dist": 278,
     "airport_lines": [
-      "KEISEI"
+      "RAIL_KEISEI"
     ],
     "amenities": {
       "lawson": 165,
@@ -8666,7 +9234,7 @@
     }
   },
   {
-    "id": "tokyo_36",
+    "id": "tokyo_37",
     "name": "スーパーホテル",
     "brand": "Super Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -8676,7 +9244,7 @@
     "station_name": "西武新宿",
     "station_dist": 279,
     "airport_lines": [
-      "JR_NEX"
+      "RAIL_NEX"
     ],
     "amenities": {
       "lawson": 124,
@@ -8693,7 +9261,7 @@
     }
   },
   {
-    "id": "tokyo_68",
+    "id": "tokyo_69",
     "name": "コンフォートホテル東京東神田",
     "brand": "Comfort Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -8727,7 +9295,10 @@
     "lng": 130.4238,
     "station_name": "博多",
     "station_dist": 279,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_FUK",
+      "RAIL_FUKUOKA"
+    ],
     "amenities": {
       "lawson": 157,
       "seven": 228,
@@ -8743,7 +9314,7 @@
     }
   },
   {
-    "id": "tokyo_95",
+    "id": "tokyo_96",
     "name": "LiveMax (關東(首都圈))",
     "brand": "LiveMax",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -8768,7 +9339,7 @@
     }
   },
   {
-    "id": "tokyo_108",
+    "id": "tokyo_109",
     "name": "相鉄フレッサイン",
     "brand": "Fresa Inn",
     "area": "千代田区     東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -8802,7 +9373,9 @@
     "lng": 130.40346,
     "station_name": "中洲川端",
     "station_dist": 280,
-    "airport_lines": [],
+    "airport_lines": [
+      "RAIL_FUKUOKA"
+    ],
     "amenities": {
       "lawson": 287,
       "seven": 64,
@@ -8843,7 +9416,7 @@
     }
   },
   {
-    "id": "tokyo_213",
+    "id": "tokyo_221",
     "name": "ドーミーイン東京八丁堀",
     "brand": "Dormy Inn",
     "area": "中央区     東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -8877,7 +9450,9 @@
     "lng": 132.476643,
     "station_name": "広島",
     "station_dist": 281,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_HIJ"
+    ],
     "amenities": {
       "lawson": 12,
       "seven": 208,
@@ -8893,7 +9468,7 @@
     }
   },
   {
-    "id": "tohoku_31",
+    "id": "tohoku_33",
     "name": "相鉄フレッサイン 仙台",
     "brand": "Fresa Inn",
     "area": "仙台市  青葉区 中央  宮城県 宮城縣 仙台市",
@@ -8902,7 +9477,9 @@
     "lng": 140.877572,
     "station_name": "仙台",
     "station_dist": 283,
-    "airport_lines": [],
+    "airport_lines": [
+      "RAIL_SENDAI"
+    ],
     "amenities": {
       "lawson": 149,
       "seven": 168,
@@ -8945,7 +9522,7 @@
     }
   },
   {
-    "id": "tokyo_131",
+    "id": "tokyo_132",
     "name": "東横イン",
     "brand": "Toyoko Inn",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -8995,7 +9572,7 @@
     }
   },
   {
-    "id": "tokyo_27",
+    "id": "tokyo_28",
     "name": "Sotetsu Fresa Inn Nihombashi-Ningyocho",
     "brand": "Fresa Inn",
     "area": "中央区     東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -9020,7 +9597,7 @@
     }
   },
   {
-    "id": "tokyo_158",
+    "id": "tokyo_163",
     "name": "東急ステイ水道橋",
     "brand": "Tokyu Stay",
     "area": "千代田区     東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -9045,7 +9622,7 @@
     }
   },
   {
-    "id": "tokyo_48",
+    "id": "tokyo_49",
     "name": "スーパーホテル",
     "brand": "Super Hotel",
     "area": "神奈川県 神奈川縣 橫濱市",
@@ -9120,7 +9697,7 @@
     }
   },
   {
-    "id": "tohoku_27",
+    "id": "tohoku_29",
     "name": "仙台ワシントンホテル",
     "brand": "Washington Hotel",
     "area": "仙台市  青葉区   宮城県 宮城縣 仙台市",
@@ -9129,7 +9706,9 @@
     "lng": 140.881018,
     "station_name": "仙台",
     "station_dist": 288,
-    "airport_lines": [],
+    "airport_lines": [
+      "RAIL_SENDAI"
+    ],
     "amenities": {
       "lawson": 258,
       "seven": 126,
@@ -9170,7 +9749,7 @@
     }
   },
   {
-    "id": "tohoku_25",
+    "id": "tohoku_27",
     "name": "ダイワロイネットホテル仙台一番町 プレミア",
     "brand": "Daiwa Roynet",
     "area": "宮城県 宮城縣 仙台市",
@@ -9272,7 +9851,7 @@
     }
   },
   {
-    "id": "kyushu_north_30",
+    "id": "kyushu_north_31",
     "name": "東横イン",
     "brand": "Toyoko Inn",
     "area": "福岡県 福岡縣 北九州市 小倉",
@@ -9281,7 +9860,9 @@
     "lng": 130.884842,
     "station_name": "小倉",
     "station_dist": 291,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_KKJ"
+    ],
     "amenities": {
       "lawson": 240,
       "seven": 200,
@@ -9306,7 +9887,9 @@
     "lng": 133.919064,
     "station_name": "岡山",
     "station_dist": 292,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_OKJ"
+    ],
     "amenities": {
       "lawson": 465,
       "seven": 239,
@@ -9372,7 +9955,7 @@
     }
   },
   {
-    "id": "tokyo_31",
+    "id": "tokyo_32",
     "name": "東横INN新宿歌舞伎町",
     "brand": "Toyoko Inn",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -9382,7 +9965,7 @@
     "station_name": "東新宿",
     "station_dist": 295,
     "airport_lines": [
-      "JR_NEX"
+      "RAIL_NEX"
     ],
     "amenities": {
       "lawson": 127,
@@ -9476,7 +10059,7 @@
     }
   },
   {
-    "id": "tokyo_140",
+    "id": "tokyo_141",
     "name": "ホテルメトロポリタンエドモント",
     "brand": "Hotel Metropolitan",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -9501,7 +10084,7 @@
     }
   },
   {
-    "id": "tokyo_161",
+    "id": "tokyo_166",
     "name": "東急ステイ築地",
     "brand": "Tokyu Stay",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -9553,7 +10136,32 @@
     }
   },
   {
-    "id": "tokyo_168",
+    "id": "tokyo_158",
+    "name": "京成リッチモンドホテル",
+    "brand": "Richmond Hotel",
+    "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
+    "region": "tokyo",
+    "lat": 35.69362,
+    "lng": 139.814918,
+    "station_name": "錦糸町",
+    "station_dist": 300,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 140,
+      "seven": 92,
+      "familymart": 117,
+      "starbucks": 219,
+      "doutor": 281,
+      "komeda": 201,
+      "mcdonalds": 198,
+      "mos": 511,
+      "kfc": 792,
+      "drugstore": 51,
+      "supermarket": 175
+    }
+  },
+  {
+    "id": "tokyo_173",
     "name": "アパホテル",
     "brand": "APA Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -9655,7 +10263,7 @@
     }
   },
   {
-    "id": "tokyo_89",
+    "id": "tokyo_90",
     "name": "ホテルリブマックス",
     "brand": "LiveMax",
     "area": "神奈川県 神奈川縣 橫濱市",
@@ -9665,8 +10273,8 @@
     "station_name": "新横浜",
     "station_dist": 305,
     "airport_lines": [
-      "JR_NEX",
-      "KEIKYU"
+      "RAIL_KEIKYU",
+      "RAIL_NEX"
     ],
     "amenities": {
       "lawson": 156,
@@ -9692,7 +10300,9 @@
     "lng": 130.405239,
     "station_name": "天神南",
     "station_dist": 305,
-    "airport_lines": [],
+    "airport_lines": [
+      "RAIL_FUKUOKA"
+    ],
     "amenities": {
       "lawson": 46,
       "seven": 78,
@@ -9758,7 +10368,7 @@
     }
   },
   {
-    "id": "tokyo_45",
+    "id": "tokyo_46",
     "name": "東横イン",
     "brand": "Toyoko Inn",
     "area": "神奈川県 神奈川縣 橫濱市",
@@ -9768,8 +10378,8 @@
     "station_name": "新横浜",
     "station_dist": 310,
     "airport_lines": [
-      "JR_NEX",
-      "KEIKYU"
+      "RAIL_KEIKYU",
+      "RAIL_NEX"
     ],
     "amenities": {
       "lawson": 23,
@@ -9786,7 +10396,7 @@
     }
   },
   {
-    "id": "tokyo_88",
+    "id": "tokyo_89",
     "name": "東横イン",
     "brand": "Toyoko Inn",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -9811,7 +10421,7 @@
     }
   },
   {
-    "id": "tokyo_193",
+    "id": "tokyo_199",
     "name": "アパホテル",
     "brand": "APA Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -9866,17 +10476,25 @@
     "id": "kyushu_south_15",
     "name": "アパホテル",
     "brand": "APA Hotel",
-    "region": "other",
+    "area": "鹿児島県 鹿兒島縣 鹿兒島市",
+    "region": "kyushu_south",
     "lat": 31.586521,
     "lng": 130.541858,
     "station_name": "鹿児島中央",
     "station_dist": 312,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_KOJ"
+    ],
     "amenities": {
       "lawson": 211,
       "seven": 96,
       "familymart": 94,
+      "starbucks": 332,
+      "doutor": 299,
+      "komeda": 1283,
       "mcdonalds": 316,
+      "mos": 1499,
+      "kfc": 340,
       "drugstore": 111,
       "supermarket": 287
     }
@@ -9932,7 +10550,7 @@
     }
   },
   {
-    "id": "tokyo_231",
+    "id": "tokyo_244",
     "name": "ダイワロイネットホテル西新宿",
     "brand": "Daiwa Roynet",
     "area": "新宿区   西新宿  東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -9942,7 +10560,7 @@
     "station_name": "西新宿",
     "station_dist": 313,
     "airport_lines": [
-      "JR_NEX"
+      "RAIL_NEX"
     ],
     "amenities": {
       "lawson": 181,
@@ -10034,7 +10652,7 @@
     }
   },
   {
-    "id": "tokyo_115",
+    "id": "tokyo_116",
     "name": "三井ガーデンホテル横浜みなとみらいプレミア",
     "brand": "Mitsui Garden",
     "area": "神奈川県 神奈川縣 橫濱市",
@@ -10059,7 +10677,7 @@
     }
   },
   {
-    "id": "tokyo_98",
+    "id": "tokyo_99",
     "name": "ヴィアイン新宿",
     "brand": "Via Inn",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -10069,7 +10687,8 @@
     "station_name": "新宿三丁目",
     "station_dist": 320,
     "airport_lines": [
-      "JR_NEX"
+      "BUS_TYO",
+      "RAIL_NEX"
     ],
     "amenities": {
       "lawson": 31,
@@ -10163,6 +10782,31 @@
     }
   },
   {
+    "id": "tokyo_204",
+    "name": "ホテルルートイン",
+    "brand": "Route Inn",
+    "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
+    "region": "tokyo",
+    "lat": 35.605043,
+    "lng": 139.731677,
+    "station_name": "大井町",
+    "station_dist": 326,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 315,
+      "seven": 131,
+      "familymart": 191,
+      "starbucks": 229,
+      "doutor": 1174,
+      "komeda": 1420,
+      "mcdonalds": 953,
+      "mos": 1191,
+      "kfc": 1136,
+      "drugstore": 192,
+      "supermarket": 232
+    }
+  },
+  {
     "id": "kyushu_north_27",
     "name": "スーパーホテル",
     "brand": "Super Hotel",
@@ -10172,7 +10816,9 @@
     "lng": 130.878767,
     "station_name": "小倉",
     "station_dist": 326,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_KKJ"
+    ],
     "amenities": {
       "lawson": 269,
       "seven": 208,
@@ -10213,7 +10859,7 @@
     }
   },
   {
-    "id": "tokyo_47",
+    "id": "tokyo_48",
     "name": "Toyoko Inn (關東(首都圈))",
     "brand": "Toyoko Inn",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -10223,7 +10869,7 @@
     "station_name": "人形町 (都営地下鉄浅草線)",
     "station_dist": 328,
     "airport_lines": [
-      "KEIKYU"
+      "RAIL_KEIKYU"
     ],
     "amenities": {
       "lawson": 311,
@@ -10240,7 +10886,7 @@
     }
   },
   {
-    "id": "tokyo_104",
+    "id": "tokyo_105",
     "name": "アパホテル",
     "brand": "APA Hotel",
     "area": "千代田区     東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -10299,7 +10945,10 @@
     "lng": 130.424669,
     "station_name": "博多",
     "station_dist": 330,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_FUK",
+      "RAIL_FUKUOKA"
+    ],
     "amenities": {
       "lawson": 141,
       "seven": 291,
@@ -10374,7 +11023,9 @@
     "lng": 140.884948,
     "station_name": "仙台",
     "station_dist": 334,
-    "airport_lines": [],
+    "airport_lines": [
+      "RAIL_SENDAI"
+    ],
     "amenities": {
       "lawson": 167,
       "seven": 124,
@@ -10390,7 +11041,7 @@
     }
   },
   {
-    "id": "tokyo_28",
+    "id": "tokyo_29",
     "name": "相鉄フレッサイン",
     "brand": "Fresa Inn",
     "area": "港区     東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -10415,7 +11066,7 @@
     }
   },
   {
-    "id": "tokyo_101",
+    "id": "tokyo_102",
     "name": "アパホテル",
     "brand": "APA Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -10425,7 +11076,7 @@
     "station_name": "東新宿",
     "station_dist": 335,
     "airport_lines": [
-      "JR_NEX"
+      "RAIL_NEX"
     ],
     "amenities": {
       "lawson": 146,
@@ -10476,7 +11127,10 @@
     "lng": 130.415742,
     "station_name": "祇園",
     "station_dist": 336,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_FUK",
+      "RAIL_FUKUOKA"
+    ],
     "amenities": {
       "lawson": 88,
       "seven": 23,
@@ -10492,7 +11146,7 @@
     }
   },
   {
-    "id": "tokyo_195",
+    "id": "tokyo_201",
     "name": "スーパーホテル",
     "brand": "Super Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -10502,7 +11156,7 @@
     "station_name": "人形町 (都営地下鉄浅草線)",
     "station_dist": 337,
     "airport_lines": [
-      "KEIKYU"
+      "RAIL_KEIKYU"
     ],
     "amenities": {
       "lawson": 318,
@@ -10571,7 +11225,7 @@
     }
   },
   {
-    "id": "tokyo_59",
+    "id": "tokyo_60",
     "name": "東横イン",
     "brand": "Toyoko Inn",
     "area": "千代田区     東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -10596,7 +11250,7 @@
     }
   },
   {
-    "id": "tokyo_183",
+    "id": "tokyo_189",
     "name": "東横イン",
     "brand": "Toyoko Inn",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -10606,7 +11260,7 @@
     "station_name": "人形町 (都営地下鉄浅草線)",
     "station_dist": 338,
     "airport_lines": [
-      "KEIKYU"
+      "RAIL_KEIKYU"
     ],
     "amenities": {
       "lawson": 305,
@@ -10648,7 +11302,7 @@
     }
   },
   {
-    "id": "tokyo_42",
+    "id": "tokyo_43",
     "name": "アパホテル",
     "brand": "APA Hotel",
     "area": "台東区     東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -10658,7 +11312,7 @@
     "station_name": "浅草橋",
     "station_dist": 339,
     "airport_lines": [
-      "KEIKYU"
+      "RAIL_KEIKYU"
     ],
     "amenities": {
       "lawson": 533,
@@ -10675,7 +11329,7 @@
     }
   },
   {
-    "id": "tokyo_91",
+    "id": "tokyo_92",
     "name": "スーパーホテル",
     "brand": "Super Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -10685,7 +11339,7 @@
     "station_name": "浅草",
     "station_dist": 340,
     "airport_lines": [
-      "KEIKYU"
+      "RAIL_KEIKYU"
     ],
     "amenities": {
       "lawson": 245,
@@ -10702,7 +11356,7 @@
     }
   },
   {
-    "id": "tokyo_132",
+    "id": "tokyo_133",
     "name": "東横INN三ノ輪駅",
     "brand": "Toyoko Inn",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -10804,7 +11458,7 @@
     }
   },
   {
-    "id": "tokyo_174",
+    "id": "tokyo_180",
     "name": "東横INN池袋北口2",
     "brand": "Toyoko Inn",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -10814,7 +11468,8 @@
     "station_name": "池袋",
     "station_dist": 343,
     "airport_lines": [
-      "JR_NEX"
+      "BUS_TYO",
+      "RAIL_NEX"
     ],
     "amenities": {
       "lawson": 76,
@@ -10931,6 +11586,31 @@
     }
   },
   {
+    "id": "tokyo_147",
+    "name": "スーパーホテル新橋・烏森口",
+    "brand": "Super Hotel",
+    "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
+    "region": "tokyo",
+    "lat": 35.662511,
+    "lng": 139.756211,
+    "station_name": "汐留",
+    "station_dist": 344,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 123,
+      "seven": 102,
+      "familymart": 72,
+      "starbucks": 267,
+      "doutor": 253,
+      "komeda": 433,
+      "mcdonalds": 570,
+      "mos": 565,
+      "kfc": 390,
+      "drugstore": 376,
+      "supermarket": 62
+    }
+  },
+  {
     "id": "tokai_19",
     "name": "ドーミーインPREMIUM名古屋栄",
     "brand": "Dormy Inn",
@@ -11033,6 +11713,31 @@
     }
   },
   {
+    "id": "tokyo_225",
+    "name": "アパホテル",
+    "brand": "APA Hotel",
+    "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
+    "region": "tokyo",
+    "lat": 35.666867,
+    "lng": 139.753229,
+    "station_name": "内幸町",
+    "station_dist": 347,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 159,
+      "seven": 58,
+      "familymart": 226,
+      "starbucks": 282,
+      "doutor": 194,
+      "komeda": 271,
+      "mcdonalds": 380,
+      "mos": 149,
+      "kfc": 331,
+      "drugstore": 139,
+      "supermarket": 156
+    }
+  },
+  {
     "id": "hokkaido_33",
     "name": "コンフォートホテルERA札幌北口",
     "brand": "Comfort Hotel",
@@ -11083,7 +11788,7 @@
     }
   },
   {
-    "id": "tokyo_99",
+    "id": "tokyo_100",
     "name": "LiveMAX",
     "brand": "LiveMax",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -11108,7 +11813,7 @@
     }
   },
   {
-    "id": "tokyo_141",
+    "id": "tokyo_142",
     "name": "ホテルメトロポリタン エドモント EAST WING",
     "brand": "Hotel Metropolitan",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -11133,7 +11838,7 @@
     }
   },
   {
-    "id": "tokyo_33",
+    "id": "tokyo_34",
     "name": "アパホテル〈神田神保町駅東〉",
     "brand": "APA Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -11258,7 +11963,7 @@
     }
   },
   {
-    "id": "tokyo_146",
+    "id": "tokyo_148",
     "name": "アパホテル新橋御成門",
     "brand": "APA Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -11283,7 +11988,7 @@
     }
   },
   {
-    "id": "tokyo_207",
+    "id": "tokyo_216",
     "name": "アパホテル",
     "brand": "APA Hotel",
     "area": "台東  東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -11317,7 +12022,9 @@
     "lng": 134.04494,
     "station_name": "高松",
     "station_dist": 361,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_TAK"
+    ],
     "amenities": {
       "lawson": 333,
       "seven": 326,
@@ -11358,7 +12065,7 @@
     }
   },
   {
-    "id": "tohoku_29",
+    "id": "tohoku_31",
     "name": "東横INN",
     "brand": "Toyoko Inn",
     "area": "仙台市  青葉区 本町  宮城県 宮城縣 仙台市",
@@ -11383,7 +12090,7 @@
     }
   },
   {
-    "id": "tokyo_69",
+    "id": "tokyo_70",
     "name": "Hôtel ブィアイン飯田橋後楽園",
     "brand": "Via Inn",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -11408,32 +12115,7 @@
     }
   },
   {
-    "id": "tokyo_211",
-    "name": "TOKYU STAY",
-    "brand": "Tokyu Stay",
-    "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
-    "region": "tokyo",
-    "lat": 35.671322,
-    "lng": 139.798972,
-    "station_name": "門前仲町",
-    "station_dist": 369,
-    "airport_lines": [],
-    "amenities": {
-      "lawson": 393,
-      "seven": 351,
-      "familymart": 50,
-      "starbucks": 675,
-      "doutor": 303,
-      "komeda": 1571,
-      "mcdonalds": 400,
-      "mos": 419,
-      "kfc": 239,
-      "drugstore": 29,
-      "supermarket": 162
-    }
-  },
-  {
-    "id": "tokyo_135",
+    "id": "tokyo_136",
     "name": "ホテルリブマックスBUDGET横浜関内",
     "brand": "LiveMax",
     "area": "神奈川県 神奈川縣 橫濱市",
@@ -11458,7 +12140,7 @@
     }
   },
   {
-    "id": "kyushu_north_35",
+    "id": "kyushu_north_39",
     "name": "東横イン",
     "brand": "Toyoko Inn",
     "area": "北九州市  小倉北区 浅野  福岡県 福岡縣 北九州市 小倉",
@@ -11467,7 +12149,9 @@
     "lng": 130.887159,
     "station_name": "小倉",
     "station_dist": 370,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_KKJ"
+    ],
     "amenities": {
       "lawson": 242,
       "seven": 358,
@@ -11544,7 +12228,9 @@
     "lng": 132.472465,
     "station_name": "広島",
     "station_dist": 371,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_HIJ"
+    ],
     "amenities": {
       "lawson": 85,
       "seven": 248,
@@ -11560,7 +12246,7 @@
     }
   },
   {
-    "id": "tokyo_49",
+    "id": "tokyo_50",
     "name": "ダイワロイネットホテル 横浜公園",
     "brand": "Daiwa Roynet",
     "area": "神奈川県 神奈川縣 橫濱市",
@@ -11610,7 +12296,7 @@
     }
   },
   {
-    "id": "tohoku_32",
+    "id": "tohoku_34",
     "name": "アパヴィラホテル 仙台駅五橋",
     "brand": "APA Hotel",
     "area": "仙台市  若林区   宮城県 宮城縣 仙台市",
@@ -11660,7 +12346,7 @@
     }
   },
   {
-    "id": "tokyo_152",
+    "id": "tokyo_154",
     "name": "相鉄フレッサイン 銀座七丁目",
     "brand": "Fresa Inn",
     "area": "中央区   銀座  東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -11670,7 +12356,7 @@
     "station_name": "東銀座",
     "station_dist": 375,
     "airport_lines": [
-      "KEIKYU"
+      "RAIL_KEIKYU"
     ],
     "amenities": {
       "lawson": 132,
@@ -11787,7 +12473,7 @@
     }
   },
   {
-    "id": "tokyo_179",
+    "id": "tokyo_185",
     "name": "スーパーホテル",
     "brand": "Super Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -11837,7 +12523,7 @@
     }
   },
   {
-    "id": "tokyo_39",
+    "id": "tokyo_40",
     "name": "スーパーホテル",
     "brand": "Super Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -11847,7 +12533,7 @@
     "station_name": "上野",
     "station_dist": 382,
     "airport_lines": [
-      "KEISEI"
+      "RAIL_KEISEI"
     ],
     "amenities": {
       "lawson": 86,
@@ -11873,7 +12559,9 @@
     "lng": 133.921989,
     "station_name": "岡山",
     "station_dist": 382,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_OKJ"
+    ],
     "amenities": {
       "lawson": 21,
       "seven": 148,
@@ -11923,7 +12611,9 @@
     "lng": 132.478538,
     "station_name": "広島",
     "station_dist": 386,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_HIJ"
+    ],
     "amenities": {
       "lawson": 172,
       "seven": 128,
@@ -11948,7 +12638,9 @@
     "lng": 132.474003,
     "station_name": "広島",
     "station_dist": 386,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_HIJ"
+    ],
     "amenities": {
       "lawson": 155,
       "seven": 103,
@@ -11989,7 +12681,7 @@
     }
   },
   {
-    "id": "tokyo_130",
+    "id": "tokyo_131",
     "name": "Mitsui Garden Hotel",
     "brand": "Mitsui Garden",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -12041,7 +12733,7 @@
     }
   },
   {
-    "id": "tokyo_153",
+    "id": "tokyo_155",
     "name": "アパホテル＆リゾート六本木駅東",
     "brand": "APA Hotel",
     "area": "港区   六本木  東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -12116,7 +12808,7 @@
     }
   },
   {
-    "id": "tokyo_57",
+    "id": "tokyo_58",
     "name": "アパホテル",
     "brand": "APA Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -12191,7 +12883,7 @@
     }
   },
   {
-    "id": "tokyo_67",
+    "id": "tokyo_68",
     "name": "東横イン",
     "brand": "Toyoko Inn",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -12201,7 +12893,8 @@
     "station_name": "池袋",
     "station_dist": 394,
     "airport_lines": [
-      "JR_NEX"
+      "BUS_TYO",
+      "RAIL_NEX"
     ],
     "amenities": {
       "lawson": 74,
@@ -12218,7 +12911,7 @@
     }
   },
   {
-    "id": "tokyo_147",
+    "id": "tokyo_149",
     "name": "Mitsui Garden Hotel Shiodome Italia-gai",
     "brand": "Mitsui Garden",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -12243,7 +12936,7 @@
     }
   },
   {
-    "id": "tokyo_229",
+    "id": "tokyo_242",
     "name": "東横イン",
     "brand": "Toyoko Inn",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -12268,7 +12961,7 @@
     }
   },
   {
-    "id": "tokyo_172",
+    "id": "tokyo_177",
     "name": "アパホテル",
     "brand": "APA Hotel",
     "area": "文京区   湯島  東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -12343,7 +13036,7 @@
     }
   },
   {
-    "id": "tohoku_28",
+    "id": "tohoku_30",
     "name": "天然温泉 萩の湯 ドーミーイン仙台駅前",
     "brand": "Dormy Inn",
     "area": "仙台市  青葉区 本町  宮城県 宮城縣 仙台市",
@@ -12404,7 +13097,9 @@
     "lng": 132.47924,
     "station_name": "広島",
     "station_dist": 406,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_HIJ"
+    ],
     "amenities": {
       "lawson": 106,
       "seven": 171,
@@ -12429,7 +13124,9 @@
     "lng": 132.472133,
     "station_name": "広島",
     "station_dist": 407,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_HIJ"
+    ],
     "amenities": {
       "lawson": 19,
       "seven": 111,
@@ -12445,7 +13142,7 @@
     }
   },
   {
-    "id": "tohoku_30",
+    "id": "tohoku_32",
     "name": "東横イン",
     "brand": "Toyoko Inn",
     "area": "仙台市  青葉区   宮城県 宮城縣 仙台市",
@@ -12479,7 +13176,9 @@
     "lng": 130.887418,
     "station_name": "小倉",
     "station_dist": 409,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_KKJ"
+    ],
     "amenities": {
       "lawson": 319,
       "seven": 401,
@@ -12570,7 +13269,7 @@
     }
   },
   {
-    "id": "tokyo_22",
+    "id": "tokyo_23",
     "name": "東横イン",
     "brand": "Toyoko Inn",
     "area": "神奈川県 神奈川縣 橫濱市",
@@ -12620,7 +13319,7 @@
     }
   },
   {
-    "id": "tohoku_39",
+    "id": "tohoku_42",
     "name": "スーパーホテル",
     "brand": "Super Hotel",
     "area": "仙台市  青葉区   宮城県 宮城縣 仙台市",
@@ -12645,7 +13344,7 @@
     }
   },
   {
-    "id": "tokyo_35",
+    "id": "tokyo_36",
     "name": "Premium Dormy Inn Hotel",
     "brand": "Dormy Inn",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -12729,7 +13428,9 @@
     "lng": 130.887631,
     "station_name": "小倉",
     "station_dist": 421,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_KKJ"
+    ],
     "amenities": {
       "lawson": 324,
       "seven": 413,
@@ -12795,7 +13496,7 @@
     }
   },
   {
-    "id": "tohoku_49",
+    "id": "tohoku_52",
     "name": "ホテルリブマックス",
     "brand": "LiveMax",
     "area": "仙台市  青葉区   宮城県 宮城縣 仙台市",
@@ -13006,7 +13707,9 @@
     "lng": 133.921646,
     "station_name": "岡山",
     "station_dist": 441,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_OKJ"
+    ],
     "amenities": {
       "lawson": 226,
       "seven": 217,
@@ -13072,7 +13775,7 @@
     }
   },
   {
-    "id": "tokyo_223",
+    "id": "tokyo_236",
     "name": "アパホテル東京木場",
     "brand": "APA Hotel",
     "area": "江東区     東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -13122,7 +13825,7 @@
     }
   },
   {
-    "id": "tokyo_206",
+    "id": "tokyo_215",
     "name": "東横イン",
     "brand": "Toyoko Inn",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -13147,7 +13850,7 @@
     }
   },
   {
-    "id": "tokyo_38",
+    "id": "tokyo_39",
     "name": "アパホテル 上野野駅北",
     "brand": "APA Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -13157,7 +13860,7 @@
     "station_name": "上野",
     "station_dist": 453,
     "airport_lines": [
-      "KEISEI"
+      "RAIL_KEISEI"
     ],
     "amenities": {
       "lawson": 44,
@@ -13235,7 +13938,9 @@
     "lng": 133.9155,
     "station_name": "岡山",
     "station_dist": 457,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_OKJ"
+    ],
     "amenities": {
       "lawson": 328,
       "seven": 324,
@@ -13251,7 +13956,7 @@
     }
   },
   {
-    "id": "tokyo_103",
+    "id": "tokyo_104",
     "name": "Tokyu Stay",
     "brand": "Tokyu Stay",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -13261,7 +13966,7 @@
     "station_name": "渋谷",
     "station_dist": 458,
     "airport_lines": [
-      "JR_NEX"
+      "RAIL_NEX"
     ],
     "amenities": {
       "lawson": 324,
@@ -13328,7 +14033,7 @@
     }
   },
   {
-    "id": "tohoku_42",
+    "id": "tohoku_45",
     "name": "アパホテル 青森駅東",
     "brand": "APA Hotel",
     "area": "青森県 青森縣 青森市",
@@ -13337,7 +14042,9 @@
     "lng": 140.738972,
     "station_name": "青森",
     "station_dist": 466,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_AOJ"
+    ],
     "amenities": {
       "lawson": 119,
       "seven": 363,
@@ -13353,7 +14060,7 @@
     }
   },
   {
-    "id": "tokyo_173",
+    "id": "tokyo_179",
     "name": "HOTEL LiVEMAX",
     "brand": "LiveMax",
     "area": "台東  東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -13403,7 +14110,7 @@
     }
   },
   {
-    "id": "tohoku_17",
+    "id": "tohoku_18",
     "name": "アパホテル 仙台勾当台公園",
     "brand": "APA Hotel",
     "area": "仙台市  青葉区 二日町  宮城県 宮城縣 仙台市",
@@ -13531,7 +14238,8 @@
     "id": "kyushu_south_13",
     "name": "ホテルリブマックス",
     "brand": "LiveMax",
-    "region": "other",
+    "area": "鹿児島県 鹿兒島縣 鹿兒島市",
+    "region": "kyushu_south",
     "lat": 31.598839,
     "lng": 130.560844,
     "station_name": "鹿児島",
@@ -13541,7 +14249,12 @@
       "lawson": 293,
       "seven": 557,
       "familymart": 418,
+      "starbucks": 923,
+      "doutor": 879,
+      "komeda": 1091,
       "mcdonalds": 375,
+      "mos": 614,
+      "kfc": 469,
       "drugstore": 188,
       "supermarket": 77
     }
@@ -13581,7 +14294,9 @@
     "lng": 134.048177,
     "station_name": "高松築港",
     "station_dist": 480,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_TAK"
+    ],
     "amenities": {
       "lawson": 29,
       "seven": 193,
@@ -13606,7 +14321,9 @@
     "lng": 133.922441,
     "station_name": "岡山",
     "station_dist": 481,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_OKJ"
+    ],
     "amenities": {
       "lawson": 215,
       "seven": 286,
@@ -13647,7 +14364,7 @@
     }
   },
   {
-    "id": "tokyo_81",
+    "id": "tokyo_82",
     "name": "ホテルリブマックス横浜西口",
     "brand": "LiveMax",
     "area": "神奈川県 神奈川縣 橫濱市",
@@ -13657,8 +14374,8 @@
     "station_name": "横浜 (横浜市交通局)",
     "station_dist": 485,
     "airport_lines": [
-      "JR_NEX",
-      "KEIKYU"
+      "RAIL_KEIKYU",
+      "RAIL_NEX"
     ],
     "amenities": {
       "lawson": 248,
@@ -13700,7 +14417,7 @@
     }
   },
   {
-    "id": "tokyo_203",
+    "id": "tokyo_212",
     "name": "ホテルリブマックス東京木場",
     "brand": "LiveMax",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -13859,7 +14576,9 @@
     "lng": 133.915516,
     "station_name": "岡山",
     "station_dist": 497,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_OKJ"
+    ],
     "amenities": {
       "lawson": 294,
       "seven": 335,
@@ -13900,7 +14619,7 @@
     }
   },
   {
-    "id": "tokyo_25",
+    "id": "tokyo_26",
     "name": "スーパーホテル",
     "brand": "Super Hotel",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -13910,7 +14629,7 @@
     "station_name": "新馬場",
     "station_dist": 498,
     "airport_lines": [
-      "KEIKYU"
+      "RAIL_KEIKYU"
     ],
     "amenities": {
       "lawson": 79,
@@ -13952,7 +14671,7 @@
     }
   },
   {
-    "id": "tokyo_53",
+    "id": "tokyo_54",
     "name": "東急ステイ 渋谷新南口",
     "brand": "Tokyu Stay",
     "area": "渋谷区     東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -13962,7 +14681,7 @@
     "station_name": "渋谷",
     "station_dist": 499,
     "airport_lines": [
-      "JR_NEX"
+      "RAIL_NEX"
     ],
     "amenities": {
       "lawson": 365,
@@ -14004,7 +14723,7 @@
     }
   },
   {
-    "id": "tokyo_209",
+    "id": "tokyo_218",
     "name": "ホテルルートイン五反田",
     "brand": "Route Inn",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -14038,7 +14757,10 @@
     "lng": 130.421218,
     "station_name": "博多",
     "station_dist": 511,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_FUK",
+      "RAIL_FUKUOKA"
+    ],
     "amenities": {
       "lawson": 36,
       "seven": 226,
@@ -14104,7 +14826,7 @@
     }
   },
   {
-    "id": "tokyo_15",
+    "id": "tokyo_16",
     "name": "東横イン",
     "brand": "Toyoko Inn",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -14114,7 +14836,7 @@
     "station_name": "浅草",
     "station_dist": 533,
     "airport_lines": [
-      "KEIKYU"
+      "RAIL_KEIKYU"
     ],
     "amenities": {
       "lawson": 235,
@@ -14165,7 +14887,9 @@
     "lng": 133.918295,
     "station_name": "岡山",
     "station_dist": 543,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_OKJ"
+    ],
     "amenities": {
       "lawson": 195,
       "seven": 66,
@@ -14181,7 +14905,7 @@
     }
   },
   {
-    "id": "tohoku_16",
+    "id": "tohoku_17",
     "name": "スーパーホテル盛岡",
     "brand": "Super Hotel",
     "area": "岩手県 岩手縣 盛岡市",
@@ -14215,7 +14939,9 @@
     "lng": 140.739386,
     "station_name": "青森",
     "station_dist": 554,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_AOJ"
+    ],
     "amenities": {
       "lawson": 12,
       "seven": 304,
@@ -14256,7 +14982,7 @@
     }
   },
   {
-    "id": "tokyo_201",
+    "id": "tokyo_210",
     "name": "東横イン",
     "brand": "Toyoko Inn",
     "area": "神奈川県 神奈川縣 橫濱市",
@@ -14281,7 +15007,7 @@
     }
   },
   {
-    "id": "tokyo_56",
+    "id": "tokyo_57",
     "name": "ホテルリブマックス後楽園",
     "brand": "LiveMax",
     "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -14390,7 +15116,9 @@
     "lng": 133.915104,
     "station_name": "岡山",
     "station_dist": 624,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_OKJ"
+    ],
     "amenities": {
       "lawson": 186,
       "seven": 350,
@@ -14481,7 +15209,7 @@
     }
   },
   {
-    "id": "tokyo_177",
+    "id": "tokyo_183",
     "name": "ドーミーイン池袋",
     "brand": "Dormy Inn",
     "area": "豊島区     東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
@@ -14640,7 +15368,9 @@
     "lng": 132.481499,
     "station_name": "広島",
     "station_dist": 661,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_HIJ"
+    ],
     "amenities": {
       "lawson": 138,
       "seven": 273,
@@ -14656,10 +15386,11 @@
     }
   },
   {
-    "id": "kyushu_south_24",
+    "id": "kyushu_south_26",
     "name": "東横イン",
     "brand": "Toyoko Inn",
-    "region": "other",
+    "area": "熊本市  中央区 水道町  熊本県 熊本縣 熊本市 春日",
+    "region": "kyushu_south",
     "lat": 32.802715,
     "lng": 130.712432,
     "station_name": "藤崎宮前",
@@ -14669,13 +15400,18 @@
       "lawson": 524,
       "seven": 98,
       "familymart": 75,
+      "starbucks": 163,
+      "doutor": 269,
+      "komeda": 9999,
       "mcdonalds": 262,
+      "mos": 9999,
+      "kfc": 9999,
       "drugstore": 212,
       "supermarket": 96
     }
   },
   {
-    "id": "tohoku_41",
+    "id": "tohoku_44",
     "name": "アパホテル 青森駅県庁通",
     "brand": "APA Hotel",
     "area": "青森県 青森縣 青森市",
@@ -14684,7 +15420,9 @@
     "lng": 140.741532,
     "station_name": "青森",
     "station_dist": 681,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_AOJ"
+    ],
     "amenities": {
       "lawson": 45,
       "seven": 307,
@@ -14709,7 +15447,9 @@
     "lng": 132.468222,
     "station_name": "広島",
     "station_dist": 684,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_HIJ"
+    ],
     "amenities": {
       "lawson": 240,
       "seven": 82,
@@ -14722,6 +15462,31 @@
       "kfc": 1064,
       "drugstore": 370,
       "supermarket": 245
+    }
+  },
+  {
+    "id": "tokyo_209",
+    "name": "ドーミーインEXPRESS目黒青葉台",
+    "brand": "Dormy Inn",
+    "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
+    "region": "tokyo",
+    "lat": 35.64923,
+    "lng": 139.692166,
+    "station_name": "池尻大橋",
+    "station_dist": 689,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 398,
+      "seven": 205,
+      "familymart": 208,
+      "starbucks": 51,
+      "doutor": 767,
+      "komeda": 1754,
+      "mcdonalds": 618,
+      "mos": 750,
+      "kfc": 1105,
+      "drugstore": 388,
+      "supermarket": 317
     }
   },
   {
@@ -14800,7 +15565,7 @@
     }
   },
   {
-    "id": "tohoku_48",
+    "id": "tohoku_51",
     "name": "ドーミーイン盛岡",
     "brand": "Dormy Inn",
     "area": "岩手県 岩手縣 盛岡市",
@@ -14850,7 +15615,7 @@
     }
   },
   {
-    "id": "tohoku_26",
+    "id": "tohoku_28",
     "name": "ドーミーイン青森",
     "brand": "Dormy Inn",
     "area": "青森市     青森県 青森縣 青森市",
@@ -14859,7 +15624,9 @@
     "lng": 140.741665,
     "station_name": "青森",
     "station_dist": 769,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_AOJ"
+    ],
     "amenities": {
       "lawson": 143,
       "seven": 149,
@@ -14875,45 +15642,61 @@
     }
   },
   {
-    "id": "kyushu_south_23",
+    "id": "kyushu_south_24",
     "name": "アパホテル宮崎駅橘通",
     "brand": "APA Hotel",
-    "region": "other",
+    "area": "宮崎県 宮崎縣 宮崎市",
+    "region": "kyushu_south",
     "lat": 31.915507,
     "lng": 131.423412,
     "station_name": "宮崎",
     "station_dist": 807,
-    "airport_lines": [],
+    "airport_lines": [
+      "RAIL_MIYAZAKI"
+    ],
     "amenities": {
       "lawson": 181,
       "seven": 142,
       "familymart": 258,
+      "starbucks": 95,
+      "doutor": 112,
+      "komeda": 1664,
       "mcdonalds": 819,
+      "mos": 151,
+      "kfc": 811,
       "drugstore": 174,
       "supermarket": 88
     }
   },
   {
-    "id": "kyushu_south_22",
+    "id": "kyushu_south_23",
     "name": "ホテルルートイン宮崎橘通",
     "brand": "Route Inn",
-    "region": "other",
+    "area": "宮崎県 宮崎縣 宮崎市",
+    "region": "kyushu_south",
     "lat": 31.917234,
     "lng": 131.422963,
     "station_name": "宮崎",
     "station_dist": 864,
-    "airport_lines": [],
+    "airport_lines": [
+      "RAIL_MIYAZAKI"
+    ],
     "amenities": {
       "lawson": 242,
       "seven": 98,
       "familymart": 446,
+      "starbucks": 131,
+      "doutor": 92,
+      "komeda": 1564,
       "mcdonalds": 899,
+      "mos": 73,
+      "kfc": 881,
       "drugstore": 273,
       "supermarket": 121
     }
   },
   {
-    "id": "tohoku_18",
+    "id": "tohoku_19",
     "name": "ダイワロイネットホテル盛岡",
     "brand": "Daiwa Roynet",
     "area": "岩手県 岩手縣 盛岡市",
@@ -14963,7 +15746,7 @@
     }
   },
   {
-    "id": "kyushu_north_36",
+    "id": "kyushu_north_40",
     "name": "ホテルルートイン",
     "brand": "Route Inn",
     "area": "福岡県 福岡縣 福岡市 博多 天神",
@@ -14972,7 +15755,9 @@
     "lng": 130.423751,
     "station_name": "博多",
     "station_dist": 902,
-    "airport_lines": [],
+    "airport_lines": [
+      "RAIL_FUKUOKA"
+    ],
     "amenities": {
       "lawson": 395,
       "seven": 185,
@@ -14997,7 +15782,9 @@
     "lng": 130.422224,
     "station_name": "博多",
     "station_dist": 918,
-    "airport_lines": [],
+    "airport_lines": [
+      "RAIL_FUKUOKA"
+    ],
     "amenities": {
       "lawson": 355,
       "seven": 81,
@@ -15088,64 +15875,169 @@
     }
   },
   {
-    "id": "kyushu_south_27",
+    "id": "kyushu_south_29",
     "name": "コンフォートホテル宮崎",
     "brand": "Comfort Hotel",
-    "region": "other",
+    "area": "宮崎県 宮崎縣 宮崎市",
+    "region": "kyushu_south",
     "lat": 31.915429,
     "lng": 131.42163,
     "station_name": "宮崎",
     "station_dist": 975,
-    "airport_lines": [],
+    "airport_lines": [
+      "RAIL_MIYAZAKI"
+    ],
     "amenities": {
       "lawson": 208,
       "seven": 253,
       "familymart": 273,
+      "starbucks": 226,
+      "doutor": 162,
+      "komeda": 1791,
       "mcdonalds": 986,
+      "mos": 244,
+      "kfc": 979,
       "drugstore": 40,
       "supermarket": 116
     }
   },
   {
     "id": "kyushu_south_25",
+    "name": "ダイワロイネットホテル熊本",
+    "brand": "Daiwa Roynet",
+    "area": "熊本県 熊本縣 熊本市 春日",
+    "region": "kyushu_south",
+    "lat": 32.801523,
+    "lng": 130.706139,
+    "station_name": "藤崎宮前",
+    "station_dist": 1034,
+    "airport_lines": [
+      "BUS_KMJ"
+    ],
+    "amenities": {
+      "lawson": 113,
+      "seven": 171,
+      "familymart": 193,
+      "starbucks": 228,
+      "doutor": 352,
+      "komeda": 9999,
+      "mcdonalds": 302,
+      "mos": 9999,
+      "kfc": 9999,
+      "drugstore": 250,
+      "supermarket": 172
+    }
+  },
+  {
+    "id": "kyushu_south_27",
     "name": "Dormy Inn",
     "brand": "Dormy Inn",
-    "region": "other",
+    "area": "宮崎県 宮崎縣 宮崎市",
+    "region": "kyushu_south",
     "lat": 31.911628,
     "lng": 131.421954,
     "station_name": "宮崎",
     "station_dist": 1049,
-    "airport_lines": [],
+    "airport_lines": [
+      "RAIL_MIYAZAKI"
+    ],
     "amenities": {
       "lawson": 177,
       "seven": 594,
       "familymart": 199,
+      "starbucks": 547,
+      "doutor": 539,
+      "komeda": 2080,
       "mcdonalds": 1018,
+      "mos": 601,
+      "kfc": 1030,
       "drugstore": 344,
       "supermarket": 194
+    }
+  },
+  {
+    "id": "kyushu_south_22",
+    "name": "東横イン",
+    "brand": "Toyoko Inn",
+    "area": "宮崎県 宮崎縣 宮崎市",
+    "region": "kyushu_south",
+    "lat": 31.91695,
+    "lng": 131.420818,
+    "station_name": "宮崎",
+    "station_dist": 1059,
+    "airport_lines": [
+      "RAIL_MIYAZAKI"
+    ],
+    "amenities": {
+      "lawson": 239,
+      "seven": 284,
+      "familymart": 458,
+      "starbucks": 291,
+      "doutor": 205,
+      "komeda": 1743,
+      "mcdonalds": 1087,
+      "mos": 263,
+      "kfc": 1072,
+      "drugstore": 192,
+      "supermarket": 153
     }
   },
   {
     "id": "kyushu_south_3",
     "name": "リッチモンドホテル",
     "brand": "Richmond Hotel",
-    "region": "other",
+    "area": "鹿児島市     鹿児島県 鹿兒島縣 鹿兒島市",
+    "region": "kyushu_south",
     "lat": 31.594197,
     "lng": 130.557757,
     "station_name": "鹿児島",
     "station_dist": 1068,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_KOJ"
+    ],
     "amenities": {
       "lawson": 65,
       "seven": 116,
       "familymart": 146,
+      "starbucks": 340,
+      "doutor": 287,
+      "komeda": 501,
       "mcdonalds": 294,
+      "mos": 320,
+      "kfc": 381,
       "drugstore": 185,
       "supermarket": 344
     }
   },
   {
-    "id": "tohoku_37",
+    "id": "kyushu_south_32",
+    "name": "スーパーホテルPremier宮崎一番街",
+    "brand": "Super Hotel",
+    "area": "宮崎県 宮崎縣 宮崎市",
+    "region": "kyushu_south",
+    "lat": 31.914982,
+    "lng": 131.420642,
+    "station_name": "宮崎",
+    "station_dist": 1071,
+    "airport_lines": [
+      "RAIL_MIYAZAKI"
+    ],
+    "amenities": {
+      "lawson": 114,
+      "seven": 358,
+      "familymart": 289,
+      "starbucks": 332,
+      "doutor": 265,
+      "komeda": 1894,
+      "mcdonalds": 1078,
+      "mos": 348,
+      "kfc": 1073,
+      "drugstore": 31,
+      "supermarket": 199
+    }
+  },
+  {
+    "id": "tohoku_39",
     "name": "ホテルルートイン盛岡南インター",
     "brand": "Route Inn",
     "area": "岩手県 岩手縣 盛岡市",
@@ -15173,7 +16065,8 @@
     "id": "kyushu_south_14",
     "name": "スーパーホテル 熊本商工会議所前",
     "brand": "Super Hotel",
-    "region": "other",
+    "area": "熊本県 熊本縣 熊本市 春日",
+    "region": "kyushu_south",
     "lat": 32.795347,
     "lng": 130.699015,
     "station_name": "熊本",
@@ -15183,7 +16076,12 @@
       "lawson": 519,
       "seven": 135,
       "familymart": 869,
+      "starbucks": 735,
+      "doutor": 1291,
+      "komeda": 2332,
       "mcdonalds": 889,
+      "mos": 9999,
+      "kfc": 2321,
       "drugstore": 217,
       "supermarket": 360
     }
@@ -15192,17 +16090,25 @@
     "id": "kyushu_south_16",
     "name": "東横イン",
     "brand": "Toyoko Inn",
-    "region": "other",
+    "area": "鹿児島県 鹿兒島縣 鹿兒島市",
+    "region": "kyushu_south",
     "lat": 31.587874,
     "lng": 130.552292,
     "station_name": "鹿児島中央",
     "station_dist": 1097,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_KOJ"
+    ],
     "amenities": {
       "lawson": 174,
       "seven": 176,
       "familymart": 88,
+      "starbucks": 501,
+      "doutor": 422,
+      "komeda": 372,
       "mcdonalds": 600,
+      "mos": 571,
+      "kfc": 522,
       "drugstore": 184,
       "supermarket": 310
     }
@@ -15211,17 +16117,25 @@
     "id": "kyushu_south_4",
     "name": "ドーミーイン鹿児島",
     "brand": "Dormy Inn",
-    "region": "other",
+    "area": "鹿児島県 鹿兒島縣 鹿兒島市",
+    "region": "kyushu_south",
     "lat": 31.58922,
     "lng": 130.551555,
     "station_name": "鹿児島中央",
     "station_dist": 1109,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_KOJ"
+    ],
     "amenities": {
       "lawson": 26,
       "seven": 75,
       "familymart": 51,
+      "starbucks": 417,
+      "doutor": 368,
+      "komeda": 322,
       "mcdonalds": 566,
+      "mos": 538,
+      "kfc": 502,
       "drugstore": 104,
       "supermarket": 173
     }
@@ -15255,36 +16169,52 @@
     "id": "kyushu_south_6",
     "name": "東横イン",
     "brand": "Toyoko Inn",
-    "region": "other",
+    "area": "熊本県 熊本縣 熊本市 春日",
+    "region": "kyushu_south",
     "lat": 32.799733,
     "lng": 130.706783,
     "station_name": "藤崎宮前",
     "station_dist": 1162,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_KMJ"
+    ],
     "amenities": {
       "lawson": 292,
       "seven": 124,
       "familymart": 83,
+      "starbucks": 135,
+      "doutor": 433,
+      "komeda": 9999,
       "mcdonalds": 99,
+      "mos": 9999,
+      "kfc": 9999,
       "drugstore": 86,
       "supermarket": 44
     }
   },
   {
-    "id": "kyushu_south_30",
+    "id": "kyushu_south_33",
     "name": "御宿 野乃熊本",
     "brand": "Dormy Inn",
-    "region": "other",
+    "area": "熊本市中央区     熊本県 熊本縣 熊本市 春日",
+    "region": "kyushu_south",
     "lat": 32.79897,
     "lng": 130.708486,
     "station_name": "藤崎宮前",
     "station_dist": 1166,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_KMJ"
+    ],
     "amenities": {
       "lawson": 407,
       "seven": 75,
       "familymart": 119,
+      "starbucks": 85,
+      "doutor": 443,
+      "komeda": 9999,
       "mcdonalds": 97,
+      "mos": 9999,
+      "kfc": 9999,
       "drugstore": 69,
       "supermarket": 73
     }
@@ -15293,17 +16223,25 @@
     "id": "kyushu_south_1",
     "name": "ワシントンホテル",
     "brand": "Washington Hotel",
-    "region": "other",
+    "area": "鹿児島県 鹿兒島縣 鹿兒島市",
+    "region": "kyushu_south",
     "lat": 31.589152,
     "lng": 130.552648,
     "station_name": "鹿児島中央",
     "station_dist": 1193,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_KOJ"
+    ],
     "amenities": {
       "lawson": 88,
       "seven": 58,
       "familymart": 59,
+      "starbucks": 360,
+      "doutor": 291,
+      "komeda": 242,
       "mcdonalds": 482,
+      "mos": 454,
+      "kfc": 412,
       "drugstore": 161,
       "supermarket": 275
     }
@@ -15312,17 +16250,25 @@
     "id": "kyushu_south_5",
     "name": "熊本ワシントンホテルプラザ",
     "brand": "Washington Hotel",
-    "region": "other",
+    "area": "熊本県熊本市     熊本県 熊本縣 熊本市 春日",
+    "region": "kyushu_south",
     "lat": 32.798558,
     "lng": 130.708677,
     "station_name": "藤崎宮前",
     "station_dist": 1202,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_KMJ"
+    ],
     "amenities": {
       "lawson": 456,
       "seven": 101,
       "familymart": 151,
+      "starbucks": 101,
+      "doutor": 484,
+      "komeda": 9999,
       "mcdonalds": 127,
+      "mos": 9999,
+      "kfc": 9999,
       "drugstore": 108,
       "supermarket": 104
     }
@@ -15331,17 +16277,25 @@
     "id": "kyushu_south_17",
     "name": "東横イン",
     "brand": "Toyoko Inn",
-    "region": "other",
+    "area": "鹿児島市     鹿児島県 鹿兒島縣 鹿兒島市",
+    "region": "kyushu_south",
     "lat": 31.589759,
     "lng": 130.552334,
     "station_name": "鹿児島中央",
     "station_dist": 1204,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_KOJ"
+    ],
     "amenities": {
       "lawson": 69,
       "seven": 25,
       "familymart": 87,
+      "starbucks": 323,
+      "doutor": 274,
+      "komeda": 229,
       "mcdonalds": 472,
+      "mos": 445,
+      "kfc": 412,
       "drugstore": 87,
       "supermarket": 238
     }
@@ -15375,23 +16329,31 @@
     "id": "kyushu_south_10",
     "name": "リッチモンドホテル 熊本新市街",
     "brand": "Richmond Hotel",
-    "region": "other",
+    "area": "熊本県 熊本縣 熊本市 春日",
+    "region": "kyushu_south",
     "lat": 32.799085,
     "lng": 130.707049,
     "station_name": "藤崎宮前",
     "station_dist": 1212,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_KMJ"
+    ],
     "amenities": {
       "lawson": 364,
       "seven": 62,
       "familymart": 13,
+      "starbucks": 65,
+      "doutor": 480,
+      "komeda": 9999,
       "mcdonalds": 38,
+      "mos": 9999,
+      "kfc": 9999,
       "drugstore": 72,
       "supermarket": 62
     }
   },
   {
-    "id": "tohoku_24",
+    "id": "tohoku_26",
     "name": "ホテルルートイン長町インター",
     "brand": "Route Inn",
     "area": "仙台市  太白区   宮城県 宮城縣 仙台市",
@@ -15400,7 +16362,9 @@
     "lng": 140.898507,
     "station_name": "長町",
     "station_dist": 1258,
-    "airport_lines": [],
+    "airport_lines": [
+      "RAIL_SENDAI"
+    ],
     "amenities": {
       "lawson": 1251,
       "seven": 643,
@@ -15419,17 +16383,25 @@
     "id": "kyushu_south_11",
     "name": "Dormy Inn Kumamoto Natural Hot Spring",
     "brand": "Dormy Inn",
-    "region": "other",
+    "area": "熊本県 熊本縣 熊本市 春日",
+    "region": "kyushu_south",
     "lat": 32.799343,
     "lng": 130.702718,
     "station_name": "藤崎宮前",
     "station_dist": 1428,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_KMJ"
+    ],
     "amenities": {
       "lawson": 53,
       "seven": 100,
       "familymart": 419,
+      "starbucks": 174,
+      "doutor": 749,
+      "komeda": 9999,
       "mcdonalds": 443,
+      "mos": 9999,
+      "kfc": 9999,
       "drugstore": 467,
       "supermarket": 94
     }
@@ -15438,17 +16410,25 @@
     "id": "kyushu_south_9",
     "name": "東横イン",
     "brand": "Toyoko Inn",
-    "region": "other",
+    "area": "熊本県 熊本縣 熊本市 春日",
+    "region": "kyushu_south",
     "lat": 32.797686,
     "lng": 130.70506,
     "station_name": "藤崎宮前",
     "station_dist": 1440,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_KMJ"
+    ],
     "amenities": {
       "lawson": 262,
       "seven": 156,
       "familymart": 251,
+      "starbucks": 267,
+      "doutor": 711,
+      "komeda": 9999,
       "mcdonalds": 269,
+      "mos": 9999,
+      "kfc": 9999,
       "drugstore": 307,
       "supermarket": 214
     }
@@ -15457,17 +16437,25 @@
     "id": "kyushu_south_8",
     "name": "三井ガーデンホテル熊本",
     "brand": "Mitsui Garden",
-    "region": "other",
+    "area": "熊本県 熊本縣 熊本市 春日",
+    "region": "kyushu_south",
     "lat": 32.797229,
     "lng": 130.70501,
     "station_name": "藤崎宮前",
     "station_dist": 1486,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_KMJ"
+    ],
     "amenities": {
       "lawson": 287,
       "seven": 207,
       "familymart": 289,
+      "starbucks": 296,
+      "doutor": 756,
+      "komeda": 9999,
       "mcdonalds": 304,
+      "mos": 9999,
+      "kfc": 9999,
       "drugstore": 341,
       "supermarket": 254
     }
@@ -15476,17 +16464,25 @@
     "id": "kyushu_south_2",
     "name": "リッチモンドホテル",
     "brand": "Richmond Hotel",
-    "region": "other",
+    "area": "鹿児島県 鹿兒島縣 鹿兒島市",
+    "region": "kyushu_south",
     "lat": 31.589925,
     "lng": 130.555866,
     "station_name": "鹿児島中央",
     "station_dist": 1502,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_KOJ"
+    ],
     "amenities": {
       "lawson": 59,
       "seven": 80,
       "familymart": 32,
+      "starbucks": 179,
+      "doutor": 153,
+      "komeda": 150,
       "mcdonalds": 214,
+      "mos": 188,
+      "kfc": 128,
       "drugstore": 46,
       "supermarket": 206
     }
@@ -15495,36 +16491,52 @@
     "id": "kyushu_south_7",
     "name": "アパホテル",
     "brand": "APA Hotel",
-    "region": "other",
+    "area": "熊本県 熊本縣 熊本市 春日",
+    "region": "kyushu_south",
     "lat": 32.796751,
     "lng": 130.703468,
     "station_name": "南熊本",
     "station_dist": 1510,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_KMJ"
+    ],
     "amenities": {
       "lawson": 248,
       "seven": 213,
       "familymart": 433,
+      "starbucks": 406,
+      "doutor": 885,
+      "komeda": 9999,
       "mcdonalds": 451,
+      "mos": 9999,
+      "kfc": 9999,
       "drugstore": 488,
       "supermarket": 277
     }
   },
   {
-    "id": "kyushu_south_29",
+    "id": "kyushu_south_31",
     "name": "アパホテル",
     "brand": "APA Hotel",
-    "region": "other",
+    "area": "鹿児島市     鹿児島県 鹿兒島縣 鹿兒島市",
+    "region": "kyushu_south",
     "lat": 31.588884,
     "lng": 130.556679,
     "station_name": "鹿児島中央",
     "station_dist": 1523,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_KOJ"
+    ],
     "amenities": {
       "lawson": 198,
       "seven": 62,
       "familymart": 94,
+      "starbucks": 260,
+      "doutor": 292,
+      "komeda": 283,
       "mcdonalds": 312,
+      "mos": 292,
+      "kfc": 232,
       "drugstore": 40,
       "supermarket": 94
     }
@@ -15533,23 +16545,31 @@
     "id": "kyushu_south_19",
     "name": "リブマックス",
     "brand": "LiveMax",
-    "region": "other",
+    "area": "鹿児島県 鹿兒島縣 鹿兒島市",
+    "region": "kyushu_south",
     "lat": 31.588413,
     "lng": 130.557074,
     "station_name": "鹿児島中央",
     "station_dist": 1539,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_KOJ"
+    ],
     "amenities": {
       "lawson": 263,
       "seven": 126,
       "familymart": 135,
+      "starbucks": 310,
+      "doutor": 356,
+      "komeda": 346,
       "mcdonalds": 366,
+      "mos": 348,
+      "kfc": 289,
       "drugstore": 102,
       "supermarket": 37
     }
   },
   {
-    "id": "tohoku_38",
+    "id": "tohoku_41",
     "name": "ホテルルートイン",
     "brand": "Route Inn",
     "area": "青森県 青森縣 青森市",
@@ -15574,7 +16594,7 @@
     }
   },
   {
-    "id": "tohoku_43",
+    "id": "tohoku_46",
     "name": "スーパーホテル青森",
     "brand": "Super Hotel",
     "area": "青森県 青森縣 青森市",

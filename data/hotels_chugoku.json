@@ -34,7 +34,9 @@
     "lng": 133.916905,
     "station_name": "岡山",
     "station_dist": 110,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_OKJ"
+    ],
     "amenities": {
       "lawson": 279,
       "seven": 58,
@@ -59,7 +61,9 @@
     "lng": 132.474863,
     "station_name": "広島",
     "station_dist": 143,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_HIJ"
+    ],
     "amenities": {
       "lawson": 61,
       "seven": 66,
@@ -84,7 +88,9 @@
     "lng": 133.91665,
     "station_name": "岡山",
     "station_dist": 169,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_OKJ"
+    ],
     "amenities": {
       "lawson": 415,
       "seven": 63,
@@ -109,7 +115,9 @@
     "lng": 133.919988,
     "station_name": "岡山",
     "station_dist": 180,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_OKJ"
+    ],
     "amenities": {
       "lawson": 86,
       "seven": 149,
@@ -134,7 +142,9 @@
     "lng": 132.4739,
     "station_name": "広島",
     "station_dist": 206,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_HIJ"
+    ],
     "amenities": {
       "lawson": 141,
       "seven": 116,
@@ -159,7 +169,9 @@
     "lng": 133.917373,
     "station_name": "岡山",
     "station_dist": 222,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_OKJ"
+    ],
     "amenities": {
       "lawson": 84,
       "seven": 85,
@@ -184,7 +196,9 @@
     "lng": 133.91611,
     "station_name": "岡山",
     "station_dist": 230,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_OKJ"
+    ],
     "amenities": {
       "lawson": 430,
       "seven": 84,
@@ -234,7 +248,9 @@
     "lng": 133.920946,
     "station_name": "岡山",
     "station_dist": 247,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_OKJ"
+    ],
     "amenities": {
       "lawson": 151,
       "seven": 233,
@@ -259,7 +275,9 @@
     "lng": 132.476643,
     "station_name": "広島",
     "station_dist": 281,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_HIJ"
+    ],
     "amenities": {
       "lawson": 12,
       "seven": 208,
@@ -309,7 +327,9 @@
     "lng": 133.919064,
     "station_name": "岡山",
     "station_dist": 292,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_OKJ"
+    ],
     "amenities": {
       "lawson": 465,
       "seven": 239,
@@ -384,7 +404,9 @@
     "lng": 134.04494,
     "station_name": "高松",
     "station_dist": 361,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_TAK"
+    ],
     "amenities": {
       "lawson": 333,
       "seven": 326,
@@ -409,7 +431,9 @@
     "lng": 132.472465,
     "station_name": "広島",
     "station_dist": 371,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_HIJ"
+    ],
     "amenities": {
       "lawson": 85,
       "seven": 248,
@@ -434,7 +458,9 @@
     "lng": 133.921989,
     "station_name": "岡山",
     "station_dist": 382,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_OKJ"
+    ],
     "amenities": {
       "lawson": 21,
       "seven": 148,
@@ -459,7 +485,9 @@
     "lng": 132.478538,
     "station_name": "広島",
     "station_dist": 386,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_HIJ"
+    ],
     "amenities": {
       "lawson": 172,
       "seven": 128,
@@ -484,7 +512,9 @@
     "lng": 132.474003,
     "station_name": "広島",
     "station_dist": 386,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_HIJ"
+    ],
     "amenities": {
       "lawson": 155,
       "seven": 103,
@@ -509,7 +539,9 @@
     "lng": 132.47924,
     "station_name": "広島",
     "station_dist": 406,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_HIJ"
+    ],
     "amenities": {
       "lawson": 106,
       "seven": 171,
@@ -534,7 +566,9 @@
     "lng": 132.472133,
     "station_name": "広島",
     "station_dist": 407,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_HIJ"
+    ],
     "amenities": {
       "lawson": 19,
       "seven": 111,
@@ -584,7 +618,9 @@
     "lng": 133.921646,
     "station_name": "岡山",
     "station_dist": 441,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_OKJ"
+    ],
     "amenities": {
       "lawson": 226,
       "seven": 217,
@@ -634,7 +670,9 @@
     "lng": 133.9155,
     "station_name": "岡山",
     "station_dist": 457,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_OKJ"
+    ],
     "amenities": {
       "lawson": 328,
       "seven": 324,
@@ -684,7 +722,9 @@
     "lng": 134.048177,
     "station_name": "高松築港",
     "station_dist": 480,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_TAK"
+    ],
     "amenities": {
       "lawson": 29,
       "seven": 193,
@@ -709,7 +749,9 @@
     "lng": 133.922441,
     "station_name": "岡山",
     "station_dist": 481,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_OKJ"
+    ],
     "amenities": {
       "lawson": 215,
       "seven": 286,
@@ -734,7 +776,9 @@
     "lng": 133.915516,
     "station_name": "岡山",
     "station_dist": 497,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_OKJ"
+    ],
     "amenities": {
       "lawson": 294,
       "seven": 335,
@@ -834,7 +878,9 @@
     "lng": 133.918295,
     "station_name": "岡山",
     "station_dist": 543,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_OKJ"
+    ],
     "amenities": {
       "lawson": 195,
       "seven": 66,
@@ -859,7 +905,9 @@
     "lng": 133.915104,
     "station_name": "岡山",
     "station_dist": 624,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_OKJ"
+    ],
     "amenities": {
       "lawson": 186,
       "seven": 350,
@@ -959,7 +1007,9 @@
     "lng": 132.481499,
     "station_name": "広島",
     "station_dist": 661,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_HIJ"
+    ],
     "amenities": {
       "lawson": 138,
       "seven": 273,
@@ -984,7 +1034,9 @@
     "lng": 132.468222,
     "station_name": "広島",
     "station_dist": 684,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_HIJ"
+    ],
     "amenities": {
       "lawson": 240,
       "seven": 82,
