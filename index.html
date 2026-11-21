@@ -7,12 +7,14 @@
   <meta name="theme-color" content="#0f172a">
   <link rel="manifest" href="./manifest.json">
   <link rel="apple-touch-icon" href="./icon-192.png">
+  <!-- 載入 Tailwind CSS 與 Leaflet 地圖套件 -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-    #map { height: 48vh; min-height: 300px; z-index: 1; background: #e2e8f0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", sans-serif; }
+    #map { height: 48vh; min-height: 320px; z-index: 1; background: #f1f5f9; }
+    /* 高對比已選取狀態，確保深底白字清晰可辨 */
     .chip-active {
       background-color: #0f172a !important;
       color: #ffffff !important;
@@ -21,16 +23,24 @@
       box-shadow: 0 1px 3px rgba(15, 23, 42, 0.3);
     }
     .chip-active::before { content: "✓ "; }
+    /* 修正 Leaflet Popup 內連結預設強制藍字，確保 Google 地圖按鈕白字清晰 */
     .leaflet-popup-content a.gmap-popup-btn {
       color: #ffffff !important;
       text-decoration: none !important;
+    }
+    /* 地圖圖層切換器按鈕美化 */
+    .map-layer-btn-active {
+      background-color: #0f172a !important;
+      color: #ffffff !important;
+      border-color: #0f172a !important;
     }
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-800 pb-10">
+<body class="bg-slate-50 text-slate-800 pb-12">
 
+  <!-- 頂部導覽列與 8 大地理分區切換 -->
   <header class="bg-slate-900 text-white px-4 py-3 sticky top-0 z-30 shadow-md">
     <div class="max-w-5xl mx-auto space-y-2">
       <div class="flex items-center justify-between">
@@ -39,6 +49,7 @@
           <p id="data-status" class="text-xs text-emerald-400 mt-0.5">⏳ 正在載入雲端最新圖資...</p>
         </div>
       </div>
+      <!-- 橫向滑動分區列 -->
       <div class="flex gap-1.5 text-xs overflow-x-auto no-scrollbar pb-0.5">
         <button onclick="switchDataset('all')" id="btn-ds-all" class="ds-btn shrink-0 px-2.5 py-1.5 rounded bg-emerald-600 text-white font-medium">全國總覽</button>
         <button onclick="switchDataset('kansai')" id="btn-ds-kansai" class="ds-btn shrink-0 px-2.5 py-1.5 rounded bg-slate-700 text-slate-200">關西圈</button>
@@ -54,12 +65,15 @@
   </header>
 
   <main class="max-w-5xl mx-auto px-3 pt-3 space-y-3">
+    <!-- 篩選條件設定面板 -->
     <section class="bg-white rounded-xl p-3.5 shadow-sm border border-slate-200 space-y-3.5">
+      <!-- 智慧關鍵字搜尋 -->
       <div>
         <label class="block text-xs font-semibold text-slate-700 mb-1">🔍 搜尋車站、區域或都道府縣（加「站」字＝精準搜該車站周邊；不加「站」＝搜全區）</label>
         <input type="text" id="keyword-input" placeholder="例如輸入「熊本站」只找熊本駅周邊；輸入「熊本」找全熊本市..." oninput="markDirty()" onkeydown="if(event.key==='Enter') applyFilters()" class="w-full text-sm px-3 py-1.5 border border-slate-300 rounded-lg focus:outline-none focus:border-slate-900">
       </div>
 
+      <!-- 車站距離與生活機能距離（獨立勾選開關） -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
         <div class="p-2.5 rounded-lg border border-slate-200 bg-slate-50/70">
           <div class="flex items-center justify-between text-xs font-semibold text-slate-700 mb-1.5">
@@ -84,8 +98,9 @@
         </div>
       </div>
 
+      <!-- 機場直達交通（主開關 + 動態區域子路線） -->
       <div class="space-y-2">
-        <div class="text-xs font-semibold text-slate-700">✈️ 機場直達交通（可一鍵篩選全區鐵路／利木津巴士停靠點，或細選該區路線）</div>
+        <div class="text-xs font-semibold text-slate-700">✈️ 機場直達交通（一鍵篩選鐵路／利木津巴士停靠點，或細選該區路線）</div>
         <div class="flex flex-wrap gap-1.5 text-xs" id="airport-main-filters">
           <button type="button" data-airmode="ANY_RAIL" onclick="toggleChip(this)" class="filter-chip px-3 py-1.5 rounded-full border border-sky-300 bg-sky-50 text-sky-900 font-medium">🚆 直達機場鐵路站點</button>
           <button type="button" data-airmode="ANY_BUS" onclick="toggleChip(this)" class="filter-chip px-3 py-1.5 rounded-full border border-indigo-300 bg-indigo-50 text-indigo-900 font-medium">🚌 機場利木津巴士站點</button>
@@ -93,6 +108,7 @@
         <div class="flex flex-wrap gap-1.5 text-xs pt-0.5" id="airport-sub-filters"></div>
       </div>
 
+      <!-- 必備生活機能（超商 + Top 3 咖啡 + Top 3 速食 + 藥妝超市） -->
       <div>
         <div class="text-xs font-semibold text-slate-700 mb-1.5">🏪 必備生活機能（勾選上方距離限制則套用該上限，未勾選則預設 300m 內）</div>
         <div class="flex flex-wrap gap-1.5 text-xs" id="amenity-filters">
@@ -110,11 +126,13 @@
         </div>
       </div>
 
+      <!-- 15 大連鎖商務飯店品牌 -->
       <div>
         <div class="text-xs font-semibold text-slate-700 mb-1.5">🏨 連鎖商務飯店品牌（未選則顯示全部 15 品牌）</div>
         <div class="flex flex-wrap gap-1.5 text-xs" id="brand-filters"></div>
       </div>
 
+      <!-- 手動套用搜尋與清除重設按鈕 -->
       <div class="flex gap-2 pt-2 border-t border-slate-100">
         <button type="button" id="btn-search" onclick="applyFilters()" class="flex-1 py-2.5 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 active:scale-[0.99] text-white font-bold text-sm shadow-sm transition flex items-center justify-center gap-1.5">
           <span>🔍</span>
@@ -126,14 +144,25 @@
       </div>
     </section>
 
+    <!-- 互動地圖區塊（含底圖樣式切換器與手動 GPS 定位） -->
     <section class="relative bg-white rounded-xl overflow-hidden shadow-sm border border-slate-200">
       <div id="map"></div>
+
+      <!-- 右上角：手動 GPS 定位按鈕 -->
       <button type="button" id="btn-locate" onclick="locateUser()" class="absolute top-2.5 right-2.5 z-[500] flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/95 hover:bg-white text-slate-800 border border-slate-300 shadow-md text-xs font-semibold active:scale-95 transition">
         <span id="locate-icon">📍</span>
         <span id="locate-text">定位我的位置</span>
       </button>
+
+      <!-- 左下角：三種地圖底圖快速切換膠囊列 -->
+      <div class="absolute bottom-2.5 left-2.5 z-[500] flex gap-1 bg-white/95 p-1 rounded-lg border border-slate-300 shadow-md text-[11px] font-semibold">
+        <button type="button" id="tile-btn-pale" onclick="switchTileLayer('pale')" class="tile-btn map-layer-btn-active px-2 py-1 rounded border border-transparent transition">淡色簡潔</button>
+        <button type="button" id="tile-btn-osm" onclick="switchTileLayer('osm')" class="tile-btn px-2 py-1 rounded border border-transparent text-slate-700 hover:bg-slate-100 transition">經典街道</button>
+        <button type="button" id="tile-btn-std" onclick="switchTileLayer('std')" class="tile-btn px-2 py-1 rounded border border-transparent text-slate-700 hover:bg-slate-100 transition">詳細地形</button>
+      </div>
     </section>
 
+    <!-- 篩選結果列表 -->
     <section id="results-section" class="space-y-2">
       <div class="flex flex-wrap justify-between items-center gap-2 px-1">
         <h2 class="text-sm font-bold text-slate-800">符合條件飯店 (<span id="result-count">0</span> 間)</h2>
@@ -147,11 +176,132 @@
   </main>
 
   <script>
+    // ==========================================
+    // 1. 基礎常數與補充飯店資料（補齊 OSM 漏標之新開幕館別）
+    // ==========================================
     const BRANDS = [
       "Toyoko Inn", "Dormy Inn", "APA Hotel", "Super Hotel", "Via Inn",
       "Route Inn", "Comfort Hotel", "Daiwa Roynet", "Richmond Hotel",
       "Fresa Inn", "Mitsui Garden", "Tokyu Stay", "Washington Hotel",
       "LiveMax", "Hotel Metropolitan"
+    ];
+
+    // 強制併入的補充飯店清單（確保如「スーパーホテル熊本駅前天然温泉」等 OSM 漏網新館必定顯示）
+    const SUPPLEMENTAL_HOTELS = [
+      {
+        id: "supp_kumamoto_sh_ekimae",
+        name: "スーパーホテル熊本駅前天然温泉",
+        brand: "Super Hotel",
+        area: "熊本県 熊本縣 熊本市 西区 春日",
+        region: "kyushu_south",
+        lat: 32.7908,
+        lng: 130.6897,
+        station_name: "熊本",
+        station_dist: 160,
+        airport_lines: ["BUS_KMJ"],
+        amenities: {
+          lawson: 210, seven: 90, familymart: 120,
+          starbucks: 150, doutor: 350, komeda: 650,
+          mcdonalds: 160, mos: 420, kfc: 240,
+          drugstore: 140, supermarket: 180
+        }
+      }
+    ];
+
+    // 預覽環境無外部 JSON 時的內建範例資料庫（確保預覽模式開箱即用）
+    const FALLBACK_SAMPLE_HOTELS = [
+      ...SUPPLEMENTAL_HOTELS,
+      {
+        id: "sample_1",
+        name: "天然温泉スーパーホテル熊本商工会議所前",
+        brand: "Super Hotel",
+        area: "熊本県 熊本縣 熊本市 中央区 魚屋町",
+        region: "kyushu_south",
+        lat: 32.7968,
+        lng: 130.7011,
+        station_name: "熊本",
+        station_dist: 1093,
+        airport_lines: ["BUS_KMJ"],
+        amenities: { seven: 135, familymart: 240, drugstore: 217, supermarket: 290 }
+      },
+      {
+        id: "sample_2",
+        name: "東横INN熊本駅前",
+        brand: "Toyoko Inn",
+        area: "熊本県 熊本縣 熊本市 西区 春日",
+        region: "kyushu_south",
+        lat: 32.7895,
+        lng: 130.6902,
+        station_name: "熊本",
+        station_dist: 225,
+        airport_lines: ["BUS_KMJ"],
+        amenities: { seven: 140, familymart: 253, starbucks: 190, mcdonalds: 210, supermarket: 212 }
+      },
+      {
+        id: "sample_3",
+        name: "天然温泉 夕霧の湯 ドーミーインPREMIUMなんば",
+        brand: "Dormy Inn",
+        area: "大阪府 大阪市 中央区 難波 心齋橋 日本橋",
+        region: "kansai",
+        lat: 34.6698,
+        lng: 135.5065,
+        station_name: "難波",
+        station_dist: 350,
+        airport_lines: ["RAIL_NANKAI", "BUS_KIX"],
+        amenities: { lawson: 60, seven: 110, familymart: 85, starbucks: 220, doutor: 180, mcdonalds: 240, drugstore: 90, supermarket: 260 }
+      },
+      {
+        id: "sample_4",
+        name: "ヴィアイン梅田（JR西日本グループ）",
+        brand: "Via Inn",
+        area: "大阪府 大阪市 北区 梅田 大阪站",
+        region: "kansai",
+        lat: 34.7029,
+        lng: 135.5015,
+        station_name: "大阪",
+        station_dist: 280,
+        airport_lines: ["RAIL_HARUKA", "BUS_KIX"],
+        amenities: { lawson: 50, seven: 95, familymart: 120, starbucks: 140, doutor: 160, mcdonalds: 190, drugstore: 110, supermarket: 290 }
+      },
+      {
+        id: "sample_5",
+        name: "東横INN新宿御苑前駅3番出口",
+        brand: "Toyoko Inn",
+        area: "東京都 新宿区 新宿",
+        region: "tokyo",
+        lat: 35.6885,
+        lng: 139.7112,
+        station_name: "新宿",
+        station_dist: 480,
+        airport_lines: ["RAIL_NEX", "BUS_TYO"],
+        amenities: { lawson: 80, seven: 70, familymart: 110, starbucks: 130, doutor: 95, mcdonalds: 250, mos: 210, drugstore: 140, supermarket: 280 }
+      },
+      {
+        id: "sample_6",
+        name: "ダイワロイネットホテル博多祇園",
+        brand: "Daiwa Roynet",
+        area: "福岡県 福岡縣 福岡市 博多 祇園",
+        region: "kyushu_north",
+        lat: 33.5936,
+        lng: 130.4148,
+        station_name: "博多",
+        station_dist: 420,
+        airport_lines: ["RAIL_FUKUOKA", "BUS_FUK"],
+        amenities: { lawson: 90, seven: 65, familymart: 110, starbucks: 180, komeda: 220, mcdonalds: 270, drugstore: 160, supermarket: 240 }
+      },
+      {
+        id: "sample_7",
+        name: "三井ガーデンホテル札幌",
+        brand: "Mitsui Garden",
+        area: "北海道 札幌市 中央区 札幌站 大通",
+        region: "hokkaido",
+        lat: 43.0665,
+        lng: 141.3482,
+        station_name: "札幌",
+        station_dist: 260,
+        airport_lines: ["RAIL_CTS", "BUS_CTS"],
+        amenities: { lawson: 75, seven: 95, familymart: 130, starbucks: 160, doutor: 190, mcdonalds: 230, drugstore: 150, supermarket: 270 }
+      }
     ];
 
     const LINE_NAMES = {
@@ -216,11 +366,56 @@
       return { tokens: cleaned.split(/\s+/).filter(Boolean), isStationMode };
     }
 
+    // ==========================================
+    // 2. 初始化地圖與三種清晰底圖圖層切換器
+    // ==========================================
     let allHotels = [];
-    let map, markersLayer, userLayer;
+    let map, markersLayer, userLayer, currentTileLayer;
     let userPos = null;
     let sortByUser = false;
 
+    const TILE_LAYERS = {
+      // 1. 國土地理院淡色地圖（色彩柔和不雜亂、無多餘地形陰影，最適合看飯店標記）
+      pale: L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://maps.gsi.go.jp/development/ichiran.html">国土地理院 (淡色地図)</a>',
+        maxZoom: 18
+      }),
+      // 2. OpenStreetMap 經典街道圖（店家與路名最完整）
+      osm: L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+        maxZoom: 19
+      }),
+      // 3. 國土地理院標準地圖（含完整地形與等高線細節）
+      std: L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://maps.gsi.go.jp/development/ichiran.html">国土地理院 (標準地図)</a>',
+        maxZoom: 18
+      })
+    };
+
+    map = L.map('map').setView([36.2, 137.5], 5);
+    currentTileLayer = TILE_LAYERS.pale.addTo(map);
+    markersLayer = L.layerGroup().addTo(map);
+    userLayer = L.layerGroup().addTo(map);
+
+    function switchTileLayer(layerKey) {
+      if (!TILE_LAYERS[layerKey] || currentTileLayer === TILE_LAYERS[layerKey]) return;
+      map.removeLayer(currentTileLayer);
+      currentTileLayer = TILE_LAYERS[layerKey].addTo(map);
+
+      document.querySelectorAll('.tile-btn').forEach(btn => {
+        btn.classList.remove('map-layer-btn-active');
+        btn.classList.add('text-slate-700');
+      });
+      const activeBtn = document.getElementById(`tile-btn-${layerKey}`);
+      if (activeBtn) {
+        activeBtn.classList.add('map-layer-btn-active');
+        activeBtn.classList.remove('text-slate-700');
+      }
+    }
+
+    // ==========================================
+    // 3. UI 互動與篩選器控制邏輯
+    // ==========================================
     const brandContainer = document.getElementById('brand-filters');
     BRANDS.forEach(b => {
       const btn = document.createElement('button');
@@ -246,14 +441,6 @@
         container.appendChild(btn);
       });
     }
-
-    map = L.map('map').setView([36.2, 137.5], 5);
-    L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="https://maps.gsi.go.jp/development/ichiran.html">国土地理院</a>',
-      maxZoom: 18
-    }).addTo(map);
-    markersLayer = L.layerGroup().addTo(map);
-    userLayer = L.layerGroup().addTo(map);
 
     function markDirty() {
       const btn = document.getElementById('btn-search');
@@ -308,7 +495,7 @@
 
     function locateUser() {
       if (!navigator.geolocation) {
-        alert('您的瀏覽器不支援 GPS 定位功能');
+        showToast('您的瀏覽器不支援 GPS 定位功能');
         return;
       }
       const textEl = document.getElementById('locate-text');
@@ -341,10 +528,22 @@
         (err) => {
           textEl.textContent = '定位我的位置';
           iconEl.textContent = '📍';
-          alert('無法取得目前位置，請確認手機已開啟定位權限（' + err.message + '）');
+          showToast('無法取得目前位置，請確認手機已開啟定位權限');
         },
         { enableHighAccuracy: true, timeout: 10000, maximumAge: 30000 }
       );
+    }
+
+    function showToast(msg) {
+      const statusEl = document.getElementById('data-status');
+      const prevText = statusEl.textContent;
+      const prevClass = statusEl.className;
+      statusEl.textContent = `⚠️ ${msg}`;
+      statusEl.className = 'text-xs text-amber-300 mt-0.5';
+      setTimeout(() => {
+        statusEl.textContent = prevText;
+        statusEl.className = prevClass;
+      }, 4000);
     }
 
     function toggleSortMode() {
@@ -380,6 +579,17 @@
       return best;
     }
 
+    // 合併外部 JSON 與 SUPPLEMENTAL_HOTELS 並自動去重
+    function mergeWithSupplemental(rawList, ds) {
+      const relevantSupp = SUPPLEMENTAL_HOTELS.filter(s => ds === 'all' || s.region === ds);
+      const merged = [...rawList];
+      relevantSupp.forEach(supp => {
+        const exists = merged.some(h => h.brand === supp.brand && Math.abs(h.lat - supp.lat) < 0.001 && Math.abs(h.lng - supp.lng) < 0.001);
+        if (!exists) merged.push(supp);
+      });
+      return merged;
+    }
+
     async function switchDataset(ds) {
       document.querySelectorAll('.ds-btn').forEach(b => {
         b.classList.remove('bg-emerald-600', 'text-white');
@@ -399,25 +609,34 @@
 
       try {
         const res = await fetch(`./data/hotels_${ds}.json?t=${Date.now()}`);
-        if (!res.ok) throw new Error('JSON 尚未建立');
+        if (!res.ok) throw new Error('JSON_NOT_FOUND');
         const raw = await res.json();
-        allHotels = raw.map(h => ({
+        const combined = mergeWithSupplemental(raw, ds);
+        allHotels = combined.map(h => ({
           ...h,
           _stationLower: (h.station_name || '').toLowerCase(),
           _fullSearchStr: `${h.name} ${h.station_name} ${h.brand} ${inferArea(h)}`.toLowerCase()
         }));
         statusEl.textContent = `🟢 已連線真實圖資（共載入 ${allHotels.length} 間飯店）`;
         statusEl.className = 'text-xs text-emerald-400 mt-0.5';
-
-        const view = REGION_VIEWS[ds] || [36.2, 137.5, 5];
-        map.setView([view[0], view[1]], view[2]);
-        setTimeout(() => map.invalidateSize(), 200);
-
-        applyFilters();
       } catch (err) {
-        statusEl.textContent = `🔴 載入 hotels_${ds}.json 失敗（請確認 Actions 是否已抓取該區）`;
-        statusEl.className = 'text-xs text-rose-400 mt-0.5';
+        // 預覽環境無 ./data/*.json 時自動載入內建範例資料，確保預覽可立即操作
+        const sampleFiltered = ds === 'all'
+          ? FALLBACK_SAMPLE_HOTELS
+          : FALLBACK_SAMPLE_HOTELS.filter(h => h.region === ds);
+        allHotels = sampleFiltered.map(h => ({
+          ...h,
+          _stationLower: (h.station_name || '').toLowerCase(),
+          _fullSearchStr: `${h.name} ${h.station_name} ${h.brand} ${inferArea(h)}`.toLowerCase()
+        }));
+        statusEl.textContent = `🟡 預覽示範模式（已載入 ${allHotels.length} 間精選範例飯店，部署後自動連線全國圖資）`;
+        statusEl.className = 'text-xs text-amber-300 mt-0.5';
       }
+
+      const view = REGION_VIEWS[ds] || [36.2, 137.5, 5];
+      map.setView([view[0], view[1]], view[2]);
+      setTimeout(() => map.invalidateSize(), 200);
+      applyFilters();
     }
 
     function applyFilters() {
@@ -554,7 +773,7 @@
       });
     }
 
-    if ('serviceWorker' in navigator) {
+    if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
       navigator.serviceWorker.register('./sw.js').catch(() => {});
     }
 
