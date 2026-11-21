@@ -84,16 +84,13 @@
         </div>
       </div>
 
-      <div>
-        <div class="text-xs font-semibold text-slate-700 mb-1.5">✈️ 機場直達鐵道站點過濾（可複選）</div>
-        <div class="flex flex-wrap gap-1.5 text-xs" id="airport-filters">
-          <button type="button" data-line="JR_HARUKA" onclick="toggleChip(this)" class="filter-chip px-2.5 py-1 rounded-full border border-slate-300 bg-slate-50 text-slate-700">關空 JR HARUKA</button>
-          <button type="button" data-line="NANKAI" onclick="toggleChip(this)" class="filter-chip px-2.5 py-1 rounded-full border border-slate-300 bg-slate-50 text-slate-700">關空 南海電鐵</button>
-          <button type="button" data-line="JR_NEX" onclick="toggleChip(this)" class="filter-chip px-2.5 py-1 rounded-full border border-slate-300 bg-slate-50 text-slate-700">成田 JR N'EX</button>
-          <button type="button" data-line="KEISEI" onclick="toggleChip(this)" class="filter-chip px-2.5 py-1 rounded-full border border-slate-300 bg-slate-50 text-slate-700">成田 京成電鐵</button>
-          <button type="button" data-line="KEIKYU" onclick="toggleChip(this)" class="filter-chip px-2.5 py-1 rounded-full border border-slate-300 bg-slate-50 text-slate-700">羽田 京急線</button>
-          <button type="button" data-line="MONORAIL" onclick="toggleChip(this)" class="filter-chip px-2.5 py-1 rounded-full border border-slate-300 bg-slate-50 text-slate-700">羽田 東京單軌</button>
+      <div class="space-y-2">
+        <div class="text-xs font-semibold text-slate-700">✈️ 機場直達交通（可一鍵篩選全區鐵路／利木津巴士停靠點，或細選該區路線）</div>
+        <div class="flex flex-wrap gap-1.5 text-xs" id="airport-main-filters">
+          <button type="button" data-airmode="ANY_RAIL" onclick="toggleChip(this)" class="filter-chip px-3 py-1.5 rounded-full border border-sky-300 bg-sky-50 text-sky-900 font-medium">🚆 直達機場鐵路站點</button>
+          <button type="button" data-airmode="ANY_BUS" onclick="toggleChip(this)" class="filter-chip px-3 py-1.5 rounded-full border border-indigo-300 bg-indigo-50 text-indigo-900 font-medium">🚌 機場利木津巴士站點</button>
         </div>
+        <div class="flex flex-wrap gap-1.5 text-xs pt-0.5" id="airport-sub-filters"></div>
       </div>
 
       <div>
@@ -158,9 +155,30 @@
     ];
 
     const LINE_NAMES = {
-      "JR_HARUKA": "JR HARUKA", "NANKAI": "南海電鐵",
-      "JR_NEX": "JR N'EX", "KEISEI": "京成電鐵",
-      "KEIKYU": "京急線", "MONORAIL": "東京單軌"
+      "RAIL_HARUKA": "關空 JR HARUKA", "RAIL_NANKAI": "關空 南海電鐵",
+      "RAIL_NEX": "成田 JR N'EX", "RAIL_KEISEI": "成田 京成電鐵",
+      "RAIL_KEIKYU": "羽田 京急線", "RAIL_MONO": "羽田 東京單軌",
+      "RAIL_MEITETSU": "中部 名鐵機場線", "RAIL_FUKUOKA": "福岡地下鐵機場線",
+      "RAIL_CTS": "新千歲 JR快速Airport", "RAIL_SENDAI": "仙台機場Access線",
+      "RAIL_MIYAZAKI": "宮崎機場線",
+      "BUS_KIX": "關空利木津巴士", "BUS_TYO": "成田/羽田利木津巴士",
+      "BUS_NGO": "中部機場巴士", "BUS_FUK": "福岡機場巴士", "BUS_KKJ": "北九州機場巴士",
+      "BUS_KMJ": "阿蘇熊本機場巴士", "BUS_KOJ": "鹿兒島機場巴士",
+      "BUS_CTS": "新千歲機場巴士", "BUS_HKD": "函館機場巴士",
+      "BUS_HIJ": "廣島機場巴士", "BUS_OKJ": "岡山機場巴士",
+      "BUS_TAK": "高松機場巴士", "BUS_AOJ": "青森機場巴士"
+    };
+
+    const REGION_AIRPORT_SUBS = {
+      "all": ["RAIL_HARUKA", "RAIL_NANKAI", "RAIL_NEX", "RAIL_KEISEI", "RAIL_KEIKYU", "RAIL_MEITETSU", "RAIL_FUKUOKA", "RAIL_CTS", "BUS_KMJ"],
+      "kansai": ["RAIL_HARUKA", "RAIL_NANKAI", "BUS_KIX"],
+      "tokyo": ["RAIL_NEX", "RAIL_KEISEI", "RAIL_KEIKYU", "RAIL_MONO", "BUS_TYO"],
+      "tokai": ["RAIL_MEITETSU", "BUS_NGO"],
+      "kyushu_north": ["RAIL_FUKUOKA", "BUS_FUK", "BUS_KKJ"],
+      "kyushu_south": ["RAIL_MIYAZAKI", "BUS_KMJ", "BUS_KOJ"],
+      "hokkaido": ["RAIL_CTS", "BUS_CTS", "BUS_HKD"],
+      "chugoku": ["BUS_HIJ", "BUS_OKJ", "BUS_TAK"],
+      "tohoku": ["RAIL_SENDAI", "BUS_AOJ"]
     };
 
     const REGION_VIEWS = {
@@ -187,21 +205,15 @@
       [/心齋橋/g, "心斎橋"], [/齋/g, "斎"], [/縣/g, "県"], [/區/g, "区"]
     ];
 
-    // 解析使用者輸入：判斷是否帶有「站/駅」字眼，並轉換繁日漢字
     function parseSearchQuery(rawInput) {
       let raw = rawInput.trim().toLowerCase();
       if (!raw) return { tokens: [], isStationMode: false };
-
-      // 只要輸入包含「站」或「駅」，就啟動車站專屬精準模式（只比對最近車站名稱）
       const isStationMode = /車站|火車站|地鐵站|站|駅/.test(raw);
       let cleaned = raw.replace(/車站|火車站|地鐵站|站|駅/g, " ");
       for (const [re, ja] of ZH_TO_JA_MAP) {
         cleaned = cleaned.replace(re, ja);
       }
-      return {
-        tokens: cleaned.split(/\s+/).filter(Boolean),
-        isStationMode
-      };
+      return { tokens: cleaned.split(/\s+/).filter(Boolean), isStationMode };
     }
 
     let allHotels = [];
@@ -219,6 +231,21 @@
       btn.onclick = () => toggleChip(btn);
       brandContainer.appendChild(btn);
     });
+
+    function renderAirportSubChips(regionKey) {
+      const container = document.getElementById('airport-sub-filters');
+      container.innerHTML = '';
+      const codes = REGION_AIRPORT_SUBS[regionKey] || REGION_AIRPORT_SUBS["all"];
+      codes.forEach(code => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.dataset.line = code;
+        btn.textContent = LINE_NAMES[code] || code;
+        btn.className = 'filter-chip px-2.5 py-1 rounded-full border border-slate-300 bg-slate-50 text-slate-700';
+        btn.onclick = () => toggleChip(btn);
+        container.appendChild(btn);
+      });
+    }
 
     map = L.map('map').setView([36.2, 137.5], 5);
     L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
@@ -256,24 +283,14 @@
       const stEnabled = document.getElementById('enable-station-dist').checked;
       const stVal = document.getElementById('station-dist').value;
       const stLabel = document.getElementById('station-dist-label');
-      if (stEnabled) {
-        stLabel.textContent = `${stVal} 公尺內`;
-        stLabel.className = 'text-blue-600 font-bold';
-      } else {
-        stLabel.textContent = '不限距離';
-        stLabel.className = 'text-slate-400 font-medium';
-      }
+      stLabel.textContent = stEnabled ? `${stVal} 公尺內` : '不限距離';
+      stLabel.className = stEnabled ? 'text-blue-600 font-bold' : 'text-slate-400 font-medium';
 
       const amEnabled = document.getElementById('enable-amenity-dist').checked;
       const amVal = document.getElementById('amenity-dist').value;
       const amLabel = document.getElementById('amenity-dist-label');
-      if (amEnabled) {
-        amLabel.textContent = `${amVal} 公尺內`;
-        amLabel.className = 'text-emerald-600 font-bold';
-      } else {
-        amLabel.textContent = '不限距離（預設 300m）';
-        amLabel.className = 'text-slate-400 font-medium';
-      }
+      amLabel.textContent = amEnabled ? `${amVal} 公尺內` : '不限距離（預設 300m）';
+      amLabel.className = amEnabled ? 'text-emerald-600 font-bold' : 'text-slate-400 font-medium';
     }
 
     function calcDistanceM(lat1, lon1, lat2, lon2) {
@@ -374,6 +391,8 @@
         activeBtn.classList.add('bg-emerald-600', 'text-white');
       }
 
+      renderAirportSubChips(ds);
+
       const statusEl = document.getElementById('data-status');
       statusEl.textContent = '⏳ 讀取圖資中...';
       statusEl.className = 'text-xs text-amber-300 mt-0.5';
@@ -411,7 +430,8 @@
       const effectiveAmDist = amEnabled ? sliderAmDist : 300;
 
       const { tokens, isStationMode } = parseSearchQuery(document.getElementById('keyword-input').value);
-      const selLines = Array.from(document.querySelectorAll('#airport-filters .chip-active')).map(el => el.dataset.line);
+      const selAirModes = Array.from(document.querySelectorAll('#airport-main-filters .chip-active')).map(el => el.dataset.airmode);
+      const selSubLines = Array.from(document.querySelectorAll('#airport-sub-filters .chip-active')).map(el => el.dataset.line);
       const selAms = Array.from(document.querySelectorAll('#amenity-filters .chip-active')).map(el => el.dataset.am);
       const selBrands = Array.from(document.querySelectorAll('#brand-filters .chip-active')).map(el => el.dataset.brand);
 
@@ -419,15 +439,22 @@
         .filter(h => {
           if (h.station_dist > maxStationDist) return false;
           if (selBrands.length > 0 && !selBrands.includes(h.brand)) return false;
-          if (selLines.length > 0 && !selLines.some(l => (h.airport_lines || []).includes(l))) return false;
+
+          const lines = h.airport_lines || [];
+          if (selAirModes.length > 0) {
+            const hasRail = lines.some(l => l.startsWith('RAIL_') || ['JR_HARUKA', 'NANKAI', 'JR_NEX', 'KEISEI', 'KEIKYU', 'MONORAIL'].includes(l));
+            const hasBus = lines.some(l => l.startsWith('BUS_'));
+            const matchMode = selAirModes.some(m => (m === 'ANY_RAIL' && hasRail) || (m === 'ANY_BUS' && hasBus));
+            if (!matchMode) return false;
+          }
+          if (selSubLines.length > 0 && !selSubLines.some(l => lines.includes(l))) return false;
+
           if (selAms.length > 0 && !selAms.every(am => (h.amenities?.[am] ?? 9999) <= effectiveAmDist)) return false;
 
           if (tokens.length > 0) {
             if (isStationMode) {
-              // 若輸入包含「站/駅」，僅比對該飯店的最近車站名稱（排除同市其他遠距離車站）
               if (!tokens.every(tk => h._stationLower.includes(tk))) return false;
             } else {
-              // 若未加「站」，則全域搜尋飯店名、車站名與都道府縣行政區
               if (!tokens.every(tk => h._fullSearchStr.includes(tk))) return false;
             }
           }
@@ -475,7 +502,12 @@
 
       list.slice(0, 80).forEach(h => {
         const gmapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(h.name)}&center=${h.lat},${h.lng}`;
-        const linesHtml = (h.airport_lines || []).map(l => `<span class="px-1.5 py-0.5 bg-sky-100 text-sky-800 rounded text-[11px] font-medium">✈️ ${LINE_NAMES[l] || l}</span>`).join(' ');
+        const linesHtml = (h.airport_lines || []).map(l => {
+          const isBus = l.startsWith('BUS_');
+          const icon = isBus ? '🚌' : '🚆';
+          const color = isBus ? 'bg-indigo-100 text-indigo-800' : 'bg-sky-100 text-sky-800';
+          return `<span class="px-1.5 py-0.5 ${color} rounded text-[11px] font-medium">${icon} ${LINE_NAMES[l] || l}</span>`;
+        }).join(' ');
 
         const amBadges = [];
         for (const [k, label] of Object.entries(amLabels)) {
