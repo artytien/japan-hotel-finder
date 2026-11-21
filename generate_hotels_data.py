@@ -50,6 +50,14 @@ BRAND_PATTERNS = [
     ("Hotel Metropolitan", r"ホテルメトロポリタン|metropolitan"),
 ]
 
+# 已知無分店後綴之重點分店精確座標對照（補齊如熊本櫻町巴士總站前等）
+KNOWN_BRANCH_OVERRIDES = [
+    (32.8012, 130.7032, "Toyoko Inn", "東横INN 熊本桜町バスターミナル前"),
+    (32.7905, 130.6901, "Toyoko Inn", "東横INN 熊本駅前"),
+    (32.7972, 130.7061, "Toyoko Inn", "東横INN 熊本新市街"),
+    (32.7988, 130.7078, "Toyoko Inn", "東横INN 熊本城通町筋"),
+]
+
 AIRPORT_RAIL_RULES = {
     "RAIL_HARUKA": ["関西空港", "天王寺", "新今宮", "大阪", "うめきた", "新大阪", "京都", "日根野", "西九条"],
     "RAIL_NANKAI": ["難波", "なんば", "新今宮", "天下茶屋", "堺", "泉佐野", "りんくうタウン", "関西空港"],
@@ -133,13 +141,39 @@ def query_overpass(q, label):
     raise RuntimeError(f"❌ [{label}] 無法完成查詢。")
 
 def detect_hotel_brand(tags):
-    # 排除餐廳、停車場或純商業設施誤判
     if tags.get("amenity") in ["restaurant", "cafe", "parking", "fast_food"] or tags.get("shop"):
         return None
-    txt = " ".join([tags.get(k, "") for k in ["name", "name:ja", "name:en", "brand", "brand:ja", "brand:en", "operator"]])
+    txt = " ".join([tags.get(k, "") for k in ["name", "name:ja", "name:en", "official_name", "branch", "brand", "brand:ja", "brand:en", "operator"]])
     for b, pat in BRAND_PATTERNS:
         if re.search(pat, txt, re.IGNORECASE): return b
     return None
+
+def build_full_hotel_name(tags, brand, lat, lng, st_name, st_dist):
+    # 1. 優先比對已知無分店後綴之精確座標覆蓋表（如熊本櫻町巴士總站前）
+    for o_lat, o_lng, o_brand, o_title in KNOWN_BRANCH_OVERRIDES:
+        if o_brand == brand and haversine_m(lat, lng, o_lat, o_lng) <= 150:
+            return o_title
+
+    # 2. 讀取 OSM name / official_name / branch / branch:ja 標籤並自動拼接
+    base_name = (tags.get("official_name") or tags.get("name:ja") or tags.get("name") or "").strip()
+    branch = (tags.get("branch:ja") or tags.get("branch") or tags.get("branch:en") or "").strip()
+    if branch and branch not in base_name:
+        base_name = f"{base_name} {branch}".strip()
+
+    # 3. 若店名只有純品牌名（例如只有「東横イン」而無分店後綴），依據最近車站或町名自動補齊
+    pure_brand_only = re.fullmatch(r"(東横イン|東橫イン|東横inn|toyoko\s*inn|アパホテル|apa\s*hotel|スーパーホテル|super\s*hotel|ドーミーイン|dormy\s*inn|ルートイン|route\s*inn)", base_name, re.IGNORECASE)
+    if not base_name or pure_brand_only:
+        prefix = "東横INN" if brand == "Toyoko Inn" else (base_name or brand)
+        suburb = (tags.get("addr:suburb") or tags.get("addr:quarter") or "").strip()
+        if st_name and st_name != "周邊車站" and st_dist <= 350:
+            clean_st = st_name.replace("駅", "")
+            return f"{prefix} {clean_st}駅前"
+        elif suburb:
+            return f"{prefix} {suburb}"
+        elif st_name and st_name != "周邊車站":
+            clean_st = st_name.replace("駅", "")
+            return f"{prefix}（{clean_st}駅周邊）"
+    return base_name
 
 def get_area_info(lat, lng, tags):
     osm_addr = " ".join([tags.get(k, "") for k in ["addr:prefecture", "addr:city", "addr:ward", "addr:suburb", "addr:quarter", "addr:full"]])
@@ -195,8 +229,7 @@ def fetch_and_save_region(r_key):
     r_name, centers = cfg["name"], cfg["centers"]
     q1_parts, q2_parts = [], []
     for lat, lng, rad in centers:
-        # 同時抓 tourism=hotel 與 building=hotel（補抓如熊本駅前天然温泉等僅標記 building=hotel 的新館）
-        q1_parts.append(f'nw["tourism"="hotel"](around:{rad},{lat},{lng});nw["building"="hotel"](around:{rad},{lat},{lng});node["railway"="station"](around:{rad},{lat},{lng});')
+        q1_parts.append(f'nw["tourism"="hotel"](around:{rad},{lat},{lng});nw["building"="hotel"](around:{rad},{lat},{lng});nw["name"~"スーパーホテル|ドーミーイン|東横イン|アパホテル|ダイワロイネット|リッチモンドホテル|ヴィアイン|ルートイン|コンフォートホテル|フレッサイン|三井ガーデン|東急ステイ|ワシントンホテル|リブマックス|メトロポリタン",i](around:{rad},{lat},{lng});node["railway"="station"](around:{rad},{lat},{lng});')
         q2_parts.append(f'node["shop"="convenience"](around:{rad},{lat},{lng});nw["shop"~"supermarket|chemist"](around:{rad},{lat},{lng});nw["amenity"~"cafe|fast_food|pharmacy"](around:{rad},{lat},{lng});')
 
     el1 = query_overpass(f'[out:json][timeout:35];({"".join(q1_parts)});out center tags;', f"{r_name}-飯店車站")
@@ -212,10 +245,10 @@ def fetch_and_save_region(r_key):
         if lat is None: continue
         if tags.get("railway") == "station":
             stations.append({"name": tags.get("name:ja") or tags.get("name") or "周邊車站", "lat": lat, "lng": lon, "tags": tags})
-        elif tags.get("tourism") == "hotel" or tags.get("building") == "hotel":
+        else:
             b = detect_hotel_brand(tags)
             if b:
-                hotels.append({"name": tags.get("name:ja") or tags.get("name") or f"{b} ({r_name})", "brand": b, "lat": round(lat, 6), "lng": round(lon, 6), "area": get_area_info(lat, lon, tags)})
+                hotels.append({"tags": tags, "brand": b, "lat": round(lat, 6), "lng": round(lon, 6), "area": get_area_info(lat, lon, tags)})
 
     for el in el2:
         tags, (lat, lon) = el.get("tags", {}), get_coords(el)
@@ -232,9 +265,10 @@ def fetch_and_save_region(r_key):
         seen.add(gk)
         st_d, st = find_nearest_in_grid(h["lat"], h["lng"], st_grid)
         st_name = st["name"] if st else "周邊車站"
+        full_name = build_full_hotel_name(h["tags"], h["brand"], h["lat"], h["lng"], st_name, st_d)
         am_dists = {k: find_nearest_in_grid(h["lat"], h["lng"], g)[0] for k, g in am_grids.items()}
         results.append({
-            "id": f"{r_key}_{len(results)+1}", "name": h["name"], "brand": h["brand"], "area": h["area"],
+            "id": f"{r_key}_{len(results)+1}", "name": full_name, "brand": h["brand"], "area": h["area"],
             "region": r_key, "lat": h["lat"], "lng": h["lng"], "station_name": st_name, "station_dist": st_d,
             "airport_lines": detect_airport_access(st_name, st["tags"] if st else {}, h["lat"], h["lng"], r_key),
             "amenities": am_dists
