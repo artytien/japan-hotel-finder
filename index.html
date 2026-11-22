@@ -14,7 +14,7 @@
   <style>
     body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", sans-serif; }
     #map { height: 48vh; min-height: 320px; z-index: 1; background: #f1f5f9; }
-    /* 高對比已選取狀態，確保深底白字清晰可辨 */
+    /* 高對比已選取狀態，確保深底白字清晰可辨，不被 Tailwind 淺色背景蓋過 */
     .chip-active {
       background-color: #0f172a !important;
       color: #ffffff !important;
@@ -61,10 +61,10 @@
   <main class="max-w-5xl mx-auto px-3 pt-3 space-y-3">
     <!-- 篩選條件設定面板 -->
     <section class="bg-white rounded-xl p-3.5 shadow-sm border border-slate-200 space-y-3.5">
-      <!-- 關鍵字搜尋列 -->
+      <!-- 關鍵字搜尋列（支援車站、路線名稱、分店名、區域或都道府縣） -->
       <div>
-        <label class="block text-xs font-semibold text-slate-700 mb-1">🔍 搜尋車站、分店名、區域或都道府縣（加「站」字＝精準搜該車站周邊；不加「站」＝搜全區）</label>
-        <input type="text" id="keyword-input" placeholder="例如「熊本站」、「櫻町」、「梅田」、「博多」..." oninput="markDirty()" onkeydown="if(event.key==='Enter') applyFilters()" class="w-full text-sm px-3 py-1.5 border border-slate-300 rounded-lg focus:outline-none focus:border-slate-900">
+        <label class="block text-xs font-semibold text-slate-700 mb-1">🔍 搜尋車站、路線、分店或區域（支援輸入「山手線」、「大阪環狀線」、「淺草線」、「御堂筋線」、「新幹線」或「熊本站」）</label>
+        <input type="text" id="keyword-input" placeholder="輸入車站名、路線名、分店或商圈區域..." oninput="markDirty()" onkeydown="if(event.key==='Enter') applyFilters()" class="w-full text-sm px-3 py-1.5 border border-slate-300 rounded-lg focus:outline-none focus:border-slate-900">
       </div>
 
       <!-- 車站距離上限與生活機能距離上限（獨立勾選開關） -->
@@ -92,9 +92,27 @@
         </div>
       </div>
 
+      <!-- 行程大眾運輸路線沿線過濾（「營運商 ➔ 具體路線」聯動下拉選單＋多路線複選標籤） -->
+      <div class="p-2.5 rounded-lg border border-violet-200 bg-violet-50/40 space-y-2">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-semibold text-slate-800">🚃 行程大眾運輸路線沿線過濾（關東・京阪神・福岡全電車地鐵＋全國新幹線）</span>
+          <span class="text-[11px] text-violet-700 font-medium">可複選多條路線</span>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+          <select id="operator-select" onchange="onOperatorChange()" class="w-full text-xs px-2.5 py-2 border border-slate-300 rounded-lg bg-white text-slate-800 font-medium focus:outline-none focus:border-violet-600">
+            <option value="">1. 選擇鐵道／地鐵營運商...</option>
+          </select>
+          <select id="route-select" onchange="onRouteSelect()" disabled class="w-full text-xs px-2.5 py-2 border border-slate-300 rounded-lg bg-white text-slate-800 font-medium focus:outline-none focus:border-violet-600 disabled:opacity-50">
+            <option value="">2. 先選擇左側營運商...</option>
+          </select>
+        </div>
+        <!-- 已加入的路線複選標籤列 -->
+        <div id="selected-routes-chips" class="flex flex-wrap gap-1.5 text-xs"></div>
+      </div>
+
       <!-- 機場直達交通（2 顆主分類開關 + 隨分區動態切換之細節路線） -->
       <div class="space-y-2">
-        <div class="text-xs font-semibold text-slate-700">✈️ 機場直達交通（可一鍵篩選全區鐵路／利木津巴士停靠點，或細選該區路線）</div>
+        <div class="text-xs font-semibold text-slate-700">✈️ 機場直達交通（可與上方行程路線同時交集篩選）</div>
         <div class="flex flex-wrap gap-1.5 text-xs" id="airport-main-filters">
           <button type="button" data-airmode="ANY_RAIL" onclick="toggleChip(this)" class="filter-chip px-3 py-1.5 rounded-full border border-sky-300 bg-sky-50 text-sky-900 font-medium">🚆 直達機場鐵路站點</button>
           <button type="button" data-airmode="ANY_BUS" onclick="toggleChip(this)" class="filter-chip px-3 py-1.5 rounded-full border border-indigo-300 bg-indigo-50 text-indigo-900 font-medium">🚌 機場利木津巴士站點</button>
@@ -138,7 +156,7 @@
       </div>
     </section>
 
-    <!-- 互動地圖區塊（預設 GSI 淡色簡潔 + 左下角三種底圖切換 + 右上角手動 GPS 定位） -->
+    <!-- 互動地圖區塊（淡色清爽預設 + 3種圖層切換） -->
     <section class="relative bg-white rounded-xl overflow-hidden shadow-sm border border-slate-200">
       <div id="map"></div>
       <button type="button" id="btn-locate" onclick="locateUser()" class="absolute top-2.5 right-2.5 z-[500] flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/95 hover:bg-white text-slate-800 border border-slate-300 shadow-md text-xs font-semibold active:scale-95 transition">
@@ -147,8 +165,8 @@
       </button>
       <div class="absolute bottom-2.5 left-2.5 z-[500] flex gap-1 bg-white/95 p-1 rounded-lg border border-slate-300 shadow-sm text-[11px]">
         <button type="button" onclick="setBaseMap('pale')" id="map-style-pale" class="map-style-btn px-2 py-1 rounded bg-slate-900 text-white font-semibold">淡色簡潔</button>
-        <button type="button" onclick="setBaseMap('osm')" id="map-style-osm" class="map-style-btn px-2 py-1 rounded text-slate-700 hover:bg-slate-100">經典街道 (OSM)</button>
-        <button type="button" onclick="setBaseMap('std')" id="map-style-std" class="map-style-btn px-2 py-1 rounded text-slate-700 hover:bg-slate-100">詳細地形 (GSI std)</button>
+        <button type="button" onclick="setBaseMap('osm')" id="map-style-osm" class="map-style-btn px-2 py-1 rounded text-slate-700 hover:bg-slate-100">經典街道</button>
+        <button type="button" onclick="setBaseMap('std')" id="map-style-std" class="map-style-btn px-2 py-1 rounded text-slate-700 hover:bg-slate-100">詳細地形</button>
       </div>
     </section>
 
@@ -175,6 +193,404 @@
       "Fresa Inn", "Mitsui Garden", "Tokyu Stay", "Washington Hotel",
       "LiveMax", "Hotel Metropolitan"
     ];
+
+    // ==========================================
+    // 2. 完整鐵道／地鐵／新幹線路線庫（營運商分組 + 區域隔離保護）
+    // ==========================================
+    const OPERATORS_DB = [
+      { id: "SHINKANSEN", label: "🚄 全國新幹線（東海道・山陽・九州・東北・北陸）", regions: ["all", "tokyo", "tokai", "kansai", "chugoku", "kyushu_north", "kyushu_south", "tohoku", "hokkaido"] },
+      { id: "JR_EAST", label: "🚃 關東｜JR東日本（山手・京浜東北・中央・埼京等）", regions: ["all", "tokyo"] },
+      { id: "TOKYO_METRO", label: "🚇 關東｜東京Metro地鐵（全 9 線）", regions: ["all", "tokyo"] },
+      { id: "TOEI_SUBWAY", label: "🚇 關東｜都營地下鐵（全 4 線）", regions: ["all", "tokyo"] },
+      { id: "KANTO_PRIVATE", label: "🚃 關東｜主要私鐵（東急・小田急・京王・西武・東武・京急・京成・TX）", regions: ["all", "tokyo"] },
+      { id: "JR_WEST", label: "🚃 京阪神｜JR西日本（大阪環狀・京都・神戶・大和路等）", regions: ["all", "kansai"] },
+      { id: "OSAKA_METRO", label: "🚇 京阪神｜Osaka Metro（全 8 線）", regions: ["all", "kansai"] },
+      { id: "KYOTO_KOBE_SUBWAY", label: "🚇 京阪神｜京都市營・神戶市營地下鐵（全 4 線）", regions: ["all", "kansai"] },
+      { id: "KANSAI_PRIVATE", label: "🚃 京阪神｜關西五大私鐵（阪急・阪神・京阪・南海・近鐵）", regions: ["all", "kansai"] },
+      { id: "FUKUOKA_TRANSIT", label: "🚇 福岡｜福岡市地下鐵（全 3 線）＆ 西鐵大牟田線", regions: ["all", "kyushu_north"] }
+    ];
+
+    const RAILWAY_LINES_DB = {
+      // --- 全國新幹線 ---
+      "SHINKANSEN_TOKAIDO_SANYO": {
+        op: "SHINKANSEN", label: "東海道・山陽新幹線（東京〜博多）", allowedRegions: ["tokyo", "tokai", "kansai", "chugoku", "kyushu_north"],
+        aliases: ["東海道新幹線", "山陽新幹線", "東海道山陽新幹線", "新幹線"],
+        stations: ["東京", "品川", "新横浜", "小田原", "熱海", "三島", "新富士", "静岡", "掛川", "浜松", "豊橋", "三河安城", "名古屋", "岐阜羽島", "米原", "京都", "新大阪", "新神戸", "西明石", "姫路", "相生", "岡山", "新倉敷", "福山", "新尾道", "三原", "東広島", "広島", "新岩国", "徳山", "新山口", "厚狭", "新下関", "小倉", "博多"]
+      },
+      "SHINKANSEN_KYUSHU": {
+        op: "SHINKANSEN", label: "九州・西九州新幹線（博多〜鹿兒島中央・長崎）", allowedRegions: ["kyushu_north", "kyushu_south"],
+        aliases: ["九州新幹線", "西九州新幹線", "新幹線"],
+        stations: ["博多", "新鳥栖", "久留米", "筑後船小屋", "新大牟田", "新玉名", "熊本", "新八代", "新水俣", "出水", "川内", "鹿児島中央", "武雄温泉", "嬉野温泉", "新大村", "諫早", "長崎"]
+      },
+      "SHINKANSEN_TOHOKU_HOKKAIDO": {
+        op: "SHINKANSEN", label: "東北・北海道新幹線（東京〜仙台・新青森・新函館北斗）", allowedRegions: ["tokyo", "tohoku", "hokkaido"],
+        aliases: ["東北新幹線", "北海道新幹線", "秋田新幹線", "山形新幹線", "新幹線"],
+        stations: ["東京", "上野", "大宮", "小山", "宇都宮", "那須塩原", "新白河", "郡山", "福島", "白石蔵王", "仙台", "古川", "くりこま高原", "一ノ関", "水沢江刺", "北上", "新花巻", "盛岡", "いわて沼宮内", "二戸", "八戸", "七戸十和田", "新青森", "奥津軽いまべつ", "木古内", "新函館北斗"]
+      },
+      "SHINKANSEN_JOETSU_HOKURIKU": {
+        op: "SHINKANSEN", label: "上越・北陸新幹線（東京〜新潟・金澤・敦賀）", allowedRegions: ["tokyo", "kansai"],
+        aliases: ["上越新幹線", "北陸新幹線", "新幹線"],
+        stations: ["東京", "上野", "大宮", "熊谷", "本庄早稲田", "高崎", "上毛高原", "越後湯沢", "浦佐", "長岡", "燕三条", "新潟", "安中榛名", "軽井沢", "佐久平", "上田", "長野", "飯山", "上越妙高", "糸魚川", "黒部宇奈月温泉", "富山", "新高岡", "金沢", "小松", "加賀温泉", "芦原温泉", "福井", "越前たけふ", "敦賀"]
+      },
+
+      // --- 關東｜JR東日本 ---
+      "JR_YAMANOTE": {
+        op: "JR_EAST", label: "JR 山手線", allowedRegions: ["tokyo"],
+        aliases: ["山手線", "jr山手線", "山手"],
+        stations: ["東京", "有楽町", "新橋", "浜松町", "田町", "高輪ゲートウェイ", "品川", "大崎", "五反田", "目黒", "恵比寿", "渋谷", "原宿", "代々木", "新宿", "新大久保", "高田馬場", "目白", "池袋", "大塚", "巣鴨", "駒込", "田端", "西日暮里", "日暮里", "鶯谷", "上野", "御徒町", "秋葉原", "神田"]
+      },
+      "JR_KEIHIN_TOHOKU": {
+        op: "JR_EAST", label: "JR 京浜東北・根岸線", allowedRegions: ["tokyo"],
+        aliases: ["京浜東北線", "京濱東北線", "根岸線"],
+        stations: ["大宮", "さいたま新都心", "与野", "北浦和", "浦和", "南浦和", "蕨", "西川口", "川口", "赤羽", "東十条", "王子", "上中里", "田端", "西日暮里", "日暮里", "鶯谷", "上野", "御徒町", "秋葉原", "神田", "東京", "有楽町", "新橋", "浜松町", "田町", "高輪ゲートウェイ", "品川", "大井町", "大森", "蒲田", "川崎", "鶴見", "新子安", "東神奈川", "横浜", "桜木町", "関内", "石川町", "山手", "根岸", "磯子", "新杉田", "洋光台", "港南台", "本郷台", "大船"]
+      },
+      "JR_CHUO_RAPID": {
+        op: "JR_EAST", label: "JR 中央線快速", allowedRegions: ["tokyo"],
+        aliases: ["中央線快速", "jr中央線", "中央快速線"],
+        stations: ["東京", "神田", "御茶ノ水", "四ツ谷", "新宿", "中野", "高円寺", "阿佐ケ谷", "荻窪", "西荻窪", "吉祥寺", "三鷹", "武蔵境", "東小金井", "武蔵小金井", "国分寺", "西国分寺", "国立", "立川"]
+      },
+      "JR_CHUO_SOBU": {
+        op: "JR_EAST", label: "JR 中央・総武線各駅停車", allowedRegions: ["tokyo"],
+        aliases: ["中央総武線", "総武線", "總武線", "中央總武線"],
+        stations: ["三鷹", "吉祥寺", "西荻窪", "荻窪", "阿佐ケ谷", "高円寺", "中野", "東中野", "大久保", "新宿", "代々木", "千駄ケ谷", "信濃町", "四ツ谷", "市ケ谷", "飯田橋", "水道橋", "御茶ノ水", "秋葉原", "浅草橋", "両国", "錦糸町", "亀戸", "平井", "新小岩", "小岩", "市川", "本八幡", "下総中山", "西船橋", "船橋", "東船橋", "津田沼", "幕張本郷", "幕張", "新検見川", "稲毛", "西千葉", "千葉"]
+      },
+      "JR_SAIKYO": {
+        op: "JR_EAST", label: "JR 埼京線", allowedRegions: ["tokyo"],
+        aliases: ["埼京線", "jr埼京線"],
+        stations: ["大崎", "恵比寿", "渋谷", "新宿", "池袋", "板橋", "十条", "赤羽", "北赤羽", "浮間舟渡", "戸田公園", "戸田", "北戸田", "武蔵浦和", "中浦和", "南与野", "与野本町", "北与野", "大宮"]
+      },
+      "JR_SHONAN_SHINJUKU": {
+        op: "JR_EAST", label: "JR 湘南新宿ライン", allowedRegions: ["tokyo"],
+        aliases: ["湘南新宿ライン", "湘南新宿線"],
+        stations: ["大宮", "浦和", "赤羽", "池袋", "新宿", "渋谷", "恵比寿", "大崎", "西大井", "武蔵小杉", "新川崎", "横浜", "保土ケ谷", "東戸塚", "戸塚", "大船"]
+      },
+      "JR_SOBU_YOKOSUKA": {
+        op: "JR_EAST", label: "JR 総武快速・横須賀線", allowedRegions: ["tokyo"],
+        aliases: ["横須賀線", "橫須賀線", "総武快速線", "總武快速線"],
+        stations: ["千葉", "稲毛", "津田沼", "船橋", "市川", "新小岩", "錦糸町", "馬喰町", "新日本橋", "東京", "新橋", "品川", "西大井", "武蔵小杉", "新川崎", "横浜", "保土ケ谷", "東戸塚", "戸塚", "大船", "北鎌倉", "鎌倉", "逗子", "横須賀", "久里浜"]
+      },
+      "JR_JOBAN": {
+        op: "JR_EAST", label: "JR 常磐線", allowedRegions: ["tokyo"],
+        aliases: ["常磐線", "jr常磐線"],
+        stations: ["品川", "新橋", "東京", "上野", "日暮里", "三河島", "南千住", "北千住", "綾瀬", "亀有", "金町", "松戸", "新松戸", "柏", "我孫子", "取手"]
+      },
+      "JR_KEIYO": {
+        op: "JR_EAST", label: "JR 京葉線（舞濱・幕張）", allowedRegions: ["tokyo"],
+        aliases: ["京葉線", "jr京葉線"],
+        stations: ["東京", "八丁堀", "越中島", "潮見", "新木場", "葛西臨海公園", "舞浜", "新浦安", "市川塩浜", "二俣新町", "南船橋", "新習志野", "幕張豊砂", "海浜幕張", "検見川浜", "稲毛海岸", "千葉みなと", "蘇我"]
+      },
+      "JR_MUSASHINO": {
+        op: "JR_EAST", label: "JR 武蔵野線", allowedRegions: ["tokyo"],
+        aliases: ["武蔵野線", "武藏野線"],
+        stations: ["府中本町", "北府中", "西国分寺", "新小平", "新秋津", "東所沢", "新座", "北朝霞", "西浦和", "武蔵浦和", "南浦和", "東浦和", "東川口", "南越谷", "越谷レイクタウン", "吉川", "吉川美南", "新三郷", "三郷", "南流山", "新松戸", "新八柱", "東松戸", "市川大野", "船橋法典", "西船橋"]
+      },
+
+      // --- 關東｜東京Metro地鐵（全 9 線） ---
+      "METRO_GINZA": {
+        op: "TOKYO_METRO", label: "東京Metro 銀座線", allowedRegions: ["tokyo"],
+        aliases: ["銀座線", "metro銀座線", "東京地鐵銀座線"],
+        stations: ["渋谷", "表参道", "外苑前", "青山一丁目", "赤坂見附", "溜池山王", "虎ノ門", "新橋", "銀座", "京橋", "日本橋", "三越前", "神田", "末広町", "上野広小路", "上野", "稲荷町", "田原町", "浅草"]
+      },
+      "METRO_MARUNOUCHI": {
+        op: "TOKYO_METRO", label: "東京Metro 丸ノ内線", allowedRegions: ["tokyo"],
+        aliases: ["丸之內線", "丸ノ内線", "丸之内線"],
+        stations: ["荻窪", "南阿佐ケ谷", "新高円寺", "東高円寺", "新中野", "中野坂上", "西新宿", "新宿", "新宿三丁目", "新宿御苑前", "四谷三丁目", "四ツ谷", "赤坂見附", "国会議事堂前", "霞ケ関", "銀座", "東京", "大手町", "淡路町", "御茶ノ水", "本郷三丁目", "後楽園", "茗荷谷", "新大塚", "池袋", "中野新橋", "中野富士見町", "方南町"]
+      },
+      "METRO_HIBIYA": {
+        op: "TOKYO_METRO", label: "東京Metro 日比谷線", allowedRegions: ["tokyo"],
+        aliases: ["日比谷線", "metro日比谷線"],
+        stations: ["中目黒", "恵比寿", "広尾", "六本木", "神谷町", "虎ノ門ヒルズ", "霞ケ関", "日比谷", "銀座", "東銀座", "築地", "八丁堀", "茅場町", "人形町", "小伝馬町", "秋葉原", "仲御徒町", "上野", "入谷", "三ノ輪", "南千住", "北千住"]
+      },
+      "METRO_TOZAI": {
+        op: "TOKYO_METRO", label: "東京Metro 東西線", allowedRegions: ["tokyo"],
+        aliases: ["東西線", "metro東西線"],
+        stations: ["中野", "落合", "高田馬場", "早稲田", "神楽坂", "飯田橋", "九段下", "竹橋", "大手町", "日本橋", "茅場町", "門前仲町", "木場", "東陽町", "南砂町", "西葛西", "葛西", "浦安", "南行徳", "行徳", "妙典", "原木中山", "西船橋"]
+      },
+      "METRO_CHIYODA": {
+        op: "TOKYO_METRO", label: "東京Metro 千代田線", allowedRegions: ["tokyo"],
+        aliases: ["千代田線", "metro千代田線"],
+        stations: ["代々木上原", "代々木公園", "明治神宮前", "表参道", "乃木坂", "赤坂", "国会議事堂前", "霞ケ関", "日比谷", "二重橋前", "大手町", "新御茶ノ水", "湯島", "根津", "千駄木", "西日暮里", "町屋", "北千住", "綾瀬", "北綾瀬"]
+      },
+      "METRO_YURAKUCHO": {
+        op: "TOKYO_METRO", label: "東京Metro 有楽町線", allowedRegions: ["tokyo"],
+        aliases: ["有楽町線", "有樂町線", "metro有楽町線"],
+        stations: ["和光市", "地下鉄成増", "地下鉄赤塚", "平和台", "氷川台", "小竹向原", "千川", "要町", "池袋", "東池袋", "護国寺", "江戸川橋", "飯田橋", "市ケ谷", "麹町", "永田町", "桜田門", "有楽町", "銀座一丁目", "新富町", "月島", "豊洲", "辰巳", "新木場"]
+      },
+      "METRO_HANZOMON": {
+        op: "TOKYO_METRO", label: "東京Metro 半蔵門線", allowedRegions: ["tokyo"],
+        aliases: ["半蔵門線", "半藏門線", "metro半蔵門線"],
+        stations: ["渋谷", "表参道", "青山一丁目", "永田町", "半蔵門", "九段下", "神保町", "大手町", "三越前", "水天宮前", "清澄白河", "住吉", "錦糸町", "押上"]
+      },
+      "METRO_NAMBOKU": {
+        op: "TOKYO_METRO", label: "東京Metro 南北線", allowedRegions: ["tokyo"],
+        aliases: ["南北線", "metro南北線"],
+        stations: ["目黒", "白金台", "白金高輪", "麻布十番", "六本木一丁目", "溜池山王", "永田町", "四ツ谷", "市ケ谷", "飯田橋", "後楽園", "東大前", "本駒込", "駒込", "西ケ原", "王子", "王子神谷", "志茂", "赤羽岩淵"]
+      },
+      "METRO_FUKUTOSHIN": {
+        op: "TOKYO_METRO", label: "東京Metro 副都心線", allowedRegions: ["tokyo"],
+        aliases: ["副都心線", "metro副都心線"],
+        stations: ["和光市", "地下鉄成増", "地下鉄赤塚", "平和台", "氷川台", "小竹向原", "千川", "要町", "池袋", "雑司が谷", "西早稲田", "東新宿", "新宿三丁目", "北参道", "明治神宮前", "渋谷"]
+      },
+
+      // --- 關東｜都營地下鐵（全 4 線） ---
+      "TOEI_ASAKUSA": {
+        op: "TOEI_SUBWAY", label: "都營 浅草線", allowedRegions: ["tokyo"],
+        aliases: ["淺草線", "浅草線", "都營淺草線", "都営浅草線"],
+        stations: ["西馬込", "馬込", "中延", "戸越", "五反田", "高輪台", "泉岳寺", "三田", "大門", "新橋", "東銀座", "宝町", "日本橋", "人形町", "東日本橋", "浅草橋", "蔵前", "浅草", "本所吾妻橋", "押上"]
+      },
+      "TOEI_MITA": {
+        op: "TOEI_SUBWAY", label: "都營 三田線", allowedRegions: ["tokyo"],
+        aliases: ["三田線", "都營三田線", "都営三田線"],
+        stations: ["目黒", "白金台", "白金高輪", "三田", "芝公園", "御成門", "内幸町", "日比谷", "大手町", "神保町", "水道橋", "春日", "白山", "千石", "巣鴨", "西巣鴨", "新板橋", "板橋区役所前", "板橋本町", "本蓮沼", "志村坂上", "志村三丁目", "蓮根", "西台", "高島平", "新高島平", "西高島平"]
+      },
+      "TOEI_SHINJUKU": {
+        op: "TOEI_SUBWAY", label: "都營 新宿線", allowedRegions: ["tokyo"],
+        aliases: ["新宿線", "都營新宿線", "都営新宿線"],
+        stations: ["新宿", "新宿三丁目", "曙橋", "市ケ谷", "九段下", "神保町", "小川町", "岩本町", "馬喰横山", "浜町", "森下", "菊川", "住吉", "西大島", "大島", "東大島", "船堀", "一之江", "瑞江", "篠崎", "本八幡"]
+      },
+      "TOEI_OEDO": {
+        op: "TOEI_SUBWAY", label: "都營 大江戸線", allowedRegions: ["tokyo"],
+        aliases: ["大江戸線", "大江戶線", "都營大江戶線"],
+        stations: ["新宿西口", "東新宿", "若松河田", "牛込柳町", "牛込神楽坂", "飯田橋", "春日", "本郷三丁目", "上野御徒町", "新御徒町", "蔵前", "両国", "森下", "清澄白河", "門前仲町", "月島", "勝どき", "築地市場", "汐留", "大門", "赤羽橋", "麻布十番", "六本木", "青山一丁目", "国立競技場", "代々木", "新宿", "都庁前", "西新宿五丁目", "中野坂上", "東中野", "中井", "落合南長崎", "新江古田", "練馬", "豊島園", "練馬春日町", "光が丘"]
+      },
+
+      // --- 關東｜主要私鐵 ---
+      "TOKYU_TOYOKO": {
+        op: "KANTO_PRIVATE", label: "東急 東横線（澀谷〜橫濱）", allowedRegions: ["tokyo"],
+        aliases: ["東急東横線", "東横線", "東橫線"],
+        stations: ["渋谷", "代官山", "中目黒", "祐天寺", "学芸大学", "都立大学", "自由が丘", "田園調布", "多摩川", "新丸子", "武蔵小杉", "元住吉", "日吉", "綱島", "新綱島", "大倉山", "菊名", "妙蓮寺", "白楽", "東白楽", "反町", "横浜"]
+      },
+      "TOKYU_DENENTOSHI": {
+        op: "KANTO_PRIVATE", label: "東急 田園都市線", allowedRegions: ["tokyo"],
+        aliases: ["田園都市線", "東急田園都市線"],
+        stations: ["渋谷", "池尻大橋", "三軒茶屋", "駒沢大学", "桜新町", "用賀", "二子玉川", "二子新地", "高津", "溝の口", "梶が谷", "宮崎台", "宮前平", "鷺沼", "たまプラーザ", "あざみ野", "江田", "市が尾", "藤が丘", "青葉台", "田奈", "長津田", "つくし野", "すずかけ台", "南町田グランベリーパーク", "つきみ野", "中央林間"]
+      },
+      "ODAKYU_ODAWARA": {
+        op: "KANTO_PRIVATE", label: "小田急 小田原線", allowedRegions: ["tokyo"],
+        aliases: ["小田急線", "小田急小田原線", "小田原線"],
+        stations: ["新宿", "南新宿", "参宮橋", "代々木八幡", "代々木上原", "東北沢", "下北沢", "世田谷代田", "梅ヶ丘", "豪徳寺", "経堂", "千歳船橋", "祖師ヶ谷大蔵", "成城学園前", "喜多見", "狛江", "和泉多摩川", "登戸", "向ヶ丘遊園", "生田", "読売ランド前", "百合ヶ丘", "新百合ヶ丘", "町田", "相模大野", "本厚木", "小田原"]
+      },
+      "KEIO_LINE": {
+        op: "KANTO_PRIVATE", label: "京王線・京王新線", allowedRegions: ["tokyo"],
+        aliases: ["京王線", "京王電鐵"],
+        stations: ["新宿", "初台", "幡ヶ谷", "笹塚", "代田橋", "明大前", "下高井戸", "桜上水", "上北沢", "八幡山", "芦花公園", "千歳烏山", "仙川", "つつじヶ丘", "柴崎", "国領", "布田", "調布", "府中", "聖蹟桜ヶ丘", "高幡不動", "京王八王子"]
+      },
+      "SEIBU_IKEBUKURO": {
+        op: "KANTO_PRIVATE", label: "西武 池袋線", allowedRegions: ["tokyo"],
+        aliases: ["西武池袋線", "西武線"],
+        stations: ["池袋", "椎名町", "東長崎", "江古田", "桜台", "練馬", "中村橋", "富士見台", "練馬高野台", "石神井公園", "大泉学園", "保谷", "ひばりヶ丘", "東久留米", "清瀬", "秋津", "所沢"]
+      },
+      "SEIBU_SHINJUKU": {
+        op: "KANTO_PRIVATE", label: "西武 新宿線", allowedRegions: ["tokyo"],
+        aliases: ["西武新宿線"],
+        stations: ["西武新宿", "高田馬場", "下落合", "中井", "新井薬師前", "沼袋", "野方", "都立家政", "鷺ノ宮", "下井草", "井荻", "上井草", "上石神井", "武蔵関", "東伏見", "西武柳沢", "田無", "花小金井", "小平", "東村山", "所沢", "本川越"]
+      },
+      "TOBU_TOJO": {
+        op: "KANTO_PRIVATE", label: "東武 東上線", allowedRegions: ["tokyo"],
+        aliases: ["東武東上線", "東上線"],
+        stations: ["池袋", "北池袋", "下板橋", "大山", "中板橋", "ときわ台", "上板橋", "東武練馬", "下赤塚", "成増", "和光市", "朝霞", "朝霞台", "志木", "川越", "川越市"]
+      },
+      "TOBU_SKYTREE": {
+        op: "KANTO_PRIVATE", label: "東武 スカイツリーライン（晴空塔線）", allowedRegions: ["tokyo"],
+        aliases: ["東武晴空塔線", "スカイツリーライン", "東武伊勢崎線"],
+        stations: ["浅草", "とうきょうスカイツリー", "押上", "曳舟", "東向島", "鐘ヶ淵", "堀切", "牛田", "北千住", "小菅", "五反野", "梅島", "西新井", "竹ノ塚", "谷塚", "草加", "新越谷", "越谷", "春日部"]
+      },
+      "KEIKYU_MAIN": {
+        op: "KANTO_PRIVATE", label: "京急本線・空港線", allowedRegions: ["tokyo"],
+        aliases: ["京急本線", "京急線", "京浜急行"],
+        stations: ["泉岳寺", "品川", "北品川", "新馬場", "青物横丁", "鮫洲", "立会川", "大森海岸", "平和島", "大森町", "梅屋敷", "京急蒲田", "糀谷", "大鳥居", "穴守稲荷", "天空橋", "羽田空港第3ターミナル", "羽田空港第1・第2ターミナル", "雑色", "六郷土手", "京急川崎", "横浜", "日ノ出町", "黄金町", "上大岡", "金沢文庫", "金沢八景", "横須賀中央"]
+      },
+      "KEISEI_MAIN": {
+        op: "KANTO_PRIVATE", label: "京成本線・押上線", allowedRegions: ["tokyo"],
+        aliases: ["京成本線", "京成電鐵", "京成線"],
+        stations: ["京成上野", "日暮里", "新三河島", "町屋", "千住大橋", "京成関屋", "堀切菖蒲園", "お花茶屋", "青砥", "押上", "京成曳舟", "八広", "四ツ木", "京成立石", "京成高砂", "京成小岩", "江戸川", "市川真間", "京成八幡", "京成船橋", "京成津田沼", "京成成田", "空港第2ビル", "成田空港"]
+      },
+      "TSUKUBA_EXPRESS": {
+        op: "KANTO_PRIVATE", label: "つくばエクスプレス（筑波快線 TX）", allowedRegions: ["tokyo"],
+        aliases: ["筑波快線", "つくばエクスプレス", "tx線"],
+        stations: ["秋葉原", "新御徒町", "浅草", "南千住", "北千住", "青井", "六町", "八潮", "三郷中央", "南流山", "流山セントラルパーク", "流山おおたかの森", "柏の葉キャンパス", "守谷", "研究学園", "つくば"]
+      },
+
+      // --- 京阪神｜JR西日本 ---
+      "JR_OSAKA_LOOP": {
+        op: "JR_WEST", label: "JR 大阪環状線", allowedRegions: ["kansai"],
+        aliases: ["大阪環狀線", "大阪環状線", "環狀線", "環状線", "jr環狀線"],
+        stations: ["大阪", "福島", "野田", "西九条", "弁天町", "大正", "芦原橋", "今宮", "新今宮", "天王寺", "寺田町", "桃谷", "鶴橋", "玉造", "森ノ宮", "大阪城公園", "京橋", "桜ノ宮", "天満"]
+      },
+      "JR_KYOTO_LINE": {
+        op: "JR_WEST", label: "JR 京都線（京都〜大阪）", allowedRegions: ["kansai"],
+        aliases: ["jr京都線", "京都線"],
+        stations: ["京都", "西大路", "桂川", "向日町", "長岡京", "山崎", "島本", "高槻", "摂津富田", "JR総持寺", "茨木", "千里丘", "岸辺", "吹田", "東淀川", "新大阪", "大阪"]
+      },
+      "JR_KOBE_LINE": {
+        op: "JR_WEST", label: "JR 神戸線（大阪〜三ノ宮・姫路）", allowedRegions: ["kansai"],
+        aliases: ["jr神戶線", "jr神戸線", "神戶線", "神戸線"],
+        stations: ["大阪", "塚本", "尼崎", "立花", "甲子園口", "西宮", "さくら夙川", "芦屋", "甲南山手", "摂津本山", "住吉", "六甲道", "摩耶", "灘", "三ノ宮", "元町", "神戸", "兵庫", "新長田", "須磨", "垂水", "舞子", "明石", "西明石", "加古川", "姫路"]
+      },
+      "JR_YAMATOJI": {
+        op: "JR_WEST", label: "JR 大和路線（JR難波・天王寺〜奈良）", allowedRegions: ["kansai"],
+        aliases: ["大和路線", "jr大和路線", "関西本線"],
+        stations: ["JR難波", "今宮", "新今宮", "天王寺", "東部市場前", "平野", "加美", "久宝寺", "八尾", "志紀", "柏原", "高井田", "河内堅上", "三郷", "王寺", "法隆寺", "大和小泉", "郡山", "奈良"]
+      },
+      "JR_HANWA": {
+        op: "JR_WEST", label: "JR 阪和線・関西空港線", allowedRegions: ["kansai"],
+        aliases: ["阪和線", "関西空港線", "關西機場線"],
+        stations: ["天王寺", "美章園", "南田辺", "鶴ケ丘", "長居", "我孫子町", "杉本町", "浅香", "堺市", "三国ケ丘", "百舌鳥", "上野芝", "津久野", "鳳", "和泉府中", "東岸和田", "熊取", "日根野", "りんくうタウン", "関西空港", "和歌山"]
+      },
+      "JR_NARA": {
+        op: "JR_WEST", label: "JR 奈良線（京都〜宇治・奈良）", allowedRegions: ["kansai"],
+        aliases: ["jr奈良線", "奈良線"],
+        stations: ["京都", "東福寺", "稲荷", "JR藤森", "桃山", "六地蔵", "木幡", "黄檗", "宇治", "JR小倉", "新田", "城陽", "玉水", "木津", "奈良"]
+      },
+      "JR_SAGANO": {
+        op: "JR_WEST", label: "JR 嵯峨野線（京都〜二条・嵯峨嵐山）", allowedRegions: ["kansai"],
+        aliases: ["嵯峨野線", "山陰本線", "嵐山線"],
+        stations: ["京都", "梅小路京都西", "丹波口", "二条", "円町", "花園", "太秦", "嵯峨嵐山", "保津峡", "馬堀", "亀岡"]
+      },
+      "JR_TOZAI_GAKKENTOSHI": {
+        op: "JR_WEST", label: "JR 東西線・学研都市線（北新地・京橋）", allowedRegions: ["kansai"],
+        aliases: ["jr東西線", "学研都市線", "學研都市線"],
+        stations: ["尼崎", "加島", "御幣島", "海老江", "新福島", "北新地", "大阪天満宮", "大阪城北詰", "京橋", "鴫野", "放出", "徳庵", "鴻池新田", "住道", "野崎", "四条畷", "寝屋川公園", "星田", "河内磐船", "長尾", "松井山手"]
+      },
+
+      // --- 京阪神｜Osaka Metro（全 8 線） ---
+      "OM_MIDOSUJI": {
+        op: "OSAKA_METRO", label: "Osaka Metro 御堂筋線", allowedRegions: ["kansai"],
+        aliases: ["御堂筋線", "大阪地鐵御堂筋線", "metro御堂筋線"],
+        stations: ["江坂", "東三国", "新大阪", "西中島南方", "中津", "梅田", "淀屋橋", "本町", "心斎橋", "なんば", "難波", "大国町", "動物園前", "天王寺", "昭和町", "西田辺", "長居", "あびこ", "北花田", "新金岡", "なかもず"]
+      },
+      "OM_TANIMACHI": {
+        op: "OSAKA_METRO", label: "Osaka Metro 谷町線", allowedRegions: ["kansai"],
+        aliases: ["谷町線", "大阪地鐵谷町線"],
+        stations: ["大日", "守口", "太子橋今市", "千林大宮", "関目高殿", "野江内代", "都島", "天神橋筋六丁目", "中崎町", "東梅田", "南森町", "天満橋", "谷町四丁目", "谷町六丁目", "谷町九丁目", "四天王寺前夕陽ヶ丘", "天王寺", "阿倍野", "文の里", "田辺", "駒川中野", "平野", "喜連瓜破", "出戸", "長原", "八尾南"]
+      },
+      "OM_YOTSUBASHI": {
+        op: "OSAKA_METRO", label: "Osaka Metro 四つ橋線", allowedRegions: ["kansai"],
+        aliases: ["四つ橋線", "四橋線", "大阪地鐵四橋線"],
+        stations: ["西梅田", "肥後橋", "本町", "四ツ橋", "なんば", "難波", "大国町", "花園町", "岸里", "玉出", "北加賀屋", "住之江公園"]
+      },
+      "OM_CHUO": {
+        op: "OSAKA_METRO", label: "Osaka Metro 中央線（海遊館・夢洲・大阪城）", allowedRegions: ["kansai"],
+        aliases: ["大阪中央線", "osaka metro中央線", "中央線"],
+        stations: ["夢洲", "コスモスクエア", "大阪港", "朝潮橋", "弁天町", "九条", "阿波座", "本町", "堺筋本町", "谷町四丁目", "森ノ宮", "緑橋", "深江橋", "高井田", "長田"]
+      },
+      "OM_SENNICHIMAE": {
+        op: "OSAKA_METRO", label: "Osaka Metro 千日前線", allowedRegions: ["kansai"],
+        aliases: ["千日前線", "大阪地鐵千日前線"],
+        stations: ["野田阪神", "玉川", "阿波座", "西長堀", "桜川", "なんば", "難波", "日本橋", "谷町九丁目", "鶴橋", "今里", "新深江", "小路", "北巽", "南巽"]
+      },
+      "OM_SAKAISUJI": {
+        op: "OSAKA_METRO", label: "Osaka Metro 堺筋線", allowedRegions: ["kansai"],
+        aliases: ["堺筋線", "大阪地鐵堺筋線"],
+        stations: ["天神橋筋六丁目", "扇町", "南森町", "北浜", "堺筋本町", "長堀橋", "日本橋", "恵美須町", "動物園前", "天下茶屋"]
+      },
+      "OM_NAGAHORI": {
+        op: "OSAKA_METRO", label: "Osaka Metro 長堀鶴見緑地線（京瓷巨蛋・心齋橋）", allowedRegions: ["kansai"],
+        aliases: ["長堀鶴見緑地線", "長堀鶴見綠地線"],
+        stations: ["大正", "ドーム前千代崎", "西長堀", "西大橋", "心斎橋", "長堀橋", "松屋町", "谷町六丁目", "玉造", "森ノ宮", "大阪ビジネスパーク", "京橋", "蒲生四丁目", "今福鶴見", "横堤", "鶴見緑地", "門真南"]
+      },
+      "OM_IMAZATOSUJI": {
+        op: "OSAKA_METRO", label: "Osaka Metro 今里筋線", allowedRegions: ["kansai"],
+        aliases: ["今里筋線"],
+        stations: ["井高野", "瑞光四丁目", "だいどう豊里", "太子橋今市", "清水", "新森古市", "関目成育", "蒲生四丁目", "鴫野", "緑橋", "今里"]
+      },
+
+      // --- 京阪神｜京都市營・神戶市營地下鐵 ---
+      "KYOTO_KARASUMA": {
+        op: "KYOTO_KOBE_SUBWAY", label: "京都市營地下鐵 烏丸線", allowedRegions: ["kansai"],
+        aliases: ["烏丸線", "京都地鐵烏丸線", "京都市營烏丸線"],
+        stations: ["国際会館", "松ヶ崎", "北山", "北大路", "鞍馬口", "今出川", "丸太町", "烏丸御池", "四条", "五条", "京都", "九条", "十条", "くいな橋", "竹田"]
+      },
+      "KYOTO_TOZAI": {
+        op: "KYOTO_KOBE_SUBWAY", label: "京都市營地下鐵 東西線", allowedRegions: ["kansai"],
+        aliases: ["京都東西線", "京都地鐵東西線"],
+        stations: ["六地蔵", "石田", "醍醐", "小野", "椥辻", "東野", "山科", "御陵", "蹴上", "東山", "三条京阪", "京都市役所前", "烏丸御池", "二条城前", "二条", "西大路御池", "太秦天神川"]
+      },
+      "KOBE_SEISHIN": {
+        op: "KYOTO_KOBE_SUBWAY", label: "神戶市營地下鐵 西神・山手線", allowedRegions: ["kansai"],
+        aliases: ["西神山手線", "神戶地鐵", "神戸市営地下鉄"],
+        stations: ["新神戸", "三宮", "県庁前", "大倉山", "湊川公園", "上沢", "長田", "新長田", "板宿", "妙法寺", "名谷", "総合運動公園", "学園都市", "伊川谷", "西神南", "西神中央"]
+      },
+      "KOBE_KAIGAN": {
+        op: "KYOTO_KOBE_SUBWAY", label: "神戶市營地下鐵 海岸線", allowedRegions: ["kansai"],
+        aliases: ["海岸線", "神戶海岸線"],
+        stations: ["三宮・花時計前", "旧居留地・大丸前", "みなと元町", "ハーバーランド", "中央市場前", "和田岬", "御崎公園", "苅藻", "駒ヶ林", "新長田"]
+      },
+
+      // --- 京阪神｜關西五大私鐵 ---
+      "HANKYU_KYOTO": {
+        op: "KANSAI_PRIVATE", label: "阪急 京都線（大阪梅田〜京都河原町）", allowedRegions: ["kansai"],
+        aliases: ["阪急京都線", "阪急電鐵", "阪急線"],
+        stations: ["大阪梅田", "梅田", "十三", "南方", "崇禅寺", "淡路", "上新庄", "相川", "正雀", "摂津市", "南茨木", "茨木市", "総持寺", "富田", "高槻市", "上牧", "水無瀬", "大山崎", "西山天王山", "長岡天神", "西向日", "東向日", "洛西口", "桂", "西京極", "西院", "大宮", "烏丸", "京都河原町"]
+      },
+      "HANKYU_KOBE": {
+        op: "KANSAI_PRIVATE", label: "阪急 神戸線（大阪梅田〜神戶三宮）", allowedRegions: ["kansai"],
+        aliases: ["阪急神戶線", "阪急神戸線"],
+        stations: ["大阪梅田", "梅田", "中津", "十三", "神崎川", "園田", "塚口", "武庫之荘", "西宮北口", "夙川", "芦屋川", "岡本", "御影", "六甲", "王子公園", "春日野道", "神戸三宮", "三宮"]
+      },
+      "HANKYU_TAKARAZUKA": {
+        op: "KANSAI_PRIVATE", label: "阪急 宝塚線", allowedRegions: ["kansai"],
+        aliases: ["阪急寶塚線", "阪急宝塚線"],
+        stations: ["大阪梅田", "梅田", "中津", "十三", "三国", "庄内", "服部天神", "曽根", "岡町", "豊中", "蛍池", "石橋阪大前", "池田", "川西能勢口", "雲雀丘花屋敷", "山本", "中山観音", "売布神社", "清荒神", "宝塚"]
+      },
+      "HANSHIN_MAIN": {
+        op: "KANSAI_PRIVATE", label: "阪神本線・阪神なんば線（梅田・難波〜甲子園・神戶三宮）", allowedRegions: ["kansai"],
+        aliases: ["阪神本線", "阪神電車", "阪神難波線", "阪神なんば線"],
+        stations: ["大阪梅田", "梅田", "福島", "野田", "淀川", "姫島", "千船", "杭瀬", "大物", "尼崎", "出屋敷", "尼崎センタープール前", "武庫川", "鳴尾・武庫川女子大前", "甲子園", "久寿川", "今津", "西宮", "香櫨園", "打出", "芦屋", "深江", "青木", "魚崎", "住吉", "御影", "石屋川", "新在家", "大石", "西灘", "岩屋", "春日野道", "神戸三宮", "三宮", "元町", "大阪難波", "なんば", "桜川", "ドーム前", "九条", "西九条"]
+      },
+      "KEIHAN_MAIN": {
+        op: "KANSAI_PRIVATE", label: "京阪本線・中之島線（淀屋橋〜祇園四條・出町柳）", allowedRegions: ["kansai"],
+        aliases: ["京阪本線", "京阪電車", "京阪線", "京阪電鐵"],
+        stations: ["淀屋橋", "北浜", "天満橋", "京橋", "野江", "関目", "森小路", "千林", "滝井", "土居", "守口市", "西三荘", "門真市", "古川橋", "大和田", "萱島", "寝屋川市", "香里園", "光善寺", "枚方公園", "枚方市", "御殿山", "牧野", "樟葉", "橋本", "石清水八幡宮", "淀", "中書島", "伏見桃山", "丹波橋", "墨染", "藤森", "龍谷大前深草", "伏見稲荷", "鳥羽街道", "東福寺", "七条", "清水五条", "祇園四条", "三条", "神宮丸太町", "出町柳", "中之島", "渡辺橋", "大江橋", "なにわ橋"]
+      },
+      "NANKAI_MAIN": {
+        op: "KANSAI_PRIVATE", label: "南海本線・空港線（難波〜關西機場・和歌山市）", allowedRegions: ["kansai"],
+        aliases: ["南海本線", "南海電鐵", "南海電車", "南海線"],
+        stations: ["難波", "なんば", "新今宮", "天下茶屋", "岸里玉出", "粉浜", "住吉大社", "住ノ江", "七道", "堺", "湊", "石津川", "諏訪ノ森", "浜寺公園", "羽衣", "高石", "北助松", "松ノ浜", "泉大津", "忠岡", "春木", "和泉大宮", "岸和田", "蛸地蔵", "貝塚", "二色浜", "鶴原", "井原里", "泉佐野", "りんくうタウン", "関西空港", "尾崎", "みさき公園", "和歌山市"]
+      },
+      "NANKAI_KOYA": {
+        op: "KANSAI_PRIVATE", label: "南海 高野線（難波〜堺東・高野山）", allowedRegions: ["kansai"],
+        aliases: ["南海高野線", "高野線"],
+        stations: ["難波", "なんば", "今宮戎", "新今宮", "萩ノ茶屋", "天下茶屋", "岸里玉出", "帝塚山", "住吉東", "沢ノ町", "我孫子前", "浅香山", "堺東", "三国ヶ丘", "百舌鳥八幡", "中百舌鳥", "白鷺", "初芝", "萩原天神", "北野田", "狭山", "大阪狭山市", "金剛", "河内長野", "橋本", "極楽橋"]
+      },
+      "KINTETSU_NARA": {
+        op: "KANSAI_PRIVATE", label: "近鉄 奈良線（大阪難波〜鶴橋・近鐵奈良）", allowedRegions: ["kansai"],
+        aliases: ["近鐵奈良線", "近鉄奈良線", "近鐵線", "近鉄線"],
+        stations: ["大阪難波", "なんば", "近鉄日本橋", "日本橋", "大阪上本町", "鶴橋", "今里", "布施", "河内永和", "河内小阪", "八戸ノ里", "若江岩田", "河内花園", "東花園", "瓢箪山", "枚岡", "額田", "石切", "生駒", "東生駒", "富雄", "学園前", "菖蒲池", "大和西大寺", "新大宮", "近鉄奈良", "奈良"]
+      },
+      "KINTETSU_OSAKA": {
+        op: "KANSAI_PRIVATE", label: "近鉄 大阪線（大阪上本町〜鶴橋・伊勢志摩方向）", allowedRegions: ["kansai"],
+        aliases: ["近鐵大阪線", "近鉄大阪線"],
+        stations: ["大阪上本町", "鶴橋", "今里", "布施", "俊徳道", "長瀬", "弥刀", "久宝寺口", "近鉄八尾", "河内山本", "高安", "恩智", "法善寺", "堅下", "安堂", "河内国分", "大阪教育大前", "関屋", "二上", "近鉄下田", "五位堂", "築山", "大和高田", "松塚", "真菅", "大和八木", "桜井", "榛原", "名張"]
+      },
+      "KINTETSU_KYOTO": {
+        op: "KANSAI_PRIVATE", label: "近鉄 京都線（京都〜大和西大寺・近鐵奈良）", allowedRegions: ["kansai"],
+        aliases: ["近鐵京都線", "近鉄京都線"],
+        stations: ["京都", "東寺", "十条", "上鳥羽口", "竹田", "伏見", "近鉄丹波橋", "桃山御陵前", "向島", "小倉", "伊勢田", "大久保", "久津川", "寺田", "富野荘", "新田辺", "興戸", "三山木", "近鉄宮津", "狛田", "新祝園", "木津川台", "山田川", "高の原", "平城", "大和西大寺", "新大宮", "近鉄奈良"]
+      },
+
+      // --- 福岡｜地下鐵全 3 線 & 西鐵 ---
+      "FUKUOKA_KUKO": {
+        op: "FUKUOKA_TRANSIT", label: "福岡市地下鐵 空港線（姪浜〜天神・博多・福岡機場）", allowedRegions: ["kyushu_north"],
+        aliases: ["福岡地鐵空港線", "福岡空港線", "空港線", "福岡地下鐵機場線"],
+        stations: ["姪浜", "室見", "藤崎", "西新", "唐人町", "大濠公園", "赤坂", "天神", "中洲川端", "祇園", "博多", "東比恵", "福岡空港"]
+      },
+      "FUKUOKA_HAKOZAKI": {
+        op: "FUKUOKA_TRANSIT", label: "福岡市地下鐵 箱崎線（中洲川端〜貝塚）", allowedRegions: ["kyushu_north"],
+        aliases: ["箱崎線", "福岡地鐵箱崎線"],
+        stations: ["中洲川端", "呉服町", "千代県庁口", "馬出九大病院前", "箱崎宮前", "箱崎九大前", "貝塚"]
+      },
+      "FUKUOKA_NANAKUMA": {
+        op: "FUKUOKA_TRANSIT", label: "福岡市地下鐵 七隈線（橋本〜天神南・博多）", allowedRegions: ["kyushu_north"],
+        aliases: ["七隈線", "福岡地鐵七隈線"],
+        stations: ["橋本", "次郎丸", "賀茂", "野芥", "梅林", "福大前", "七隈", "金山", "茶山", "別府", "六本松", "桜坂", "薬院大通", "薬院", "渡辺通", "天神南", "櫛田神社前", "博多"]
+      },
+      "NISHITETSU_OMUTA": {
+        op: "FUKUOKA_TRANSIT", label: "西鐵 天神大牟田線", allowedRegions: ["kyushu_north"],
+        aliases: ["西鐵天神大牟田線", "西鐵大牟田線", "西鉄天神大牟田線", "西鐵線"],
+        stations: ["西鉄福岡", "天神", "薬院", "西鉄平尾", "高宮", "大橋", "井尻", "雑餉隈", "春日原", "白木原", "下大利", "都府楼前", "西鉄二日市", "西鉄久留米", "大牟田"]
+      }
+    };
 
     const LINE_NAMES = {
       "RAIL_HARUKA": "關空 JR HARUKA", "RAIL_NANKAI": "關空 南海電鐵",
@@ -210,9 +626,8 @@
     };
 
     // ==========================================
-    // 2. 補充飯店清單與東橫 INN 分店名稱自動補全對照
+    // 3. 補充飯店清單與東橫 INN 分店名稱自動補全對照
     // ==========================================
-    // OSM 漏標之新建分店補充清單（確保如「スーパーホテル熊本駅前天然温泉」必定顯示）
     const SUPPLEMENTAL_HOTELS = [
       {
         id: "supp_kumamoto_superhotel",
@@ -234,7 +649,6 @@
       }
     ];
 
-    // 已知無分店後綴之重點東橫 INN 座標對照表（即時將純「東横イン」補全為正式分店名）
     const KNOWN_BRANCH_OVERRIDES = [
       [32.8012, 130.7032, "Toyoko Inn", "東横INN 熊本桜町バスターミナル前"],
       [32.7905, 130.6901, "Toyoko Inn", "東横INN 熊本駅前"],
@@ -285,19 +699,6 @@
         amenities: { seven: 135, familymart: 240, drugstore: 217, supermarket: 290 }
       },
       {
-        id: "prev_kumamoto_nono",
-        name: "御宿 野乃熊本",
-        brand: "Dormy Inn",
-        area: "熊本県 熊本市 中央区 下通",
-        region: "kyushu_south",
-        lat: 32.7995,
-        lng: 130.7082,
-        station_name: "藤崎宮前",
-        station_dist: 780,
-        airport_lines: ["BUS_KMJ"],
-        amenities: { seven: 75, familymart: 119, starbucks: 160, mcdonalds: 97, drugstore: 69, supermarket: 73 }
-      },
-      {
         id: "prev_osaka_namba",
         name: "天然温泉 夕霧の湯 ドーミーインPREMIUMなんば",
         brand: "Dormy Inn",
@@ -324,6 +725,45 @@
         amenities: { lawson: 50, seven: 95, familymart: 120, starbucks: 140, doutor: 160, mcdonalds: 190, drugstore: 110, supermarket: 290 }
       },
       {
+        id: "prev_osaka_sakaisuji",
+        name: "ダイワロイネットホテル大阪堺筋本町",
+        brand: "Daiwa Roynet",
+        area: "大阪府 大阪市 中央区 堺筋本町",
+        region: "kansai",
+        lat: 34.6822,
+        lng: 135.5068,
+        station_name: "堺筋本町",
+        station_dist: 150,
+        airport_lines: [],
+        amenities: { lawson: 45, seven: 80, familymart: 70, starbucks: 190, doutor: 110, mcdonalds: 210, drugstore: 95, supermarket: 220 }
+      },
+      {
+        id: "prev_osaka_tennoji",
+        name: "ダイワロイネットホテル大阪上本町",
+        brand: "Daiwa Roynet",
+        area: "大阪府 大阪市 天王寺区",
+        region: "kansai",
+        lat: 34.6485,
+        lng: 135.5136,
+        station_name: "天王寺",
+        station_dist: 210,
+        airport_lines: ["RAIL_HARUKA"],
+        amenities: { lawson: 80, seven: 60, familymart: 95, starbucks: 150, mcdonalds: 180, drugstore: 120, supermarket: 240 }
+      },
+      {
+        id: "prev_kyoto_karasuma",
+        name: "三井ガーデンホテル京都四条",
+        brand: "Mitsui Garden",
+        area: "京都府 京都市 下京区 四条 烏丸",
+        region: "kansai",
+        lat: 35.0008,
+        lng: 135.7562,
+        station_name: "四条",
+        station_dist: 290,
+        airport_lines: ["RAIL_HARUKA", "BUS_KIX"],
+        amenities: { lawson: 70, seven: 90, familymart: 65, starbucks: 150, doutor: 170, mcdonalds: 220, drugstore: 110, supermarket: 240 }
+      },
+      {
         id: "prev_tokyo_shinjuku",
         name: "東横INN新宿御苑前駅3番出口",
         brand: "Toyoko Inn",
@@ -331,10 +771,36 @@
         region: "tokyo",
         lat: 35.6885,
         lng: 139.7112,
-        station_name: "新宿",
-        station_dist: 480,
+        station_name: "新宿御苑前",
+        station_dist: 180,
         airport_lines: ["RAIL_NEX", "BUS_TYO"],
         amenities: { lawson: 80, seven: 70, familymart: 110, starbucks: 130, doutor: 95, mcdonalds: 250, mos: 210, drugstore: 140, supermarket: 280 }
+      },
+      {
+        id: "prev_tokyo_asakusa",
+        name: "リッチモンドホテルプレミア浅草インターナショナル",
+        brand: "Richmond Hotel",
+        area: "東京都 台東区 浅草",
+        region: "tokyo",
+        lat: 35.7138,
+        lng: 139.7945,
+        station_name: "浅草",
+        station_dist: 240,
+        airport_lines: ["RAIL_KEISEI", "RAIL_KEIKYU"],
+        amenities: { lawson: 90, seven: 65, familymart: 105, starbucks: 170, doutor: 140, mcdonalds: 210, drugstore: 95, supermarket: 230 }
+      },
+      {
+        id: "prev_tokyo_shinagawa",
+        name: "ホテルメトロポリタン丸の内",
+        brand: "Hotel Metropolitan",
+        area: "東京都 千代田区 丸の内 東京",
+        region: "tokyo",
+        lat: 35.6833,
+        lng: 139.7681,
+        station_name: "東京",
+        station_dist: 120,
+        airport_lines: ["RAIL_NEX", "BUS_TYO"],
+        amenities: { lawson: 60, seven: 80, familymart: 90, starbucks: 110, doutor: 130, mcdonalds: 220, drugstore: 150, supermarket: 280 }
       },
       {
         id: "prev_fukuoka_hakata",
@@ -344,10 +810,23 @@
         region: "kyushu_north",
         lat: 33.5936,
         lng: 130.4148,
-        station_name: "博多",
-        station_dist: 420,
+        station_name: "祇園",
+        station_dist: 190,
         airport_lines: ["RAIL_FUKUOKA", "BUS_FUK"],
         amenities: { lawson: 90, seven: 65, familymart: 110, starbucks: 180, komeda: 220, mcdonalds: 270, drugstore: 160, supermarket: 240 }
+      },
+      {
+        id: "prev_fukuoka_tenjin_minami",
+        name: "東急ステイ福岡天神",
+        brand: "Tokyu Stay",
+        area: "福岡県 福岡市 中央区 天神 天神南",
+        region: "kyushu_north",
+        lat: 33.5882,
+        lng: 130.4018,
+        station_name: "天神南",
+        station_dist: 230,
+        airport_lines: ["RAIL_FUKUOKA", "BUS_FUK"],
+        amenities: { lawson: 70, seven: 85, familymart: 95, starbucks: 140, doutor: 170, mcdonalds: 210, drugstore: 130, supermarket: 260 }
       },
       {
         id: "prev_sapporo_station",
@@ -385,18 +864,63 @@
     ];
 
     // ==========================================
-    // 3. 空間計算、關鍵字正規化與分店名補全函式
+    // 4. 路線精準站名比對、區域隔離保護與空間計算
     // ==========================================
+    function normalizeStationKey(stName) {
+      return (stName || "").trim().replace(/駅$/, "").toLowerCase();
+    }
+
+    function hotelMatchesRoute(hotel, routeKey) {
+      const route = RAILWAY_LINES_DB[routeKey];
+      if (!route) return false;
+
+      // 區域隔離保護：避免跨都縣同名站誤判（例如大阪堺筋線「日本橋」誤抓東京日本橋、東京東西線「中野」誤抓長野中野）
+      if (hotel.region && route.allowedRegions && !route.allowedRegions.includes(hotel.region)) {
+        return false;
+      }
+
+      const hSt = normalizeStationKey(hotel.station_name);
+      if (!hSt || hSt === "周邊車站") return false;
+
+      return route.stations.some(s => {
+        const target = normalizeStationKey(s);
+        if (hSt === target) return true;
+        if (target === "梅田" && hSt === "大阪梅田") return true;
+        if (target === "大阪梅田" && hSt === "梅田") return true;
+        if ((target === "難波" || target === "なんば") && (hSt === "難波" || hSt === "なんば")) return true;
+        if (target === "西鉄福岡" && hSt.startsWith("西鉄福岡")) return true;
+        if (target === "三宮" && hSt === "三ノ宮") return true;
+        if (target === "三ノ宮" && hSt === "三宮") return true;
+        return false;
+      });
+    }
+
+    function detectMatchedRouteKeysFromQuery(rawInput) {
+      const q = rawInput.trim().toLowerCase().replace(/\s+/g, "");
+      if (!q) return [];
+      const matched = [];
+      for (const [rKey, cfg] of Object.entries(RAILWAY_LINES_DB)) {
+        const hit = cfg.aliases.some(alias => q === alias.toLowerCase() || (q.length >= 2 && alias.toLowerCase().includes(q) && /線|新幹線|ライン/.test(q)));
+        if (hit) matched.push(rKey);
+      }
+      return matched;
+    }
+
     function parseSearchQuery(rawInput) {
       let raw = rawInput.trim().toLowerCase();
-      if (!raw) return { tokens: [], isStationMode: false };
-      // 含「站/車站/駅」且非「巴士總站」時，啟動車站專屬精準模式（僅比對最近車站名稱）
+      if (!raw) return { tokens: [], isStationMode: false, queryRouteKeys: [] };
+
+      const queryRouteKeys = detectMatchedRouteKeysFromQuery(raw);
+      if (queryRouteKeys.length > 0) {
+        return { tokens: [], isStationMode: false, queryRouteKeys };
+      }
+
       const isStationMode = /車站|火車站|地鐵站|站|駅/.test(raw) && !/巴士總站|バスターミナル/.test(raw);
       let cleaned = raw.replace(/車站|火車站|地鐵站|站|駅/g, " ");
       for (const [re, ja] of ZH_TO_JA_MAP) {
         cleaned = cleaned.replace(re, ja);
       }
-      return { tokens: cleaned.split(/\s+/).filter(Boolean), isStationMode };
+      return { tokens: cleaned.split(/\s+/).filter(Boolean), isStationMode, queryRouteKeys: [] };
     }
 
     function calcDistanceM(lat1, lon1, lat2, lon2) {
@@ -408,7 +932,6 @@
       return Math.round(R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)));
     }
 
-    // 自動為缺少分店後綴的純「東横イン」補上分店名稱
     function enrichHotelName(h) {
       for (const [oLat, oLng, oBrand, oTitle] of KNOWN_BRANCH_OVERRIDES) {
         if (oBrand === h.brand && calcDistanceM(h.lat, h.lng, oLat, oLng) <= 150) {
@@ -426,7 +949,95 @@
     }
 
     // ==========================================
-    // 4. 初始化地圖（預設國土地理院淡色地圖 + 三種底圖切換）
+    // 5. 「營運商 ➔ 具體路線」聯動下拉選單與多路線複選標籤邏輯
+    // ==========================================
+    let selectedRouteKeys = new Set();
+
+    function populateOperatorSelect(regionKey) {
+      const opSelect = document.getElementById('operator-select');
+      const routeSelect = document.getElementById('route-select');
+      const prevOp = opSelect.value;
+
+      opSelect.innerHTML = '<option value="">1. 選擇鐵道／地鐵營運商...</option>';
+      OPERATORS_DB.forEach(op => {
+        if (op.regions.includes(regionKey)) {
+          const opt = document.createElement('option');
+          opt.value = op.id;
+          opt.textContent = op.label;
+          opSelect.appendChild(opt);
+        }
+      });
+
+      if (Array.from(opSelect.options).some(o => o.value === prevOp)) {
+        opSelect.value = prevOp;
+        onOperatorChange();
+      } else {
+        routeSelect.innerHTML = '<option value="">2. 先選擇左側營運商...</option>';
+        routeSelect.disabled = true;
+      }
+    }
+
+    function onOperatorChange() {
+      const opId = document.getElementById('operator-select').value;
+      const routeSelect = document.getElementById('route-select');
+      routeSelect.innerHTML = '';
+
+      if (!opId) {
+        routeSelect.innerHTML = '<option value="">2. 先選擇左側營運商...</option>';
+        routeSelect.disabled = true;
+        return;
+      }
+
+      routeSelect.disabled = false;
+      const defaultOpt = document.createElement('option');
+      defaultOpt.value = '';
+      defaultOpt.textContent = '2. 點選路線加入篩選條件...';
+      routeSelect.appendChild(defaultOpt);
+
+      for (const [rKey, cfg] of Object.entries(RAILWAY_LINES_DB)) {
+        if (cfg.op === opId) {
+          const opt = document.createElement('option');
+          opt.value = rKey;
+          opt.textContent = `${cfg.label}（${cfg.stations.length} 站）`;
+          routeSelect.appendChild(opt);
+        }
+      }
+    }
+
+    function onRouteSelect() {
+      const routeSelect = document.getElementById('route-select');
+      const rKey = routeSelect.value;
+      if (!rKey) return;
+
+      selectedRouteKeys.add(rKey);
+      routeSelect.value = ''; // 重置選單方便連續新增下一條路線
+      renderSelectedRouteChips();
+      markDirty();
+    }
+
+    function removeSelectedRoute(rKey) {
+      selectedRouteKeys.delete(rKey);
+      renderSelectedRouteChips();
+      markDirty();
+    }
+
+    function renderSelectedRouteChips() {
+      const container = document.getElementById('selected-routes-chips');
+      container.innerHTML = '';
+      selectedRouteKeys.forEach(rKey => {
+        const cfg = RAILWAY_LINES_DB[rKey];
+        if (!cfg) return;
+        const chip = document.createElement('button');
+        chip.type = 'button';
+        chip.className = 'inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-violet-900 text-white font-semibold text-xs shadow-sm hover:bg-violet-800';
+        chip.innerHTML = `<span>🚃 ${cfg.label}</span><span class="ml-1 text-violet-200">✕</span>`;
+        chip.onclick = () => removeSelectedRoute(rKey);
+        container.appendChild(chip);
+      });
+    }
+
+    // ==========================================
+    // 6. 初始化地圖（預設國土地理院淡色地圖 + 三種底圖切換）
     // ==========================================
     let allHotels = [];
     let map, markersLayer, userLayer, currentTileLayer;
@@ -495,7 +1106,7 @@
     }
 
     // ==========================================
-    // 5. 篩選控制、GPS 定位與渲染列表
+    // 7. 篩選控制、GPS 定位與渲染列表
     // ==========================================
     function markDirty() {
       const btn = document.getElementById('btn-search');
@@ -605,6 +1216,10 @@
 
     function resetAllFilters() {
       document.querySelectorAll('.filter-chip').forEach(el => el.classList.remove('chip-active'));
+      selectedRouteKeys.clear();
+      renderSelectedRouteChips();
+      document.getElementById('operator-select').value = '';
+      onOperatorChange();
       document.getElementById('enable-station-dist').checked = false;
       document.getElementById('enable-amenity-dist').checked = false;
       document.getElementById('station-dist').value = 500;
@@ -646,6 +1261,7 @@
         activeBtn.classList.add('bg-emerald-600', 'text-white');
       }
 
+      populateOperatorSelect(ds);
       renderAirportSubChips(ds);
 
       const statusEl = document.getElementById('data-status');
@@ -668,7 +1284,6 @@
         statusEl.textContent = `🟢 已連線真實圖資（共載入 ${allHotels.length} 間飯店）`;
         statusEl.className = 'text-xs text-emerald-400 mt-0.5';
       } catch (err) {
-        // 在獨立預覽環境無法讀取外部 JSON 時，自動無縫載入內建示範資料集
         const sampleBase = ds === 'all'
           ? PREVIEW_SAMPLE_HOTELS
           : PREVIEW_SAMPLE_HOTELS.filter(h => h.region === ds);
@@ -700,7 +1315,9 @@
       const sliderAmDist = parseInt(document.getElementById('amenity-dist').value, 10);
       const effectiveAmDist = amEnabled ? sliderAmDist : 300;
 
-      const { tokens, isStationMode } = parseSearchQuery(document.getElementById('keyword-input').value);
+      const { tokens, isStationMode, queryRouteKeys } = parseSearchQuery(document.getElementById('keyword-input').value);
+      const activeRoutes = Array.from(new Set([...selectedRouteKeys, ...queryRouteKeys]));
+
       const selAirModes = Array.from(document.querySelectorAll('#airport-main-filters .chip-active')).map(el => el.dataset.airmode);
       const selSubLines = Array.from(document.querySelectorAll('#airport-sub-filters .chip-active')).map(el => el.dataset.line);
       const selAms = Array.from(document.querySelectorAll('#amenity-filters .chip-active')).map(el => el.dataset.am);
@@ -711,6 +1328,13 @@
           if (h.station_dist > maxStationDist) return false;
           if (selBrands.length > 0 && !selBrands.includes(h.brand)) return false;
 
+          // 行程大眾運輸路線過濾（多選路線為聯集 OR，並與下方機場交通形成 AND 交集）
+          if (activeRoutes.length > 0) {
+            const onAnyRoute = activeRoutes.some(rKey => hotelMatchesRoute(h, rKey));
+            if (!onAnyRoute) return false;
+          }
+
+          // 機場直達交通過濾
           const lines = h.airport_lines || [];
           if (selAirModes.length > 0) {
             const hasRail = lines.some(l => l.startsWith('RAIL_') || ['JR_HARUKA', 'NANKAI', 'JR_NEX', 'KEISEI', 'KEIKYU', 'MONORAIL'].includes(l));
@@ -720,8 +1344,10 @@
           }
           if (selSubLines.length > 0 && !selSubLines.some(l => lines.includes(l))) return false;
 
+          // 生活機能距離過濾
           if (selAms.length > 0 && !selAms.every(am => (h.amenities?.[am] ?? 9999) <= effectiveAmDist)) return false;
 
+          // 關鍵字比對
           if (tokens.length > 0) {
             if (isStationMode) {
               if (!tokens.every(tk => h._stationLower.includes(tk))) return false;
@@ -731,10 +1357,16 @@
           }
           return true;
         })
-        .map(h => ({
-          ...h,
-          _userDist: userPos ? calcDistanceM(userPos.lat, userPos.lng, h.lat, h.lng) : null
-        }));
+        .map(h => {
+          const matchedRouteLabels = activeRoutes
+            .filter(rKey => hotelMatchesRoute(h, rKey))
+            .map(rKey => RAILWAY_LINES_DB[rKey]?.label || rKey);
+          return {
+            ...h,
+            _matchedRoutes: matchedRouteLabels,
+            _userDist: userPos ? calcDistanceM(userPos.lat, userPos.lng, h.lat, h.lng) : null
+          };
+        });
 
       const sortLabel = document.getElementById('sort-status-label');
       if (sortByUser && userPos) {
@@ -743,16 +1375,21 @@
         sortLabel.className = 'text-xs text-blue-600 font-semibold';
       } else {
         filtered.sort((a, b) => a.station_dist - b.station_dist);
-        sortLabel.textContent = isStationMode && tokens.length > 0
-          ? '🚉 已鎖定該車站周邊（依距離車站排序）'
-          : '依距離車站由近到遠排序';
-        sortLabel.className = isStationMode && tokens.length > 0
-          ? 'text-xs text-blue-600 font-semibold'
-          : 'text-xs text-slate-500';
+        if (activeRoutes.length > 0) {
+          sortLabel.textContent = '🚃 已鎖定所選路線沿線車站（依距離車站排序）';
+          sortLabel.className = 'text-xs text-violet-700 font-semibold';
+        } else if (isStationMode && tokens.length > 0) {
+          sortLabel.textContent = '🚉 已鎖定該車站周邊（依距離車站排序）';
+          sortLabel.className = 'text-xs text-blue-600 font-semibold';
+        } else {
+          sortLabel.textContent = '依距離車站由近到遠排序';
+          sortLabel.className = 'text-xs text-slate-500';
+        }
       }
 
-      if (tokens.length > 0 && filtered.length > 0) {
-        map.setView([filtered[0].lat, filtered[0].lng], 15);
+      if ((tokens.length > 0 || activeRoutes.length > 0) && filtered.length > 0) {
+        const zoomLevel = activeRoutes.length > 0 && tokens.length === 0 ? 11 : 15;
+        map.setView([filtered[0].lat, filtered[0].lng], zoomLevel);
       }
 
       renderResults(filtered, effectiveAmDist);
@@ -773,9 +1410,14 @@
 
       list.slice(0, 80).forEach(h => {
         const gmapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(h.name)}&center=${h.lat},${h.lng}`;
+
+        const routeBadgesHtml = (h._matchedRoutes || []).map(lbl =>
+          `<span class="px-1.5 py-0.5 bg-violet-100 text-violet-900 border border-violet-200 rounded text-[11px] font-semibold">🚃 ${lbl}</span>`
+        ).join(' ');
+
         const linesHtml = (h.airport_lines || []).map(l => {
           const isBus = l.startsWith('BUS_');
-          const icon = isBus ? '🚌' : '🚆';
+          const icon = isBus ? '🚌' : '✈️';
           const color = isBus ? 'bg-indigo-100 text-indigo-800' : 'bg-sky-100 text-sky-800';
           return `<span class="px-1.5 py-0.5 ${color} rounded text-[11px] font-medium">${icon} ${LINE_NAMES[l] || l}</span>`;
         }).join(' ');
@@ -796,6 +1438,7 @@
           <div class="text-xs space-y-1.5">
             <div class="font-bold text-slate-900">${h.name}</div>
             <div class="text-slate-600">🚉 ${h.station_name}（約 ${h.station_dist}m）</div>
+            ${h._matchedRoutes && h._matchedRoutes.length > 0 ? `<div class="text-violet-700 font-semibold">🚃 ${h._matchedRoutes.join('、')}</div>` : ''}
             ${h._userDist !== null ? `<div class="text-blue-700 font-semibold">📍 距離目前位置約 ${formatDist(h._userDist)}</div>` : ''}
             <a href="${gmapUrl}" target="_blank" class="gmap-popup-btn inline-block mt-1 px-2.5 py-1.5 bg-blue-600 rounded text-[11px] font-bold shadow-sm">🗺️ 開啟 Google 地圖</a>
           </div>
@@ -814,7 +1457,7 @@
               <span class="text-xs font-semibold text-blue-600 shrink-0">🚉 ${h.station_name} (${h.station_dist}m)</span>
             </div>
             <h3 class="font-bold text-sm text-slate-900 mt-1.5">${h.name}</h3>
-            <div class="flex flex-wrap gap-1 mt-1.5">${linesHtml} ${amBadges.join(' ')}</div>
+            <div class="flex flex-wrap gap-1 mt-1.5">${routeBadgesHtml} ${linesHtml} ${amBadges.join(' ')}</div>
           </div>
           <div class="flex gap-2 pt-1 border-t border-slate-100 text-xs">
             <button onclick="map.setView([${h.lat}, ${h.lng}], 16)" class="flex-1 py-1.5 rounded bg-slate-100 hover:bg-slate-200 font-medium text-slate-700">📍 地圖定位</button>
