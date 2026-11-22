@@ -5,9 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>日本連鎖商務飯店地圖篩選器</title>
   <meta name="theme-color" content="#0f172a">
-  <link rel="manifest" href="./manifest.json">
-  <link rel="apple-touch-icon" href="./icon-192.png">
-  <!-- 載入 Tailwind CSS 與 Leaflet 地圖套件 -->
+  <!-- 載入 Tailwind CSS 與 Leaflet 地圖套件（純網頁版，無 PWA 安裝與快取攔截） -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -1466,10 +1464,6 @@
         `;
         listEl.appendChild(card);
       });
-    }
-
-    if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
-      navigator.serviceWorker.register('./sw.js').catch(() => {});
     }
 
     switchDataset('all');
