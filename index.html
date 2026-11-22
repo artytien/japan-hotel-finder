@@ -192,6 +192,70 @@
       "LiveMax", "Hotel Metropolitan"
     ];
 
+    // 15 大連鎖商務飯店品牌標準日文前綴與純品牌統稱比對規則（用於自動補齊缺少分店後綴的店名）
+    const BRAND_NAME_CONFIG = {
+      "Toyoko Inn": {
+        prefix: "東横INN",
+        pureRegex: /^(東横イン|東橫イン|東横inn|toyoko\s*inn)$/i
+      },
+      "Dormy Inn": {
+        prefix: "ドーミーイン",
+        pureRegex: /^(ドーミーイン|天然温泉\s*ドーミーイン|dormy\s*inn|御宿\s*野乃|onyado\s*nono)$/i
+      },
+      "APA Hotel": {
+        prefix: "アパホテル",
+        pureRegex: /^(アパホテル|apa\s*hotel)$/i
+      },
+      "Super Hotel": {
+        prefix: "スーパーホテル",
+        pureRegex: /^(スーパーホテル|天然温泉\s*スーパーホテル|super\s*hotel)$/i
+      },
+      "Via Inn": {
+        prefix: "ヴィアイン",
+        pureRegex: /^(ヴィアイン|ヴィアインホテル|via\s*inn)$/i
+      },
+      "Route Inn": {
+        prefix: "ホテルルートイン",
+        pureRegex: /^(ルートイン|ホテルルートイン|route\s*inn|hotel\s*route\s*inn)$/i
+      },
+      "Comfort Hotel": {
+        prefix: "コンフォートホテル",
+        pureRegex: /^(コンフォートホテル|コンフォートイン|comfort\s*(hotel|inn))$/i
+      },
+      "Daiwa Roynet": {
+        prefix: "ダイワロイネットホテル",
+        pureRegex: /^(ダイワロイネット|ダイワロイネットホテル|daiwa\s*roynet(\s*hotel)?)$/i
+      },
+      "Richmond Hotel": {
+        prefix: "リッチモンドホテル",
+        pureRegex: /^(リッチモンド|リッチモンドホテル|richmond\s*hotel)$/i
+      },
+      "Fresa Inn": {
+        prefix: "相鉄フレッサイン",
+        pureRegex: /^(フレッサイン|相鉄フレッサイン|fresa\s*inn|sotetsu\s*fresa\s*inn)$/i
+      },
+      "Mitsui Garden": {
+        prefix: "三井ガーデンホテル",
+        pureRegex: /^(三井ガーデン|三井ガーデンホテル|mitsui\s*garden(\s*hotel)?)$/i
+      },
+      "Tokyu Stay": {
+        prefix: "東急ステイ",
+        pureRegex: /^(東急ステイ|tokyu\s*stay)$/i
+      },
+      "Washington Hotel": {
+        prefix: "ワシントンホテル",
+        pureRegex: /^(ワシントンホテル|ワシントンr&b|r&bホテル|washington\s*hotel)$/i
+      },
+      "LiveMax": {
+        prefix: "ホテルリブマックス",
+        pureRegex: /^(リブマックス|ホテルリブマックス|livemax|hotel\s*livemax)$/i
+      },
+      "Hotel Metropolitan": {
+        prefix: "ホテルメトロポリタン",
+        pureRegex: /^(メトロポリタン|ホテルメトロポリタン|hotel\s*metropolitan)$/i
+      }
+    };
+
     // ==========================================
     // 2. 完整鐵道／地鐵／新幹線路線庫（營運商分組 + 區域隔離保護）
     // ==========================================
@@ -624,7 +688,7 @@
     };
 
     // ==========================================
-    // 3. 補充飯店清單與東橫 INN 分店名稱自動補全對照
+    // 3. 補充飯店清單與重點分店精確座標對照
     // ==========================================
     const SUPPLEMENTAL_HOTELS = [
       {
@@ -721,6 +785,19 @@
         station_dist: 280,
         airport_lines: ["RAIL_HARUKA", "BUS_KIX"],
         amenities: { lawson: 50, seven: 95, familymart: 120, starbucks: 140, doutor: 160, mcdonalds: 190, drugstore: 110, supermarket: 290 }
+      },
+      {
+        id: "prev_osaka_apa_generic",
+        name: "アパホテル",
+        brand: "APA Hotel",
+        area: "大阪府 大阪市 中央区 淀屋橋",
+        region: "kansai",
+        lat: 34.6915,
+        lng: 135.5012,
+        station_name: "淀屋橋",
+        station_dist: 180,
+        airport_lines: [],
+        amenities: { lawson: 40, seven: 75, familymart: 65, starbucks: 130, doutor: 90, mcdonalds: 220, drugstore: 110, supermarket: 250 }
       },
       {
         id: "prev_osaka_sakaisuji",
@@ -930,20 +1007,28 @@
       return Math.round(R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)));
     }
 
+    // 通用 15 大連鎖商務飯店品牌分店名稱自動補全（將純統稱自動補全為「品牌 + 最近車站駅前／周邊」）
     function enrichHotelName(h) {
       for (const [oLat, oLng, oBrand, oTitle] of KNOWN_BRANCH_OVERRIDES) {
         if (oBrand === h.brand && calcDistanceM(h.lat, h.lng, oLat, oLng) <= 150) {
           return oTitle;
         }
       }
+
       const rawName = (h.name || "").trim();
-      if (/^(東横イン|東橫イン|東横inn|toyoko\s*inn)$/i.test(rawName)) {
-        const cleanSt = (h.station_name || "").replace(/駅$/, "");
+      const brandCfg = BRAND_NAME_CONFIG[h.brand];
+
+      // 只要屬於 15 大品牌且名稱僅為純統稱（或空字串），即依據最近車站自動補全分店名稱
+      if (brandCfg && (!rawName || brandCfg.pureRegex.test(rawName))) {
+        const cleanSt = (h.station_name || "").replace(/駅$/, "").trim();
         if (cleanSt && cleanSt !== "周邊車站") {
-          return h.station_dist <= 350 ? `東横INN ${cleanSt}駅前` : `東横INN（${cleanSt}駅周邊）`;
+          return h.station_dist <= 350
+            ? `${brandCfg.prefix} ${cleanSt}駅前`
+            : `${brandCfg.prefix}（${cleanSt}駅周邊）`;
         }
       }
-      return rawName;
+
+      return rawName || (brandCfg ? brandCfg.prefix : h.brand);
     }
 
     // ==========================================
