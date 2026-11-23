@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>日本連鎖商務飯店地圖篩選器</title>
   <meta name="theme-color" content="#0f172a">
-  <!-- 載入 Tailwind CSS 與 Leaflet 地圖套件（純網頁版，無 PWA 安裝與快取攔截） -->
+  <!-- 載入 Tailwind CSS 與 Leaflet 地圖套件（純網頁版，無 PWA 安裝提示與快取攔截） -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <style>
     body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", sans-serif; }
-    #map { height: 48vh; min-height: 320px; z-index: 1; background: #f1f5f9; }
+    #map { height: 48vh; min-height: 320px; z-index: 1; background: #f8fafc; }
     /* 高對比已選取狀態，確保深底白字清晰可辨，不被 Tailwind 淺色背景蓋過 */
     .chip-active {
       background-color: #0f172a !important;
@@ -154,15 +154,16 @@
       </div>
     </section>
 
-    <!-- 互動地圖區塊（淡色清爽預設 + 3種圖層切換） -->
+    <!-- 互動地圖區塊（預設極簡灰白 CartoDB Positron + 4種日系/街道底圖切換） -->
     <section class="relative bg-white rounded-xl overflow-hidden shadow-sm border border-slate-200">
       <div id="map"></div>
       <button type="button" id="btn-locate" onclick="locateUser()" class="absolute top-2.5 right-2.5 z-[500] flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/95 hover:bg-white text-slate-800 border border-slate-300 shadow-md text-xs font-semibold active:scale-95 transition">
         <span id="locate-icon">📍</span>
         <span id="locate-text">定位我的位置</span>
       </button>
-      <div class="absolute bottom-2.5 left-2.5 z-[500] flex gap-1 bg-white/95 p-1 rounded-lg border border-slate-300 shadow-sm text-[11px]">
-        <button type="button" onclick="setBaseMap('pale')" id="map-style-pale" class="map-style-btn px-2 py-1 rounded bg-slate-900 text-white font-semibold">淡色簡潔</button>
+      <div class="absolute bottom-2.5 left-2.5 z-[500] flex flex-wrap gap-1 bg-white/95 p-1 rounded-lg border border-slate-300 shadow-sm text-[11px]">
+        <button type="button" onclick="setBaseMap('positron')" id="map-style-positron" class="map-style-btn px-2 py-1 rounded bg-slate-900 text-white font-semibold">極簡灰白</button>
+        <button type="button" onclick="setBaseMap('pale')" id="map-style-pale" class="map-style-btn px-2 py-1 rounded text-slate-700 hover:bg-slate-100">淡色簡潔</button>
         <button type="button" onclick="setBaseMap('osm')" id="map-style-osm" class="map-style-btn px-2 py-1 rounded text-slate-700 hover:bg-slate-100">經典街道</button>
         <button type="button" onclick="setBaseMap('std')" id="map-style-std" class="map-style-btn px-2 py-1 rounded text-slate-700 hover:bg-slate-100">詳細地形</button>
       </div>
@@ -606,7 +607,7 @@
         stations: ["淀屋橋", "北浜", "天満橋", "京橋", "野江", "関目", "森小路", "千林", "滝井", "土居", "守口市", "西三荘", "門真市", "古川橋", "大和田", "萱島", "寝屋川市", "香里園", "光善寺", "枚方公園", "枚方市", "御殿山", "牧野", "樟葉", "橋本", "石清水八幡宮", "淀", "中書島", "伏見桃山", "丹波橋", "墨染", "藤森", "龍谷大前深草", "伏見稲荷", "鳥羽街道", "東福寺", "七条", "清水五条", "祇園四条", "三条", "神宮丸太町", "出町柳", "中之島", "渡辺橋", "大江橋", "なにわ橋"]
       },
       "NANKAI_MAIN": {
-        op: "KANSAI_PRIVATE", label: "南海本線・空港線（難波〜關西機場・和歌山市）", allowedRegions: ["kansai"],
+        op: "KANSAI_PRIVATE", label: "南海本線・空港線（難波〜堺・關西機場・和歌山市）", allowedRegions: ["kansai"],
         aliases: ["南海本線", "南海電鐵", "南海電車", "南海線"],
         stations: ["難波", "なんば", "新今宮", "天下茶屋", "岸里玉出", "粉浜", "住吉大社", "住ノ江", "七道", "堺", "湊", "石津川", "諏訪ノ森", "浜寺公園", "羽衣", "高石", "北助松", "松ノ浜", "泉大津", "忠岡", "春木", "和泉大宮", "岸和田", "蛸地蔵", "貝塚", "二色浜", "鶴原", "井原里", "泉佐野", "りんくうタウン", "関西空港", "尾崎", "みさき公園", "和歌山市"]
       },
@@ -707,6 +708,24 @@
           starbucks: 190, doutor: 9999, komeda: 9999,
           mcdonalds: 210, mos: 9999, kfc: 230,
           drugstore: 180, supermarket: 220
+        }
+      },
+      {
+        id: "supp_sakai_superhotel_maritima",
+        name: "スーパーホテル堺マリティマ",
+        brand: "Super Hotel",
+        area: "大阪府 堺市 堺区 宿院町西",
+        region: "kansai",
+        lat: 34.5784,
+        lng: 135.4718,
+        station_name: "堺",
+        station_dist: 347,
+        airport_lines: ["RAIL_NANKAI"],
+        amenities: {
+          lawson: 210, seven: 130, familymart: 95,
+          starbucks: 380, doutor: 9999, komeda: 9999,
+          mcdonalds: 340, mos: 9999, kfc: 9999,
+          drugstore: 260, supermarket: 290
         }
       }
     ];
@@ -1018,7 +1037,6 @@
       const rawName = (h.name || "").trim();
       const brandCfg = BRAND_NAME_CONFIG[h.brand];
 
-      // 只要屬於 15 大品牌且名稱僅為純統稱（或空字串），即依據最近車站自動補全分店名稱
       if (brandCfg && (!rawName || brandCfg.pureRegex.test(rawName))) {
         const cleanSt = (h.station_name || "").replace(/駅$/, "").trim();
         if (cleanSt && cleanSt !== "周邊車站") {
@@ -1093,7 +1111,7 @@
       if (!rKey) return;
 
       selectedRouteKeys.add(rKey);
-      routeSelect.value = ''; // 重置選單方便連續新增下一條路線
+      routeSelect.value = '';
       renderSelectedRouteChips();
       markDirty();
     }
@@ -1120,7 +1138,7 @@
     }
 
     // ==========================================
-    // 6. 初始化地圖（預設國土地理院淡色地圖 + 三種底圖切換）
+    // 6. 初始化地圖（預設極簡灰白 CartoDB Positron + 四種底圖切換）
     // ==========================================
     let allHotels = [];
     let map, markersLayer, userLayer, currentTileLayer;
@@ -1128,6 +1146,11 @@
     let sortByUser = false;
 
     const TILE_LAYERS = {
+      positron: {
+        url: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
+        attr: '&copy; OpenStreetMap &copy; CARTO',
+        subdomains: 'abcd'
+      },
       pale: {
         url: 'https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png',
         attr: '&copy; <a href="https://maps.gsi.go.jp/development/ichiran.html">国土地理院 (淡色)</a>'
@@ -1169,14 +1192,21 @@
     }
 
     map = L.map('map').setView([36.2, 137.5], 5);
-    currentTileLayer = L.tileLayer(TILE_LAYERS.pale.url, { attribution: TILE_LAYERS.pale.attr, maxZoom: 18 }).addTo(map);
+    currentTileLayer = L.tileLayer(TILE_LAYERS.positron.url, {
+      attribution: TILE_LAYERS.positron.attr,
+      subdomains: TILE_LAYERS.positron.subdomains,
+      maxZoom: 19
+    }).addTo(map);
     markersLayer = L.layerGroup().addTo(map);
     userLayer = L.layerGroup().addTo(map);
 
     function setBaseMap(styleKey) {
-      const cfg = TILE_LAYERS[styleKey] || TILE_LAYERS.pale;
+      const cfg = TILE_LAYERS[styleKey] || TILE_LAYERS.positron;
       if (currentTileLayer) map.removeLayer(currentTileLayer);
-      currentTileLayer = L.tileLayer(cfg.url, { attribution: cfg.attr, maxZoom: 18 }).addTo(map);
+      const opts = { attribution: cfg.attr, maxZoom: styleKey === 'positron' ? 19 : 18 };
+      if (cfg.subdomains) opts.subdomains = cfg.subdomains;
+      currentTileLayer = L.tileLayer(cfg.url, opts).addTo(map);
+
       document.querySelectorAll('.map-style-btn').forEach(b => {
         b.classList.remove('bg-slate-900', 'text-white', 'font-semibold');
         b.classList.add('text-slate-700', 'hover:bg-slate-100');
@@ -1411,13 +1441,11 @@
           if (h.station_dist > maxStationDist) return false;
           if (selBrands.length > 0 && !selBrands.includes(h.brand)) return false;
 
-          // 行程大眾運輸路線過濾（多選路線為聯集 OR，並與下方機場交通形成 AND 交集）
           if (activeRoutes.length > 0) {
             const onAnyRoute = activeRoutes.some(rKey => hotelMatchesRoute(h, rKey));
             if (!onAnyRoute) return false;
           }
 
-          // 機場直達交通過濾
           const lines = h.airport_lines || [];
           if (selAirModes.length > 0) {
             const hasRail = lines.some(l => l.startsWith('RAIL_') || ['JR_HARUKA', 'NANKAI', 'JR_NEX', 'KEISEI', 'KEIKYU', 'MONORAIL'].includes(l));
@@ -1427,10 +1455,8 @@
           }
           if (selSubLines.length > 0 && !selSubLines.some(l => lines.includes(l))) return false;
 
-          // 生活機能距離過濾
           if (selAms.length > 0 && !selAms.every(am => (h.amenities?.[am] ?? 9999) <= effectiveAmDist)) return false;
 
-          // 關鍵字比對
           if (tokens.length > 0) {
             if (isStationMode) {
               if (!tokens.every(tk => h._stationLower.includes(tk))) return false;
