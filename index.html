@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>日本連鎖商務飯店地圖篩選器</title>
   <meta name="theme-color" content="#0f172a">
-  <!-- 載入 Tailwind CSS 與 Leaflet 地圖套件（純網頁版，無 PWA 安裝提示與快取攔截） -->
+  <!-- 純網頁版：使用 Tailwind CSS 與 Leaflet 地圖套件，無 PWA 安裝提示與快取干擾 -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -43,7 +43,7 @@
       <div class="flex items-center justify-between">
         <div>
           <h1 class="text-base font-bold tracking-wide">🇯🇵 日本連鎖商務飯店篩選器</h1>
-          <p id="data-status" class="text-xs text-emerald-400 mt-0.5">⏳ 正在載入雲端最新圖資...</p>
+          <p id="data-status" class="text-xs text-emerald-400 mt-0.5">⏳ 正在載入圖資...</p>
         </div>
       </div>
       <div class="flex gap-1.5 text-xs overflow-x-auto no-scrollbar pb-0.5">
@@ -63,10 +63,10 @@
   <main class="max-w-5xl mx-auto px-3 pt-3 space-y-3">
     <!-- 篩選條件設定面板 -->
     <section class="bg-white rounded-xl p-3.5 shadow-sm border border-slate-200 space-y-3.5">
-      <!-- 關鍵字搜尋列（支援車站、路線名稱、分店名、區域或都道府縣） -->
+      <!-- 關鍵字搜尋列（支援精準車站、路線名稱、分店名或區域） -->
       <div>
-        <label class="block text-xs font-semibold text-slate-700 mb-1">🔍 搜尋車站、路線、分店或區域（支援輸入「山手線」、「大阪環狀線」、「淺草線」、「御堂筋線」、「新幹線」或「熊本站」）</label>
-        <input type="text" id="keyword-input" placeholder="輸入車站名、路線名、分店或商圈區域..." oninput="markDirty()" onkeydown="if(event.key==='Enter') applyFilters()" class="w-full text-sm px-3 py-1.5 border border-slate-300 rounded-lg focus:outline-none focus:border-slate-900">
+        <label class="block text-xs font-semibold text-slate-700 mb-1">🔍 搜尋車站、路線、分店或區域（如：「堺站」、「熊本站」、「山手線」、「大阪環狀線」、「新幹線」）</label>
+        <input type="text" id="keyword-input" placeholder="輸入車站名（如：堺、堺站、堺駅）、路線名或區域..." oninput="markDirty()" onkeydown="if(event.key==='Enter') applyFilters()" class="w-full text-sm px-3 py-1.5 border border-slate-300 rounded-lg focus:outline-none focus:border-slate-900">
       </div>
 
       <!-- 車站距離上限與生活機能距離上限（獨立勾選開關） -->
@@ -108,7 +108,6 @@
             <option value="">2. 先選擇左側營運商...</option>
           </select>
         </div>
-        <!-- 已加入的路線複選標籤列 -->
         <div id="selected-routes-chips" class="flex flex-wrap gap-1.5 text-xs"></div>
       </div>
 
@@ -197,7 +196,7 @@
       "LiveMax", "Hotel Metropolitan"
     ];
 
-    // 15 大連鎖商務飯店品牌標準日文前綴與純品牌統稱比對規則（用於自動補齊缺少分店後綴的店名）
+    // 15 大連鎖商務飯店品牌標準日文前綴與純品牌統稱比對規則
     const BRAND_NAME_CONFIG = {
       "Toyoko Inn": {
         prefix: "東横INN",
@@ -693,9 +692,63 @@
     };
 
     // ==========================================
-    // 3. 補充飯店清單與重點分店精確座標對照
+    // 3. 精準實測座標補充清單（含南海本線堺站、堺東站、JR熊本站）
     // ==========================================
     const SUPPLEMENTAL_HOTELS = [
+      {
+        id: "supp_sakai_toyoko_ekimae",
+        name: "東横INN堺駅前",
+        brand: "Toyoko Inn",
+        area: "大阪府 堺市 堺区 戎島町 南海堺駅西口",
+        region: "kansai",
+        lat: 34.5812,
+        lng: 135.4682,
+        station_name: "堺",
+        station_dist: 80,
+        airport_lines: ["RAIL_NANKAI"],
+        amenities: {
+          lawson: 90, seven: 140, familymart: 110,
+          starbucks: 150, doutor: 120, komeda: 9999,
+          mcdonalds: 130, mos: 9999, kfc: 170,
+          drugstore: 160, supermarket: 180
+        }
+      },
+      {
+        id: "supp_sakai_superhotel_maritima",
+        name: "スーパーホテル堺マリティマ",
+        brand: "Super Hotel",
+        area: "大阪府 堺市 堺区 大浜北町 南海堺駅南口",
+        region: "kansai",
+        lat: 34.5789,
+        lng: 135.4681,
+        station_name: "堺",
+        station_dist: 347,
+        airport_lines: ["RAIL_NANKAI"],
+        amenities: {
+          lawson: 210, seven: 160, familymart: 190,
+          starbucks: 380, doutor: 9999, komeda: 9999,
+          mcdonalds: 280, mos: 9999, kfc: 9999,
+          drugstore: 250, supermarket: 290
+        }
+      },
+      {
+        id: "supp_sakaihigashi_toyoko",
+        name: "東横INN堺東駅",
+        brand: "Toyoko Inn",
+        area: "大阪府 堺市 堺区 北瓦町 堺東",
+        region: "kansai",
+        lat: 34.5742,
+        lng: 135.4820,
+        station_name: "堺東",
+        station_dist: 130,
+        airport_lines: [],
+        amenities: {
+          lawson: 110, seven: 150, familymart: 95,
+          starbucks: 160, doutor: 140, komeda: 220,
+          mcdonalds: 170, mos: 210, kfc: 190,
+          drugstore: 130, supermarket: 200
+        }
+      },
       {
         id: "supp_kumamoto_superhotel",
         name: "スーパーホテル熊本駅前天然温泉",
@@ -715,44 +768,47 @@
         }
       },
       {
-        id: "supp_sakai_superhotel_maritima",
-        name: "スーパーホテル堺マリティマ",
-        brand: "Super Hotel",
-        area: "大阪府 堺市 堺区 宿院町西",
-        region: "kansai",
-        lat: 34.5784,
-        lng: 135.4718,
-        station_name: "堺",
-        station_dist: 347,
-        airport_lines: ["RAIL_NANKAI"],
+        id: "supp_kumamoto_toyoko_ekimae",
+        name: "東横INN熊本駅前",
+        brand: "Toyoko Inn",
+        area: "熊本県 熊本市 西区 春日",
+        region: "kyushu_south",
+        lat: 32.7905,
+        lng: 130.6901,
+        station_name: "熊本",
+        station_dist: 150,
+        airport_lines: ["BUS_KMJ"],
         amenities: {
-          lawson: 210, seven: 130, familymart: 95,
-          starbucks: 380, doutor: 9999, komeda: 9999,
-          mcdonalds: 340, mos: 9999, kfc: 9999,
-          drugstore: 260, supermarket: 290
+          lawson: 170, seven: 130, familymart: 110,
+          starbucks: 180, doutor: 9999, komeda: 9999,
+          mcdonalds: 200, mos: 9999, kfc: 220,
+          drugstore: 170, supermarket: 210
         }
       },
       {
-        id: "supp_sakaihigashi_toyoko",
-        name: "東横INN堺東駅",
+        id: "supp_kumamoto_toyoko_sakuramachi",
+        name: "東横INN熊本桜町バスターミナル前",
         brand: "Toyoko Inn",
-        area: "大阪府 堺市 堺区 北瓦町 堺東",
-        region: "kansai",
-        lat: 34.5736,
-        lng: 135.4832,
-        station_name: "堺東",
-        station_dist: 120,
-        airport_lines: [],
+        area: "熊本県 熊本市 中央区 桜町",
+        region: "kyushu_south",
+        lat: 32.8012,
+        lng: 130.7032,
+        station_name: "藤崎宮前",
+        station_dist: 666,
+        airport_lines: ["BUS_KMJ"],
         amenities: {
-          lawson: 90, seven: 110, familymart: 80,
-          starbucks: 130, doutor: 110, komeda: 180,
-          mcdonalds: 150, mos: 210, kfc: 190,
-          drugstore: 100, supermarket: 160
+          lawson: 120, seven: 98, familymart: 75,
+          starbucks: 150, doutor: 9999, komeda: 9999,
+          mcdonalds: 262, mos: 9999, kfc: 9999,
+          drugstore: 212, supermarket: 96
         }
       }
     ];
 
     const KNOWN_BRANCH_OVERRIDES = [
+      [34.5812, 135.4682, "Toyoko Inn", "東横INN 堺駅前"],
+      [34.5789, 135.4681, "Super Hotel", "スーパーホテル堺マリティマ"],
+      [34.5742, 135.4820, "Toyoko Inn", "東横INN 堺東駅"],
       [32.8012, 130.7032, "Toyoko Inn", "東横INN 熊本桜町バスターミナル前"],
       [32.7905, 130.6901, "Toyoko Inn", "東横INN 熊本駅前"],
       [32.7972, 130.7061, "Toyoko Inn", "東横INN 熊本新市街"],
@@ -762,32 +818,6 @@
     // 獨立預覽環境無外部 ./data/*.json 時自動啟用的內建代表飯店示範資料集
     const PREVIEW_SAMPLE_HOTELS = [
       ...SUPPLEMENTAL_HOTELS,
-      {
-        id: "prev_kumamoto_tyk_sakuramachi",
-        name: "東横イン",
-        brand: "Toyoko Inn",
-        area: "熊本県 熊本市 中央区 桜町",
-        region: "kyushu_south",
-        lat: 32.8012,
-        lng: 130.7032,
-        station_name: "藤崎宮前",
-        station_dist: 666,
-        airport_lines: ["BUS_KMJ"],
-        amenities: { lawson: 150, seven: 98, familymart: 75, starbucks: 180, mcdonalds: 262, drugstore: 212, supermarket: 96 }
-      },
-      {
-        id: "prev_kumamoto_tyk_ekimae",
-        name: "東横イン",
-        brand: "Toyoko Inn",
-        area: "熊本県 熊本市 西区 春日",
-        region: "kyushu_south",
-        lat: 32.7905,
-        lng: 130.6901,
-        station_name: "熊本",
-        station_dist: 225,
-        airport_lines: ["BUS_KMJ"],
-        amenities: { seven: 130, familymart: 253, starbucks: 195, mcdonalds: 210, supermarket: 212 }
-      },
       {
         id: "prev_kumamoto_sh_shoko",
         name: "スーパーホテル 熊本商工会議所前",
@@ -999,8 +1029,9 @@
     ];
 
     const FALLBACK_AREAS = [
-      [34.69, 135.50, "大阪府 大阪市 梅田 難波 心齋橋"], [35.01, 135.76, "京都府 京都市 河原町 烏丸"],
-      [34.69, 135.19, "兵庫県 兵庫縣 神戶市 三宮"], [35.68, 139.76, "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川"],
+      [34.69, 135.50, "大阪府 大阪市 梅田 難波 心齋橋"], [34.58, 135.47, "大阪府 堺市 堺駅 堺東"],
+      [35.01, 135.76, "京都府 京都市 河原町 烏丸"], [34.69, 135.19, "兵庫県 兵庫縣 神戶市 三宮"],
+      [35.68, 139.76, "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川"],
       [35.44, 139.63, "神奈川県 神奈川縣 橫濱市"], [35.60, 140.10, "千葉県 千葉縣 千葉市"],
       [35.17, 136.88, "愛知県 愛知縣 名古屋市 榮"], [34.71, 137.72, "静岡県 靜岡縣 濱松市 靜岡市"],
       [33.59, 130.40, "福岡県 福岡縣 福岡市 博多 天神 小倉"], [32.80, 130.70, "熊本県 熊本縣 熊本市"],
@@ -1019,7 +1050,7 @@
     ];
 
     // ==========================================
-    // 4. 關鍵字解析、距離計算、店名補全與路線聯動邏輯
+    // 4. 精準車站名稱解析、距離計算與店名補全引擎
     // ==========================================
     function calcDistanceM(lat1, lon1, lat2, lon2) {
       const R = 6371000;
@@ -1030,7 +1061,6 @@
       return Math.round(R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)));
     }
 
-    // 全 15 大連鎖品牌通用分店名稱自動補全引擎
     function enrichHotelName(h) {
       for (const [oLat, oLng, oBrand, oTitle] of KNOWN_BRANCH_OVERRIDES) {
         if (oBrand === h.brand && calcDistanceM(h.lat, h.lng, oLat, oLng) <= 150) {
@@ -1050,7 +1080,6 @@
       return rawName;
     }
 
-    // 判斷單一飯店是否位於指定鐵路／新幹線路線的停靠站上（含區域隔離保護）
     function hotelMatchesRoute(hotel, routeKey) {
       const routeInfo = RAILWAY_LINES_DB[routeKey];
       if (!routeInfo) return false;
@@ -1065,7 +1094,7 @@
       });
     }
 
-    // 解析搜尋欄文字：自動辨識內建路線別名、繁日漢字轉換與「站/駅」精準車站模式
+    // 解析搜尋欄文字：支援精準車站模式（如「堺站」、「堺駅」）並防止「堺」誤撞「堺筋本町」
     function parseSearchQuery(rawInput) {
       let raw = (rawInput || "").trim().toLowerCase();
       if (!raw) return { tokens: [], isStationMode: false, queryRouteKeys: [] };
@@ -1073,7 +1102,7 @@
       const queryRouteKeys = [];
       let remaining = raw;
 
-      // 依別名長度由長到短比對，避免短詞先切碎長路線名
+      // 依別名長度由長到短比對
       const aliasPairs = [];
       for (const [rKey, info] of Object.entries(RAILWAY_LINES_DB)) {
         for (const al of (info.aliases || [])) {
@@ -1100,6 +1129,25 @@
         isStationMode,
         queryRouteKeys
       };
+    }
+
+    // 判斷單一飯店是否符合搜尋文字（含精準車站比對與單字「堺」防誤撞保護）
+    function hotelMatchesTokens(h, tokens, isStationMode) {
+      if (tokens.length === 0) return true;
+      const cleanHotelSt = h._stationLower.replace(/駅$/, "").trim();
+
+      if (isStationMode) {
+        // 只要輸入帶有「站」或「駅」（如「堺站」、「堺駅」、「熊本站」），嚴格比對車站全名，排除「堺筋本町」「堺東」
+        return tokens.every(tk => cleanHotelSt === tk);
+      }
+
+      return tokens.every(tk => {
+        // 若使用者只打單一字「堺」（未打「堺筋」或「堺東」），優先匹配站名為「堺」或行政區「堺市」，排除大阪市中心的「堺筋本町」
+        if (tk === "堺") {
+          return cleanHotelSt === "堺" || h._areaLower.includes("堺市");
+        }
+        return h._fullSearchStr.includes(tk);
+      });
     }
 
     // 路線聯動下拉選單與複選標籤管理
@@ -1399,10 +1447,29 @@
       const merged = [...rawList];
       const relevantSupps = SUPPLEMENTAL_HOTELS.filter(s => regionKey === 'all' || s.region === regionKey);
       for (const s of relevantSupps) {
-        const exists = merged.some(h => h.brand === s.brand && calcDistanceM(h.lat, h.lng, s.lat, s.lng) < 120);
-        if (!exists) merged.push(s);
+        const idx = merged.findIndex(h => h.brand === s.brand && calcDistanceM(h.lat, h.lng, s.lat, s.lng) < 250);
+        if (idx >= 0) {
+          // 若雲端 JSON 已有同座標分店，以精確校正後的名稱與座標更新
+          merged[idx] = { ...merged[idx], name: s.name, lat: s.lat, lng: s.lng, station_name: s.station_name, station_dist: s.station_dist };
+        } else {
+          merged.push(s);
+        }
       }
       return merged;
+    }
+
+    function prepareHotelsList(rawList) {
+      return rawList.map(h => {
+        const displayName = enrichHotelName(h);
+        const areaStr = inferArea(h);
+        return {
+          ...h,
+          name: displayName,
+          _areaLower: areaStr.toLowerCase(),
+          _stationLower: (h.station_name || '').toLowerCase(),
+          _fullSearchStr: `${displayName} ${h.station_name} ${h.brand} ${areaStr}`.toLowerCase()
+        };
+      });
     }
 
     async function switchDataset(ds) {
@@ -1427,30 +1494,14 @@
         const res = await fetch(`./data/hotels_${ds}.json?t=${Date.now()}`);
         if (!res.ok) throw new Error('JSON_UNAVAILABLE');
         const raw = mergeSupplemental(await res.json(), ds);
-        allHotels = raw.map(h => {
-          const displayName = enrichHotelName(h);
-          return {
-            ...h,
-            name: displayName,
-            _stationLower: (h.station_name || '').toLowerCase(),
-            _fullSearchStr: `${displayName} ${h.station_name} ${h.brand} ${inferArea(h)}`.toLowerCase()
-          };
-        });
+        allHotels = prepareHotelsList(raw);
         statusEl.textContent = `🟢 已連線真實圖資（共載入 ${allHotels.length} 間飯店）`;
         statusEl.className = 'text-xs text-emerald-400 mt-0.5';
       } catch (err) {
         const sampleBase = ds === 'all'
           ? PREVIEW_SAMPLE_HOTELS
           : PREVIEW_SAMPLE_HOTELS.filter(h => h.region === ds);
-        allHotels = sampleBase.map(h => {
-          const displayName = enrichHotelName(h);
-          return {
-            ...h,
-            name: displayName,
-            _stationLower: (h.station_name || '').toLowerCase(),
-            _fullSearchStr: `${displayName} ${h.station_name} ${h.brand} ${inferArea(h)}`.toLowerCase()
-          };
-        });
+        allHotels = prepareHotelsList(sampleBase);
         statusEl.textContent = `🟢 預覽模式（已載入內建示範圖資，共 ${allHotels.length} 間代表飯店）`;
         statusEl.className = 'text-xs text-emerald-400 mt-0.5';
       }
@@ -1499,13 +1550,8 @@
 
           if (selAms.length > 0 && !selAms.every(am => (h.amenities?.[am] ?? 9999) <= effectiveAmDist)) return false;
 
-          if (tokens.length > 0) {
-            if (isStationMode) {
-              if (!tokens.every(tk => h._stationLower.includes(tk))) return false;
-            } else {
-              if (!tokens.every(tk => h._fullSearchStr.includes(tk))) return false;
-            }
-          }
+          if (!hotelMatchesTokens(h, tokens, isStationMode)) return false;
+
           return true;
         })
         .map(h => {
@@ -1530,7 +1576,7 @@
           sortLabel.textContent = '🚃 已鎖定所選路線沿線車站（依距離車站排序）';
           sortLabel.className = 'text-xs text-violet-700 font-semibold';
         } else if (isStationMode && tokens.length > 0) {
-          sortLabel.textContent = '🚉 已鎖定該車站周邊（依距離車站排序）';
+          sortLabel.textContent = '🚉 已精準鎖定該車站周邊（依距離車站排序）';
           sortLabel.className = 'text-xs text-blue-600 font-semibold';
         } else {
           sortLabel.textContent = '依距離車站由近到遠排序';
