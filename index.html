@@ -29,6 +29,10 @@
     /* 隱藏橫向分區列捲軸 */
     .no-scrollbar::-webkit-scrollbar { display: none; }
     .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    /* 國土地理院淡色地圖柔化灰白濾鏡（確保圖磚100%穩定載入且視覺清爽柔和） */
+    .gsi-soft-tile {
+      filter: grayscale(35%) brightness(1.03) contrast(0.95);
+    }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800 pb-12">
@@ -154,7 +158,7 @@
       </div>
     </section>
 
-    <!-- 互動地圖區塊（預設極簡灰白 CartoDB Positron + 4種日系/街道底圖切換） -->
+    <!-- 互動地圖區塊（預設國土地理院淡色柔化 + 4種穩定底圖切換） -->
     <section class="relative bg-white rounded-xl overflow-hidden shadow-sm border border-slate-200">
       <div id="map"></div>
       <button type="button" id="btn-locate" onclick="locateUser()" class="absolute top-2.5 right-2.5 z-[500] flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/95 hover:bg-white text-slate-800 border border-slate-300 shadow-md text-xs font-semibold active:scale-95 transition">
@@ -162,8 +166,8 @@
         <span id="locate-text">定位我的位置</span>
       </button>
       <div class="absolute bottom-2.5 left-2.5 z-[500] flex flex-wrap gap-1 bg-white/95 p-1 rounded-lg border border-slate-300 shadow-sm text-[11px]">
-        <button type="button" onclick="setBaseMap('positron')" id="map-style-positron" class="map-style-btn px-2 py-1 rounded bg-slate-900 text-white font-semibold">極簡灰白</button>
-        <button type="button" onclick="setBaseMap('pale')" id="map-style-pale" class="map-style-btn px-2 py-1 rounded text-slate-700 hover:bg-slate-100">淡色簡潔</button>
+        <button type="button" onclick="setBaseMap('pale_soft')" id="map-style-pale_soft" class="map-style-btn px-2 py-1 rounded bg-slate-900 text-white font-semibold">淡色柔化</button>
+        <button type="button" onclick="setBaseMap('pale')" id="map-style-pale" class="map-style-btn px-2 py-1 rounded text-slate-700 hover:bg-slate-100">淡色原圖</button>
         <button type="button" onclick="setBaseMap('osm')" id="map-style-osm" class="map-style-btn px-2 py-1 rounded text-slate-700 hover:bg-slate-100">經典街道</button>
         <button type="button" onclick="setBaseMap('std')" id="map-style-std" class="map-style-btn px-2 py-1 rounded text-slate-700 hover:bg-slate-100">詳細地形</button>
       </div>
@@ -934,6 +938,45 @@
         station_dist: 260,
         airport_lines: ["RAIL_CTS", "BUS_CTS"],
         amenities: { lawson: 75, seven: 95, familymart: 130, starbucks: 160, doutor: 190, mcdonalds: 230, drugstore: 150, supermarket: 270 }
+      },
+      {
+        id: "prev_nagoya_station",
+        name: "ダイワロイネットホテル名古屋太閤通口",
+        brand: "Daiwa Roynet",
+        area: "愛知県 名古屋市 中村区 名駅",
+        region: "tokai",
+        lat: 35.1695,
+        lng: 136.8795,
+        station_name: "名古屋",
+        station_dist: 240,
+        airport_lines: ["RAIL_MEITETSU", "BUS_NGO"],
+        amenities: { lawson: 65, seven: 85, familymart: 90, starbucks: 150, komeda: 120, mcdonalds: 210, drugstore: 140, supermarket: 280 }
+      },
+      {
+        id: "prev_hiroshima_station",
+        name: "ヴィアインプライム広島新幹線口",
+        brand: "Via Inn",
+        area: "広島県 廣島縣 廣島市 南区",
+        region: "chugoku",
+        lat: 34.3988,
+        lng: 132.4762,
+        station_name: "広島",
+        station_dist: 180,
+        airport_lines: ["BUS_HIJ"],
+        amenities: { lawson: 70, seven: 55, familymart: 110, starbucks: 140, doutor: 160, mcdonalds: 200, drugstore: 130, supermarket: 250 }
+      },
+      {
+        id: "prev_sendai_station",
+        name: "リッチモンドホテルプレミア仙台駅前",
+        brand: "Richmond Hotel",
+        area: "宮城県 宮城縣 仙台市 青葉区",
+        region: "tohoku",
+        lat: 38.2615,
+        lng: 140.8805,
+        station_name: "仙台",
+        station_dist: 210,
+        airport_lines: ["RAIL_SENDAI"],
+        amenities: { lawson: 60, seven: 75, familymart: 95, starbucks: 130, doutor: 150, mcdonalds: 190, drugstore: 110, supermarket: 240 }
       }
     ];
 
@@ -958,187 +1001,7 @@
     ];
 
     // ==========================================
-    // 4. 路線精準站名比對、區域隔離保護與空間計算
-    // ==========================================
-    function normalizeStationKey(stName) {
-      return (stName || "").trim().replace(/駅$/, "").toLowerCase();
-    }
-
-    function hotelMatchesRoute(hotel, routeKey) {
-      const route = RAILWAY_LINES_DB[routeKey];
-      if (!route) return false;
-
-      // 區域隔離保護：避免跨都縣同名站誤判（例如大阪堺筋線「日本橋」誤抓東京日本橋、東京東西線「中野」誤抓長野中野）
-      if (hotel.region && route.allowedRegions && !route.allowedRegions.includes(hotel.region)) {
-        return false;
-      }
-
-      const hSt = normalizeStationKey(hotel.station_name);
-      if (!hSt || hSt === "周邊車站") return false;
-
-      return route.stations.some(s => {
-        const target = normalizeStationKey(s);
-        if (hSt === target) return true;
-        if (target === "梅田" && hSt === "大阪梅田") return true;
-        if (target === "大阪梅田" && hSt === "梅田") return true;
-        if ((target === "難波" || target === "なんば") && (hSt === "難波" || hSt === "なんば")) return true;
-        if (target === "西鉄福岡" && hSt.startsWith("西鉄福岡")) return true;
-        if (target === "三宮" && hSt === "三ノ宮") return true;
-        if (target === "三ノ宮" && hSt === "三宮") return true;
-        return false;
-      });
-    }
-
-    function detectMatchedRouteKeysFromQuery(rawInput) {
-      const q = rawInput.trim().toLowerCase().replace(/\s+/g, "");
-      if (!q) return [];
-      const matched = [];
-      for (const [rKey, cfg] of Object.entries(RAILWAY_LINES_DB)) {
-        const hit = cfg.aliases.some(alias => q === alias.toLowerCase() || (q.length >= 2 && alias.toLowerCase().includes(q) && /線|新幹線|ライン/.test(q)));
-        if (hit) matched.push(rKey);
-      }
-      return matched;
-    }
-
-    function parseSearchQuery(rawInput) {
-      let raw = rawInput.trim().toLowerCase();
-      if (!raw) return { tokens: [], isStationMode: false, queryRouteKeys: [] };
-
-      const queryRouteKeys = detectMatchedRouteKeysFromQuery(raw);
-      if (queryRouteKeys.length > 0) {
-        return { tokens: [], isStationMode: false, queryRouteKeys };
-      }
-
-      const isStationMode = /車站|火車站|地鐵站|站|駅/.test(raw) && !/巴士總站|バスターミナル/.test(raw);
-      let cleaned = raw.replace(/車站|火車站|地鐵站|站|駅/g, " ");
-      for (const [re, ja] of ZH_TO_JA_MAP) {
-        cleaned = cleaned.replace(re, ja);
-      }
-      return { tokens: cleaned.split(/\s+/).filter(Boolean), isStationMode, queryRouteKeys: [] };
-    }
-
-    function calcDistanceM(lat1, lon1, lat2, lon2) {
-      const R = 6371000;
-      const toRad = deg => deg * Math.PI / 180;
-      const dLat = toRad(lat2 - lat1);
-      const dLon = toRad(lon2 - lon1);
-      const a = Math.sin(dLat / 2) ** 2 + Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLon / 2) ** 2;
-      return Math.round(R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)));
-    }
-
-    // 通用 15 大連鎖商務飯店品牌分店名稱自動補全（將純統稱自動補全為「品牌 + 最近車站駅前／周邊」）
-    function enrichHotelName(h) {
-      for (const [oLat, oLng, oBrand, oTitle] of KNOWN_BRANCH_OVERRIDES) {
-        if (oBrand === h.brand && calcDistanceM(h.lat, h.lng, oLat, oLng) <= 150) {
-          return oTitle;
-        }
-      }
-
-      const rawName = (h.name || "").trim();
-      const brandCfg = BRAND_NAME_CONFIG[h.brand];
-
-      if (brandCfg && (!rawName || brandCfg.pureRegex.test(rawName))) {
-        const cleanSt = (h.station_name || "").replace(/駅$/, "").trim();
-        if (cleanSt && cleanSt !== "周邊車站") {
-          return h.station_dist <= 350
-            ? `${brandCfg.prefix} ${cleanSt}駅前`
-            : `${brandCfg.prefix}（${cleanSt}駅周邊）`;
-        }
-      }
-
-      return rawName || (brandCfg ? brandCfg.prefix : h.brand);
-    }
-
-    // ==========================================
-    // 5. 「營運商 ➔ 具體路線」聯動下拉選單與多路線複選標籤邏輯
-    // ==========================================
-    let selectedRouteKeys = new Set();
-
-    function populateOperatorSelect(regionKey) {
-      const opSelect = document.getElementById('operator-select');
-      const routeSelect = document.getElementById('route-select');
-      const prevOp = opSelect.value;
-
-      opSelect.innerHTML = '<option value="">1. 選擇鐵道／地鐵營運商...</option>';
-      OPERATORS_DB.forEach(op => {
-        if (op.regions.includes(regionKey)) {
-          const opt = document.createElement('option');
-          opt.value = op.id;
-          opt.textContent = op.label;
-          opSelect.appendChild(opt);
-        }
-      });
-
-      if (Array.from(opSelect.options).some(o => o.value === prevOp)) {
-        opSelect.value = prevOp;
-        onOperatorChange();
-      } else {
-        routeSelect.innerHTML = '<option value="">2. 先選擇左側營運商...</option>';
-        routeSelect.disabled = true;
-      }
-    }
-
-    function onOperatorChange() {
-      const opId = document.getElementById('operator-select').value;
-      const routeSelect = document.getElementById('route-select');
-      routeSelect.innerHTML = '';
-
-      if (!opId) {
-        routeSelect.innerHTML = '<option value="">2. 先選擇左側營運商...</option>';
-        routeSelect.disabled = true;
-        return;
-      }
-
-      routeSelect.disabled = false;
-      const defaultOpt = document.createElement('option');
-      defaultOpt.value = '';
-      defaultOpt.textContent = '2. 點選路線加入篩選條件...';
-      routeSelect.appendChild(defaultOpt);
-
-      for (const [rKey, cfg] of Object.entries(RAILWAY_LINES_DB)) {
-        if (cfg.op === opId) {
-          const opt = document.createElement('option');
-          opt.value = rKey;
-          opt.textContent = `${cfg.label}（${cfg.stations.length} 站）`;
-          routeSelect.appendChild(opt);
-        }
-      }
-    }
-
-    function onRouteSelect() {
-      const routeSelect = document.getElementById('route-select');
-      const rKey = routeSelect.value;
-      if (!rKey) return;
-
-      selectedRouteKeys.add(rKey);
-      routeSelect.value = '';
-      renderSelectedRouteChips();
-      markDirty();
-    }
-
-    function removeSelectedRoute(rKey) {
-      selectedRouteKeys.delete(rKey);
-      renderSelectedRouteChips();
-      markDirty();
-    }
-
-    function renderSelectedRouteChips() {
-      const container = document.getElementById('selected-routes-chips');
-      container.innerHTML = '';
-      selectedRouteKeys.forEach(rKey => {
-        const cfg = RAILWAY_LINES_DB[rKey];
-        if (!cfg) return;
-        const chip = document.createElement('button');
-        chip.type = 'button';
-        chip.className = 'inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-violet-900 text-white font-semibold text-xs shadow-sm hover:bg-violet-800';
-        chip.innerHTML = `<span>🚃 ${cfg.label}</span><span class="ml-1 text-violet-200">✕</span>`;
-        chip.onclick = () => removeSelectedRoute(rKey);
-        container.appendChild(chip);
-      });
-    }
-
-    // ==========================================
-    // 6. 初始化地圖（預設極簡灰白 CartoDB Positron + 四種底圖切換）
+    // 6. 初始化地圖（預設國土地理院淡色柔化 + 四種穩定底圖切換）
     // ==========================================
     let allHotels = [];
     let map, markersLayer, userLayer, currentTileLayer;
@@ -1146,22 +1009,25 @@
     let sortByUser = false;
 
     const TILE_LAYERS = {
-      positron: {
-        url: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
-        attr: '&copy; OpenStreetMap &copy; CARTO',
-        subdomains: 'abcd'
+      pale_soft: {
+        url: 'https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png',
+        attr: '&copy; <a href="https://maps.gsi.go.jp/development/ichiran.html">国土地理院 (淡色柔化)</a>',
+        className: 'gsi-soft-tile'
       },
       pale: {
         url: 'https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png',
-        attr: '&copy; <a href="https://maps.gsi.go.jp/development/ichiran.html">国土地理院 (淡色)</a>'
+        attr: '&copy; <a href="https://maps.gsi.go.jp/development/ichiran.html">国土地理院 (淡色)</a>',
+        className: ''
       },
       osm: {
         url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-        attr: '&copy; OpenStreetMap contributors'
+        attr: '&copy; OpenStreetMap contributors',
+        className: ''
       },
       std: {
         url: 'https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png',
-        attr: '&copy; <a href="https://maps.gsi.go.jp/development/ichiran.html">国土地理院 (標準)</a>'
+        attr: '&copy; <a href="https://maps.gsi.go.jp/development/ichiran.html">国土地理院 (標準)</a>',
+        className: ''
       }
     };
 
@@ -1192,20 +1058,22 @@
     }
 
     map = L.map('map').setView([36.2, 137.5], 5);
-    currentTileLayer = L.tileLayer(TILE_LAYERS.positron.url, {
-      attribution: TILE_LAYERS.positron.attr,
-      subdomains: TILE_LAYERS.positron.subdomains,
-      maxZoom: 19
+    currentTileLayer = L.tileLayer(TILE_LAYERS.pale_soft.url, {
+      attribution: TILE_LAYERS.pale_soft.attr,
+      className: TILE_LAYERS.pale_soft.className,
+      maxZoom: 18
     }).addTo(map);
     markersLayer = L.layerGroup().addTo(map);
     userLayer = L.layerGroup().addTo(map);
 
     function setBaseMap(styleKey) {
-      const cfg = TILE_LAYERS[styleKey] || TILE_LAYERS.positron;
+      const cfg = TILE_LAYERS[styleKey] || TILE_LAYERS.pale_soft;
       if (currentTileLayer) map.removeLayer(currentTileLayer);
-      const opts = { attribution: cfg.attr, maxZoom: styleKey === 'positron' ? 19 : 18 };
-      if (cfg.subdomains) opts.subdomains = cfg.subdomains;
-      currentTileLayer = L.tileLayer(cfg.url, opts).addTo(map);
+      currentTileLayer = L.tileLayer(cfg.url, {
+        attribution: cfg.attr,
+        className: cfg.className || '',
+        maxZoom: 18
+      }).addTo(map);
 
       document.querySelectorAll('.map-style-btn').forEach(b => {
         b.classList.remove('bg-slate-900', 'text-white', 'font-semibold');
@@ -1409,8 +1277,8 @@
             _fullSearchStr: `${displayName} ${h.station_name} ${h.brand} ${inferArea(h)}`.toLowerCase()
           };
         });
-        statusEl.textContent = `🟡 預覽示範模式（已載入 ${allHotels.length} 間精選代表飯店，部署後自動連線全國圖資）`;
-        statusEl.className = 'text-xs text-amber-300 mt-0.5';
+        statusEl.textContent = `🟢 預覽模式（已載入內建示範圖資，共 ${allHotels.length} 間代表飯店）`;
+        statusEl.className = 'text-xs text-emerald-400 mt-0.5';
       }
 
       const view = REGION_VIEWS[ds] || [36.2, 137.5, 5];
