@@ -1,10 +1,15 @@
-import json, math, os, re, sys, time
+import json
+import math
+import os
+import re
+import sys
+import time
 from collections import defaultdict
 import requests
 
 DATA_DIR = "./data"
 
-# 涵蓋全日本 8 大區核心都市圈與重要衛星轉乘樞紐
+# 涵蓋全日本 8 大區核心都市圈與重要衛星轉乘樞紐（含堺市、舞濱、川崎、橫濱、大宮、小倉等）
 REGIONS_MAP = {
     "kansai": {
         "name": "關西圈(京阪神・堺)",
@@ -14,7 +19,7 @@ REGIONS_MAP = {
             ("京都市", 35.0036, 135.7681, 8000),
             ("神戶市", 34.6901, 135.1955, 6000),
             ("奈良市", 34.6851, 135.8048, 4500),
-        ]
+        ],
     },
     "tokyo": {
         "name": "關東(首都圈)",
@@ -24,7 +29,7 @@ REGIONS_MAP = {
             ("橫濱・川崎", 35.4750, 139.6550, 9500),
             ("千葉・舞濱", 35.6200, 139.9800, 11000),
             ("埼玉大宮", 35.9063, 139.6240, 5000),
-        ]
+        ],
     },
     "tokai": {
         "name": "東海(名古屋・浜松・靜岡)",
@@ -32,7 +37,7 @@ REGIONS_MAP = {
             ("名古屋市", 35.1709, 136.8815, 10000),
             ("濱松市", 34.7108, 137.7261, 6000),
             ("靜岡市", 34.9756, 138.3828, 6000),
-        ]
+        ],
     },
     "kyushu_north": {
         "name": "北九州(福岡・小倉・長崎)",
@@ -40,7 +45,7 @@ REGIONS_MAP = {
             ("福岡市", 33.5902, 130.4017, 10000),
             ("北九州市小倉", 33.8834, 130.8752, 6000),
             ("長崎市", 32.7503, 129.8777, 5000),
-        ]
+        ],
     },
     "kyushu_south": {
         "name": "南九州(熊本・鹿兒島・宮崎)",
@@ -48,7 +53,7 @@ REGIONS_MAP = {
             ("熊本市", 32.8031, 130.7079, 7500),
             ("鹿兒島市", 31.5966, 130.5571, 7000),
             ("宮崎市", 31.9077, 131.4202, 5000),
-        ]
+        ],
     },
     "hokkaido": {
         "name": "北海道(札幌・函館・旭川)",
@@ -56,7 +61,7 @@ REGIONS_MAP = {
             ("札幌市", 43.0618, 141.3545, 8500),
             ("函館市", 41.7687, 140.7288, 6000),
             ("旭川市", 43.7706, 142.3650, 6000),
-        ]
+        ],
     },
     "chugoku": {
         "name": "中國・四國(廣島・岡山・高松)",
@@ -65,7 +70,7 @@ REGIONS_MAP = {
             ("岡山市", 34.6551, 133.9195, 6000),
             ("高松市", 34.3428, 134.0466, 6000),
             ("松山市", 33.8392, 132.7657, 5000),
-        ]
+        ],
     },
     "tohoku": {
         "name": "東北(仙台・青森・盛岡・郡山)",
@@ -74,7 +79,7 @@ REGIONS_MAP = {
             ("青森市", 40.8222, 140.7474, 6000),
             ("盛岡市", 39.7020, 141.1545, 6000),
             ("郡山市", 37.3981, 140.3881, 5000),
-        ]
+        ],
     },
 }
 
@@ -117,11 +122,13 @@ OVERPASS_URLS = [
     "https://overpass.kumi.systems/api/interpreter",
     "https://maps.mail.ru/osm/tools/overpass/api/interpreter",
 ]
+
 REQUEST_HEADERS = {
-    "User-Agent": "JapanHotelFinder/2026.11-BatchChunked (https://github.com/artytien/japan-hotel-finder)",
+    "User-Agent": "JapanHotelFinder/2026.11-SinglePass (https://github.com/artytien/japan-hotel-finder)",
     "Accept": "application/json",
 }
 
+# 15 大連鎖商務飯店品牌正規辨識規則與日文標準名稱前綴
 BRAND_PATTERNS = [
     ("Via Inn", r"ヴィアイン|via\s*inn", "ヴィアイン"),
     ("Dormy Inn", r"ドーミーイン|dormy\s*inn|御宿\s*野乃|野乃|onyado\s*nono", "ドーミーイン"),
@@ -139,6 +146,17 @@ BRAND_PATTERNS = [
     ("Tokyu Stay", r"東急ステイ|tokyu\s*stay", "東急ステイ"),
     ("Hotel Metropolitan", r"ホテルメトロポリタン|metropolitan", "ホテルメトロポリタン"),
 ]
+
+# 伺服器端直接過濾 15 大連鎖品牌（含子品牌別名），大幅減少資料傳輸量避免 502/504 逾時
+OVERPASS_BRAND_REGEX = (
+    "ヴィアイン|via.?inn|ドーミーイン|dormy.?inn|御宿.?野乃|onyado.?nono|"
+    "東横イン|東橫イン|東横inn|toyoko.?inn|スーパーホテル|super.?hotel|"
+    "ルートイン|route.?inn|コンフォート|comfort.?(hotel|inn)|"
+    "アパホテル|apa.?hotel|リブマックス|livemax|フレッサイン|fresa.?inn|"
+    "ワシントンホテル|R&Bホテル|washington.?hotel|リッチモンドホテル|richmond.?hotel|"
+    "ダイワロイネット|daiwa.?roynet|三井ガーデン|mitsui.?garden|"
+    "東急ステイ|tokyu.?stay|メトロポリタン|metropolitan"
+)
 
 PURE_BRAND_REGEX = re.compile(
     r"^(東横イン|東橫イン|東横inn|toyoko\s*inn|アパホテル|apa\s*hotel|スーパーホテル|super\s*hotel|"
@@ -189,8 +207,11 @@ AIRPORT_BUS_HUBS = [
 ]
 
 GRID_SIZE = 0.02
+
+
 def get_grid_cell(lat, lng):
     return int(math.floor(lat / GRID_SIZE)), int(math.floor(lng / GRID_SIZE))
+
 
 def build_spatial_grid(points):
     grid = defaultdict(list)
@@ -198,12 +219,14 @@ def build_spatial_grid(points):
         grid[get_grid_cell(pt["lat"], pt["lng"])].append(pt)
     return grid
 
+
 def haversine_m(lat1, lon1, lat2, lon2):
     R = 6371000.0
     p1, p2 = math.radians(lat1), math.radians(lat2)
     dp, dl = math.radians(lat2 - lat1), math.radians(lon2 - lon1)
     a = math.sin(dp / 2.0) ** 2 + math.cos(p1) * math.cos(p2) * math.sin(dl / 2.0) ** 2
     return int(round(R * 2.0 * math.atan2(math.sqrt(a), math.sqrt(1 - a))))
+
 
 def find_nearest_in_grid(lat, lng, grid, max_dist=9999):
     cx, cy = get_grid_cell(lat, lng)
@@ -216,28 +239,36 @@ def find_nearest_in_grid(lat, lng, grid, max_dist=9999):
                     min_d, nearest = d, item
     return min_d, nearest
 
+
 def get_coords(el):
+    # 優先取多邊形建築物的幾何中心 (center)，確保地標精準落在建築物正中央
     if "center" in el:
         return el["center"]["lat"], el["center"]["lon"]
     if "lat" in el and "lon" in el:
         return el["lat"], el["lon"]
     return None, None
 
+
 def query_overpass(q, label):
-    for attempt in range(2):
+    for attempt in range(3):
         for url in OVERPASS_URLS:
             try:
                 print(f"📡 [{label}] 請求 {url} ...")
-                r = requests.post(url, data={"data": q}, headers=REQUEST_HEADERS, timeout=65)
+                r = requests.post(url, data={"data": q}, headers=REQUEST_HEADERS, timeout=55)
                 r.raise_for_status()
-                return r.json().get("elements", [])
+                data = r.json()
+                elements = data.get("elements", [])
+                print(f"✅ [{label}] 成功取得 {len(elements)} 筆圖資節點")
+                return elements
             except Exception as e:
-                print(f"⚠️ [{label}] 異常 ({e})，3秒後切換...")
-                time.sleep(3)
-        time.sleep(5)
-    raise RuntimeError(f"❌ [{label}] 無法完成查詢。")
+                print(f"⚠️ [{label}] 異常 ({e})，6秒後切換節點...")
+                time.sleep(6)
+        time.sleep(12)
+    raise RuntimeError(f"❌ [{label}] 多次重試後仍無法完成查詢。")
+
 
 def detect_hotel_brand(tags):
+    # 排除附設餐廳、咖啡廳、停車場與便利商店等非住宿節點
     if tags.get("amenity") in ["restaurant", "cafe", "parking", "fast_food", "bicycle_parking"] or tags.get("shop"):
         return None, None
     txt = " ".join([
@@ -248,6 +279,7 @@ def detect_hotel_brand(tags):
         if re.search(pat, txt, re.IGNORECASE):
             return b, ja_prefix
     return None, None
+
 
 def build_full_hotel_name(tags, brand, ja_prefix, st_name, st_dist):
     base_name = (tags.get("official_name") or tags.get("name:ja") or tags.get("name") or "").strip()
@@ -268,6 +300,7 @@ def build_full_hotel_name(tags, brand, ja_prefix, st_name, st_dist):
         return ja_prefix
     return base_name
 
+
 def get_area_info(lat, lng, tags):
     osm_addr = " ".join([
         tags.get(k, "")
@@ -276,50 +309,77 @@ def get_area_info(lat, lng, tags):
     best_city = min(CITY_AREAS, key=lambda c: haversine_m(lat, lng, c[0], c[1]))[2]
     return f"{osm_addr} {best_city}".strip()
 
+
 def classify_amenity(tags):
     shop, am = tags.get("shop", ""), tags.get("amenity", "")
     txt = " ".join([tags.get(k, "") for k in ["name", "name:ja", "name:en", "brand", "brand:ja", "brand:en"]]).lower()
+
     if shop == "convenience" or any(k in txt for k in ["ローソン", "セブン", "ファミリーマート"]):
-        if any(k in txt for k in ["ローソン", "lawson"]): return "lawson"
-        if any(k in txt for k in ["セブン", "7-eleven", "seven-eleven", "7 eleven"]): return "seven"
-        if any(k in txt for k in ["ファミリーマート", "ファミマ", "familymart", "family mart"]): return "familymart"
+        if any(k in txt for k in ["ローソン", "lawson"]):
+            return "lawson"
+        if any(k in txt for k in ["セブン", "7-eleven", "seven-eleven", "7 eleven"]):
+            return "seven"
+        if any(k in txt for k in ["ファミリーマート", "ファミマ", "familymart", "family mart"]):
+            return "familymart"
+
     if am == "cafe" or any(k in txt for k in ["スターバックス", "starbucks", "ドトール", "doutor", "コメダ", "komeda"]):
-        if any(k in txt for k in ["スターバックス", "スタバ", "starbucks"]): return "starbucks"
-        if any(k in txt for k in ["ドトール", "doutor"]): return "doutor"
-        if any(k in txt for k in ["コメダ", "komeda"]): return "komeda"
+        if any(k in txt for k in ["スターバックス", "スタバ", "starbucks"]):
+            return "starbucks"
+        if any(k in txt for k in ["ドトール", "doutor"]):
+            return "doutor"
+        if any(k in txt for k in ["コメダ", "komeda"]):
+            return "komeda"
+
     if am == "fast_food" or any(k in txt for k in ["マクドナルド", "mcdonald", "モスバーガー", "mos burger", "ケンタッキー", "kfc"]):
-        if any(k in txt for k in ["マクドナルド", "マック", "mcdonald"]): return "mcdonalds"
-        if any(k in txt for k in ["モスバーガー", "mos burger", "mosburger"]): return "mos"
-        if any(k in txt for k in ["ケンタッキー", "kfc", "kentucky"]): return "kfc"
+        if any(k in txt for k in ["マクドナルド", "マック", "mcdonald"]):
+            return "mcdonalds"
+        if any(k in txt for k in ["モスバーガー", "mos burger", "mosburger"]):
+            return "mos"
+        if any(k in txt for k in ["ケンタッキー", "kfc", "kentucky"]):
+            return "kfc"
+
     if shop in ["chemist", "pharmacy", "cosmetics"] or am == "pharmacy" or any(
         k in txt for k in ["マツモトキヨシ", "ウエルシア", "ダイコク", "スギ薬局", "ツルハ", "ココカラファイン", "サンドラッグ", "コスモス", "ドラッグ", "薬局", "drug"]
     ):
         return "drugstore"
+
     if shop == "supermarket" or any(
         k in txt for k in ["ライフ", "玉出", "業務スーパー", "イオン", "マックスバリュ", "成城石井", "コーヨー", "kohyo", "サンディ", "ロピア", "イズミヤ", "マルエツ", "まいばすけっと", "オーケー", "ゆめタウン", "サニー"]
     ):
         return "supermarket"
+
     return None
+
 
 def detect_airport_access(st_name, st_tags, h_lat, h_lng, r_key):
     lines = set()
     op = " ".join([st_name, st_tags.get("operator", ""), st_tags.get("network", ""), st_tags.get("line", "")])
+
     for code, kws in AIRPORT_RAIL_RULES.items():
         if any(kw in st_name for kw in kws):
-            if code in ["RAIL_HARUKA", "RAIL_NANKAI"] and r_key != "kansai": continue
-            if code in ["RAIL_NEX", "RAIL_KEISEI", "RAIL_KEIKYU", "RAIL_MONO"] and r_key != "tokyo": continue
-            if code == "RAIL_MEITETSU" and r_key != "tokai": continue
-            if code == "RAIL_FUKUOKA" and r_key != "kyushu_north": continue
-            if code == "RAIL_CTS" and r_key != "hokkaido": continue
-            if code == "RAIL_SENDAI" and r_key != "tohoku": continue
+            if code in ["RAIL_HARUKA", "RAIL_NANKAI"] and r_key != "kansai":
+                continue
+            if code in ["RAIL_NEX", "RAIL_KEISEI", "RAIL_KEIKYU", "RAIL_MONO"] and r_key != "tokyo":
+                continue
+            if code == "RAIL_MEITETSU" and r_key != "tokai":
+                continue
+            if code == "RAIL_FUKUOKA" and r_key != "kyushu_north":
+                continue
+            if code == "RAIL_CTS" and r_key != "hokkaido":
+                continue
+            if code == "RAIL_SENDAI" and r_key != "tohoku":
+                continue
             lines.add(code)
 
     if r_key == "kansai" and ("南海" in op or "nankai" in op.lower()):
         lines.add("RAIL_NANKAI")
     if r_key == "tokyo":
-        if "京成" in op or "keisei" in op.lower(): lines.add("RAIL_KEISEI")
-        if "京急" in op or "京浜急行" in op or "keikyu" in op.lower(): lines.add("RAIL_KEIKYU")
-        if "東京モノレール" in op: lines.add("RAIL_MONO")
+        if "京成" in op or "keisei" in op.lower():
+            lines.add("RAIL_KEISEI")
+        if "京急" in op or "京浜急行" in op or "keikyu" in op.lower():
+            lines.add("RAIL_KEIKYU")
+        if "東京モノレール" in op:
+            lines.add("RAIL_MONO")
 
     for _, b_lat, b_lng, b_code in AIRPORT_BUS_HUBS:
         if haversine_m(h_lat, h_lng, b_lat, b_lng) <= 750:
@@ -327,41 +387,41 @@ def detect_airport_access(st_name, st_tags, h_lat, h_lng, r_key):
 
     return sorted(list(lines))
 
+
 def fetch_and_save_region(r_key):
     cfg = REGIONS_MAP[r_key]
     r_name, centers = cfg["name"], cfg["centers"]
-    el1, el2 = [], []
+    all_elements = []
 
-    # 逐城發送輕量級小請求，避免單次查詢過大導致 Overpass 504 逾時
-    for city_label, lat, lng, rad in centers:
-        q1 = (
-            f'[out:json][timeout:45];('
-            f'nw["tourism"="hotel"](around:{rad},{lat},{lng});'
-            f'nw["building"="hotel"](around:{rad},{lat},{lng});'
+    # 單城單次合併請求（同時抓 15 品牌飯店 + 車站 + 生活機能），請求量減半並加入冷卻避免限流
+    for idx, (city_label, lat, lng, rad) in enumerate(centers):
+        q_combined = (
+            f'[out:json][timeout:50];('
+            f'nw["name"~"{OVERPASS_BRAND_REGEX}",i](around:{rad},{lat},{lng});'
+            f'nw["brand"~"{OVERPASS_BRAND_REGEX}",i](around:{rad},{lat},{lng});'
             f'node["railway"="station"](around:{rad},{lat},{lng});'
-            f');out center tags;'
-        )
-        el1.extend(query_overpass(q1, f"{r_name}-{city_label}-飯店車站"))
-        time.sleep(1.5)
-
-        q2 = (
-            f'[out:json][timeout:45];('
             f'node["shop"="convenience"](around:{rad},{lat},{lng});'
             f'nw["shop"~"supermarket|chemist"](around:{rad},{lat},{lng});'
             f'nw["amenity"~"cafe|fast_food|pharmacy"](around:{rad},{lat},{lng});'
             f');out center tags;'
         )
-        el2.extend(query_overpass(q2, f"{r_name}-{city_label}-生活機能"))
-        time.sleep(1.5)
+        els = query_overpass(q_combined, f"{r_name}-{city_label}")
+        all_elements.extend(els)
+        if idx < len(centers) - 1:
+            time.sleep(5)
 
     hotels, stations = [], []
-    am_keys = ["lawson", "seven", "familymart", "starbucks", "doutor", "komeda", "mcdonalds", "mos", "kfc", "drugstore", "supermarket"]
+    am_keys = [
+        "lawson", "seven", "familymart", "starbucks", "doutor",
+        "komeda", "mcdonalds", "mos", "kfc", "drugstore", "supermarket",
+    ]
     am_pool = {k: [] for k in am_keys}
 
-    for el in el1:
+    for el in all_elements:
         tags, (lat, lon) = el.get("tags", {}), get_coords(el)
         if lat is None:
             continue
+
         if tags.get("railway") == "station":
             stations.append({
                 "name": tags.get("name:ja") or tags.get("name") or "周邊車站",
@@ -369,43 +429,46 @@ def fetch_and_save_region(r_key):
                 "lng": lon,
                 "tags": tags,
             })
-        else:
-            b, ja_prefix = detect_hotel_brand(tags)
-            if b:
-                is_building_poly = el.get("type") in ["way", "relation"]
-                hotels.append({
-                    "tags": tags,
-                    "brand": b,
-                    "ja_prefix": ja_prefix,
-                    "lat": round(lat, 6),
-                    "lng": round(lon, 6),
-                    "is_poly": is_building_poly,
-                    "area": get_area_info(lat, lon, tags),
-                })
+            continue
 
+        at = classify_amenity(tags)
+        if at:
+            am_pool[at].append({"lat": lat, "lng": lon})
+
+        b, ja_prefix = detect_hotel_brand(tags)
+        if b:
+            is_building_poly = el.get("type") in ["way", "relation"]
+            hotels.append({
+                "tags": tags,
+                "brand": b,
+                "ja_prefix": ja_prefix,
+                "lat": round(lat, 6),
+                "lng": round(lon, 6),
+                "is_poly": is_building_poly,
+                "area": get_area_info(lat, lon, tags),
+            })
+
+    # 排序讓建築物多邊形幾何中心 (is_poly=True) 優先於單點節點，確保地標精準對齊建築中央
     hotels.sort(key=lambda x: (not x["is_poly"]))
-
-    for el in el2:
-        tags, (lat, lon) = el.get("tags", {}), get_coords(el)
-        if lat is not None:
-            at = classify_amenity(tags)
-            if at:
-                am_pool[at].append({"lat": lat, "lng": lon})
 
     st_grid = build_spatial_grid(stations)
     am_grids = {k: build_spatial_grid(v) for k, v in am_pool.items()}
     results = []
+
     for h in hotels:
+        # 80公尺內同品牌自動去重（避免同一棟建築物的多邊形與門口 POI 重複收錄）
         is_dup = any(
             h["brand"] == prev["brand"] and haversine_m(h["lat"], h["lng"], prev["lat"], prev["lng"]) < 80
             for prev in results
         )
         if is_dup:
             continue
+
         st_d, st = find_nearest_in_grid(h["lat"], h["lng"], st_grid)
         st_name = st["name"] if st else "周邊車站"
         full_name = build_full_hotel_name(h["tags"], h["brand"], h["ja_prefix"], st_name, st_d)
         am_dists = {k: find_nearest_in_grid(h["lat"], h["lng"], g)[0] for k, g in am_grids.items()}
+
         results.append({
             "id": f"{r_key}_{len(results)+1}",
             "name": full_name,
@@ -419,11 +482,14 @@ def fetch_and_save_region(r_key):
             "airport_lines": detect_airport_access(st_name, st["tags"] if st else {}, h["lat"], h["lng"], r_key),
             "amenities": am_dists,
         })
+
     results.sort(key=lambda x: x["station_dist"])
     os.makedirs(DATA_DIR, exist_ok=True)
-    with open(os.path.join(DATA_DIR, f"hotels_{r_key}.json"), "w", encoding="utf-8") as f:
+    out_path = os.path.join(DATA_DIR, f"hotels_{r_key}.json")
+    with open(out_path, "w", encoding="utf-8") as f:
         json.dump(results, f, ensure_ascii=False, indent=2)
-    print(f"💾 [{r_name}] 完成！精準收錄 {len(results)} 筆")
+    print(f"💾 [{r_name}] 完成！精準收錄 {len(results)} 筆 -> {out_path}")
+
 
 def merge_all_regions():
     all_h = []
@@ -438,13 +504,20 @@ def merge_all_regions():
                     )
                     if not is_dup:
                         all_h.append(h)
+
     all_h.sort(key=lambda x: x["station_dist"])
-    with open(os.path.join(DATA_DIR, "hotels_all.json"), "w", encoding="utf-8") as f:
+    os.makedirs(DATA_DIR, exist_ok=True)
+    all_path = os.path.join(DATA_DIR, "hotels_all.json")
+    with open(all_path, "w", encoding="utf-8") as f:
         json.dump(all_h, f, ensure_ascii=False, indent=2)
-    print(f"🎉 全國總檔更新完成，累計 {len(all_h)} 間精準座標飯店")
+    print(f"🎉 全國總檔更新完成，累計 {len(all_h)} 間精準座標飯店 -> {all_path}")
+
 
 def main():
-    t = sys.argv[1].strip().lower() if len(sys.argv) > 1 else "all"
+    raw_target = sys.argv[1] if len(sys.argv) > 1 else os.environ.get("TARGET_REGION", "all")
+    t = raw_target.strip().lower() or "all"
+    print(f"🚀 啟動圖資更新任務，目標區域：{t}")
+
     if t == "all":
         for i, k in enumerate(REGIONS_MAP):
             try:
@@ -452,12 +525,14 @@ def main():
             except Exception as e:
                 print(f"⚠️ 跳過異常區域 {k}，保留既有舊檔 ({e})")
             if i < len(REGIONS_MAP) - 1:
-                time.sleep(3)
+                time.sleep(6)
     elif t in REGIONS_MAP:
         fetch_and_save_region(t)
     else:
-        raise ValueError(f"不支援區域: {t}")
+        raise ValueError(f"不支援的區域代碼: {t}（可用值：all, {', '.join(REGIONS_MAP.keys())}）")
+
     merge_all_regions()
+
 
 if __name__ == "__main__":
     main()
