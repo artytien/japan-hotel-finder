@@ -731,6 +731,24 @@
           mcdonalds: 340, mos: 9999, kfc: 9999,
           drugstore: 260, supermarket: 290
         }
+      },
+      {
+        id: "supp_sakaihigashi_toyoko",
+        name: "東横INN堺東駅",
+        brand: "Toyoko Inn",
+        area: "大阪府 堺市 堺区 北瓦町 堺東",
+        region: "kansai",
+        lat: 34.5736,
+        lng: 135.4832,
+        station_name: "堺東",
+        station_dist: 120,
+        airport_lines: [],
+        amenities: {
+          lawson: 90, seven: 110, familymart: 80,
+          starbucks: 130, doutor: 110, komeda: 180,
+          mcdonalds: 150, mos: 210, kfc: 190,
+          drugstore: 100, supermarket: 160
+        }
       }
     ];
 
@@ -1001,7 +1019,163 @@
     ];
 
     // ==========================================
-    // 6. 初始化地圖（預設國土地理院淡色柔化 + 四種穩定底圖切換）
+    // 4. 關鍵字解析、距離計算、店名補全與路線聯動邏輯
+    // ==========================================
+    function calcDistanceM(lat1, lon1, lat2, lon2) {
+      const R = 6371000;
+      const toRad = deg => deg * Math.PI / 180;
+      const dLat = toRad(lat2 - lat1);
+      const dLon = toRad(lon2 - lon1);
+      const a = Math.sin(dLat / 2) ** 2 + Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLon / 2) ** 2;
+      return Math.round(R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)));
+    }
+
+    // 全 15 大連鎖品牌通用分店名稱自動補全引擎
+    function enrichHotelName(h) {
+      for (const [oLat, oLng, oBrand, oTitle] of KNOWN_BRANCH_OVERRIDES) {
+        if (oBrand === h.brand && calcDistanceM(h.lat, h.lng, oLat, oLng) <= 150) {
+          return oTitle;
+        }
+      }
+      const rawName = (h.name || "").trim();
+      const brandCfg = BRAND_NAME_CONFIG[h.brand];
+      if (brandCfg && brandCfg.pureRegex.test(rawName)) {
+        const cleanSt = (h.station_name || "").replace(/駅$/, "");
+        if (cleanSt && cleanSt !== "周邊車站") {
+          return h.station_dist <= 350
+            ? `${brandCfg.prefix} ${cleanSt}駅前`
+            : `${brandCfg.prefix}（${cleanSt}駅周邊）`;
+        }
+      }
+      return rawName;
+    }
+
+    // 判斷單一飯店是否位於指定鐵路／新幹線路線的停靠站上（含區域隔離保護）
+    function hotelMatchesRoute(hotel, routeKey) {
+      const routeInfo = RAILWAY_LINES_DB[routeKey];
+      if (!routeInfo) return false;
+      if (hotel.region && routeInfo.allowedRegions && !routeInfo.allowedRegions.includes(hotel.region)) {
+        return false;
+      }
+      const cleanHotelSt = (hotel.station_name || "").replace(/駅$/, "").trim();
+      if (!cleanHotelSt) return false;
+      return routeInfo.stations.some(st => {
+        const cleanSt = st.replace(/駅$/, "").trim();
+        return cleanHotelSt === cleanSt;
+      });
+    }
+
+    // 解析搜尋欄文字：自動辨識內建路線別名、繁日漢字轉換與「站/駅」精準車站模式
+    function parseSearchQuery(rawInput) {
+      let raw = (rawInput || "").trim().toLowerCase();
+      if (!raw) return { tokens: [], isStationMode: false, queryRouteKeys: [] };
+
+      const queryRouteKeys = [];
+      let remaining = raw;
+
+      // 依別名長度由長到短比對，避免短詞先切碎長路線名
+      const aliasPairs = [];
+      for (const [rKey, info] of Object.entries(RAILWAY_LINES_DB)) {
+        for (const al of (info.aliases || [])) {
+          aliasPairs.push([al.toLowerCase(), rKey]);
+        }
+      }
+      aliasPairs.sort((a, b) => b[0].length - a[0].length);
+
+      for (const [aliasLower, rKey] of aliasPairs) {
+        if (remaining.includes(aliasLower)) {
+          if (!queryRouteKeys.includes(rKey)) queryRouteKeys.push(rKey);
+          remaining = remaining.split(aliasLower).join(" ");
+        }
+      }
+
+      const isStationMode = /車站|火車站|地鐵站|站|駅/.test(remaining) && !/巴士總站|バスターミナル/.test(remaining);
+      let cleaned = remaining.replace(/車站|火車站|地鐵站|站|駅/g, " ");
+      for (const [re, ja] of ZH_TO_JA_MAP) {
+        cleaned = cleaned.replace(re, ja);
+      }
+
+      return {
+        tokens: cleaned.split(/\s+/).filter(Boolean),
+        isStationMode,
+        queryRouteKeys
+      };
+    }
+
+    // 路線聯動下拉選單與複選標籤管理
+    const selectedRouteKeys = new Set();
+
+    function populateOperatorSelect(regionKey) {
+      const opSelect = document.getElementById('operator-select');
+      const prevVal = opSelect.value;
+      opSelect.innerHTML = '<option value="">1. 選擇鐵道／地鐵營運商...</option>';
+      OPERATORS_DB.forEach(op => {
+        if (regionKey === 'all' || op.regions.includes(regionKey)) {
+          const opt = document.createElement('option');
+          opt.value = op.id;
+          opt.textContent = op.label;
+          opSelect.appendChild(opt);
+        }
+      });
+      if (Array.from(opSelect.options).some(o => o.value === prevVal)) {
+        opSelect.value = prevVal;
+      } else {
+        opSelect.value = '';
+      }
+      onOperatorChange();
+    }
+
+    function onOperatorChange() {
+      const opId = document.getElementById('operator-select').value;
+      const routeSelect = document.getElementById('route-select');
+      if (!opId) {
+        routeSelect.innerHTML = '<option value="">2. 先選擇左側營運商...</option>';
+        routeSelect.disabled = true;
+        return;
+      }
+      routeSelect.disabled = false;
+      routeSelect.innerHTML = '<option value="">2. 選擇具體路線加入篩選...</option>';
+      Object.entries(RAILWAY_LINES_DB).forEach(([rKey, info]) => {
+        if (info.op === opId) {
+          const opt = document.createElement('option');
+          opt.value = rKey;
+          opt.textContent = info.label;
+          routeSelect.appendChild(opt);
+        }
+      });
+    }
+
+    function onRouteSelect() {
+      const routeSelect = document.getElementById('route-select');
+      const rKey = routeSelect.value;
+      if (!rKey) return;
+      selectedRouteKeys.add(rKey);
+      routeSelect.value = '';
+      renderSelectedRouteChips();
+      markDirty();
+    }
+
+    function removeSelectedRoute(rKey) {
+      selectedRouteKeys.delete(rKey);
+      renderSelectedRouteChips();
+      markDirty();
+    }
+
+    function renderSelectedRouteChips() {
+      const container = document.getElementById('selected-routes-chips');
+      container.innerHTML = '';
+      selectedRouteKeys.forEach(rKey => {
+        const info = RAILWAY_LINES_DB[rKey];
+        if (!info) return;
+        const badge = document.createElement('span');
+        badge.className = 'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-violet-900 text-white font-semibold shadow-sm';
+        badge.innerHTML = `<span>🚃 ${info.label}</span><button type="button" onclick="removeSelectedRoute('${rKey}')" class="ml-0.5 text-violet-200 hover:text-white font-bold">✕</button>`;
+        container.appendChild(badge);
+      });
+    }
+
+    // ==========================================
+    // 5. 初始化地圖（預設國土地理院淡色柔化 + 四種穩定底圖切換）
     // ==========================================
     let allHotels = [];
     let map, markersLayer, userLayer, currentTileLayer;
@@ -1087,7 +1261,7 @@
     }
 
     // ==========================================
-    // 7. 篩選控制、GPS 定位與渲染列表
+    // 6. 篩選控制、GPS 定位與渲染列表
     // ==========================================
     function markDirty() {
       const btn = document.getElementById('btn-search');
