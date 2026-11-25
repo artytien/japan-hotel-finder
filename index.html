@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>日本連鎖商務飯店地圖篩選器</title>
   <meta name="theme-color" content="#0f172a">
-  <!-- 純網頁版：使用 Tailwind CSS 與 Leaflet 地圖套件，無 PWA manifest 或 Service Worker -->
+  <!-- 純網頁版：採用 Tailwind CSS 與 Leaflet 地圖套件，無 PWA manifest 或 Service Worker -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -33,6 +33,13 @@
     .gsi-soft-tile {
       filter: grayscale(35%) brightness(1.03) contrast(0.95);
     }
+    /* 自訂聯網即時圖釘橘色脈衝樣式 */
+    .live-osm-pin {
+      background-color: #ea580c;
+      border: 2.5px solid #ffffff;
+      border-radius: 9999px;
+      box-shadow: 0 2px 6px rgba(234, 88, 12, 0.65);
+    }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800 pb-12">
@@ -45,6 +52,7 @@
           <h1 class="text-base font-bold tracking-wide">🇯🇵 日本連鎖商務飯店篩選器</h1>
           <p id="data-status" class="text-xs text-emerald-400 mt-0.5">⏳ 正在載入圖資...</p>
         </div>
+        <span class="text-[11px] px-2 py-0.5 rounded-full bg-slate-800 text-slate-300 border border-slate-700 hidden sm:inline-block">本機 15 品牌 ＋ 聯網全品牌雙軌</span>
       </div>
       <div class="flex gap-1.5 text-xs overflow-x-auto no-scrollbar pb-0.5">
         <button onclick="switchDataset('all')" id="btn-ds-all" class="ds-btn shrink-0 px-2.5 py-1.5 rounded bg-emerald-600 text-white font-medium">全國總覽</button>
@@ -63,10 +71,18 @@
   <main class="max-w-5xl mx-auto px-3 pt-3 space-y-3">
     <!-- 篩選條件設定面板 -->
     <section class="bg-white rounded-xl p-3.5 shadow-sm border border-slate-200 space-y-3.5">
-      <!-- 關鍵字搜尋列（支援精準車站、路線名稱、分店名或區域） -->
+      <!-- 關鍵字搜尋列（支援精準車站、路線名稱、15大品牌或任何他牌飯店聯網即時查詢） -->
       <div>
-        <label class="block text-xs font-semibold text-slate-700 mb-1">🔍 搜尋車站、路線、分店或區域（如：「堺站」、「熊本站」、「山手線」、「大阪環狀線」、「新幹線」）</label>
-        <input type="text" id="keyword-input" placeholder="輸入車站名（如：堺、堺站、堺駅）、路線名或區域..." oninput="markDirty()" onkeydown="if(event.key==='Enter') applyFilters()" class="w-full text-sm px-3 py-1.5 border border-slate-300 rounded-lg focus:outline-none focus:border-slate-900">
+        <div class="flex flex-wrap items-center justify-between gap-1 mb-1">
+          <label class="text-xs font-semibold text-slate-700">🔍 搜尋車站、路線、分店或任何日本飯店（如：「堺站」、「山手線」、「MYSTAYS」、「星野」）</label>
+          <span class="text-[11px] text-orange-600 font-medium">他牌飯店無結果時自動連線 OSM 搜尋</span>
+        </div>
+        <div class="flex gap-1.5">
+          <input type="text" id="keyword-input" placeholder="輸入車站（堺站）、路線或他牌飯店名（MYSTAYS、京王プレッソイン...）" oninput="markDirty()" onkeydown="if(event.key==='Enter') applyFilters()" class="flex-1 text-sm px-3 py-1.5 border border-slate-300 rounded-lg focus:outline-none focus:border-slate-900">
+          <button type="button" onclick="triggerLiveOsmSearch(true)" title="直接向 OpenStreetMap 聯網查詢此關鍵字" class="shrink-0 px-3 py-1.5 rounded-lg bg-orange-50 hover:bg-orange-100 text-orange-800 border border-orange-300 text-xs font-bold transition">
+            🌐 聯網找飯店
+          </button>
+        </div>
       </div>
 
       <!-- 車站距離上限與生活機能距離上限（獨立勾選開關） -->
@@ -141,7 +157,7 @@
 
       <!-- 15 大連鎖商務飯店品牌 -->
       <div>
-        <div class="text-xs font-semibold text-slate-700 mb-1.5">🏨 連鎖商務飯店品牌（未選則顯示全部 15 品牌）</div>
+        <div class="text-xs font-semibold text-slate-700 mb-1.5">🏨 內建 15 大連鎖商務飯店品牌（未選則顯示全部 15 品牌；輸入他牌將自動聯網查詢）</div>
         <div class="flex flex-wrap gap-1.5 text-xs" id="brand-filters"></div>
       </div>
 
@@ -156,6 +172,9 @@
         </button>
       </div>
     </section>
+
+    <!-- 聯網查詢狀態與提示橫幅 -->
+    <div id="live-search-banner" class="hidden rounded-xl p-3 border text-xs flex flex-wrap items-center justify-between gap-2"></div>
 
     <!-- 互動地圖區塊（預設國土地理院淡色柔化 + 4種穩定底圖切換） -->
     <section class="relative bg-white rounded-xl overflow-hidden shadow-sm border border-slate-200">
@@ -246,6 +265,25 @@
       "tokai": [35.17, 136.88, 10], "kyushu_north": [33.59, 130.40, 11], "kyushu_south": [32.30, 130.70, 9],
       "hokkaido": [43.06, 141.35, 10], "chugoku": [34.45, 133.20, 9], "tohoku": [38.90, 140.90, 8]
     };
+
+    // 各分區地理邊界框 [south, west, north, east]，供即時聯網 OSM Overpass 查詢使用
+    const REGION_BBOX = {
+      "all": [31.0, 129.5, 44.2, 145.5],
+      "kansai": [34.40, 135.05, 35.15, 135.95],
+      "tokyo": [35.30, 139.25, 36.05, 140.25],
+      "tokai": [34.60, 136.70, 35.30, 138.55],
+      "kyushu_north": [32.65, 129.75, 34.00, 131.05],
+      "kyushu_south": [31.45, 130.40, 32.95, 131.55],
+      "hokkaido": [41.65, 140.55, 43.90, 142.55],
+      "chugoku": [33.75, 132.30, 34.80, 134.20],
+      "tohoku": [37.25, 140.25, 41.00, 141.35]
+    };
+
+    const OVERPASS_ENDPOINTS = [
+      "https://overpass-api.de/api/interpreter",
+      "https://overpass.kumi.systems/api/interpreter",
+      "https://maps.mail.ru/osm/tools/overpass/api/interpreter"
+    ];
 
     // ==========================================
     // 2. 完整鐵道路線字典（關東・京阪神・福岡全電車地鐵 + 全國新幹線）
@@ -642,7 +680,6 @@
 
     // ==========================================
     // 3. 精準實測座標示範資料集（僅在無外部 ./data/*.json 的預覽環境退回使用）
-    //    部署至 GitHub Pages 時將 100% 讀取真實 OpenStreetMap 建築物中心座標，絕不覆寫
     // ==========================================
     const DEMO_HOTELS = [
       {
@@ -1077,6 +1114,295 @@
       });
     }
 
+    // ==========================================
+    // 5. 混合雙軌第二層：Live OSM Overpass 即時聯網搜尋他牌飯店引擎
+    // ==========================================
+    let currentDataset = 'all';
+    let isLiveSearching = false;
+    let lastAutoLiveQuery = '';
+    const liveOsmCache = new Map();
+
+    function escapeOverpassRegex(str) {
+      return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+
+    function inferAirportAccessFromStation(stName, regionKey) {
+      const codes = [];
+      const rules = {
+        "RAIL_HARUKA": ["関西空港", "天王寺", "新今宮", "大阪", "うめきた", "新大阪", "京都", "日根野", "西九条"],
+        "RAIL_NANKAI": ["難波", "なんば", "新今宮", "天下茶屋", "堺", "泉佐野", "りんくうタウン", "関西空港"],
+        "RAIL_NEX": ["成田空港", "空港第2ビル", "東京", "品川", "渋谷", "新宿", "池袋", "横浜", "武蔵小杉", "大船", "千葉"],
+        "RAIL_KEISEI": ["京成上野", "上野", "日暮里", "青砥", "京成高砂", "京成船橋", "京成成田", "押上", "空港第2ビル", "成田空港"],
+        "RAIL_KEIKYU": ["羽田空港", "品川", "京急蒲田", "川崎", "横浜", "泉岳寺", "大門", "浜松町", "新橋", "東銀座", "浅草"],
+        "RAIL_MONO": ["浜松町", "天王洲アイル", "羽田空港"],
+        "RAIL_MEITETSU": ["名鉄名古屋", "名古屋", "金山", "神宮前", "太田川", "常滑", "中部国際空港"],
+        "RAIL_FUKUOKA": ["福岡空港", "博多", "祇園", "中洲川端", "天神", "赤坂", "大濠公園", "西新", "姪浜"],
+        "RAIL_CTS": ["新千歳空港", "南千歳", "千歳", "恵庭", "北広島", "新札幌", "札幌", "桑園", "琴似", "手稲", "小樽"],
+        "RAIL_SENDAI": ["仙台空港", "名取", "南仙台", "太子堂", "長町", "仙台"]
+      };
+      for (const [code, kws] of Object.entries(rules)) {
+        if (kws.some(kw => stName.includes(kw))) {
+          codes.push(code);
+        }
+      }
+      return codes;
+    }
+
+    function setLiveBanner(html, type = 'info') {
+      const el = document.getElementById('live-search-banner');
+      if (!html) {
+        el.classList.add('hidden');
+        el.innerHTML = '';
+        return;
+      }
+      el.classList.remove('hidden', 'bg-orange-50', 'border-orange-300', 'text-orange-900', 'bg-sky-50', 'border-sky-300', 'text-sky-900', 'bg-rose-50', 'border-rose-300', 'text-rose-900');
+      if (type === 'loading') {
+        el.classList.add('bg-sky-50', 'border-sky-300', 'text-sky-900');
+      } else if (type === 'error') {
+        el.classList.add('bg-rose-50', 'border-rose-300', 'text-rose-900');
+      } else {
+        el.classList.add('bg-orange-50', 'border-orange-300', 'text-orange-900');
+      }
+      el.innerHTML = html;
+    }
+
+    async function fetchOverpassWithFallback(queryStr) {
+      let lastErr = null;
+      for (const url of OVERPASS_ENDPOINTS) {
+        const controller = new AbortController();
+        const timer = setTimeout(() => controller.abort(), 16000);
+        try {
+          const resp = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+            body: 'data=' + encodeURIComponent(queryStr),
+            signal: controller.signal
+          });
+          clearTimeout(timer);
+          if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+          const data = await resp.json();
+          return data.elements || [];
+        } catch (err) {
+          clearTimeout(timer);
+          lastErr = err;
+        }
+      }
+      throw lastErr || new Error('Overpass 節點無回應');
+    }
+
+    // 執行即時聯網查詢（支援他牌飯店與建築物幾何中心 + 附近車站計算）
+    async function triggerLiveOsmSearch(isManual = false) {
+      const rawKw = (document.getElementById('keyword-input').value || '').trim();
+      if (!rawKw) {
+        if (isManual) showNotice('請先在搜尋框輸入想找的飯店名稱（例如：MYSTAYS、星野、京王プレッソイン）');
+        return;
+      }
+      if (isLiveSearching) return;
+
+      // 轉換繁體字為日文常見漢字以提升 OSM 命中率
+      let jaKw = rawKw.replace(/車站|火車站|地鐵站|站|駅/g, '').trim();
+      for (const [re, ja] of ZH_TO_JA_MAP) {
+        jaKw = jaKw.replace(re, ja);
+      }
+      if (!jaKw) jaKw = rawKw;
+
+      // 決定查詢邊界框：若為「全國總覽」且地圖已縮放至局部（zoom >= 10），優先使用當前地圖視野加速查詢
+      let bbox = REGION_BBOX[currentDataset] || REGION_BBOX.all;
+      if (currentDataset === 'all' && map && map.getZoom() >= 10) {
+        const b = map.getBounds();
+        bbox = [
+          Number(b.getSouth().toFixed(4)),
+          Number(b.getWest().toFixed(4)),
+          Number(b.getNorth().toFixed(4)),
+          Number(b.getEast().toFixed(4))
+        ];
+      }
+      const bboxStr = `${bbox[0]},${bbox[1]},${bbox[2]},${bbox[3]}`;
+      const cacheKey = `${bboxStr}::${jaKw.toLowerCase()}`;
+
+      isLiveSearching = true;
+      setLiveBanner(
+        `<div class="flex items-center gap-2 font-semibold"><span>⏳</span><span>本機 15 品牌無符合項目，正在即時連線 OpenStreetMap 搜尋「<b>${rawKw}</b>」...</span></div>`,
+        'loading'
+      );
+
+      try {
+        let liveHotels = liveOsmCache.get(cacheKey);
+        if (!liveHotels) {
+          const safeRegex = escapeOverpassRegex(jaKw);
+          // 單次 Overpass 查詢同時抓取符合店名的飯店建築物中心 (out center) 與附近鐵道車站
+          const ql = `
+            [out:json][timeout:15];
+            (
+              nw["tourism"~"hotel|hostel|guest_house|motel"]["name"~"${safeRegex}",i](${bboxStr});
+              nw["building"="hotel"]["name"~"${safeRegex}",i](${bboxStr});
+              nw["tourism"~"hotel|hostel"]["name:ja"~"${safeRegex}",i](${bboxStr});
+              nw["tourism"~"hotel|hostel"]["name:en"~"${safeRegex}",i](${bboxStr});
+            )->.hotels;
+            .hotels out center tags 35;
+            node(around.hotels:1500)["railway"="station"];
+            out body tags;
+          `;
+          const elements = await fetchOverpassWithFallback(ql);
+
+          const rawHotels = [];
+          const stations = [];
+          for (const el of elements) {
+            const tags = el.tags || {};
+            const lat = el.center ? el.center.lat : el.lat;
+            const lng = el.center ? el.center.lon : el.lon;
+            if (lat == null || lng == null) continue;
+
+            if (tags.railway === 'station') {
+              stations.push({
+                name: tags['name:ja'] || tags.name || '周邊車站',
+                lat,
+                lng
+              });
+            } else if (tags.name || tags['name:ja'] || tags['name:en']) {
+              rawHotels.push({
+                id: `live_osm_${el.type}_${el.id}`,
+                name: tags['name:ja'] || tags.name || tags['name:en'],
+                lat: Number(lat.toFixed(6)),
+                lng: Number(lng.toFixed(6)),
+                tags
+              });
+            }
+          }
+
+          // 去重並匹配最近車站與距離
+          const deduped = [];
+          for (const h of rawHotels) {
+            if (deduped.some(prev => calcDistanceM(h.lat, h.lng, prev.lat, prev.lng) < 60 && prev.name === h.name)) {
+              continue;
+            }
+            let minD = 9999;
+            let nearestSt = '周邊車站';
+            for (const st of stations) {
+              const d = calcDistanceM(h.lat, h.lng, st.lat, st.lng);
+              if (d < minD) {
+                minD = d;
+                nearestSt = st.name;
+              }
+            }
+            const areaParts = [h.tags['addr:prefecture'], h.tags['addr:city'], h.tags['addr:ward'], h.tags['addr:suburb']].filter(Boolean).join(' ');
+            deduped.push({
+              id: h.id,
+              name: h.name,
+              brand: h.tags.brand || '🌐 聯網即時圖資',
+              area: areaParts || 'OpenStreetMap 即時圖資',
+              region: currentDataset === 'all' ? '' : currentDataset,
+              lat: h.lat,
+              lng: h.lng,
+              station_name: nearestSt,
+              station_dist: minD,
+              airport_lines: inferAirportAccessFromStation(nearestSt, currentDataset),
+              amenities: {},
+              _isLiveOsm: true,
+              _liveAmenitiesLoaded: false
+            });
+          }
+          deduped.sort((a, b) => a.station_dist - b.station_dist);
+          liveHotels = deduped;
+          liveOsmCache.set(cacheKey, liveHotels);
+        }
+
+        if (liveHotels.length === 0) {
+          setLiveBanner(
+            `<div class="flex flex-wrap items-center justify-between w-full gap-2">
+              <span>🌐 已即時連線 OpenStreetMap 搜尋「<b>${rawKw}</b>」，目前範圍內未找到符合飯店（可嘗試切換上方地區分頁、縮放地圖視野，或改用日文片假名搜尋）。</span>
+            </div>`,
+            'error'
+          );
+          renderResults([], 300);
+        } else {
+          setLiveBanner(
+            `<div class="flex flex-wrap items-center justify-between w-full gap-2">
+              <span>🌐 <b>聯網即時搜尋成功</b>：從 OpenStreetMap 找到 <b>${liveHotels.length}</b> 間「${rawKw}」相關飯店（橘色圖釘，已對齊建築物中心並計算最近車站）。</span>
+              <button type="button" onclick="resetAllFilters()" class="px-2 py-0.5 rounded bg-orange-200/80 hover:bg-orange-300 text-orange-950 font-bold">返回 15 品牌列表</button>
+            </div>`,
+            'info'
+          );
+          const withUser = liveHotels.map(h => ({
+            ...h,
+            _userDist: userPos ? calcDistanceM(userPos.lat, userPos.lng, h.lat, h.lng) : null
+          }));
+          if (withUser.length > 0) {
+            map.setView([withUser[0].lat, withUser[0].lng], 14);
+          }
+          document.getElementById('sort-status-label').textContent = '🌐 聯網即時結果（依距離最近車站排序）';
+          document.getElementById('sort-status-label').className = 'text-xs text-orange-700 font-semibold';
+          renderResults(withUser, 300);
+        }
+      } catch (err) {
+        setLiveBanner(
+          `<div>⚠️ 聯網查詢 OpenStreetMap 暫時逾時或繁忙，請稍候 3 秒再試一次。</div>`,
+          'error'
+        );
+      } finally {
+        isLiveSearching = false;
+      }
+    }
+
+    // 為即時聯網查到的他牌飯店現場計算 300m 內周邊超商／藥妝機能
+    async function fetchLiveAmenitiesForHotel(hotelId, lat, lng, btnEl) {
+      if (btnEl) {
+        btnEl.disabled = true;
+        btnEl.textContent = '⏳ 計算 300m 機能中...';
+      }
+      try {
+        const ql = `
+          [out:json][timeout:12];
+          (
+            node(around:350,${lat},${lng})["shop"~"convenience|supermarket|chemist"];
+            node(around:350,${lat},${lng})["amenity"~"cafe|fast_food|pharmacy"];
+          );
+          out body tags;
+        `;
+        const elements = await fetchOverpassWithFallback(ql);
+        const found = [];
+        const checkMap = [
+          { key: 'lawson', label: 'Lawson', re: /ローソン|lawson/i },
+          { key: 'seven', label: '7-11', re: /セブン|7-eleven|seven-eleven/i },
+          { key: 'familymart', label: '全家', re: /ファミリーマート|familymart/i },
+          { key: 'starbucks', label: '星巴克', re: /スターバックス|starbucks/i },
+          { key: 'doutor', label: '羅多倫', re: /ドトール|doutor/i },
+          { key: 'mcdonalds', label: '麥當勞', re: /マクドナルド|mcdonald/i },
+          { key: 'drugstore', label: '藥妝', re: /マツモトキヨシ|ウエルシア|ダイコク|スギ薬局|ツルハ|ココカラ|サンドラッグ|ドラッグ|薬局/i },
+          { key: 'supermarket', label: '超市', re: /ライフ|業務スーパー|イオン|マックスバリュ|成城石井|まいばすけっと|スーパー/i }
+        ];
+        const minDists = {};
+        for (const el of elements) {
+          if (el.lat == null || el.lon == null) continue;
+          const tags = el.tags || {};
+          const txt = `${tags.name || ''} ${tags['name:ja'] || ''} ${tags.brand || ''}`;
+          const d = calcDistanceM(lat, lng, el.lat, el.lon);
+          for (const item of checkMap) {
+            if (item.re.test(txt) || (item.key === 'drugstore' && tags.amenity === 'pharmacy') || (item.key === 'supermarket' && tags.shop === 'supermarket')) {
+              if (minDists[item.label] === undefined || d < minDists[item.label]) {
+                minDists[item.label] = d;
+              }
+            }
+          }
+        }
+        for (const [lbl, d] of Object.entries(minDists)) {
+          if (d <= 350) found.push(`${lbl} ${d}m`);
+        }
+        const targetBox = document.getElementById(`live-am-${hotelId}`);
+        if (targetBox) {
+          targetBox.innerHTML = found.length > 0
+            ? found.map(t => `<span class="px-1.5 py-0.5 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded text-[11px]">${t}</span>`).join(' ')
+            : `<span class="text-[11px] text-slate-400">350m 內無連鎖超商/藥妝標記</span>`;
+        }
+        if (btnEl) btnEl.remove();
+      } catch (e) {
+        if (btnEl) {
+          btnEl.disabled = false;
+          btnEl.textContent = '⚠️ 重試機能計算';
+        }
+      }
+    }
+
     // 路線聯動下拉選單與複選標籤管理
     const selectedRouteKeys = new Set();
 
@@ -1150,7 +1476,7 @@
     }
 
     // ==========================================
-    // 5. 初始化地圖（預設國土地理院淡色柔化 + 四種穩定底圖切換）
+    // 6. 初始化地圖（預設國土地理院淡色柔化 + 四種穩定底圖切換）
     // ==========================================
     let allHotels = [];
     let map, markersLayer, userLayer, currentTileLayer;
@@ -1236,7 +1562,7 @@
     }
 
     // ==========================================
-    // 6. 篩選控制、GPS 定位與渲染列表
+    // 7. 篩選控制、GPS 定位與渲染列表
     // ==========================================
     function markDirty() {
       const btn = document.getElementById('btn-search');
@@ -1345,6 +1671,8 @@
     }
 
     function resetAllFilters() {
+      setLiveBanner('');
+      lastAutoLiveQuery = '';
       document.querySelectorAll('.filter-chip').forEach(el => el.classList.remove('chip-active'));
       selectedRouteKeys.clear();
       renderSelectedRouteChips();
@@ -1385,6 +1713,10 @@
     }
 
     async function switchDataset(ds) {
+      currentDataset = ds;
+      setLiveBanner('');
+      lastAutoLiveQuery = '';
+
       document.querySelectorAll('.ds-btn').forEach(b => {
         b.classList.remove('bg-emerald-600', 'text-white');
         b.classList.add('bg-slate-700', 'text-slate-200');
@@ -1407,7 +1739,7 @@
         if (!res.ok) throw new Error('JSON_UNAVAILABLE');
         const raw = await res.json();
         allHotels = prepareHotelsList(raw);
-        statusEl.textContent = `🟢 已連線真實圖資（共載入 ${allHotels.length} 間飯店）`;
+        statusEl.textContent = `🟢 已連線真實圖資（共載入 ${allHotels.length} 間 15 品牌飯店）`;
         statusEl.className = 'text-xs text-emerald-400 mt-0.5';
       } catch (err) {
         const sampleBase = ds === 'all'
@@ -1426,6 +1758,8 @@
 
     function applyFilters() {
       clearDirty();
+      setLiveBanner('');
+
       const stEnabled = document.getElementById('enable-station-dist').checked;
       const maxStationDist = stEnabled ? parseInt(document.getElementById('station-dist').value, 10) : Infinity;
 
@@ -1433,7 +1767,8 @@
       const sliderAmDist = parseInt(document.getElementById('amenity-dist').value, 10);
       const effectiveAmDist = amEnabled ? sliderAmDist : 300;
 
-      const { tokens, isStationMode, queryRouteKeys } = parseSearchQuery(document.getElementById('keyword-input').value);
+      const rawKeyword = (document.getElementById('keyword-input').value || '').trim();
+      const { tokens, isStationMode, queryRouteKeys } = parseSearchQuery(rawKeyword);
       const activeRoutes = Array.from(new Set([...selectedRouteKeys, ...queryRouteKeys]));
 
       const selAirModes = Array.from(document.querySelectorAll('#airport-main-filters .chip-active')).map(el => el.dataset.airmode);
@@ -1502,6 +1837,27 @@
       }
 
       renderResults(filtered, effectiveAmDist);
+
+      // 第二層混合雙軌自動觸發：若本機 15 品牌無符合項目，且使用者輸入了飯店關鍵字（未勾選特定 15 品牌、非純路線/純車站查詢），自動啟動 Live OSM 聯網查詢
+      const canAutoLiveFallback =
+        filtered.length === 0 &&
+        rawKeyword.length >= 2 &&
+        selBrands.length === 0 &&
+        !isStationMode &&
+        queryRouteKeys.length === 0;
+
+      if (canAutoLiveFallback && lastAutoLiveQuery !== `${currentDataset}::${rawKeyword}`) {
+        lastAutoLiveQuery = `${currentDataset}::${rawKeyword}`;
+        triggerLiveOsmSearch(false);
+      } else if (filtered.length === 0 && rawKeyword.length >= 2) {
+        setLiveBanner(
+          `<div class="flex flex-wrap items-center justify-between w-full gap-2">
+            <span>💡 本機 15 品牌資料庫未找到「<b>${rawKeyword}</b>」。若要搜尋 15 品牌以外的其他飯店，可點擊右側按鈕即時聯網查詢：</span>
+            <button type="button" onclick="triggerLiveOsmSearch(true)" class="px-2.5 py-1 rounded-lg bg-orange-600 hover:bg-orange-700 text-white font-bold shadow-sm">🌐 聯網搜尋 OSM 全品牌</button>
+          </div>`,
+          'info'
+        );
+      }
     }
 
     function renderResults(list, badgeMaxDist) {
@@ -1517,8 +1873,16 @@
         drugstore: '藥妝', supermarket: '超市'
       };
 
+      const liveIcon = L.divIcon({
+        className: 'live-osm-pin',
+        iconSize: [16, 16],
+        iconAnchor: [8, 8],
+        popupAnchor: [0, -8]
+      });
+
       list.slice(0, 80).forEach(h => {
         const gmapUrl = `https://www.google.com/maps/search/?api=1&query=${h.lat},${h.lng}`;
+        const isLive = Boolean(h._isLiveOsm);
 
         const routeBadgesHtml = (h._matchedRoutes || []).map(lbl =>
           `<span class="px-1.5 py-0.5 bg-violet-100 text-violet-900 border border-violet-200 rounded text-[11px] font-semibold">🚃 ${lbl}</span>`
@@ -1543,10 +1907,14 @@
           ? `<span class="text-[11px] font-bold px-1.5 py-0.5 rounded bg-blue-100 text-blue-800">📍 距我 ${formatDist(h._userDist)}</span>`
           : '';
 
-        const marker = L.marker([h.lat, h.lng]).bindPopup(`
+        const stText = h.station_dist < 9000 ? `${h.station_name} (${h.station_dist}m)` : `${h.station_name}`;
+
+        const markerOpts = isLive ? { icon: liveIcon } : {};
+        const marker = L.marker([h.lat, h.lng], markerOpts).bindPopup(`
           <div class="text-xs space-y-1.5">
+            ${isLive ? '<div class="text-[10px] font-bold text-orange-700 bg-orange-100 px-1.5 py-0.5 rounded inline-block">🌐 聯網即時圖資</div>' : ''}
             <div class="font-bold text-slate-900">${h.name}</div>
-            <div class="text-slate-600">🚉 ${h.station_name}（約 ${h.station_dist}m）</div>
+            <div class="text-slate-600">🚉 ${stText}</div>
             ${h._matchedRoutes && h._matchedRoutes.length > 0 ? `<div class="text-violet-700 font-semibold">🚃 ${h._matchedRoutes.join('、')}</div>` : ''}
             ${h._userDist !== null ? `<div class="text-blue-700 font-semibold">📍 距離目前位置約 ${formatDist(h._userDist)}</div>` : ''}
             <a href="${gmapUrl}" target="_blank" class="gmap-popup-btn inline-block mt-1 px-2.5 py-1.5 bg-blue-600 rounded text-[11px] font-bold shadow-sm">🗺️ 開啟 Google 地圖</a>
@@ -1554,19 +1922,33 @@
         `);
         markersLayer.addLayer(marker);
 
+        const brandBadgeHtml = isLive
+          ? `<span class="text-[11px] font-bold px-2 py-0.5 rounded bg-orange-600 text-white">${h.brand}</span>`
+          : `<span class="text-[11px] font-bold px-2 py-0.5 rounded bg-slate-800 text-white">${h.brand}</span>`;
+
+        const liveAmenityActionHtml = isLive
+          ? `<div class="mt-1 flex flex-wrap items-center gap-1" id="live-am-${h.id}">
+               <button type="button" onclick="fetchLiveAmenitiesForHotel('${h.id}', ${h.lat}, ${h.lng}, this)" class="px-2 py-0.5 rounded bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 text-[11px] font-medium">🏪 現場計算 300m 超商／藥妝</button>
+             </div>`
+          : '';
+
         const card = document.createElement('div');
-        card.className = 'bg-white p-3 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between gap-2';
+        card.className = isLive
+          ? 'bg-white p-3 rounded-xl border-2 border-orange-200 shadow-sm flex flex-col justify-between gap-2'
+          : 'bg-white p-3 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between gap-2';
         card.innerHTML = `
           <div>
             <div class="flex items-start justify-between gap-2">
               <div class="flex flex-wrap items-center gap-1">
-                <span class="text-[11px] font-bold px-2 py-0.5 rounded bg-slate-800 text-white">${h.brand}</span>
+                ${brandBadgeHtml}
                 ${userDistBadge}
               </div>
-              <span class="text-xs font-semibold text-blue-600 shrink-0">🚉 ${h.station_name} (${h.station_dist}m)</span>
+              <span class="text-xs font-semibold text-blue-600 shrink-0">🚉 ${stText}</span>
             </div>
             <h3 class="font-bold text-sm text-slate-900 mt-1.5">${h.name}</h3>
+            <p class="text-[11px] text-slate-500 mt-0.5">${h.area}</p>
             <div class="flex flex-wrap gap-1 mt-1.5">${routeBadgesHtml} ${linesHtml} ${amBadges.join(' ')}</div>
+            ${liveAmenityActionHtml}
           </div>
           <div class="flex gap-2 pt-1 border-t border-slate-100 text-xs">
             <button onclick="map.setView([${h.lat}, ${h.lng}], 16)" class="flex-1 py-1.5 rounded bg-slate-100 hover:bg-slate-200 font-medium text-slate-700">📍 地圖定位</button>
