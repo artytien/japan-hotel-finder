@@ -4,77 +4,76 @@ import requests
 
 DATA_DIR = "./data"
 
-# 涵蓋全日本 8 大區核心都市圈與重要衛星轉乘樞紐（含堺市、舞濱、川崎、橫濱、大宮、船橋、小倉、久留米等）
+# 涵蓋全日本 8 大區核心都市圈與重要衛星轉乘樞紐
 REGIONS_MAP = {
     "kansai": {
         "name": "關西圈(京阪神・堺)",
         "centers": [
-            (34.6851, 135.5023, 10000),  # 大阪市全區（梅田、難波、天王寺、新大阪、京橋）
-            (34.5780, 135.4750, 5000),   # 堺市（南海本線堺站、高野線堺東站）
-            (35.0036, 135.7681, 8000),   # 京都市全區
-            (34.6901, 135.1955, 6000),   # 神戶市（三宮、元町、神戶站）
-            (34.6851, 135.8048, 4500),   # 奈良市
+            ("大阪市", 34.6851, 135.5023, 10000),
+            ("堺市", 34.5780, 135.4750, 5000),
+            ("京都市", 35.0036, 135.7681, 8000),
+            ("神戶市", 34.6901, 135.1955, 6000),
+            ("奈良市", 34.6851, 135.8048, 4500),
         ]
     },
     "tokyo": {
         "name": "關東(首都圈)",
         "centers": [
-            (35.6812, 139.7671, 13000),  # 東京都心23區（東京、新宿、澀谷、池袋、上野、淺草、品川、蒲田）
-            (35.4437, 139.6380, 8000),   # 橫濱市
-            (35.5308, 139.7029, 5000),   # 川崎市
-            (35.6074, 140.1065, 6500),   # 千葉市・海濱幕張
-            (35.6329, 139.8804, 4500),   # 舞濱・新浦安
-            (35.9063, 139.6240, 5000),   # 埼玉大宮
+            ("東京都心東", 35.6812, 139.7745, 9500),
+            ("東京都心西", 35.6938, 139.7034, 9500),
+            ("橫濱・川崎", 35.4750, 139.6550, 9500),
+            ("千葉・舞濱", 35.6200, 139.9800, 11000),
+            ("埼玉大宮", 35.9063, 139.6240, 5000),
         ]
     },
     "tokai": {
         "name": "東海(名古屋・浜松・靜岡)",
         "centers": [
-            (35.1709, 136.8815, 10000),  # 名古屋市全區
-            (34.7108, 137.7261, 6000),   # 濱松市
-            (34.9756, 138.3828, 6000),   # 靜岡市
+            ("名古屋市", 35.1709, 136.8815, 10000),
+            ("濱松市", 34.7108, 137.7261, 6000),
+            ("靜岡市", 34.9756, 138.3828, 6000),
         ]
     },
     "kyushu_north": {
         "name": "北九州(福岡・小倉・長崎)",
         "centers": [
-            (33.5902, 130.4017, 10000),  # 福岡市（博多、天神、中洲、福岡空港）
-            (33.8834, 130.8752, 6000),   # 北九州市小倉
-            (32.7503, 129.8777, 5000),   # 長崎市
+            ("福岡市", 33.5902, 130.4017, 10000),
+            ("北九州市小倉", 33.8834, 130.8752, 6000),
+            ("長崎市", 32.7503, 129.8777, 5000),
         ]
     },
     "kyushu_south": {
         "name": "南九州(熊本・鹿兒島・宮崎)",
         "centers": [
-            (32.8031, 130.7079, 7500),   # 熊本市（熊本站、辛島町/櫻町、通町筋）
-            (31.5966, 130.5571, 7000),   # 鹿兒島市（鹿兒島中央、天文館）
-            (31.9077, 131.4202, 5000),   # 宮崎市
+            ("熊本市", 32.8031, 130.7079, 7500),
+            ("鹿兒島市", 31.5966, 130.5571, 7000),
+            ("宮崎市", 31.9077, 131.4202, 5000),
         ]
     },
     "hokkaido": {
         "name": "北海道(札幌・函館・旭川)",
         "centers": [
-            (43.0618, 141.3545, 8500),   # 札幌市（札幌站、大通、薄野、中島公園）
-            (41.7687, 140.7288, 6000),   # 函館市
-            (43.7706, 142.3650, 6000),   # 旭川市
+            ("札幌市", 43.0618, 141.3545, 8500),
+            ("函館市", 41.7687, 140.7288, 6000),
+            ("旭川市", 43.7706, 142.3650, 6000),
         ]
     },
     "chugoku": {
         "name": "中國・四國(廣島・岡山・高松)",
         "centers": [
-            (34.3853, 132.4553, 8000),   # 廣島市
-            (34.6551, 133.9195, 6000),   # 岡山市
-            (34.3428, 134.0466, 6000),   # 高松市
-            (33.8392, 132.7657, 5000),   # 松山市
+            ("廣島市", 34.3853, 132.4553, 8000),
+            ("岡山市", 34.6551, 133.9195, 6000),
+            ("高松市", 34.3428, 134.0466, 6000),
+            ("松山市", 33.8392, 132.7657, 5000),
         ]
     },
     "tohoku": {
         "name": "東北(仙台・青森・盛岡・郡山)",
         "centers": [
-            (38.2682, 140.8694, 8000),   # 仙台市
-            (40.8222, 140.7474, 6000),   # 青森市
-            (39.7020, 141.1545, 6000),   # 盛岡市
-            (37.3981, 140.3881, 5000),   # 郡山市
+            ("仙台市", 38.2682, 140.8694, 8000),
+            ("青森市", 40.8222, 140.7474, 6000),
+            ("盛岡市", 39.7020, 141.1545, 6000),
+            ("郡山市", 37.3981, 140.3881, 5000),
         ]
     },
 }
@@ -112,16 +111,17 @@ CITY_AREAS = [
     (37.40, 140.39, "福島県 福島縣 郡山市"),
 ]
 
+# 多組公開 Overpass 鏡像節點輪詢，提升穩定度
 OVERPASS_URLS = [
     "https://overpass-api.de/api/interpreter",
     "https://overpass.kumi.systems/api/interpreter",
+    "https://maps.mail.ru/osm/tools/overpass/api/interpreter",
 ]
 REQUEST_HEADERS = {
-    "User-Agent": "JapanHotelFinder/2026.11-ExactCoords (https://github.com/artytien/japan-hotel-finder)",
+    "User-Agent": "JapanHotelFinder/2026.11-BatchChunked (https://github.com/artytien/japan-hotel-finder)",
     "Accept": "application/json",
 }
 
-# 15 大連鎖商務飯店品牌正規辨識規則與日文標準名稱前綴
 BRAND_PATTERNS = [
     ("Via Inn", r"ヴィアイン|via\s*inn", "ヴィアイン"),
     ("Dormy Inn", r"ドーミーイン|dormy\s*inn|御宿\s*野乃|野乃|onyado\s*nono", "ドーミーイン"),
@@ -217,7 +217,6 @@ def find_nearest_in_grid(lat, lng, grid, max_dist=9999):
     return min_d, nearest
 
 def get_coords(el):
-    # 優先取多邊形建築物的幾何中心 (center)，確保地標精準落在建築物正中央
     if "center" in el:
         return el["center"]["lat"], el["center"]["lon"]
     if "lat" in el and "lon" in el:
@@ -229,13 +228,13 @@ def query_overpass(q, label):
         for url in OVERPASS_URLS:
             try:
                 print(f"📡 [{label}] 請求 {url} ...")
-                r = requests.post(url, data={"data": q}, headers=REQUEST_HEADERS, timeout=50)
+                r = requests.post(url, data={"data": q}, headers=REQUEST_HEADERS, timeout=65)
                 r.raise_for_status()
                 return r.json().get("elements", [])
             except Exception as e:
-                print(f"⚠️ [{label}] 異常 ({e})，4秒後切換...")
-                time.sleep(4)
-        time.sleep(8)
+                print(f"⚠️ [{label}] 異常 ({e})，3秒後切換...")
+                time.sleep(3)
+        time.sleep(5)
     raise RuntimeError(f"❌ [{label}] 無法完成查詢。")
 
 def detect_hotel_brand(tags):
@@ -331,25 +330,29 @@ def detect_airport_access(st_name, st_tags, h_lat, h_lng, r_key):
 def fetch_and_save_region(r_key):
     cfg = REGIONS_MAP[r_key]
     r_name, centers = cfg["name"], cfg["centers"]
-    q1_parts, q2_parts = [], []
-    brand_regex = "スーパーホテル|ドーミーイン|御宿野乃|東横イン|アパホテル|ダイワロイネット|リッチモンドホテル|ヴィアイン|ルートイン|コンフォートホテル|コンフォートイン|フレッサイン|三井ガーデン|東急ステイ|ワシントンホテル|R&Bホテル|リブマックス|メトロポリタン"
+    el1, el2 = [], []
 
-    for lat, lng, rad in centers:
-        q1_parts.append(
+    # 逐城發送輕量級小請求，避免單次查詢過大導致 Overpass 504 逾時
+    for city_label, lat, lng, rad in centers:
+        q1 = (
+            f'[out:json][timeout:45];('
             f'nw["tourism"="hotel"](around:{rad},{lat},{lng});'
             f'nw["building"="hotel"](around:{rad},{lat},{lng});'
-            f'nw["name"~"{brand_regex}",i](around:{rad},{lat},{lng});'
             f'node["railway"="station"](around:{rad},{lat},{lng});'
+            f');out center tags;'
         )
-        q2_parts.append(
+        el1.extend(query_overpass(q1, f"{r_name}-{city_label}-飯店車站"))
+        time.sleep(1.5)
+
+        q2 = (
+            f'[out:json][timeout:45];('
             f'node["shop"="convenience"](around:{rad},{lat},{lng});'
             f'nw["shop"~"supermarket|chemist"](around:{rad},{lat},{lng});'
             f'nw["amenity"~"cafe|fast_food|pharmacy"](around:{rad},{lat},{lng});'
+            f');out center tags;'
         )
-
-    el1 = query_overpass(f'[out:json][timeout:45];({"".join(q1_parts)});out center tags;', f"{r_name}-飯店車站")
-    time.sleep(2)
-    el2 = query_overpass(f'[out:json][timeout:45];({"".join(q2_parts)});out center tags;', f"{r_name}-生活機能")
+        el2.extend(query_overpass(q2, f"{r_name}-{city_label}-生活機能"))
+        time.sleep(1.5)
 
     hotels, stations = [], []
     am_keys = ["lawson", "seven", "familymart", "starbucks", "doutor", "komeda", "mcdonalds", "mos", "kfc", "drugstore", "supermarket"]
@@ -369,7 +372,6 @@ def fetch_and_save_region(r_key):
         else:
             b, ja_prefix = detect_hotel_brand(tags)
             if b:
-                # 優先保留幾何中心 (way/relation) 節點，精度遠高於手點 node
                 is_building_poly = el.get("type") in ["way", "relation"]
                 hotels.append({
                     "tags": tags,
@@ -381,7 +383,6 @@ def fetch_and_save_region(r_key):
                     "area": get_area_info(lat, lon, tags),
                 })
 
-    # 排序讓建築物多邊形中心點 (is_poly=True) 優先於單一節點，避免同棟飯店被重複點位覆蓋
     hotels.sort(key=lambda x: (not x["is_poly"]))
 
     for el in el2:
@@ -393,9 +394,8 @@ def fetch_and_save_region(r_key):
 
     st_grid = build_spatial_grid(stations)
     am_grids = {k: build_spatial_grid(v) for k, v in am_pool.items()}
-    seen, results = set(), []
+    results = []
     for h in hotels:
-        # 80公尺內同品牌去重（防止同一棟飯店既有建築多邊形又有門口 POI 節點）
         is_dup = any(
             h["brand"] == prev["brand"] and haversine_m(h["lat"], h["lng"], prev["lat"], prev["lng"]) < 80
             for prev in results
