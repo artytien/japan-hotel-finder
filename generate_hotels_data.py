@@ -14,21 +14,22 @@ REGIONS_MAP = {
     "kansai": {
         "name": "關西圈(京阪神全境・大阪南北・奈良)",
         "centers": [
-            # 大阪府全境（北攝、大阪市區、東大阪、泉州至關西機場）
-            ("大阪市中心(梅田・難波・天王寺)", 34.6851, 135.5023, 9500),
-            ("大阪北攝・伊丹機場(江坂・吹田・千里中央・豐中・池田)", 34.7750, 135.4850, 8000),
-            ("大阪北東(茨木・高槻・枚方・守口・門真)", 34.8150, 135.5950, 8500),
+            # 大阪府全境（北攝、大阪市北區/南區、東大阪、堺市、泉州至關西機場）
+            ("大阪市北部(梅田・新大阪・京橋・淀屋橋)", 34.7120, 135.5020, 5500),
+            ("大阪市南部(難波・心齋橋・天王寺・本町)", 34.6620, 135.5020, 5500),
+            ("大阪北攝・伊丹機場(江坂・吹田・千里中央・豐中・池田)", 34.7750, 135.4850, 7500),
+            ("大阪北東(茨木・高槻・枚方・守口・門真)", 34.8150, 135.5950, 8000),
             ("大阪東部(東大阪・八尾・布施)", 34.6600, 135.6000, 6500),
             ("堺市(堺駅・堺東・中百舌鳥)", 34.5780, 135.4750, 5500),
             ("泉大津・岸和田・貝塚", 34.4750, 135.3880, 8000),
             ("泉佐野・臨空城・關西機場", 34.4150, 135.2900, 9500),
             # 京都府・滋賀大津
-            ("京都市全區(京都駅・河原町・烏丸・二條・伏見)", 35.0036, 135.7681, 9000),
+            ("京都市全區(京都駅・河原町・烏丸・二條・伏見)", 35.0036, 135.7681, 7500),
             ("京都南部・宇治・長岡京", 34.9050, 135.7400, 7500),
             ("滋賀大津・草津(琵琶湖線沿線)", 35.0120, 135.9100, 8000),
             # 兵庫縣（阪神間・神戶全區・明石・姬路）
-            ("阪神間(尼崎・西宮・蘆屋・寶塚・伊丹)", 34.7450, 135.3650, 8000),
-            ("神戶市全區(三宮・元町・神戶駅・新神戶・神戶機場)", 34.6901, 135.1955, 8000),
+            ("阪神間(尼崎・西宮・蘆屋・寶塚・伊丹)", 34.7450, 135.3650, 7500),
+            ("神戶市全區(三宮・元町・神戶駅・新神戶・神戶機場)", 34.6901, 135.1955, 7500),
             ("明石・加古川・姬路", 34.7500, 134.8200, 14000),
             # 奈良縣
             ("奈良市・大和西大寺・天理", 34.6851, 135.8048, 7500),
@@ -38,17 +39,17 @@ REGIONS_MAP = {
     "tokyo": {
         "name": "關東(首都圈)",
         "centers": [
-            ("東京都心東", 35.6812, 139.7745, 9500),
-            ("東京都心西", 35.6938, 139.7034, 9500),
-            ("橫濱・川崎", 35.4750, 139.6550, 9500),
-            ("千葉・舞濱", 35.6200, 139.9800, 11000),
+            ("東京都心東", 35.6812, 139.7745, 7500),
+            ("東京都心西", 35.6938, 139.7034, 7500),
+            ("橫濱・川崎", 35.4750, 139.6550, 8500),
+            ("千葉・舞濱", 35.6200, 139.9800, 10000),
             ("埼玉大宮", 35.9063, 139.6240, 5000),
         ],
     },
     "tokai": {
         "name": "東海(名古屋・浜松・靜岡)",
         "centers": [
-            ("名古屋市", 35.1709, 136.8815, 10000),
+            ("名古屋市", 35.1709, 136.8815, 8500),
             ("濱松市", 34.7108, 137.7261, 6000),
             ("靜岡市", 34.9756, 138.3828, 6000),
         ],
@@ -56,7 +57,7 @@ REGIONS_MAP = {
     "kyushu_north": {
         "name": "北九州(福岡・小倉・長崎)",
         "centers": [
-            ("福岡市", 33.5902, 130.4017, 10000),
+            ("福岡市", 33.5902, 130.4017, 8500),
             ("北九州市小倉", 33.8834, 130.8752, 6000),
             ("長崎市", 32.7503, 129.8777, 5000),
         ],
@@ -72,7 +73,7 @@ REGIONS_MAP = {
     "hokkaido": {
         "name": "北海道(札幌・函館・旭川)",
         "centers": [
-            ("札幌市", 43.0618, 141.3545, 8500),
+            ("札幌市", 43.0618, 141.3545, 8000),
             ("函館市", 41.7687, 140.7288, 6000),
             ("旭川市", 43.7706, 142.3650, 6000),
         ],
@@ -98,7 +99,8 @@ REGIONS_MAP = {
 }
 
 CITY_AREAS = [
-    (34.69, 135.50, "大阪府 大阪市 梅田 難波 心齋橋 天王寺 新大阪 京橋"),
+    (34.71, 135.50, "大阪府 大阪市 梅田 新大阪 京橋 淀屋橋"),
+    (34.66, 135.50, "大阪府 大阪市 難波 心齋橋 天王寺 本町"),
     (34.77, 135.49, "大阪府 吹田市 江坂 千里中央 豐中市 伊丹機場"),
     (34.82, 135.60, "大阪府 茨木市 高槻市 枚方市 守口市 門真市"),
     (34.66, 135.60, "大阪府 東大阪市 八尾市 布施"),
@@ -140,7 +142,6 @@ CITY_AREAS = [
     (37.40, 140.39, "福島県 福島縣 郡山市"),
 ]
 
-# 多組公開 Overpass 鏡像節點輪詢，提升穩定度
 OVERPASS_URLS = [
     "https://overpass-api.de/api/interpreter",
     "https://overpass.kumi.systems/api/interpreter",
@@ -148,11 +149,10 @@ OVERPASS_URLS = [
 ]
 
 REQUEST_HEADERS = {
-    "User-Agent": "JapanHotelFinder/2026.11-KansaiFull (https://github.com/artytien/japan-hotel-finder)",
+    "User-Agent": "JapanHotelFinder/2026.11-IndexedFast (https://github.com/artytien/japan-hotel-finder)",
     "Accept": "application/json",
 }
 
-# 15 大連鎖商務飯店品牌正規辨識規則與日文標準名稱前綴
 BRAND_PATTERNS = [
     ("Via Inn", r"ヴィアイン|via\s*inn", "ヴィアイン"),
     ("Dormy Inn", r"ドーミーイン|dormy\s*inn|御宿\s*野乃|野乃|onyado\s*nono", "ドーミーイン"),
@@ -170,17 +170,6 @@ BRAND_PATTERNS = [
     ("Tokyu Stay", r"東急ステイ|tokyu\s*stay", "東急ステイ"),
     ("Hotel Metropolitan", r"ホテルメトロポリタン|metropolitan", "ホテルメトロポリタン"),
 ]
-
-# 伺服器端直接過濾 15 大連鎖品牌（含子品牌別名），大幅減少資料傳輸量避免 502/504 逾時
-OVERPASS_BRAND_REGEX = (
-    "ヴィアイン|via.?inn|ドーミーイン|dormy.?inn|御宿.?野乃|onyado.?nono|"
-    "東横イン|東橫イン|東横inn|toyoko.?inn|スーパーホテル|super.?hotel|"
-    "ルートイン|route.?inn|コンフォート|comfort.?(hotel|inn)|"
-    "アパホテル|apa.?hotel|リブマックス|livemax|フレッサイン|fresa.?inn|"
-    "ワシントンホテル|R&Bホテル|washington.?hotel|リッチモンドホテル|richmond.?hotel|"
-    "ダイワロイネット|daiwa.?roynet|三井ガーデン|mitsui.?garden|"
-    "東急ステイ|tokyu.?stay|メトロポリタン|metropolitan"
-)
 
 PURE_BRAND_REGEX = re.compile(
     r"^(東横イン|東橫イン|東横inn|toyoko\s*inn|アパホテル|apa\s*hotel|スーパーホテル|super\s*hotel|"
@@ -269,7 +258,6 @@ def find_nearest_in_grid(lat, lng, grid, max_dist=9999):
 
 
 def get_coords(el):
-    # 優先取多邊形建築物的幾何中心 (center)，確保地標精準落在建築物正中央
     if "center" in el:
         return el["center"]["lat"], el["center"]["lon"]
     if "lat" in el and "lon" in el:
@@ -282,16 +270,16 @@ def query_overpass(q, label):
         for url in OVERPASS_URLS:
             try:
                 print(f"📡 [{label}] 請求 {url} ...")
-                r = requests.post(url, data={"data": q}, headers=REQUEST_HEADERS, timeout=55)
+                r = requests.post(url, data={"data": q}, headers=REQUEST_HEADERS, timeout=45)
                 r.raise_for_status()
                 data = r.json()
                 elements = data.get("elements", [])
                 print(f"✅ [{label}] 成功取得 {len(elements)} 筆圖資節點")
                 return elements
             except Exception as e:
-                print(f"⚠️ [{label}] 異常 ({e})，6秒後切換節點...")
-                time.sleep(6)
-        time.sleep(12)
+                print(f"⚠️ [{label}] 異常 ({e})，5秒後切換節點...")
+                time.sleep(5)
+        time.sleep(10)
     raise RuntimeError(f"❌ [{label}] 多次重試後仍無法完成查詢。")
 
 
@@ -420,21 +408,22 @@ def fetch_and_save_region(r_key):
     r_name, centers = cfg["name"], cfg["centers"]
     all_elements = []
 
+    # 關鍵效能優化：先用主索引標籤 tourism=hotel / building=hotel 鎖定飯店物件，避免全庫無索引正則掃描導致逾時
     for idx, (city_label, lat, lng, rad) in enumerate(centers):
-        q_combined = (
-            f'[out:json][timeout:50];('
-            f'nw["name"~"{OVERPASS_BRAND_REGEX}",i](around:{rad},{lat},{lng});'
-            f'nw["brand"~"{OVERPASS_BRAND_REGEX}",i](around:{rad},{lat},{lng});'
+        q_indexed = (
+            f'[out:json][timeout:45];('
+            f'nw["tourism"~"hotel|hostel|guest_house"](around:{rad},{lat},{lng});'
+            f'nw["building"="hotel"](around:{rad},{lat},{lng});'
             f'node["railway"="station"](around:{rad},{lat},{lng});'
             f'node["shop"="convenience"](around:{rad},{lat},{lng});'
             f'nw["shop"~"supermarket|chemist"](around:{rad},{lat},{lng});'
             f'nw["amenity"~"cafe|fast_food|pharmacy"](around:{rad},{lat},{lng});'
             f');out center tags;'
         )
-        els = query_overpass(q_combined, f"{r_name}-{city_label}")
+        els = query_overpass(q_indexed, f"{r_name}-{city_label}")
         all_elements.extend(els)
         if idx < len(centers) - 1:
-            time.sleep(5)
+            time.sleep(3)
 
     hotels, stations = [], []
     am_keys = [
@@ -549,7 +538,7 @@ def main():
             except Exception as e:
                 print(f"⚠️ 跳過異常區域 {k}，保留既有舊檔 ({e})")
             if i < len(REGIONS_MAP) - 1:
-                time.sleep(6)
+                time.sleep(5)
     elif t in REGIONS_MAP:
         fetch_and_save_region(t)
     else:
