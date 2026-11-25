@@ -25,10 +25,10 @@
     }
   },
   {
-    "id": "kansai_126",
+    "id": "kansai_66",
     "name": "アパホテル〈なんば南 恵美須町駅〉",
     "brand": "APA Hotel",
-    "area": "大阪市  浪速区   大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪市  浪速区   大阪府 大阪市 難波 心齋橋 天王寺 本町",
     "region": "kansai",
     "lat": 34.655596,
     "lng": 135.50597,
@@ -50,10 +50,10 @@
     }
   },
   {
-    "id": "kansai_58",
-    "name": "東横イン",
+    "id": "kansai_149",
+    "name": "東横INN 烏丸駅前",
     "brand": "Toyoko Inn",
-    "area": "京都府 京都市 河原町 烏丸",
+    "area": "京都府 京都市 河原町 烏丸 京都駅 二條 伏見",
     "region": "kansai",
     "lat": 35.003826,
     "lng": 135.760723,
@@ -178,10 +178,10 @@
     }
   },
   {
-    "id": "kansai_128",
+    "id": "kansai_92",
     "name": "ホテルリブマックス神戸",
     "brand": "LiveMax",
-    "area": "兵庫県 兵庫縣 神戶市 三宮",
+    "area": "兵庫県 兵庫縣 神戶市 三宮 元町 新神戶",
     "region": "kansai",
     "lat": 34.67693,
     "lng": 135.169026,
@@ -461,28 +461,28 @@
     }
   },
   {
-    "id": "tohoku_22",
-    "name": "天然温泉 杜都の湯 御宿 野乃仙台",
-    "brand": "Dormy Inn",
-    "area": "仙台市  青葉区 本町  宮城県 宮城縣 仙台市",
-    "region": "tohoku",
-    "lat": 38.263228,
-    "lng": 140.875896,
-    "station_name": "広瀬通",
-    "station_dist": 54,
+    "id": "kansai_166",
+    "name": "スーパーホテル 新大宮駅前",
+    "brand": "Super Hotel",
+    "area": "奈良県 奈良縣 奈良市 大和西大寺 天理市",
+    "region": "kansai",
+    "lat": 34.685884,
+    "lng": 135.811764,
+    "station_name": "新大宮",
+    "station_dist": 58,
     "airport_lines": [],
     "amenities": {
-      "lawson": 339,
-      "seven": 39,
-      "familymart": 99,
-      "starbucks": 213,
-      "doutor": 210,
-      "komeda": 386,
-      "mcdonalds": 195,
-      "mos": 427,
-      "kfc": 430,
-      "drugstore": 94,
-      "supermarket": 96
+      "lawson": 83,
+      "seven": 9,
+      "familymart": 682,
+      "starbucks": 729,
+      "doutor": 1498,
+      "komeda": 1765,
+      "mcdonalds": 341,
+      "mos": 859,
+      "kfc": 899,
+      "drugstore": 279,
+      "supermarket": 100
     }
   },
   {
@@ -513,6 +513,33 @@
     }
   },
   {
+    "id": "kansai_164",
+    "name": "スーパーホテル 奈良駅前",
+    "brand": "Super Hotel",
+    "area": "奈良県 奈良縣 奈良市 大和西大寺 天理市",
+    "region": "kansai",
+    "lat": 34.680755,
+    "lng": 135.819578,
+    "station_name": "奈良",
+    "station_dist": 59,
+    "airport_lines": [
+      "BUS_KIX"
+    ],
+    "amenities": {
+      "lawson": 43,
+      "seven": 15,
+      "familymart": 877,
+      "starbucks": 117,
+      "doutor": 772,
+      "komeda": 881,
+      "mcdonalds": 868,
+      "mos": 55,
+      "kfc": 172,
+      "drugstore": 9,
+      "supermarket": 70
+    }
+  },
+  {
     "id": "tohoku_8",
     "name": "ホテルメトロポリタン盛岡 本館",
     "brand": "Hotel Metropolitan",
@@ -535,6 +562,33 @@
       "kfc": 1758,
       "drugstore": 143,
       "supermarket": 440
+    }
+  },
+  {
+    "id": "kansai_155",
+    "name": "R&Bホテル神戸",
+    "brand": "Washington Hotel",
+    "area": "兵庫県 兵庫縣 神戶市 三宮 元町 新神戶",
+    "region": "kansai",
+    "lat": 34.689481,
+    "lng": 135.189941,
+    "station_name": "旧居留地・大丸前",
+    "station_dist": 60,
+    "airport_lines": [
+      "BUS_KIX"
+    ],
+    "amenities": {
+      "lawson": 235,
+      "seven": 72,
+      "familymart": 73,
+      "starbucks": 48,
+      "doutor": 60,
+      "komeda": 249,
+      "mcdonalds": 88,
+      "mos": 115,
+      "kfc": 471,
+      "drugstore": 59,
+      "supermarket": 144
     }
   },
   {
@@ -588,10 +642,10 @@
     }
   },
   {
-    "id": "kansai_27",
+    "id": "kansai_106",
     "name": "東横INN大阪谷四交差点",
     "brand": "Toyoko Inn",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 難波 心齋橋 天王寺 本町",
     "region": "kansai",
     "lat": 34.681017,
     "lng": 135.516974,
@@ -692,17 +746,18 @@
     }
   },
   {
-    "id": "kansai_69",
-    "name": "アパホテル",
+    "id": "kansai_10",
+    "name": "アパホテル JR難波駅前",
     "brand": "APA Hotel",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 難波 心齋橋 天王寺 本町",
     "region": "kansai",
     "lat": 34.66611,
     "lng": 135.495957,
     "station_name": "JR難波",
     "station_dist": 71,
     "airport_lines": [
-      "NANKAI"
+      "BUS_KIX",
+      "RAIL_NANKAI"
     ],
     "amenities": {
       "lawson": 170,
@@ -771,10 +826,10 @@
     }
   },
   {
-    "id": "kansai_106",
-    "name": "スーパーホテル",
+    "id": "kansai_41",
+    "name": "スーパーホテル 本町駅前",
     "brand": "Super Hotel",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 難波 心齋橋 天王寺 本町",
     "region": "kansai",
     "lat": 34.682382,
     "lng": 135.496237,
@@ -900,17 +955,18 @@
     }
   },
   {
-    "id": "kansai_74",
+    "id": "kansai_15",
     "name": "東横inn 大阪なんば",
     "brand": "Toyoko Inn",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 難波 心齋橋 天王寺 本町",
     "region": "kansai",
     "lat": 34.66757,
     "lng": 135.498884,
     "station_name": "なんば",
     "station_dist": 84,
     "airport_lines": [
-      "NANKAI"
+      "BUS_KIX",
+      "RAIL_NANKAI"
     ],
     "amenities": {
       "lawson": 72,
@@ -952,10 +1008,10 @@
     }
   },
   {
-    "id": "kansai_85",
+    "id": "kansai_25",
     "name": "Hotel Livemax",
     "brand": "LiveMax",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 難波 心齋橋 天王寺 本町",
     "region": "kansai",
     "lat": 34.676078,
     "lng": 135.50612,
@@ -1002,16 +1058,18 @@
     }
   },
   {
-    "id": "kansai_99",
+    "id": "kansai_76",
     "name": "Comfort Suites",
     "brand": "Comfort Hotel",
-    "area": "京都府 京都市 河原町 烏丸",
+    "area": "京都府 京都市 河原町 烏丸 京都駅 二條 伏見",
     "region": "kansai",
     "lat": 34.979111,
     "lng": 135.752882,
     "station_name": "東寺",
     "station_dist": 87,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_KIX"
+    ],
     "amenities": {
       "lawson": 56,
       "seven": 458,
@@ -1104,10 +1162,10 @@
     }
   },
   {
-    "id": "kansai_91",
-    "name": "アパホテル",
+    "id": "kansai_31",
+    "name": "アパホテル なんば北心斎橋駅前",
     "brand": "APA Hotel",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 難波 心齋橋 天王寺 本町",
     "region": "kansai",
     "lat": 34.673919,
     "lng": 135.497722,
@@ -1154,6 +1212,58 @@
       "kfc": 726,
       "drugstore": 95,
       "supermarket": 369
+    }
+  },
+  {
+    "id": "kansai_48",
+    "name": "御宿野乃なんば",
+    "brand": "Dormy Inn",
+    "area": "大阪市  中央区 日本橋  大阪府 大阪市 難波 心齋橋 天王寺 本町",
+    "region": "kansai",
+    "lat": 34.667963,
+    "lng": 135.506465,
+    "station_name": "日本橋",
+    "station_dist": 92,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 124,
+      "seven": 31,
+      "familymart": 79,
+      "starbucks": 313,
+      "doutor": 478,
+      "komeda": 449,
+      "mcdonalds": 498,
+      "mos": 342,
+      "kfc": 1211,
+      "drugstore": 48,
+      "supermarket": 227
+    }
+  },
+  {
+    "id": "kansai_72",
+    "name": "ホテルルートイン大阪岸和田",
+    "brand": "Route Inn",
+    "area": "大阪府 泉大津市 岸和田市 貝塚市",
+    "region": "kansai",
+    "lat": 34.449148,
+    "lng": 135.385042,
+    "station_name": "東岸和田",
+    "station_dist": 92,
+    "airport_lines": [
+      "RAIL_NANKAI"
+    ],
+    "amenities": {
+      "lawson": 284,
+      "seven": 619,
+      "familymart": 676,
+      "starbucks": 323,
+      "doutor": 9999,
+      "komeda": 1140,
+      "mcdonalds": 344,
+      "mos": 1537,
+      "kfc": 1206,
+      "drugstore": 39,
+      "supermarket": 105
     }
   },
   {
@@ -1261,10 +1371,10 @@
     }
   },
   {
-    "id": "kansai_107",
-    "name": "東横イン",
+    "id": "kansai_42",
+    "name": "東横イン 大阪JR野田駅前",
     "brand": "Toyoko Inn",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 梅田 新大阪 京橋 淀屋橋",
     "region": "kansai",
     "lat": 34.690413,
     "lng": 135.476146,
@@ -1670,10 +1780,10 @@
     }
   },
   {
-    "id": "kansai_133",
-    "name": "アパホテル",
+    "id": "kansai_67",
+    "name": "アパホテル なんば南 大国町駅前",
     "brand": "APA Hotel",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 難波 心齋橋 天王寺 本町",
     "region": "kansai",
     "lat": 34.655365,
     "lng": 135.498338,
@@ -1722,10 +1832,10 @@
     }
   },
   {
-    "id": "kansai_94",
+    "id": "kansai_34",
     "name": "アパホテル<大阪肥後橋駅前>",
     "brand": "APA Hotel",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 梅田 新大阪 京橋 淀屋橋",
     "region": "kansai",
     "lat": 34.692068,
     "lng": 135.495388,
@@ -1797,10 +1907,10 @@
     }
   },
   {
-    "id": "kansai_84",
-    "name": "アパホテル",
+    "id": "kansai_24",
+    "name": "アパホテル 本町駅前",
     "brand": "APA Hotel",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 難波 心齋橋 天王寺 本町",
     "region": "kansai",
     "lat": 34.682366,
     "lng": 135.499835,
@@ -1928,10 +2038,10 @@
     }
   },
   {
-    "id": "kansai_56",
+    "id": "kansai_148",
     "name": "Toyoko Inn Kyoto Shijo Omiya",
     "brand": "Toyoko Inn",
-    "area": "京都府 京都市 河原町 烏丸",
+    "area": "京都府 京都市 河原町 烏丸 京都駅 二條 伏見",
     "region": "kansai",
     "lat": 35.003764,
     "lng": 135.747364,
@@ -2032,35 +2142,10 @@
     }
   },
   {
-    "id": "kansai_23",
-    "name": "アパホテル〈大阪門真市駅前〉",
-    "brand": "APA Hotel",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
-    "region": "kansai",
-    "lat": 34.738588,
-    "lng": 135.581767,
-    "station_name": "門真市",
-    "station_dist": 120,
-    "airport_lines": [],
-    "amenities": {
-      "lawson": 233,
-      "seven": 120,
-      "familymart": 90,
-      "starbucks": 1644,
-      "doutor": 9999,
-      "komeda": 2740,
-      "mcdonalds": 1293,
-      "mos": 1630,
-      "kfc": 1172,
-      "drugstore": 219,
-      "supermarket": 247
-    }
-  },
-  {
-    "id": "kansai_63",
+    "id": "kansai_5",
     "name": "スーパーホテルなんば・日本橋",
     "brand": "Super Hotel",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 難波 心齋橋 天王寺 本町",
     "region": "kansai",
     "lat": 34.665687,
     "lng": 135.505773,
@@ -2104,6 +2189,31 @@
       "kfc": 1645,
       "drugstore": 154,
       "supermarket": 357
+    }
+  },
+  {
+    "id": "kansai_44",
+    "name": "東横イン 心斎橋西",
+    "brand": "Toyoko Inn",
+    "area": "大阪府 大阪市 難波 心齋橋 天王寺 本町",
+    "region": "kansai",
+    "lat": 34.674641,
+    "lng": 135.495645,
+    "station_name": "四ツ橋",
+    "station_dist": 121,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 122,
+      "seven": 156,
+      "familymart": 65,
+      "starbucks": 162,
+      "doutor": 511,
+      "komeda": 228,
+      "mcdonalds": 145,
+      "mos": 311,
+      "kfc": 1691,
+      "drugstore": 213,
+      "supermarket": 122
     }
   },
   {
@@ -2262,10 +2372,37 @@
     }
   },
   {
-    "id": "kansai_102",
-    "name": "東横イン",
+    "id": "kansai_96",
+    "name": "天然温泉 奈良若草の湯 ダイワロイネットホテル奈良",
+    "brand": "Daiwa Roynet",
+    "area": "奈良県 奈良縣 奈良市 大和西大寺 天理市",
+    "region": "kansai",
+    "lat": 34.680325,
+    "lng": 135.817706,
+    "station_name": "奈良",
+    "station_dist": 125,
+    "airport_lines": [
+      "BUS_KIX"
+    ],
+    "amenities": {
+      "lawson": 219,
+      "seven": 152,
+      "familymart": 935,
+      "starbucks": 249,
+      "doutor": 950,
+      "komeda": 942,
+      "mcdonalds": 1045,
+      "mos": 150,
+      "kfc": 321,
+      "drugstore": 171,
+      "supermarket": 158
+    }
+  },
+  {
+    "id": "kansai_86",
+    "name": "東横イン 阪神尼崎駅前",
     "brand": "Toyoko Inn",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "兵庫県 兵庫縣 尼崎市 西宮市 蘆屋市 寶塚市 伊丹市",
     "region": "kansai",
     "lat": 34.717918,
     "lng": 135.41621,
@@ -2281,7 +2418,7 @@
       "komeda": 254,
       "mcdonalds": 616,
       "mos": 2293,
-      "kfc": 9999,
+      "kfc": 1945,
       "drugstore": 57,
       "supermarket": 93
     }
@@ -2441,35 +2578,10 @@
     }
   },
   {
-    "id": "kansai_21",
-    "name": "東横イン",
-    "brand": "Toyoko Inn",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
-    "region": "kansai",
-    "lat": 34.674657,
-    "lng": 135.495518,
-    "station_name": "四ツ橋",
-    "station_dist": 132,
-    "airport_lines": [],
-    "amenities": {
-      "lawson": 112,
-      "seven": 166,
-      "familymart": 75,
-      "starbucks": 172,
-      "doutor": 521,
-      "komeda": 234,
-      "mcdonalds": 152,
-      "mos": 322,
-      "kfc": 1681,
-      "drugstore": 220,
-      "supermarket": 127
-    }
-  },
-  {
-    "id": "kansai_115",
-    "name": "Richmond Hotel",
+    "id": "kansai_69",
+    "name": "リッチモンドホテル 長田駅前",
     "brand": "Richmond Hotel",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 東大阪市 八尾市 布施",
     "region": "kansai",
     "lat": 34.678199,
     "lng": 135.589786,
@@ -2488,6 +2600,31 @@
       "kfc": 496,
       "drugstore": 38,
       "supermarket": 148
+    }
+  },
+  {
+    "id": "kansai_167",
+    "name": "東横イン 新大宮駅前",
+    "brand": "Toyoko Inn",
+    "area": "奈良県 奈良縣 奈良市 大和西大寺 天理市",
+    "region": "kansai",
+    "lat": 34.686523,
+    "lng": 135.811202,
+    "station_name": "新大宮",
+    "station_dist": 134,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 93,
+      "seven": 81,
+      "familymart": 626,
+      "starbucks": 725,
+      "doutor": 1565,
+      "komeda": 1852,
+      "mcdonalds": 254,
+      "mos": 944,
+      "kfc": 979,
+      "drugstore": 198,
+      "supermarket": 31
     }
   },
   {
@@ -2801,6 +2938,34 @@
     }
   },
   {
+    "id": "kansai_51",
+    "name": "ヴィアイン 新大阪正面口",
+    "brand": "Via Inn",
+    "area": "大阪府 大阪市 梅田 新大阪 京橋 淀屋橋",
+    "region": "kansai",
+    "lat": 34.731714,
+    "lng": 135.499157,
+    "station_name": "新大阪",
+    "station_dist": 143,
+    "airport_lines": [
+      "BUS_KIX",
+      "RAIL_HARUKA"
+    ],
+    "amenities": {
+      "lawson": 139,
+      "seven": 7,
+      "familymart": 356,
+      "starbucks": 185,
+      "doutor": 226,
+      "komeda": 231,
+      "mcdonalds": 222,
+      "mos": 330,
+      "kfc": 1089,
+      "drugstore": 372,
+      "supermarket": 269
+    }
+  },
+  {
     "id": "chugoku_15",
     "name": "ヴィアインプライム",
     "brand": "Via Inn",
@@ -2853,17 +3018,18 @@
     }
   },
   {
-    "id": "kansai_117",
+    "id": "kansai_81",
     "name": "三井ガーデンホテル京都駅前",
     "brand": "Mitsui Garden",
-    "area": "京都府 京都市 河原町 烏丸",
+    "area": "京都府 京都市 河原町 烏丸 京都駅 二條 伏見",
     "region": "kansai",
     "lat": 34.9869,
     "lng": 135.761411,
     "station_name": "京都",
     "station_dist": 146,
     "airport_lines": [
-      "JR_HARUKA"
+      "BUS_KIX",
+      "RAIL_HARUKA"
     ],
     "amenities": {
       "lawson": 59,
@@ -2930,10 +3096,10 @@
     }
   },
   {
-    "id": "kansai_22",
+    "id": "kansai_119",
     "name": "dormy inn hotel",
     "brand": "Dormy Inn",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 難波 心齋橋 天王寺 本町",
     "region": "kansai",
     "lat": 34.656865,
     "lng": 135.4993,
@@ -2955,17 +3121,18 @@
     }
   },
   {
-    "id": "kansai_48",
+    "id": "kansai_145",
     "name": "ヴィアインプライム京都駅八条口",
     "brand": "Via Inn",
-    "area": "京都府 京都市 河原町 烏丸",
+    "area": "京都府 京都市 河原町 烏丸 京都駅 二條 伏見",
     "region": "kansai",
     "lat": 34.983291,
     "lng": 135.758692,
     "station_name": "京都",
     "station_dist": 148,
     "airport_lines": [
-      "JR_HARUKA"
+      "BUS_KIX",
+      "RAIL_HARUKA"
     ],
     "amenities": {
       "lawson": 211,
@@ -3211,10 +3378,10 @@
     }
   },
   {
-    "id": "kansai_42",
-    "name": "相鉄フレッサイン",
+    "id": "kansai_113",
+    "name": "相鉄フレッサイン 淀屋橋",
     "brand": "Fresa Inn",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 梅田 新大阪 京橋 淀屋橋",
     "region": "kansai",
     "lat": 34.692005,
     "lng": 135.50287,
@@ -3311,6 +3478,33 @@
     }
   },
   {
+    "id": "kansai_71",
+    "name": "東横INN堺駅前",
+    "brand": "Toyoko Inn",
+    "area": "大阪府 堺市 堺駅 堺東 中百舌鳥",
+    "region": "kansai",
+    "lat": 34.581536,
+    "lng": 135.470473,
+    "station_name": "堺",
+    "station_dist": 157,
+    "airport_lines": [
+      "RAIL_NANKAI"
+    ],
+    "amenities": {
+      "lawson": 595,
+      "seven": 125,
+      "familymart": 44,
+      "starbucks": 104,
+      "doutor": 1356,
+      "komeda": 124,
+      "mcdonalds": 143,
+      "mos": 3003,
+      "kfc": 66,
+      "drugstore": 42,
+      "supermarket": 190
+    }
+  },
+  {
     "id": "tokyo_30",
     "name": "東横INN山手線大塚駅北口2",
     "brand": "Toyoko Inn",
@@ -3336,10 +3530,10 @@
     }
   },
   {
-    "id": "kansai_8",
-    "name": "東横イン",
+    "id": "kansai_99",
+    "name": "東横INN 谷町四丁目駅前",
     "brand": "Toyoko Inn",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 難波 心齋橋 天王寺 本町",
     "region": "kansai",
     "lat": 34.680093,
     "lng": 135.516939,
@@ -3466,33 +3660,6 @@
     }
   },
   {
-    "id": "kyushu_north_30",
-    "name": "ダイワロイネットホテル小倉駅前",
-    "brand": "Daiwa Roynet",
-    "area": "福岡県 福岡縣 北九州市 小倉",
-    "region": "kyushu_north",
-    "lat": 33.884519,
-    "lng": 130.881103,
-    "station_name": "平和通",
-    "station_dist": 160,
-    "airport_lines": [
-      "BUS_KKJ"
-    ],
-    "amenities": {
-      "lawson": 126,
-      "seven": 91,
-      "familymart": 43,
-      "starbucks": 131,
-      "doutor": 96,
-      "komeda": 447,
-      "mcdonalds": 162,
-      "mos": 9999,
-      "kfc": 9999,
-      "drugstore": 94,
-      "supermarket": 293
-    }
-  },
-  {
     "id": "tohoku_40",
     "name": "R&Bホテル盛岡駅前",
     "brand": "Washington Hotel",
@@ -3570,10 +3737,10 @@
     }
   },
   {
-    "id": "kansai_36",
-    "name": "御宿 野乃 大阪淀屋橋",
+    "id": "kansai_110",
+    "name": "天然温泉 浪花の湯 御宿 野乃 大阪淀屋橋",
     "brand": "Dormy Inn",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 梅田 新大阪 京橋 淀屋橋",
     "region": "kansai",
     "lat": 34.691821,
     "lng": 135.504849,
@@ -3620,16 +3787,18 @@
     }
   },
   {
-    "id": "kansai_125",
+    "id": "kansai_50",
     "name": "アパホテル&リゾート 大阪梅田駅タワー",
     "brand": "APA Hotel",
-    "area": "大阪市  北区   大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪市  北区   大阪府 大阪市 梅田 新大阪 京橋 淀屋橋",
     "region": "kansai",
     "lat": 34.700003,
     "lng": 135.501476,
     "station_name": "東梅田",
     "station_dist": 165,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_KIX"
+    ],
     "amenities": {
       "lawson": 7,
       "seven": 210,
@@ -3667,6 +3836,31 @@
       "kfc": 665,
       "drugstore": 157,
       "supermarket": 98
+    }
+  },
+  {
+    "id": "kansai_94",
+    "name": "東横INN 近鉄奈良駅前",
+    "brand": "Toyoko Inn",
+    "area": "奈良県 奈良縣 奈良市 大和西大寺 天理市",
+    "region": "kansai",
+    "lat": 34.68471,
+    "lng": 135.826862,
+    "station_name": "近鉄奈良",
+    "station_dist": 166,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 190,
+      "seven": 183,
+      "familymart": 372,
+      "starbucks": 452,
+      "doutor": 234,
+      "komeda": 1220,
+      "mcdonalds": 248,
+      "mos": 819,
+      "kfc": 652,
+      "drugstore": 84,
+      "supermarket": 156
     }
   },
   {
@@ -3723,16 +3917,18 @@
     }
   },
   {
-    "id": "kansai_136",
-    "name": "アパホテル",
+    "id": "kansai_56",
+    "name": "アパホテル 新大阪南方駅前",
     "brand": "APA Hotel",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 梅田 新大阪 京橋 淀屋橋",
     "region": "kansai",
     "lat": 34.727597,
     "lng": 135.5,
     "station_name": "西中島南方",
     "station_dist": 167,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_KIX"
+    ],
     "amenities": {
       "lawson": 126,
       "seven": 76,
@@ -3773,17 +3969,17 @@
     }
   },
   {
-    "id": "kansai_41",
-    "name": "ダイワロイネットホテル",
+    "id": "kansai_112",
+    "name": "ダイワロイネットホテル 大阪堺筋本町 PREMIER",
     "brand": "Daiwa Roynet",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 難波 心齋橋 天王寺 本町",
     "region": "kansai",
     "lat": 34.68374,
     "lng": 135.50769,
     "station_name": "堺筋本町",
     "station_dist": 168,
     "airport_lines": [
-      "NANKAI"
+      "RAIL_NANKAI"
     ],
     "amenities": {
       "lawson": 130,
@@ -3904,10 +4100,10 @@
     }
   },
   {
-    "id": "kansai_90",
+    "id": "kansai_30",
     "name": "ヴィアイン心斎橋",
     "brand": "Via Inn",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 難波 心齋橋 天王寺 本町",
     "region": "kansai",
     "lat": 34.673755,
     "lng": 135.498734,
@@ -4033,10 +4229,10 @@
     }
   },
   {
-    "id": "kansai_108",
+    "id": "kansai_43",
     "name": "ホテルヴィアイン心斎橋四ツ橋",
     "brand": "Via Inn",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 難波 心齋橋 天王寺 本町",
     "region": "kansai",
     "lat": 34.675695,
     "lng": 135.496367,
@@ -4136,10 +4332,10 @@
     }
   },
   {
-    "id": "kansai_62",
+    "id": "kansai_4",
     "name": "東横イン梅田中津",
     "brand": "Toyoko Inn",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 梅田 新大阪 京橋 淀屋橋",
     "region": "kansai",
     "lat": 34.70945,
     "lng": 135.496759,
@@ -4186,6 +4382,34 @@
       "kfc": 1264,
       "drugstore": 160,
       "supermarket": 33
+    }
+  },
+  {
+    "id": "kansai_73",
+    "name": "関西エアポートワシントンホテル",
+    "brand": "Washington Hotel",
+    "area": "大阪府 泉佐野市 臨空城 りんくうタウン 關西機場 関西空港",
+    "region": "kansai",
+    "lat": 34.411153,
+    "lng": 135.301539,
+    "station_name": "りんくうタウン",
+    "station_dist": 178,
+    "airport_lines": [
+      "RAIL_HARUKA",
+      "RAIL_NANKAI"
+    ],
+    "amenities": {
+      "lawson": 96,
+      "seven": 410,
+      "familymart": 33,
+      "starbucks": 895,
+      "doutor": 3598,
+      "komeda": 1199,
+      "mcdonalds": 557,
+      "mos": 9999,
+      "kfc": 3587,
+      "drugstore": 106,
+      "supermarket": 276
     }
   },
   {
@@ -4368,35 +4592,10 @@
     }
   },
   {
-    "id": "kansai_19",
-    "name": "ホテルヴィアイン心斎橋長堀通",
-    "brand": "Via Inn",
-    "area": "大阪市  西区 新町  大阪府 大阪市 梅田 難波 心齋橋 天王寺",
-    "region": "kansai",
-    "lat": 34.675684,
-    "lng": 135.497259,
-    "station_name": "心斎橋",
-    "station_dist": 181,
-    "airport_lines": [],
-    "amenities": {
-      "lawson": 144,
-      "seven": 110,
-      "familymart": 123,
-      "starbucks": 226,
-      "doutor": 330,
-      "komeda": 61,
-      "mcdonalds": 49,
-      "mos": 287,
-      "kfc": 1868,
-      "drugstore": 42,
-      "supermarket": 85
-    }
-  },
-  {
-    "id": "kansai_66",
+    "id": "kansai_74",
     "name": "Daiwa Roynet Hotel Kyoto Shijo Karasuma",
     "brand": "Daiwa Roynet",
-    "area": "京都府 京都市 河原町 烏丸",
+    "area": "京都府 京都市 河原町 烏丸 京都駅 二條 伏見",
     "region": "kansai",
     "lat": 35.00087,
     "lng": 135.760036,
@@ -4418,10 +4617,35 @@
     }
   },
   {
-    "id": "kansai_137",
+    "id": "kansai_104",
+    "name": "ホテルヴィアイン心斎橋長堀通",
+    "brand": "Via Inn",
+    "area": "大阪市  西区 新町  大阪府 大阪市 難波 心齋橋 天王寺 本町",
+    "region": "kansai",
+    "lat": 34.675684,
+    "lng": 135.497259,
+    "station_name": "心斎橋",
+    "station_dist": 181,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 144,
+      "seven": 110,
+      "familymart": 123,
+      "starbucks": 226,
+      "doutor": 330,
+      "komeda": 61,
+      "mcdonalds": 49,
+      "mos": 287,
+      "kfc": 1868,
+      "drugstore": 42,
+      "supermarket": 85
+    }
+  },
+  {
+    "id": "kansai_57",
     "name": "ホテルルートイン大阪本町",
     "brand": "Route Inn",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 難波 心齋橋 天王寺 本町",
     "region": "kansai",
     "lat": 34.681922,
     "lng": 135.489963,
@@ -4439,7 +4663,32 @@
       "mos": 745,
       "kfc": 1702,
       "drugstore": 84,
-      "supermarket": 202
+      "supermarket": 153
+    }
+  },
+  {
+    "id": "kansai_8",
+    "name": "APAホテル（東梅田南森町駅前）",
+    "brand": "APA Hotel",
+    "area": "大阪市  北区   大阪府 大阪市 梅田 新大阪 京橋 淀屋橋",
+    "region": "kansai",
+    "lat": 34.699029,
+    "lng": 135.510049,
+    "station_name": "南森町",
+    "station_dist": 183,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 140,
+      "seven": 195,
+      "familymart": 73,
+      "starbucks": 1027,
+      "doutor": 163,
+      "komeda": 992,
+      "mcdonalds": 727,
+      "mos": 168,
+      "kfc": 701,
+      "drugstore": 109,
+      "supermarket": 204
     }
   },
   {
@@ -4470,17 +4719,18 @@
     }
   },
   {
-    "id": "kansai_72",
-    "name": "相鉄フレッサイン",
+    "id": "kansai_13",
+    "name": "相鉄フレッサイン 大阪なんば駅前",
     "brand": "Fresa Inn",
-    "area": "大阪市  浪速区   大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪市  浪速区   大阪府 大阪市 難波 心齋橋 天王寺 本町",
     "region": "kansai",
     "lat": 34.664819,
     "lng": 135.499089,
     "station_name": "なんば",
     "station_dist": 184,
     "airport_lines": [
-      "NANKAI"
+      "BUS_KIX",
+      "RAIL_NANKAI"
     ],
     "amenities": {
       "lawson": 182,
@@ -4624,10 +4874,35 @@
     }
   },
   {
-    "id": "kansai_10",
-    "name": "アパホテル",
+    "id": "kansai_52",
+    "name": "アパホテル 江坂駅前",
     "brand": "APA Hotel",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 吹田市 江坂 千里中央 豐中市 伊丹機場",
+    "region": "kansai",
+    "lat": 34.75722,
+    "lng": 135.496598,
+    "station_name": "江坂",
+    "station_dist": 189,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 59,
+      "seven": 235,
+      "familymart": 155,
+      "starbucks": 130,
+      "doutor": 2225,
+      "komeda": 96,
+      "mcdonalds": 194,
+      "mos": 189,
+      "kfc": 1756,
+      "drugstore": 49,
+      "supermarket": 47
+    }
+  },
+  {
+    "id": "kansai_101",
+    "name": "アパホテル 谷町四丁目駅前",
+    "brand": "APA Hotel",
+    "area": "大阪府 大阪市 難波 心齋橋 天王寺 本町",
     "region": "kansai",
     "lat": 34.683197,
     "lng": 135.515512,
@@ -4649,10 +4924,10 @@
     }
   },
   {
-    "id": "kansai_43",
-    "name": "Tokyu Stay",
+    "id": "kansai_144",
+    "name": "東急ステイ 烏丸御池駅前",
     "brand": "Tokyu Stay",
-    "area": "京都府 京都市 河原町 烏丸",
+    "area": "京都府 京都市 河原町 烏丸 京都駅 二條 伏見",
     "region": "kansai",
     "lat": 35.009207,
     "lng": 135.758991,
@@ -4671,31 +4946,6 @@
       "kfc": 948,
       "drugstore": 68,
       "supermarket": 201
-    }
-  },
-  {
-    "id": "kansai_127",
-    "name": "アパホテル",
-    "brand": "APA Hotel",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
-    "region": "kansai",
-    "lat": 34.75722,
-    "lng": 135.496598,
-    "station_name": "江坂",
-    "station_dist": 189,
-    "airport_lines": [],
-    "amenities": {
-      "lawson": 59,
-      "seven": 235,
-      "familymart": 155,
-      "starbucks": 130,
-      "doutor": 2225,
-      "komeda": 96,
-      "mcdonalds": 194,
-      "mos": 189,
-      "kfc": 1756,
-      "drugstore": 49,
-      "supermarket": 47
     }
   },
   {
@@ -4749,60 +4999,10 @@
     }
   },
   {
-    "id": "kansai_33",
-    "name": "アパホテル",
+    "id": "kansai_27",
+    "name": "アパホテル 御堂筋本町駅前",
     "brand": "APA Hotel",
-    "area": "兵庫県 兵庫縣 神戶市 三宮",
-    "region": "kansai",
-    "lat": 34.693803,
-    "lng": 135.190354,
-    "station_name": "三宮",
-    "station_dist": 191,
-    "airport_lines": [],
-    "amenities": {
-      "lawson": 92,
-      "seven": 68,
-      "familymart": 117,
-      "starbucks": 95,
-      "doutor": 225,
-      "komeda": 184,
-      "mcdonalds": 305,
-      "mos": 477,
-      "kfc": 252,
-      "drugstore": 111,
-      "supermarket": 140
-    }
-  },
-  {
-    "id": "kansai_50",
-    "name": "東横イン",
-    "brand": "Toyoko Inn",
-    "area": "兵庫県 兵庫縣 神戶市 三宮",
-    "region": "kansai",
-    "lat": 34.689942,
-    "lng": 135.197471,
-    "station_name": "貿易センター",
-    "station_dist": 191,
-    "airport_lines": [],
-    "amenities": {
-      "lawson": 226,
-      "seven": 64,
-      "familymart": 165,
-      "starbucks": 236,
-      "doutor": 286,
-      "komeda": 596,
-      "mcdonalds": 233,
-      "mos": 684,
-      "kfc": 413,
-      "drugstore": 66,
-      "supermarket": 411
-    }
-  },
-  {
-    "id": "kansai_87",
-    "name": "アパホテル",
-    "brand": "APA Hotel",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 難波 心齋橋 天王寺 本町",
     "region": "kansai",
     "lat": 34.683763,
     "lng": 135.498599,
@@ -4821,6 +5021,60 @@
       "kfc": 2229,
       "drugstore": 179,
       "supermarket": 389
+    }
+  },
+  {
+    "id": "kansai_158",
+    "name": "アパホテル 三宮駅前",
+    "brand": "APA Hotel",
+    "area": "兵庫県 兵庫縣 神戶市 三宮 元町 新神戶",
+    "region": "kansai",
+    "lat": 34.693803,
+    "lng": 135.190354,
+    "station_name": "三宮",
+    "station_dist": 191,
+    "airport_lines": [
+      "BUS_KIX"
+    ],
+    "amenities": {
+      "lawson": 92,
+      "seven": 68,
+      "familymart": 117,
+      "starbucks": 95,
+      "doutor": 225,
+      "komeda": 184,
+      "mcdonalds": 305,
+      "mos": 477,
+      "kfc": 252,
+      "drugstore": 111,
+      "supermarket": 140
+    }
+  },
+  {
+    "id": "kansai_160",
+    "name": "東横INN 貿易センター駅前",
+    "brand": "Toyoko Inn",
+    "area": "兵庫県 兵庫縣 神戶市 三宮 元町 新神戶",
+    "region": "kansai",
+    "lat": 34.689942,
+    "lng": 135.197471,
+    "station_name": "貿易センター",
+    "station_dist": 191,
+    "airport_lines": [
+      "BUS_KIX"
+    ],
+    "amenities": {
+      "lawson": 226,
+      "seven": 64,
+      "familymart": 165,
+      "starbucks": 236,
+      "doutor": 286,
+      "komeda": 596,
+      "mcdonalds": 233,
+      "mos": 684,
+      "kfc": 413,
+      "drugstore": 66,
+      "supermarket": 411
     }
   },
   {
@@ -4877,10 +5131,37 @@
     }
   },
   {
-    "id": "kansai_16",
+    "id": "kansai_89",
+    "name": "相鉄フレッサイン 三ノ宮駅前",
+    "brand": "Fresa Inn",
+    "area": "兵庫県 兵庫縣 神戶市 三宮 元町 新神戶",
+    "region": "kansai",
+    "lat": 34.69581,
+    "lng": 135.196845,
+    "station_name": "三ノ宮",
+    "station_dist": 192,
+    "airport_lines": [
+      "BUS_KIX"
+    ],
+    "amenities": {
+      "lawson": 159,
+      "seven": 21,
+      "familymart": 123,
+      "starbucks": 91,
+      "doutor": 254,
+      "komeda": 546,
+      "mcdonalds": 202,
+      "mos": 126,
+      "kfc": 401,
+      "drugstore": 276,
+      "supermarket": 89
+    }
+  },
+  {
+    "id": "kansai_103",
     "name": "ドーミーイン梅田東",
     "brand": "Dormy Inn",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 梅田 新大阪 京橋 淀屋橋",
     "region": "kansai",
     "lat": 34.696818,
     "lng": 135.509119,
@@ -4899,31 +5180,6 @@
       "kfc": 959,
       "drugstore": 238,
       "supermarket": 208
-    }
-  },
-  {
-    "id": "kansai_110",
-    "name": "相鉄フレッサイン",
-    "brand": "Fresa Inn",
-    "area": "兵庫県 兵庫縣 神戶市 三宮",
-    "region": "kansai",
-    "lat": 34.69581,
-    "lng": 135.196845,
-    "station_name": "三ノ宮",
-    "station_dist": 192,
-    "airport_lines": [],
-    "amenities": {
-      "lawson": 159,
-      "seven": 21,
-      "familymart": 123,
-      "starbucks": 91,
-      "doutor": 254,
-      "komeda": 546,
-      "mcdonalds": 202,
-      "mos": 126,
-      "kfc": 401,
-      "drugstore": 276,
-      "supermarket": 89
     }
   },
   {
@@ -4949,6 +5205,60 @@
       "kfc": 438,
       "drugstore": 351,
       "supermarket": 40
+    }
+  },
+  {
+    "id": "kansai_95",
+    "name": "野乃奈良",
+    "brand": "Dormy Inn",
+    "area": "奈良県 奈良縣 奈良市 大和西大寺 天理市",
+    "region": "kansai",
+    "lat": 34.682259,
+    "lng": 135.820103,
+    "station_name": "奈良",
+    "station_dist": 193,
+    "airport_lines": [
+      "BUS_KIX"
+    ],
+    "amenities": {
+      "lawson": 170,
+      "seven": 157,
+      "familymart": 820,
+      "starbucks": 60,
+      "doutor": 695,
+      "komeda": 1009,
+      "mcdonalds": 787,
+      "mos": 164,
+      "kfc": 37,
+      "drugstore": 81,
+      "supermarket": 150
+    }
+  },
+  {
+    "id": "kansai_127",
+    "name": "アパホテル 岸和田駅前",
+    "brand": "APA Hotel",
+    "area": "大阪府 泉大津市 岸和田市 貝塚市",
+    "region": "kansai",
+    "lat": 34.461912,
+    "lng": 135.37724,
+    "station_name": "岸和田",
+    "station_dist": 194,
+    "airport_lines": [
+      "RAIL_NANKAI"
+    ],
+    "amenities": {
+      "lawson": 249,
+      "seven": 61,
+      "familymart": 803,
+      "starbucks": 1636,
+      "doutor": 9999,
+      "komeda": 1844,
+      "mcdonalds": 1097,
+      "mos": 1684,
+      "kfc": 1219,
+      "drugstore": 77,
+      "supermarket": 269
     }
   },
   {
@@ -5029,6 +5339,33 @@
       "kfc": 272,
       "drugstore": 109,
       "supermarket": 82
+    }
+  },
+  {
+    "id": "kansai_163",
+    "name": "コンフォートホテル 奈良",
+    "brand": "Comfort Hotel",
+    "area": "奈良県 奈良縣 奈良市 大和西大寺 天理市",
+    "region": "kansai",
+    "lat": 34.679465,
+    "lng": 135.820304,
+    "station_name": "奈良",
+    "station_dist": 195,
+    "airport_lines": [
+      "BUS_KIX"
+    ],
+    "amenities": {
+      "lawson": 142,
+      "seven": 162,
+      "familymart": 846,
+      "starbucks": 264,
+      "doutor": 765,
+      "komeda": 724,
+      "mcdonalds": 860,
+      "mos": 208,
+      "kfc": 295,
+      "drugstore": 154,
+      "supermarket": 226
     }
   },
   {
@@ -5184,35 +5521,10 @@
     }
   },
   {
-    "id": "kansai_9",
-    "name": "ダイワロイネットホテル大阪北浜",
-    "brand": "Daiwa Roynet",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
-    "region": "kansai",
-    "lat": 34.689411,
-    "lng": 135.506292,
-    "station_name": "北浜",
-    "station_dist": 198,
-    "airport_lines": [],
-    "amenities": {
-      "lawson": 118,
-      "seven": 196,
-      "familymart": 76,
-      "starbucks": 569,
-      "doutor": 128,
-      "komeda": 250,
-      "mcdonalds": 962,
-      "mos": 99,
-      "kfc": 1663,
-      "drugstore": 34,
-      "supermarket": 65
-    }
-  },
-  {
-    "id": "kansai_93",
+    "id": "kansai_33",
     "name": "ヴィアイン大阪京橋",
     "brand": "Via Inn",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 梅田 新大阪 京橋 淀屋橋",
     "region": "kansai",
     "lat": 34.695206,
     "lng": 135.53223,
@@ -5231,6 +5543,31 @@
       "kfc": 1350,
       "drugstore": 215,
       "supermarket": 477
+    }
+  },
+  {
+    "id": "kansai_100",
+    "name": "ダイワロイネットホテル大阪北浜",
+    "brand": "Daiwa Roynet",
+    "area": "大阪府 大阪市 梅田 新大阪 京橋 淀屋橋",
+    "region": "kansai",
+    "lat": 34.689411,
+    "lng": 135.506292,
+    "station_name": "北浜",
+    "station_dist": 198,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 118,
+      "seven": 196,
+      "familymart": 76,
+      "starbucks": 569,
+      "doutor": 128,
+      "komeda": 250,
+      "mcdonalds": 962,
+      "mos": 99,
+      "kfc": 1663,
+      "drugstore": 34,
+      "supermarket": 65
     }
   },
   {
@@ -5281,6 +5618,34 @@
       "kfc": 259,
       "drugstore": 25,
       "supermarket": 139
+    }
+  },
+  {
+    "id": "kansai_134",
+    "name": "R&Bホテル京都駅八条口",
+    "brand": "Washington Hotel",
+    "area": "京都府 京都市 河原町 烏丸 京都駅 二條 伏見",
+    "region": "kansai",
+    "lat": 34.983036,
+    "lng": 135.759478,
+    "station_name": "京都",
+    "station_dist": 199,
+    "airport_lines": [
+      "BUS_KIX",
+      "RAIL_HARUKA"
+    ],
+    "amenities": {
+      "lawson": 137,
+      "seven": 105,
+      "familymart": 12,
+      "starbucks": 221,
+      "doutor": 481,
+      "komeda": 160,
+      "mcdonalds": 177,
+      "mos": 761,
+      "kfc": 775,
+      "drugstore": 137,
+      "supermarket": 235
     }
   },
   {
@@ -5409,17 +5774,17 @@
     }
   },
   {
-    "id": "kansai_5",
-    "name": "スーパーホテル",
+    "id": "kansai_133",
+    "name": "スーパーホテル 京都河原町駅前",
     "brand": "Super Hotel",
-    "area": "京都府 京都市 河原町 烏丸",
+    "area": "京都府 京都市 河原町 烏丸 京都駅 二條 伏見",
     "region": "kansai",
     "lat": 35.005003,
     "lng": 135.768009,
     "station_name": "京都河原町",
     "station_dist": 201,
     "airport_lines": [
-      "JR_HARUKA"
+      "RAIL_HARUKA"
     ],
     "amenities": {
       "lawson": 127,
@@ -5461,10 +5826,10 @@
     }
   },
   {
-    "id": "kansai_79",
+    "id": "kansai_19",
     "name": "三井ガーデンホテル大阪プレミア",
     "brand": "Mitsui Garden",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 梅田 新大阪 京橋 淀屋橋",
     "region": "kansai",
     "lat": 34.692224,
     "lng": 135.49335,
@@ -5486,28 +5851,30 @@
     }
   },
   {
-    "id": "kansai_123",
-    "name": "スーパーホテル",
+    "id": "kansai_162",
+    "name": "スーパーホテルJR奈良駅前・三条通り",
     "brand": "Super Hotel",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "奈良県 奈良縣 奈良市 大和西大寺 天理市",
     "region": "kansai",
-    "lat": 34.735499,
-    "lng": 135.582847,
-    "station_name": "門真市",
-    "station_dist": 203,
-    "airport_lines": [],
+    "lat": 34.681798,
+    "lng": 135.820794,
+    "station_name": "奈良",
+    "station_dist": 202,
+    "airport_lines": [
+      "BUS_KIX"
+    ],
     "amenities": {
-      "lawson": 357,
-      "seven": 250,
-      "familymart": 179,
-      "starbucks": 1756,
-      "doutor": 9999,
-      "komeda": 2497,
-      "mcdonalds": 1099,
-      "mos": 1672,
-      "kfc": 969,
-      "drugstore": 113,
-      "supermarket": 291
+      "lawson": 137,
+      "seven": 146,
+      "familymart": 756,
+      "starbucks": 95,
+      "doutor": 638,
+      "komeda": 938,
+      "mcdonalds": 732,
+      "mos": 177,
+      "kfc": 46,
+      "drugstore": 22,
+      "supermarket": 172
     }
   },
   {
@@ -5538,64 +5905,10 @@
     }
   },
   {
-    "id": "tohoku_53",
-    "name": "ホテルメトロポリタンベース仙台",
-    "brand": "Hotel Metropolitan",
-    "area": "仙台市  青葉区   宮城県 宮城縣 仙台市",
-    "region": "tohoku",
-    "lat": 38.258193,
-    "lng": 140.881242,
-    "station_name": "仙台",
-    "station_dist": 203,
-    "airport_lines": [
-      "RAIL_SENDAI"
-    ],
-    "amenities": {
-      "lawson": 230,
-      "seven": 71,
-      "familymart": 111,
-      "starbucks": 182,
-      "doutor": 382,
-      "komeda": 765,
-      "mcdonalds": 362,
-      "mos": 304,
-      "kfc": 426,
-      "drugstore": 150,
-      "supermarket": 203
-    }
-  },
-  {
-    "id": "kansai_31",
-    "name": "ダイワロイネットホテル",
-    "brand": "Daiwa Roynet",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
-    "region": "kansai",
-    "lat": 34.664276,
-    "lng": 135.518576,
-    "station_name": "大阪上本町",
-    "station_dist": 204,
-    "airport_lines": [
-      "JR_HARUKA"
-    ],
-    "amenities": {
-      "lawson": 123,
-      "seven": 95,
-      "familymart": 50,
-      "starbucks": 1085,
-      "doutor": 1087,
-      "komeda": 1464,
-      "mcdonalds": 148,
-      "mos": 47,
-      "kfc": 262,
-      "drugstore": 27,
-      "supermarket": 63
-    }
-  },
-  {
-    "id": "kansai_109",
-    "name": "ドーミーイン神戸元町",
+    "id": "kansai_88",
+    "name": "天然温泉 浪漫湯 ドーミーイン神戸元町",
     "brand": "Dormy Inn",
-    "area": "神戸市  中央区  兵庫県神戸市中央区栄町通2-5-1 兵庫県 兵庫縣 神戶市 三宮",
+    "area": "神戸市  中央区  兵庫県神戸市中央区栄町通2-5-1 兵庫県 兵庫縣 神戶市 三宮 元町 新神戶",
     "region": "kansai",
     "lat": 34.687558,
     "lng": 135.187831,
@@ -5614,6 +5927,33 @@
       "kfc": 757,
       "drugstore": 112,
       "supermarket": 148
+    }
+  },
+  {
+    "id": "kansai_121",
+    "name": "ダイワロイネットホテル 大阪上本町駅前",
+    "brand": "Daiwa Roynet",
+    "area": "大阪府 大阪市 難波 心齋橋 天王寺 本町",
+    "region": "kansai",
+    "lat": 34.664276,
+    "lng": 135.518576,
+    "station_name": "大阪上本町",
+    "station_dist": 204,
+    "airport_lines": [
+      "RAIL_HARUKA"
+    ],
+    "amenities": {
+      "lawson": 123,
+      "seven": 95,
+      "familymart": 50,
+      "starbucks": 1085,
+      "doutor": 1087,
+      "komeda": 1464,
+      "mcdonalds": 148,
+      "mos": 47,
+      "kfc": 262,
+      "drugstore": 27,
+      "supermarket": 63
     }
   },
   {
@@ -5935,17 +6275,17 @@
     }
   },
   {
-    "id": "kansai_49",
+    "id": "kansai_115",
     "name": "Tokyu Stay Osaka Honmachi",
     "brand": "Tokyu Stay",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 難波 心齋橋 天王寺 本町",
     "region": "kansai",
     "lat": 34.681468,
     "lng": 135.504656,
     "station_name": "堺筋本町",
     "station_dist": 209,
     "airport_lines": [
-      "NANKAI"
+      "RAIL_NANKAI"
     ],
     "amenities": {
       "lawson": 190,
@@ -5987,31 +6327,6 @@
       "kfc": 349,
       "drugstore": 165,
       "supermarket": 108
-    }
-  },
-  {
-    "id": "tokyo_107",
-    "name": "アパホテル",
-    "brand": "APA Hotel",
-    "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
-    "region": "tokyo",
-    "lat": 35.706189,
-    "lng": 139.794576,
-    "station_name": "蔵前",
-    "station_dist": 209,
-    "airport_lines": [],
-    "amenities": {
-      "lawson": 196,
-      "seven": 86,
-      "familymart": 181,
-      "starbucks": 526,
-      "doutor": 482,
-      "komeda": 584,
-      "mcdonalds": 371,
-      "mos": 770,
-      "kfc": 607,
-      "drugstore": 139,
-      "supermarket": 150
     }
   },
   {
@@ -6093,17 +6408,18 @@
     }
   },
   {
-    "id": "kansai_18",
+    "id": "kansai_136",
     "name": "ドーミーインプレミアム京都駅前",
     "brand": "Dormy Inn",
-    "area": "京都府 京都市 河原町 烏丸",
+    "area": "京都府 京都市 河原町 烏丸 京都駅 二條 伏見",
     "region": "kansai",
     "lat": 34.98746,
     "lng": 135.761784,
     "station_name": "京都",
     "station_dist": 211,
     "airport_lines": [
-      "JR_HARUKA"
+      "BUS_KIX",
+      "RAIL_HARUKA"
     ],
     "amenities": {
       "lawson": 14,
@@ -6457,10 +6773,10 @@
     }
   },
   {
-    "id": "kansai_65",
+    "id": "kansai_7",
     "name": "LIVEMAX PREMIUM梅田EAST",
     "brand": "LiveMax",
-    "area": "大阪市  北区   大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪市  北区   大阪府 大阪市 梅田 新大阪 京橋 淀屋橋",
     "region": "kansai",
     "lat": 34.706191,
     "lng": 135.507628,
@@ -6609,10 +6925,10 @@
     }
   },
   {
-    "id": "kansai_82",
-    "name": "アパホテル",
+    "id": "kansai_22",
+    "name": "アパホテル 淀屋橋 北浜駅前",
     "brand": "APA Hotel",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 梅田 新大阪 京橋 淀屋橋",
     "region": "kansai",
     "lat": 34.689507,
     "lng": 135.505287,
@@ -6709,17 +7025,18 @@
     }
   },
   {
-    "id": "kansai_122",
-    "name": "アパホテル",
+    "id": "kansai_47",
+    "name": "アパホテル 新大阪駅前",
     "brand": "APA Hotel",
-    "area": "大阪市  東淀川区 東中島  大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪市  東淀川区 東中島  大阪府 大阪市 梅田 新大阪 京橋 淀屋橋",
     "region": "kansai",
     "lat": 34.73359,
     "lng": 135.50423,
     "station_name": "新大阪",
     "station_dist": 222,
     "airport_lines": [
-      "JR_HARUKA"
+      "BUS_KIX",
+      "RAIL_HARUKA"
     ],
     "amenities": {
       "lawson": 50,
@@ -6894,17 +7211,18 @@
     }
   },
   {
-    "id": "kansai_116",
+    "id": "kansai_80",
     "name": "アパホテル京都駅東３０５",
     "brand": "APA Hotel",
-    "area": "京都府 京都市 河原町 烏丸",
+    "area": "京都府 京都市 河原町 烏丸 京都駅 二條 伏見",
     "region": "kansai",
     "lat": 34.987808,
     "lng": 135.761526,
     "station_name": "京都",
     "station_dist": 224,
     "airport_lines": [
-      "JR_HARUKA"
+      "BUS_KIX",
+      "RAIL_HARUKA"
     ],
     "amenities": {
       "lawson": 48,
@@ -6945,31 +7263,6 @@
       "kfc": 1140,
       "drugstore": 716,
       "supermarket": 212
-    }
-  },
-  {
-    "id": "kansai_46",
-    "name": "東横イン",
-    "brand": "Toyoko Inn",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
-    "region": "kansai",
-    "lat": 34.73538,
-    "lng": 135.581779,
-    "station_name": "門真市",
-    "station_dist": 226,
-    "airport_lines": [],
-    "amenities": {
-      "lawson": 294,
-      "seven": 272,
-      "familymart": 164,
-      "starbucks": 1661,
-      "doutor": 9999,
-      "komeda": 2433,
-      "mcdonalds": 1193,
-      "mos": 1574,
-      "kfc": 1063,
-      "drugstore": 110,
-      "supermarket": 357
     }
   },
   {
@@ -7189,10 +7482,10 @@
     }
   },
   {
-    "id": "kansai_92",
+    "id": "kansai_32",
     "name": "東横INN大阪日本橋文楽劇場前",
     "brand": "Toyoko Inn",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 難波 心齋橋 天王寺 本町",
     "region": "kansai",
     "lat": 34.666468,
     "lng": 135.5088,
@@ -7214,16 +7507,18 @@
     }
   },
   {
-    "id": "kansai_124",
-    "name": "東横イン",
+    "id": "kansai_49",
+    "name": "東横イン 新大阪東三国駅前",
     "brand": "Toyoko Inn",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 梅田 新大阪 京橋 淀屋橋",
     "region": "kansai",
     "lat": 34.739118,
     "lng": 135.499038,
     "station_name": "東三国",
     "station_dist": 231,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_KIX"
+    ],
     "amenities": {
       "lawson": 94,
       "seven": 12,
@@ -7389,17 +7684,17 @@
     }
   },
   {
-    "id": "kansai_135",
+    "id": "kansai_85",
     "name": "三井ガーデンホテル京都河原町浄教寺",
     "brand": "Mitsui Garden",
-    "area": "京都府 京都市 河原町 烏丸",
+    "area": "京都府 京都市 河原町 烏丸 京都駅 二條 伏見",
     "region": "kansai",
     "lat": 35.002929,
     "lng": 135.767229,
     "station_name": "京都河原町",
     "station_dist": 236,
     "airport_lines": [
-      "JR_HARUKA"
+      "RAIL_HARUKA"
     ],
     "amenities": {
       "lawson": 138,
@@ -7543,16 +7838,18 @@
     }
   },
   {
-    "id": "kansai_13",
-    "name": "アパホテル",
+    "id": "kansai_156",
+    "name": "アパホテル 神戸三宮",
     "brand": "APA Hotel",
-    "area": "兵庫県 兵庫縣 神戶市 三宮",
+    "area": "兵庫県 兵庫縣 神戶市 三宮 元町 新神戶",
     "region": "kansai",
     "lat": 34.693577,
     "lng": 135.198075,
     "station_name": "神戸三宮",
     "station_dist": 242,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_KIX"
+    ],
     "amenities": {
       "lawson": 158,
       "seven": 106,
@@ -7620,10 +7917,10 @@
     }
   },
   {
-    "id": "kansai_81",
+    "id": "kansai_21",
     "name": "天然温泉 水都の湯 dormy inn Premium 大阪北浜",
     "brand": "Dormy Inn",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 梅田 新大阪 京橋 淀屋橋",
     "region": "kansai",
     "lat": 34.689289,
     "lng": 135.507924,
@@ -7645,35 +7942,10 @@
     }
   },
   {
-    "id": "kansai_6",
-    "name": "東横INN",
-    "brand": "Toyoko Inn",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
-    "region": "kansai",
-    "lat": 34.699051,
-    "lng": 135.509031,
-    "station_name": "南森町",
-    "station_dist": 244,
-    "airport_lines": [],
-    "amenities": {
-      "lawson": 200,
-      "seven": 240,
-      "familymart": 163,
-      "starbucks": 949,
-      "doutor": 248,
-      "komeda": 913,
-      "mcdonalds": 751,
-      "mos": 128,
-      "kfc": 720,
-      "drugstore": 197,
-      "supermarket": 278
-    }
-  },
-  {
-    "id": "kansai_76",
+    "id": "kansai_60",
     "name": "リッチモンドホテルなんば大国町",
     "brand": "Richmond Hotel",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 難波 心齋橋 天王寺 本町",
     "region": "kansai",
     "lat": 34.658307,
     "lng": 135.49878,
@@ -7692,6 +7964,31 @@
       "kfc": 829,
       "drugstore": 155,
       "supermarket": 119
+    }
+  },
+  {
+    "id": "kansai_98",
+    "name": "東横INN 大阪梅田東",
+    "brand": "Toyoko Inn",
+    "area": "大阪府 大阪市 梅田 新大阪 京橋 淀屋橋",
+    "region": "kansai",
+    "lat": 34.699051,
+    "lng": 135.509031,
+    "station_name": "南森町",
+    "station_dist": 244,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 200,
+      "seven": 240,
+      "familymart": 163,
+      "starbucks": 949,
+      "doutor": 248,
+      "komeda": 913,
+      "mcdonalds": 751,
+      "mos": 128,
+      "kfc": 720,
+      "drugstore": 197,
+      "supermarket": 278
     }
   },
   {
@@ -7773,10 +8070,10 @@
     }
   },
   {
-    "id": "kansai_39",
-    "name": "東横イン",
+    "id": "kansai_111",
+    "name": "東横イン 大阪天神橋筋六丁目",
     "brand": "Toyoko Inn",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 梅田 新大阪 京橋 淀屋橋",
     "region": "kansai",
     "lat": 34.710318,
     "lng": 135.508162,
@@ -7902,10 +8199,10 @@
     }
   },
   {
-    "id": "kansai_121",
+    "id": "kansai_83",
     "name": "ホテルリブマックス京都鴨川前",
     "brand": "LiveMax",
-    "area": "京都府 京都市 河原町 烏丸",
+    "area": "京都府 京都市 河原町 烏丸 京都駅 二條 伏見",
     "region": "kansai",
     "lat": 34.994022,
     "lng": 135.766534,
@@ -8031,17 +8328,18 @@
     }
   },
   {
-    "id": "kansai_32",
+    "id": "kansai_140",
     "name": "ダイワロイネットホテル京都テラス八条東口",
     "brand": "Daiwa Roynet",
-    "area": "京都府 京都市 河原町 烏丸",
+    "area": "京都府 京都市 河原町 烏丸 京都駅 二條 伏見",
     "region": "kansai",
     "lat": 34.984224,
     "lng": 135.761447,
     "station_name": "京都",
     "station_dist": 252,
     "airport_lines": [
-      "JR_HARUKA"
+      "BUS_KIX",
+      "RAIL_HARUKA"
     ],
     "amenities": {
       "lawson": 140,
@@ -8112,16 +8410,18 @@
     }
   },
   {
-    "id": "kansai_64",
+    "id": "kansai_6",
     "name": "ヴィアイン梅田",
     "brand": "Via Inn",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 梅田 新大阪 京橋 淀屋橋",
     "region": "kansai",
     "lat": 34.702462,
     "lng": 135.501405,
     "station_name": "東梅田",
     "station_dist": 253,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_KIX"
+    ],
     "amenities": {
       "lawson": 143,
       "seven": 13,
@@ -8297,17 +8597,18 @@
     }
   },
   {
-    "id": "kansai_104",
-    "name": "スーパーホテル",
+    "id": "kansai_38",
+    "name": "スーパーホテル 新大阪駅前",
     "brand": "Super Hotel",
-    "area": "東淀川区  東淀川区 東中島  大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "東淀川区  東淀川区 東中島  大阪府 大阪市 梅田 新大阪 京橋 淀屋橋",
     "region": "kansai",
     "lat": 34.732532,
     "lng": 135.503953,
     "station_name": "新大阪",
     "station_dist": 256,
     "airport_lines": [
-      "JR_HARUKA"
+      "BUS_KIX",
+      "RAIL_HARUKA"
     ],
     "amenities": {
       "lawson": 74,
@@ -8427,17 +8728,18 @@
     }
   },
   {
-    "id": "kansai_101",
+    "id": "kansai_37",
     "name": "ヴィアイン新大阪",
     "brand": "Via Inn",
-    "area": "大阪市  東淀川区 西淡路  大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪市  東淀川区 西淡路  大阪府 大阪市 梅田 新大阪 京橋 淀屋橋",
     "region": "kansai",
     "lat": 34.734693,
     "lng": 135.504596,
     "station_name": "新大阪",
     "station_dist": 258,
     "airport_lines": [
-      "JR_HARUKA"
+      "BUS_KIX",
+      "RAIL_HARUKA"
     ],
     "amenities": {
       "lawson": 176,
@@ -8535,10 +8837,10 @@
     }
   },
   {
-    "id": "kansai_78",
+    "id": "kansai_18",
     "name": "ホテル リブマックス",
     "brand": "LiveMax",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 吹田市 江坂 千里中央 豐中市 伊丹機場",
     "region": "kansai",
     "lat": 34.756856,
     "lng": 135.495643,
@@ -8560,18 +8862,19 @@
     }
   },
   {
-    "id": "kansai_88",
+    "id": "kansai_28",
     "name": "APAホテル なんば心斎橋西",
     "brand": "APA Hotel",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 難波 心齋橋 天王寺 本町",
     "region": "kansai",
     "lat": 34.669514,
     "lng": 135.49761,
     "station_name": "大阪難波",
     "station_dist": 260,
     "airport_lines": [
-      "JR_HARUKA",
-      "NANKAI"
+      "BUS_KIX",
+      "RAIL_HARUKA",
+      "RAIL_NANKAI"
     ],
     "amenities": {
       "lawson": 143,
@@ -8585,33 +8888,6 @@
       "kfc": 1329,
       "drugstore": 274,
       "supermarket": 203
-    }
-  },
-  {
-    "id": "tokyo_239",
-    "name": "御宿 野乃浅草別邸",
-    "brand": "Dormy Inn",
-    "area": "大東区   浅草  東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
-    "region": "tokyo",
-    "lat": 35.714869,
-    "lng": 139.794848,
-    "station_name": "浅草",
-    "station_dist": 260,
-    "airport_lines": [
-      "RAIL_KEIKYU"
-    ],
-    "amenities": {
-      "lawson": 132,
-      "seven": 54,
-      "familymart": 123,
-      "starbucks": 417,
-      "doutor": 283,
-      "komeda": 674,
-      "mcdonalds": 328,
-      "mos": 441,
-      "kfc": 488,
-      "drugstore": 125,
-      "supermarket": 153
     }
   },
   {
@@ -8846,18 +9122,19 @@
     }
   },
   {
-    "id": "kansai_89",
-    "name": "アパホテル",
+    "id": "kansai_29",
+    "name": "アパホテル 大阪難波駅前",
     "brand": "APA Hotel",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 難波 心齋橋 天王寺 本町",
     "region": "kansai",
     "lat": 34.669511,
     "lng": 135.498509,
     "station_name": "大阪難波",
     "station_dist": 268,
     "airport_lines": [
-      "JR_HARUKA",
-      "NANKAI"
+      "BUS_KIX",
+      "RAIL_HARUKA",
+      "RAIL_NANKAI"
     ],
     "amenities": {
       "lawson": 90,
@@ -8874,17 +9151,18 @@
     }
   },
   {
-    "id": "kansai_105",
+    "id": "kansai_39",
     "name": "リブマックス新大阪",
     "brand": "LiveMax",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 梅田 新大阪 京橋 淀屋橋",
     "region": "kansai",
     "lat": 34.731641,
     "lng": 135.502012,
     "station_name": "新大阪",
     "station_dist": 269,
     "airport_lines": [
-      "JR_HARUKA"
+      "BUS_KIX",
+      "RAIL_HARUKA"
     ],
     "amenities": {
       "lawson": 203,
@@ -8928,16 +9206,18 @@
     }
   },
   {
-    "id": "kansai_45",
-    "name": "アパホテル",
+    "id": "kansai_114",
+    "name": "アパホテル 福島駅前",
     "brand": "APA Hotel",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 梅田 新大阪 京橋 淀屋橋",
     "region": "kansai",
     "lat": 34.698311,
     "lng": 135.48951,
     "station_name": "福島",
     "station_dist": 270,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_KIX"
+    ],
     "amenities": {
       "lawson": 86,
       "seven": 251,
@@ -8953,16 +9233,18 @@
     }
   },
   {
-    "id": "kansai_7",
-    "name": "ダイワロイネットホテル",
+    "id": "kansai_154",
+    "name": "ダイワロイネットホテル 三宮・花時計前駅前",
     "brand": "Daiwa Roynet",
-    "area": "神戸市  中央区   兵庫県 兵庫縣 神戶市 三宮",
+    "area": "神戸市  中央区   兵庫県 兵庫縣 神戶市 三宮 元町 新神戶",
     "region": "kansai",
     "lat": 34.693024,
     "lng": 135.198439,
     "station_name": "三宮・花時計前",
     "station_dist": 271,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_KIX"
+    ],
     "amenities": {
       "lawson": 222,
       "seven": 75,
@@ -9028,6 +9310,33 @@
     }
   },
   {
+    "id": "kansai_68",
+    "name": "東横INN 大阪空港駅前",
+    "brand": "Toyoko Inn",
+    "area": "大阪府 吹田市 江坂 千里中央 豐中市 伊丹機場",
+    "region": "kansai",
+    "lat": 34.793823,
+    "lng": 135.442369,
+    "station_name": "大阪空港",
+    "station_dist": 274,
+    "airport_lines": [
+      "RAIL_HARUKA"
+    ],
+    "amenities": {
+      "lawson": 291,
+      "seven": 125,
+      "familymart": 1791,
+      "starbucks": 481,
+      "doutor": 3492,
+      "komeda": 2204,
+      "mcdonalds": 1138,
+      "mos": 9999,
+      "kfc": 2987,
+      "drugstore": 338,
+      "supermarket": 351
+    }
+  },
+  {
     "id": "tokyo_139",
     "name": "三井ガーデンホテル大手町",
     "brand": "Mitsui Garden",
@@ -9053,16 +9362,18 @@
     }
   },
   {
-    "id": "kansai_112",
+    "id": "kansai_78",
     "name": "ダイワロイネットホテル京都八条口",
     "brand": "Daiwa Roynet",
-    "area": "京都府 京都市 河原町 烏丸",
+    "area": "京都府 京都市 河原町 烏丸 京都駅 二條 伏見",
     "region": "kansai",
     "lat": 34.981633,
     "lng": 135.760009,
     "station_name": "九条",
     "station_dist": 275,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_KIX"
+    ],
     "amenities": {
       "lawson": 178,
       "seven": 239,
@@ -9207,17 +9518,18 @@
     }
   },
   {
-    "id": "kansai_129",
-    "name": "アパホテル",
+    "id": "kansai_53",
+    "name": "アパホテル 新大阪駅タワー",
     "brand": "APA Hotel",
-    "area": "大阪市  淀川区 西中島  大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪市  淀川区 西中島  大阪府 大阪市 梅田 新大阪 京橋 淀屋橋",
     "region": "kansai",
     "lat": 34.730452,
     "lng": 135.497863,
     "station_name": "新大阪",
     "station_dist": 279,
     "airport_lines": [
-      "JR_HARUKA"
+      "BUS_KIX",
+      "RAIL_HARUKA"
     ],
     "amenities": {
       "lawson": 145,
@@ -9391,16 +9703,18 @@
     }
   },
   {
-    "id": "kansai_47",
-    "name": "Comfort HOTEL",
+    "id": "kansai_159",
+    "name": "コンフォートホテル 三ノ宮駅前",
     "brand": "Comfort Hotel",
-    "area": "兵庫県 兵庫縣 神戶市 三宮",
+    "area": "兵庫県 兵庫縣 神戶市 三宮 元町 新神戶",
     "region": "kansai",
     "lat": 34.695512,
     "lng": 135.198061,
     "station_name": "三ノ宮",
     "station_dist": 281,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_KIX"
+    ],
     "amenities": {
       "lawson": 178,
       "seven": 77,
@@ -9495,17 +9809,18 @@
     }
   },
   {
-    "id": "kansai_25",
+    "id": "kansai_137",
     "name": "ダイワロイネットホテル京都駅前",
     "brand": "Daiwa Roynet",
-    "area": "京都府 京都市 河原町 烏丸",
+    "area": "京都府 京都市 河原町 烏丸 京都駅 二條 伏見",
     "region": "kansai",
     "lat": 34.98871,
     "lng": 135.759453,
     "station_name": "京都",
     "station_dist": 286,
     "airport_lines": [
-      "JR_HARUKA"
+      "BUS_KIX",
+      "RAIL_HARUKA"
     ],
     "amenities": {
       "lawson": 66,
@@ -9547,10 +9862,10 @@
     }
   },
   {
-    "id": "kansai_12",
+    "id": "kansai_153",
     "name": "ホテルリブマックス尼崎",
     "brand": "LiveMax",
-    "area": "兵庫県尼崎市西御園町１１９－１ 大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "兵庫県尼崎市西御園町１１９－１ 兵庫県 兵庫縣 尼崎市 西宮市 蘆屋市 寶塚市 伊丹市",
     "region": "kansai",
     "lat": 34.719003,
     "lng": 135.414228,
@@ -9566,7 +9881,7 @@
       "komeda": 196,
       "mcdonalds": 421,
       "mos": 2336,
-      "kfc": 9999,
+      "kfc": 1728,
       "drugstore": 92,
       "supermarket": 188
     }
@@ -9774,10 +10089,63 @@
     }
   },
   {
-    "id": "kansai_51",
-    "name": "アパホテル",
+    "id": "kansai_16",
+    "name": "東横INN 十三駅前",
+    "brand": "Toyoko Inn",
+    "area": "大阪府 大阪市 梅田 新大阪 京橋 淀屋橋",
+    "region": "kansai",
+    "lat": 34.71918,
+    "lng": 135.47946,
+    "station_name": "十三",
+    "station_dist": 291,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 22,
+      "seven": 66,
+      "familymart": 134,
+      "starbucks": 2080,
+      "doutor": 1932,
+      "komeda": 352,
+      "mcdonalds": 159,
+      "mos": 238,
+      "kfc": 325,
+      "drugstore": 41,
+      "supermarket": 84
+    }
+  },
+  {
+    "id": "kansai_62",
+    "name": "アパホテル 天王寺駅前",
     "brand": "APA Hotel",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 難波 心齋橋 天王寺 本町",
+    "region": "kansai",
+    "lat": 34.647151,
+    "lng": 135.511982,
+    "station_name": "天王寺",
+    "station_dist": 291,
+    "airport_lines": [
+      "BUS_KIX",
+      "RAIL_HARUKA"
+    ],
+    "amenities": {
+      "lawson": 216,
+      "seven": 158,
+      "familymart": 55,
+      "starbucks": 165,
+      "doutor": 213,
+      "komeda": 224,
+      "mcdonalds": 203,
+      "mos": 182,
+      "kfc": 1802,
+      "drugstore": 72,
+      "supermarket": 343
+    }
+  },
+  {
+    "id": "kansai_116",
+    "name": "アパホテル 長堀橋駅前",
+    "brand": "APA Hotel",
+    "area": "大阪府 大阪市 難波 心齋橋 天王寺 本町",
     "region": "kansai",
     "lat": 34.672908,
     "lng": 135.505059,
@@ -9796,58 +10164,6 @@
       "kfc": 1509,
       "drugstore": 289,
       "supermarket": 65
-    }
-  },
-  {
-    "id": "kansai_75",
-    "name": "東横イン",
-    "brand": "Toyoko Inn",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
-    "region": "kansai",
-    "lat": 34.71918,
-    "lng": 135.47946,
-    "station_name": "十三",
-    "station_dist": 291,
-    "airport_lines": [],
-    "amenities": {
-      "lawson": 22,
-      "seven": 66,
-      "familymart": 134,
-      "starbucks": 2080,
-      "doutor": 1929,
-      "komeda": 352,
-      "mcdonalds": 159,
-      "mos": 238,
-      "kfc": 325,
-      "drugstore": 41,
-      "supermarket": 84
-    }
-  },
-  {
-    "id": "kansai_97",
-    "name": "アパホテル",
-    "brand": "APA Hotel",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
-    "region": "kansai",
-    "lat": 34.647151,
-    "lng": 135.511982,
-    "station_name": "天王寺",
-    "station_dist": 291,
-    "airport_lines": [
-      "JR_HARUKA"
-    ],
-    "amenities": {
-      "lawson": 216,
-      "seven": 158,
-      "familymart": 55,
-      "starbucks": 165,
-      "doutor": 213,
-      "komeda": 224,
-      "mcdonalds": 203,
-      "mos": 182,
-      "kfc": 1802,
-      "drugstore": 72,
-      "supermarket": 343
     }
   },
   {
@@ -9930,22 +10246,22 @@
     }
   },
   {
-    "id": "kansai_44",
+    "id": "kansai_75",
     "name": "Comfort INN",
     "brand": "Comfort Hotel",
-    "area": "京都府 京都市 河原町 烏丸",
+    "area": "京都府 京都市 河原町 烏丸 京都駅 二條 伏見",
     "region": "kansai",
-    "lat": 35.004802,
+    "lat": 35.004804,
     "lng": 135.75751,
     "station_name": "烏丸",
     "station_dist": 295,
     "airport_lines": [],
     "amenities": {
       "lawson": 50,
-      "seven": 139,
+      "seven": 140,
       "familymart": 142,
       "starbucks": 202,
-      "doutor": 196,
+      "doutor": 195,
       "komeda": 698,
       "mcdonalds": 179,
       "mos": 235,
@@ -9982,10 +10298,10 @@
     }
   },
   {
-    "id": "kansai_20",
-    "name": "ダイワロイネットホテル",
+    "id": "kansai_105",
+    "name": "ダイワロイネットホテル 西大橋駅前",
     "brand": "Daiwa Roynet",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 難波 心齋橋 天王寺 本町",
     "region": "kansai",
     "lat": 34.677828,
     "lng": 135.496019,
@@ -10007,17 +10323,45 @@
     }
   },
   {
-    "id": "kansai_38",
+    "id": "kansai_151",
+    "name": "スーパーホテル 大津駅前",
+    "brand": "Super Hotel",
+    "area": "滋賀県 滋賀縣 大津市 草津市",
+    "region": "kansai",
+    "lat": 35.005331,
+    "lng": 135.866568,
+    "station_name": "大津",
+    "station_dist": 296,
+    "airport_lines": [
+      "RAIL_HARUKA"
+    ],
+    "amenities": {
+      "lawson": 80,
+      "seven": 276,
+      "familymart": 390,
+      "starbucks": 283,
+      "doutor": 9999,
+      "komeda": 1323,
+      "mcdonalds": 2487,
+      "mos": 3338,
+      "kfc": 9999,
+      "drugstore": 59,
+      "supermarket": 233
+    }
+  },
+  {
+    "id": "kansai_142",
     "name": "相鉄フレッサイン 京都駅八条口",
     "brand": "Fresa Inn",
-    "area": "京都府 京都市 河原町 烏丸",
+    "area": "京都府 京都市 河原町 烏丸 京都駅 二條 伏見",
     "region": "kansai",
     "lat": 34.98284,
     "lng": 135.760882,
     "station_name": "京都",
     "station_dist": 298,
     "airport_lines": [
-      "JR_HARUKA"
+      "BUS_KIX",
+      "RAIL_HARUKA"
     ],
     "amenities": {
       "lawson": 22,
@@ -10109,17 +10453,18 @@
     }
   },
   {
-    "id": "kansai_29",
-    "name": "ヴィアイン",
+    "id": "kansai_120",
+    "name": "ヴィアイン 天王寺駅前",
     "brand": "Via Inn",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 難波 心齋橋 天王寺 本町",
     "region": "kansai",
     "lat": 34.64721,
     "lng": 135.511667,
     "station_name": "天王寺",
     "station_dist": 300,
     "airport_lines": [
-      "JR_HARUKA"
+      "BUS_KIX",
+      "RAIL_HARUKA"
     ],
     "amenities": {
       "lawson": 227,
@@ -10186,17 +10531,18 @@
     }
   },
   {
-    "id": "kansai_3",
-    "name": "アパホテル",
+    "id": "kansai_132",
+    "name": "アパホテル 京都駅前",
     "brand": "APA Hotel",
-    "area": "京都府 京都市 河原町 烏丸",
+    "area": "京都府 京都市 河原町 烏丸 京都駅 二條 伏見",
     "region": "kansai",
     "lat": 34.986417,
     "lng": 135.755065,
     "station_name": "京都",
     "station_dist": 301,
     "airport_lines": [
-      "JR_HARUKA"
+      "BUS_KIX",
+      "RAIL_HARUKA"
     ],
     "amenities": {
       "lawson": 176,
@@ -10213,10 +10559,35 @@
     }
   },
   {
-    "id": "kansai_11",
-    "name": "スーパーホテル",
+    "id": "kansai_161",
+    "name": "スーパーホテル 加古川駅前",
     "brand": "Super Hotel",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "兵庫県 兵庫縣 姬路市 明石市 加古川市",
+    "region": "kansai",
+    "lat": 34.76509,
+    "lng": 134.839329,
+    "station_name": "加古川",
+    "station_dist": 302,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 471,
+      "seven": 90,
+      "familymart": 1229,
+      "starbucks": 742,
+      "doutor": 232,
+      "komeda": 675,
+      "mcdonalds": 1026,
+      "mos": 1054,
+      "kfc": 172,
+      "drugstore": 202,
+      "supermarket": 112
+    }
+  },
+  {
+    "id": "kansai_102",
+    "name": "スーパーホテル 谷町四丁目駅前",
+    "brand": "Super Hotel",
+    "area": "大阪府 大阪市 難波 心齋橋 天王寺 本町",
     "region": "kansai",
     "lat": 34.682204,
     "lng": 135.514002,
@@ -10446,17 +10817,18 @@
     }
   },
   {
-    "id": "kansai_100",
+    "id": "kansai_36",
     "name": "ヴィアイン新大阪ウエスト",
     "brand": "Via Inn",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 梅田 新大阪 京橋 淀屋橋",
     "region": "kansai",
     "lat": 34.735112,
     "lng": 135.496447,
     "station_name": "新大阪",
     "station_dist": 312,
     "airport_lines": [
-      "JR_HARUKA"
+      "BUS_KIX",
+      "RAIL_HARUKA"
     ],
     "amenities": {
       "lawson": 113,
@@ -10500,10 +10872,10 @@
     }
   },
   {
-    "id": "kansai_80",
-    "name": "アパホテル",
+    "id": "kansai_20",
+    "name": "アパホテル 淀屋橋",
     "brand": "APA Hotel",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 梅田 新大阪 京橋 淀屋橋",
     "region": "kansai",
     "lat": 34.689355,
     "lng": 135.502965,
@@ -10525,10 +10897,10 @@
     }
   },
   {
-    "id": "kansai_96",
-    "name": "スーパーホテル",
+    "id": "kansai_35",
+    "name": "スーパーホテル 肥後橋駅前",
     "brand": "Super Hotel",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 梅田 新大阪 京橋 淀屋橋",
     "region": "kansai",
     "lat": 34.688823,
     "lng": 135.495269,
@@ -10602,10 +10974,10 @@
     }
   },
   {
-    "id": "kansai_57",
+    "id": "kansai_118",
     "name": "ダイワロイネットホテル大阪心斎橋",
     "brand": "Daiwa Roynet",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 難波 心齋橋 天王寺 本町",
     "region": "kansai",
     "lat": 34.677777,
     "lng": 135.500989,
@@ -10624,6 +10996,33 @@
       "kfc": 2115,
       "drugstore": 71,
       "supermarket": 243
+    }
+  },
+  {
+    "id": "kansai_125",
+    "name": "コンフォートホテル堺",
+    "brand": "Comfort Hotel",
+    "area": "大阪府 堺市 堺駅 堺東 中百舌鳥",
+    "region": "kansai",
+    "lat": 34.579686,
+    "lng": 135.466667,
+    "station_name": "堺",
+    "station_dist": 316,
+    "airport_lines": [
+      "RAIL_NANKAI"
+    ],
+    "amenities": {
+      "lawson": 244,
+      "seven": 352,
+      "familymart": 154,
+      "starbucks": 352,
+      "doutor": 1588,
+      "komeda": 328,
+      "mcdonalds": 316,
+      "mos": 9999,
+      "kfc": 398,
+      "drugstore": 120,
+      "supermarket": 147
     }
   },
   {
@@ -10677,6 +11076,34 @@
     }
   },
   {
+    "id": "kansai_108",
+    "name": "R&Bホテル 新大阪北口",
+    "brand": "Washington Hotel",
+    "area": "大阪府 大阪市 梅田 新大阪 京橋 淀屋橋",
+    "region": "kansai",
+    "lat": 34.736218,
+    "lng": 135.498952,
+    "station_name": "新大阪",
+    "station_dist": 319,
+    "airport_lines": [
+      "BUS_KIX",
+      "RAIL_HARUKA"
+    ],
+    "amenities": {
+      "lawson": 184,
+      "seven": 92,
+      "familymart": 32,
+      "starbucks": 318,
+      "doutor": 319,
+      "komeda": 732,
+      "mcdonalds": 280,
+      "mos": 317,
+      "kfc": 590,
+      "drugstore": 13,
+      "supermarket": 476
+    }
+  },
+  {
     "id": "tokyo_99",
     "name": "ヴィアイン新宿",
     "brand": "Via Inn",
@@ -10705,17 +11132,18 @@
     }
   },
   {
-    "id": "kansai_132",
-    "name": "APA HOTEL",
+    "id": "kansai_54",
+    "name": "アパホテル 新大阪駅前",
     "brand": "APA Hotel",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 梅田 新大阪 京橋 淀屋橋",
     "region": "kansai",
     "lat": 34.730443,
     "lng": 135.49668,
     "station_name": "新大阪",
     "station_dist": 322,
     "airport_lines": [
-      "JR_HARUKA"
+      "BUS_KIX",
+      "RAIL_HARUKA"
     ],
     "amenities": {
       "lawson": 111,
@@ -10732,16 +11160,18 @@
     }
   },
   {
-    "id": "kansai_67",
-    "name": "東横イン",
+    "id": "kansai_9",
+    "name": "東横INN 東淀川駅前",
     "brand": "Toyoko Inn",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 梅田 新大阪 京橋 淀屋橋",
     "region": "kansai",
     "lat": 34.737102,
     "lng": 135.506056,
     "station_name": "東淀川",
     "station_dist": 323,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_KIX"
+    ],
     "amenities": {
       "lawson": 300,
       "seven": 309,
@@ -10911,31 +11341,6 @@
     }
   },
   {
-    "id": "tokai_29",
-    "name": "アパホテル 名古屋駅新幹線口北",
-    "brand": "APA Hotel",
-    "area": "愛知県 愛知縣 名古屋市 榮 名駅",
-    "region": "tokai",
-    "lat": 35.173101,
-    "lng": 136.879103,
-    "station_name": "名古屋",
-    "station_dist": 328,
-    "airport_lines": [],
-    "amenities": {
-      "lawson": 133,
-      "seven": 22,
-      "familymart": 256,
-      "starbucks": 324,
-      "doutor": 535,
-      "komeda": 240,
-      "mcdonalds": 1647,
-      "mos": 1619,
-      "kfc": 2273,
-      "drugstore": 172,
-      "supermarket": 318
-    }
-  },
-  {
     "id": "kyushu_north_22",
     "name": "アパホテル",
     "brand": "APA Hotel",
@@ -10989,10 +11394,10 @@
     }
   },
   {
-    "id": "kansai_37",
-    "name": "東横イン",
+    "id": "kansai_122",
+    "name": "東横INN 動物園前駅前",
     "brand": "Toyoko Inn",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 難波 心齋橋 天王寺 本町",
     "region": "kansai",
     "lat": 34.651294,
     "lng": 135.506536,
@@ -11173,17 +11578,18 @@
     }
   },
   {
-    "id": "kansai_98",
-    "name": "スーパーホテル",
+    "id": "kansai_63",
+    "name": "スーパーホテル 天王寺駅前",
     "brand": "Super Hotel",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 難波 心齋橋 天王寺 本町",
     "region": "kansai",
     "lat": 34.652456,
     "lng": 135.513226,
     "station_name": "天王寺",
     "station_dist": 338,
     "airport_lines": [
-      "JR_HARUKA"
+      "BUS_KIX",
+      "RAIL_HARUKA"
     ],
     "amenities": {
       "lawson": 112,
@@ -11200,16 +11606,18 @@
     }
   },
   {
-    "id": "kansai_119",
-    "name": "東横イン",
+    "id": "kansai_65",
+    "name": "東横INN 動物園前駅前",
     "brand": "Toyoko Inn",
-    "area": "大阪市  西成区 山王  大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪市  西成区 山王  大阪府 大阪市 難波 心齋橋 天王寺 本町",
     "region": "kansai",
     "lat": 34.648147,
     "lng": 135.508158,
     "station_name": "動物園前",
     "station_dist": 338,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_KIX"
+    ],
     "amenities": {
       "lawson": 458,
       "seven": 520,
@@ -11247,33 +11655,6 @@
       "kfc": 1885,
       "drugstore": 290,
       "supermarket": 397
-    }
-  },
-  {
-    "id": "tokyo_189",
-    "name": "東横イン",
-    "brand": "Toyoko Inn",
-    "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
-    "region": "tokyo",
-    "lat": 35.687064,
-    "lng": 139.778575,
-    "station_name": "人形町 (都営地下鉄浅草線)",
-    "station_dist": 338,
-    "airport_lines": [
-      "RAIL_KEIKYU"
-    ],
-    "amenities": {
-      "lawson": 305,
-      "seven": 217,
-      "familymart": 229,
-      "starbucks": 267,
-      "doutor": 52,
-      "komeda": 1289,
-      "mcdonalds": 516,
-      "mos": 732,
-      "kfc": 1470,
-      "drugstore": 138,
-      "supermarket": 99
     }
   },
   {
@@ -11406,10 +11787,10 @@
     }
   },
   {
-    "id": "kansai_131",
-    "name": "東横イン",
+    "id": "kansai_93",
+    "name": "東横イン JR神戸駅北口",
     "brand": "Toyoko Inn",
-    "area": "兵庫県 兵庫縣 神戶市 三宮",
+    "area": "兵庫県 兵庫縣 神戶市 三宮 元町 新神戶",
     "region": "kansai",
     "lat": 34.676849,
     "lng": 135.176025,
@@ -11428,33 +11809,6 @@
       "kfc": 2363,
       "drugstore": 112,
       "supermarket": 265
-    }
-  },
-  {
-    "id": "kansai_24",
-    "name": "スーパーホテル",
-    "brand": "Super Hotel",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
-    "region": "kansai",
-    "lat": 34.65251,
-    "lng": 135.513366,
-    "station_name": "天王寺",
-    "station_dist": 343,
-    "airport_lines": [
-      "JR_HARUKA"
-    ],
-    "amenities": {
-      "lawson": 110,
-      "seven": 536,
-      "familymart": 183,
-      "starbucks": 539,
-      "doutor": 440,
-      "komeda": 826,
-      "mcdonalds": 490,
-      "mos": 449,
-      "kfc": 1654,
-      "drugstore": 398,
-      "supermarket": 528
     }
   },
   {
@@ -11561,31 +11915,6 @@
     }
   },
   {
-    "id": "kansai_52",
-    "name": "東横イン",
-    "brand": "Toyoko Inn",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
-    "region": "kansai",
-    "lat": 34.728809,
-    "lng": 135.501279,
-    "station_name": "西中島南方",
-    "station_dist": 344,
-    "airport_lines": [],
-    "amenities": {
-      "lawson": 113,
-      "seven": 139,
-      "familymart": 186,
-      "starbucks": 483,
-      "doutor": 332,
-      "komeda": 213,
-      "mcdonalds": 201,
-      "mos": 231,
-      "kfc": 1438,
-      "drugstore": 261,
-      "supermarket": 137
-    }
-  },
-  {
     "id": "tokyo_147",
     "name": "スーパーホテル新橋・烏森口",
     "brand": "Super Hotel",
@@ -11636,17 +11965,18 @@
     }
   },
   {
-    "id": "kansai_114",
-    "name": "御宿 野乃 京都七条",
+    "id": "kansai_79",
+    "name": "天然温泉 蓮花の湯 御宿 野乃 京都七条",
     "brand": "Dormy Inn",
-    "area": "京都府 京都市 河原町 烏丸",
+    "area": "京都府 京都市 河原町 烏丸 京都駅 二條 伏見",
     "region": "kansai",
     "lat": 34.988653,
     "lng": 135.762361,
     "station_name": "京都",
     "station_dist": 345,
     "airport_lines": [
-      "JR_HARUKA"
+      "BUS_KIX",
+      "RAIL_HARUKA"
     ],
     "amenities": {
       "lawson": 154,
@@ -11763,10 +12093,10 @@
     }
   },
   {
-    "id": "kansai_113",
-    "name": "東横INN",
+    "id": "kansai_91",
+    "name": "東横INN 湊川公園駅前",
     "brand": "Toyoko Inn",
-    "area": "兵庫県 兵庫縣 神戶市 三宮",
+    "area": "兵庫県 兵庫縣 神戶市 三宮 元町 新神戶",
     "region": "kansai",
     "lat": 34.680667,
     "lng": 135.169582,
@@ -11813,31 +12143,6 @@
     }
   },
   {
-    "id": "tokyo_142",
-    "name": "ホテルメトロポリタン エドモント EAST WING",
-    "brand": "Hotel Metropolitan",
-    "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
-    "region": "tokyo",
-    "lat": 35.700791,
-    "lng": 139.749708,
-    "station_name": "飯田橋",
-    "station_dist": 351,
-    "airport_lines": [],
-    "amenities": {
-      "lawson": 278,
-      "seven": 44,
-      "familymart": 88,
-      "starbucks": 58,
-      "doutor": 214,
-      "komeda": 2269,
-      "mcdonalds": 493,
-      "mos": 343,
-      "kfc": 728,
-      "drugstore": 235,
-      "supermarket": 462
-    }
-  },
-  {
     "id": "tokyo_34",
     "name": "アパホテル〈神田神保町駅東〉",
     "brand": "APA Hotel",
@@ -11863,16 +12168,18 @@
     }
   },
   {
-    "id": "kansai_59",
+    "id": "kansai_1",
     "name": "ドーミーイン心斎橋",
     "brand": "Dormy Inn",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 難波 心齋橋 天王寺 本町",
     "region": "kansai",
     "lat": 34.670902,
     "lng": 135.497432,
     "station_name": "四ツ橋",
     "station_dist": 354,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_KIX"
+    ],
     "amenities": {
       "lawson": 83,
       "seven": 176,
@@ -11888,10 +12195,10 @@
     }
   },
   {
-    "id": "kansai_71",
-    "name": "アパホテル",
+    "id": "kansai_12",
+    "name": "アパホテル 大阪天満",
     "brand": "APA Hotel",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 梅田 新大阪 京橋 淀屋橋",
     "region": "kansai",
     "lat": 34.703533,
     "lng": 135.516764,
@@ -11910,6 +12217,33 @@
       "kfc": 537,
       "drugstore": 348,
       "supermarket": 342
+    }
+  },
+  {
+    "id": "kansai_40",
+    "name": "東横イン 新大阪中央口本館",
+    "brand": "Toyoko Inn",
+    "area": "大阪府 大阪市 梅田 新大阪 京橋 淀屋橋",
+    "region": "kansai",
+    "lat": 34.728966,
+    "lng": 135.501241,
+    "station_name": "西中島南方",
+    "station_dist": 354,
+    "airport_lines": [
+      "BUS_KIX"
+    ],
+    "amenities": {
+      "lawson": 105,
+      "seven": 144,
+      "familymart": 195,
+      "starbucks": 466,
+      "doutor": 338,
+      "komeda": 203,
+      "mcdonalds": 208,
+      "mos": 237,
+      "kfc": 1420,
+      "drugstore": 272,
+      "supermarket": 126
     }
   },
   {
@@ -11938,10 +12272,10 @@
     }
   },
   {
-    "id": "kansai_111",
+    "id": "kansai_45",
     "name": "天然温泉 浪華の湯 ドーミーイン大阪谷町",
     "brand": "Dormy Inn",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 難波 心齋橋 天王寺 本町",
     "region": "kansai",
     "lat": 34.683691,
     "lng": 135.513777,
@@ -12115,6 +12449,33 @@
     }
   },
   {
+    "id": "kansai_123",
+    "name": "ダイワロイネットホテル（堺東駅周邊）",
+    "brand": "Daiwa Roynet",
+    "area": "大阪府 堺市 堺駅 堺東 中百舌鳥",
+    "region": "kansai",
+    "lat": 34.572718,
+    "lng": 135.48284,
+    "station_name": "堺東",
+    "station_dist": 366,
+    "airport_lines": [
+      "RAIL_NANKAI"
+    ],
+    "amenities": {
+      "lawson": 62,
+      "seven": 106,
+      "familymart": 212,
+      "starbucks": 880,
+      "doutor": 277,
+      "komeda": 72,
+      "mcdonalds": 174,
+      "mos": 2842,
+      "kfc": 1563,
+      "drugstore": 53,
+      "supermarket": 167
+    }
+  },
+  {
     "id": "tokyo_136",
     "name": "ホテルリブマックスBUDGET横浜関内",
     "brand": "LiveMax",
@@ -12167,10 +12528,38 @@
     }
   },
   {
-    "id": "kansai_53",
-    "name": "FRESA INN",
+    "id": "kansai_14",
+    "name": "東急ステイメルキュール大阪なんば",
+    "brand": "Tokyu Stay",
+    "area": "大阪市  中央区 西心斎橋  大阪府 大阪市 難波 心齋橋 天王寺 本町",
+    "region": "kansai",
+    "lat": 34.670588,
+    "lng": 135.499684,
+    "station_name": "なんば",
+    "station_dist": 371,
+    "airport_lines": [
+      "BUS_KIX",
+      "RAIL_NANKAI"
+    ],
+    "amenities": {
+      "lawson": 172,
+      "seven": 95,
+      "familymart": 76,
+      "starbucks": 199,
+      "doutor": 357,
+      "komeda": 256,
+      "mcdonalds": 165,
+      "mos": 324,
+      "kfc": 1535,
+      "drugstore": 141,
+      "supermarket": 146
+    }
+  },
+  {
+    "id": "kansai_146",
+    "name": "相鉄フレッサイン（清水五条駅周邊）",
     "brand": "Fresa Inn",
-    "area": "京都府 京都市 河原町 烏丸",
+    "area": "京都府 京都市 河原町 烏丸 京都駅 二條 伏見",
     "region": "kansai",
     "lat": 34.996282,
     "lng": 135.764454,
@@ -12189,33 +12578,6 @@
       "kfc": 1342,
       "drugstore": 177,
       "supermarket": 194
-    }
-  },
-  {
-    "id": "kansai_73",
-    "name": "東急ステイメルキュール大阪なんば",
-    "brand": "Tokyu Stay",
-    "area": "大阪市  中央区 西心斎橋  大阪府 大阪市 梅田 難波 心齋橋 天王寺",
-    "region": "kansai",
-    "lat": 34.670588,
-    "lng": 135.499684,
-    "station_name": "なんば",
-    "station_dist": 371,
-    "airport_lines": [
-      "NANKAI"
-    ],
-    "amenities": {
-      "lawson": 172,
-      "seven": 95,
-      "familymart": 76,
-      "starbucks": 199,
-      "doutor": 357,
-      "komeda": 256,
-      "mcdonalds": 165,
-      "mos": 324,
-      "kfc": 1535,
-      "drugstore": 141,
-      "supermarket": 146
     }
   },
   {
@@ -12321,10 +12683,10 @@
     }
   },
   {
-    "id": "kansai_61",
+    "id": "kansai_3",
     "name": "ホテルリブマックスBudget梅田",
     "brand": "LiveMax",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 梅田 新大阪 京橋 淀屋橋",
     "region": "kansai",
     "lat": 34.709914,
     "lng": 135.503163,
@@ -12343,6 +12705,31 @@
       "kfc": 718,
       "drugstore": 234,
       "supermarket": 137
+    }
+  },
+  {
+    "id": "kansai_87",
+    "name": "ホテルリブマックス（西宮駅周邊）",
+    "brand": "LiveMax",
+    "area": "兵庫県 兵庫縣 尼崎市 西宮市 蘆屋市 寶塚市 伊丹市",
+    "region": "kansai",
+    "lat": 34.733822,
+    "lng": 135.340243,
+    "station_name": "西宮",
+    "station_dist": 375,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 989,
+      "seven": 381,
+      "familymart": 160,
+      "starbucks": 366,
+      "doutor": 9999,
+      "komeda": 444,
+      "mcdonalds": 409,
+      "mos": 1063,
+      "kfc": 2052,
+      "drugstore": 129,
+      "supermarket": 269
     }
   },
   {
@@ -12577,10 +12964,10 @@
     }
   },
   {
-    "id": "kansai_77",
-    "name": "スーパーホテル",
+    "id": "kansai_17",
+    "name": "スーパーホテル 御堂筋線・江坂",
     "brand": "Super Hotel",
-    "area": "大阪府吹田市広芝町12-33 大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府吹田市広芝町12-33 大阪府 吹田市 江坂 千里中央 豐中市 伊丹機場",
     "region": "kansai",
     "lat": 34.755539,
     "lng": 135.498172,
@@ -12656,10 +13043,10 @@
     }
   },
   {
-    "id": "kansai_103",
-    "name": "アパホテル",
+    "id": "kansai_77",
+    "name": "アパホテル 京都祇園",
     "brand": "APA Hotel",
-    "area": "京都府 京都市 河原町 烏丸",
+    "area": "京都府 京都市 河原町 烏丸 京都駅 二條 伏見",
     "region": "kansai",
     "lat": 35.003516,
     "lng": 135.776166,
@@ -12706,17 +13093,17 @@
     }
   },
   {
-    "id": "kansai_35",
-    "name": "アパホテル",
+    "id": "kansai_109",
+    "name": "アパホテル（堺筋本町駅周邊）",
     "brand": "APA Hotel",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 梅田 新大阪 京橋 淀屋橋",
     "region": "kansai",
     "lat": 34.685833,
     "lng": 135.504779,
     "station_name": "堺筋本町",
     "station_dist": 389,
     "airport_lines": [
-      "NANKAI"
+      "RAIL_NANKAI"
     ],
     "amenities": {
       "lawson": 177,
@@ -12858,10 +13245,10 @@
     }
   },
   {
-    "id": "kansai_28",
+    "id": "kansai_107",
     "name": "コンフォートホテル大阪心斎橋",
     "brand": "Comfort Hotel",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 難波 心齋橋 天王寺 本町",
     "region": "kansai",
     "lat": 34.672137,
     "lng": 135.503555,
@@ -12883,31 +13270,30 @@
     }
   },
   {
-    "id": "tokyo_68",
-    "name": "東横イン",
+    "id": "kansai_150",
+    "name": "東横イン 京都琵琶湖大津",
     "brand": "Toyoko Inn",
-    "area": "東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
-    "region": "tokyo",
-    "lat": 35.73429,
-    "lng": 139.710939,
-    "station_name": "池袋",
-    "station_dist": 394,
+    "area": "滋賀県 滋賀縣 大津市 草津市",
+    "region": "kansai",
+    "lat": 35.008199,
+    "lng": 135.86194,
+    "station_name": "びわ湖浜大津",
+    "station_dist": 396,
     "airport_lines": [
-      "BUS_TYO",
-      "RAIL_NEX"
+      "RAIL_HARUKA"
     ],
     "amenities": {
-      "lawson": 74,
-      "seven": 140,
-      "familymart": 47,
-      "starbucks": 409,
-      "doutor": 595,
-      "komeda": 281,
-      "mcdonalds": 355,
-      "mos": 472,
-      "kfc": 287,
-      "drugstore": 130,
-      "supermarket": 119
+      "lawson": 313,
+      "seven": 517,
+      "familymart": 356,
+      "starbucks": 590,
+      "doutor": 9999,
+      "komeda": 1675,
+      "mcdonalds": 2181,
+      "mos": 3856,
+      "kfc": 9999,
+      "drugstore": 89,
+      "supermarket": 28
     }
   },
   {
@@ -13061,17 +13447,18 @@
     }
   },
   {
-    "id": "kansai_55",
+    "id": "kansai_117",
     "name": "コンフォートホテル新大阪",
     "brand": "Comfort Hotel",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 梅田 新大阪 京橋 淀屋橋",
     "region": "kansai",
     "lat": 34.729983,
     "lng": 135.501187,
     "station_name": "新大阪",
     "station_dist": 404,
     "airport_lines": [
-      "JR_HARUKA"
+      "BUS_KIX",
+      "RAIL_HARUKA"
     ],
     "amenities": {
       "lawson": 111,
@@ -13085,6 +13472,60 @@
       "kfc": 1309,
       "drugstore": 366,
       "supermarket": 130
+    }
+  },
+  {
+    "id": "kansai_124",
+    "name": "スーパーホテル 堺マリティナ",
+    "brand": "Super Hotel",
+    "area": "大阪府 堺市 堺駅 堺東 中百舌鳥",
+    "region": "kansai",
+    "lat": 34.578277,
+    "lng": 135.468657,
+    "station_name": "堺",
+    "station_dist": 405,
+    "airport_lines": [
+      "RAIL_NANKAI"
+    ],
+    "amenities": {
+      "lawson": 400,
+      "seven": 162,
+      "familymart": 280,
+      "starbucks": 246,
+      "doutor": 1369,
+      "komeda": 394,
+      "mcdonalds": 395,
+      "mos": 9999,
+      "kfc": 430,
+      "drugstore": 142,
+      "supermarket": 297
+    }
+  },
+  {
+    "id": "kansai_165",
+    "name": "奈良ワシントンホテルプラザ",
+    "brand": "Washington Hotel",
+    "area": "奈良県奈良市下三条町31-1 奈良県 奈良縣 奈良市 大和西大寺 天理市",
+    "region": "kansai",
+    "lat": 34.682224,
+    "lng": 135.823025,
+    "station_name": "奈良",
+    "station_dist": 405,
+    "airport_lines": [
+      "BUS_KIX"
+    ],
+    "amenities": {
+      "lawson": 319,
+      "seven": 69,
+      "familymart": 553,
+      "starbucks": 302,
+      "doutor": 429,
+      "komeda": 932,
+      "mcdonalds": 522,
+      "mos": 383,
+      "kfc": 234,
+      "drugstore": 66,
+      "supermarket": 33
     }
   },
   {
@@ -13244,10 +13685,10 @@
     }
   },
   {
-    "id": "kansai_1",
+    "id": "kansai_130",
     "name": "東横イン五条烏丸 (Toyoko Inn)",
     "brand": "Toyoko Inn",
-    "area": "京都府 京都市 河原町 烏丸",
+    "area": "京都府 京都市 河原町 烏丸 京都駅 二條 伏見",
     "region": "kansai",
     "lat": 34.998646,
     "lng": 135.759548,
@@ -13419,33 +13860,6 @@
     }
   },
   {
-    "id": "kyushu_north_8",
-    "name": "東横イン",
-    "brand": "Toyoko Inn",
-    "area": "福岡県 福岡縣 北九州市 小倉",
-    "region": "kyushu_north",
-    "lat": 33.886315,
-    "lng": 130.887631,
-    "station_name": "小倉",
-    "station_dist": 421,
-    "airport_lines": [
-      "BUS_KKJ"
-    ],
-    "amenities": {
-      "lawson": 324,
-      "seven": 413,
-      "familymart": 420,
-      "starbucks": 486,
-      "doutor": 503,
-      "komeda": 1078,
-      "mcdonalds": 353,
-      "mos": 9999,
-      "kfc": 9999,
-      "drugstore": 527,
-      "supermarket": 592
-    }
-  },
-  {
     "id": "hokkaido_38",
     "name": "東横イン 旭川駅東口",
     "brand": "Toyoko Inn",
@@ -13471,10 +13885,10 @@
     }
   },
   {
-    "id": "kansai_60",
-    "name": "ドーミーインPREMIUMなんば",
+    "id": "kansai_2",
+    "name": "天然温泉 夕霧の湯 ドーミーインPREMIUMなんば",
     "brand": "Dormy Inn",
-    "area": "大阪市  中央区   大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪市  中央区   大阪府 大阪市 難波 心齋橋 天王寺 本町",
     "region": "kansai",
     "lat": 34.670947,
     "lng": 135.506447,
@@ -13521,42 +13935,18 @@
     }
   },
   {
-    "id": "tohoku_6",
-    "name": "東横イン",
-    "brand": "Toyoko Inn",
-    "area": "仙台市  宮城野区   宮城県 宮城縣 仙台市",
-    "region": "tohoku",
-    "lat": 38.261445,
-    "lng": 140.887877,
-    "station_name": "宮城野通",
-    "station_dist": 428,
-    "airport_lines": [],
-    "amenities": {
-      "lawson": 165,
-      "seven": 158,
-      "familymart": 135,
-      "starbucks": 285,
-      "doutor": 976,
-      "komeda": 1300,
-      "mcdonalds": 374,
-      "mos": 577,
-      "kfc": 641,
-      "drugstore": 58,
-      "supermarket": 329
-    }
-  },
-  {
-    "id": "kansai_2",
-    "name": "アパホテル京都駅堀川通",
+    "id": "kansai_131",
+    "name": "アパホテル京都駅堀川通 京都駅堀川通り",
     "brand": "APA Hotel",
-    "area": "京都府 京都市 河原町 烏丸",
+    "area": "京都府 京都市 河原町 烏丸 京都駅 二條 伏見",
     "region": "kansai",
     "lat": 34.986658,
     "lng": 135.753575,
     "station_name": "京都",
     "station_dist": 429,
     "airport_lines": [
-      "JR_HARUKA"
+      "BUS_KIX",
+      "RAIL_HARUKA"
     ],
     "amenities": {
       "lawson": 248,
@@ -13573,10 +13963,10 @@
     }
   },
   {
-    "id": "kansai_83",
-    "name": "東横イン",
+    "id": "kansai_23",
+    "name": "東横イン 淀屋橋駅南",
     "brand": "Toyoko Inn",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 梅田 新大阪 京橋 淀屋橋",
     "region": "kansai",
     "lat": 34.687941,
     "lng": 135.502337,
@@ -13598,10 +13988,10 @@
     }
   },
   {
-    "id": "kansai_26",
+    "id": "kansai_138",
     "name": "Mitsui Garden Hotel Kyoto Shijo",
     "brand": "Mitsui Garden",
-    "area": "京都府 京都市 河原町 烏丸",
+    "area": "京都府 京都市 河原町 烏丸 京都駅 二條 伏見",
     "region": "kansai",
     "lat": 35.003011,
     "lng": 135.754968,
@@ -13648,16 +14038,18 @@
     }
   },
   {
-    "id": "kansai_120",
+    "id": "kansai_46",
     "name": "ホテルリブマックス梅田堂山",
     "brand": "LiveMax",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 梅田 新大阪 京橋 淀屋橋",
     "region": "kansai",
     "lat": 34.703651,
     "lng": 135.502755,
     "station_name": "東梅田",
     "station_dist": 433,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_KIX"
+    ],
     "amenities": {
       "lawson": 222,
       "seven": 21,
@@ -13673,10 +14065,10 @@
     }
   },
   {
-    "id": "kansai_4",
+    "id": "kansai_97",
     "name": "東横イン大阪船場東",
     "brand": "Toyoko Inn",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 難波 心齋橋 天王寺 本町",
     "region": "kansai",
     "lat": 34.681266,
     "lng": 135.512692,
@@ -13725,10 +14117,10 @@
     }
   },
   {
-    "id": "kansai_70",
-    "name": "東横イン",
+    "id": "kansai_11",
+    "name": "東横INN（中津駅周邊）",
     "brand": "Toyoko Inn",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 梅田 新大阪 京橋 淀屋橋",
     "region": "kansai",
     "lat": 34.71345,
     "lng": 135.500678,
@@ -13877,17 +14269,18 @@
     }
   },
   {
-    "id": "kansai_68",
+    "id": "kansai_59",
     "name": "東横イン 大阪なんば",
     "brand": "Toyoko Inn",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 難波 心齋橋 天王寺 本町",
     "region": "kansai",
     "lat": 34.661484,
     "lng": 135.497577,
     "station_name": "なんば",
     "station_dist": 454,
     "airport_lines": [
-      "NANKAI"
+      "BUS_KIX",
+      "RAIL_NANKAI"
     ],
     "amenities": {
       "lawson": 129,
@@ -13904,10 +14297,10 @@
     }
   },
   {
-    "id": "kansai_86",
-    "name": "東横イン",
+    "id": "kansai_26",
+    "name": "東横イン 天満橋大手前",
     "brand": "Toyoko Inn",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 梅田 新大阪 京橋 淀屋橋",
     "region": "kansai",
     "lat": 34.686174,
     "lng": 135.514734,
@@ -13983,10 +14376,10 @@
     }
   },
   {
-    "id": "kansai_138",
-    "name": "東横イン",
+    "id": "kansai_58",
+    "name": "東横イン 大阪ドーム前",
     "brand": "Toyoko Inn",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 難波 心齋橋 天王寺 本町",
     "region": "kansai",
     "lat": 34.668087,
     "lng": 135.474327,
@@ -14008,10 +14401,10 @@
     }
   },
   {
-    "id": "kansai_34",
+    "id": "kansai_141",
     "name": "三井ガーデンホテル京都新町別邸",
     "brand": "Mitsui Garden",
-    "area": "京都府 京都市 河原町 烏丸",
+    "area": "京都府 京都市 河原町 烏丸 京都駅 二條 伏見",
     "region": "kansai",
     "lat": 35.006623,
     "lng": 135.756832,
@@ -14260,31 +14653,6 @@
     }
   },
   {
-    "id": "kansai_14",
-    "name": "スーパーホテル神戸",
-    "brand": "Super Hotel",
-    "area": "兵庫県 兵庫縣 神戶市 三宮",
-    "region": "kansai",
-    "lat": 34.699028,
-    "lng": 135.193707,
-    "station_name": "三ノ宮",
-    "station_dist": 480,
-    "airport_lines": [],
-    "amenities": {
-      "lawson": 62,
-      "seven": 190,
-      "familymart": 10,
-      "starbucks": 327,
-      "doutor": 426,
-      "komeda": 698,
-      "mcdonalds": 484,
-      "mos": 525,
-      "kfc": 570,
-      "drugstore": 178,
-      "supermarket": 230
-    }
-  },
-  {
     "id": "chugoku_32",
     "name": "東横イン",
     "brand": "Toyoko Inn",
@@ -14417,6 +14785,33 @@
     }
   },
   {
+    "id": "kansai_90",
+    "name": "スーパーホテル神戸",
+    "brand": "Super Hotel",
+    "area": "兵庫県 兵庫縣 神戶市 三宮 元町 新神戶",
+    "region": "kansai",
+    "lat": 34.699102,
+    "lng": 135.193693,
+    "station_name": "三ノ宮",
+    "station_dist": 489,
+    "airport_lines": [
+      "BUS_KIX"
+    ],
+    "amenities": {
+      "lawson": 67,
+      "seven": 189,
+      "familymart": 7,
+      "starbucks": 323,
+      "doutor": 434,
+      "komeda": 706,
+      "mcdonalds": 493,
+      "mos": 531,
+      "kfc": 578,
+      "drugstore": 178,
+      "supermarket": 236
+    }
+  },
+  {
     "id": "tokyo_212",
     "name": "ホテルリブマックス東京木場",
     "brand": "LiveMax",
@@ -14467,10 +14862,10 @@
     }
   },
   {
-    "id": "kansai_118",
-    "name": "東横イン",
+    "id": "kansai_82",
+    "name": "東横INN（二条城前駅周邊）",
     "brand": "Toyoko Inn",
-    "area": "京都府 京都市 河原町 烏丸",
+    "area": "京都府 京都市 河原町 烏丸 京都駅 二條 伏見",
     "region": "kansai",
     "lat": 35.00777,
     "lng": 135.75218,
@@ -14492,10 +14887,10 @@
     }
   },
   {
-    "id": "kansai_95",
-    "name": "東横イン",
+    "id": "kansai_61",
+    "name": "東横イン 大阪なんば日本橋",
     "brand": "Toyoko Inn",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 難波 心齋橋 天王寺 本町",
     "region": "kansai",
     "lat": 34.660012,
     "lng": 135.505566,
@@ -14564,33 +14959,6 @@
       "kfc": 9999,
       "drugstore": 265,
       "supermarket": 338
-    }
-  },
-  {
-    "id": "chugoku_1",
-    "name": "アパホテル",
-    "brand": "APA Hotel",
-    "area": "岡山市  北区   岡山県 岡山縣 岡山市",
-    "region": "chugoku",
-    "lat": 34.661359,
-    "lng": 133.915516,
-    "station_name": "岡山",
-    "station_dist": 497,
-    "airport_lines": [
-      "BUS_OKJ"
-    ],
-    "amenities": {
-      "lawson": 294,
-      "seven": 335,
-      "familymart": 490,
-      "starbucks": 186,
-      "doutor": 1265,
-      "komeda": 2001,
-      "mcdonalds": 471,
-      "mos": 2412,
-      "kfc": 1373,
-      "drugstore": 263,
-      "supermarket": 241
     }
   },
   {
@@ -14668,33 +15036,6 @@
       "kfc": 2087,
       "drugstore": 128,
       "supermarket": 267
-    }
-  },
-  {
-    "id": "tokyo_54",
-    "name": "東急ステイ 渋谷新南口",
-    "brand": "Tokyu Stay",
-    "area": "渋谷区     東京都 新宿 澀谷 池袋 上野 東京 銀座 淺草 品川",
-    "region": "tokyo",
-    "lat": 35.65445,
-    "lng": 139.705336,
-    "station_name": "渋谷",
-    "station_dist": 499,
-    "airport_lines": [
-      "RAIL_NEX"
-    ],
-    "amenities": {
-      "lawson": 365,
-      "seven": 173,
-      "familymart": 59,
-      "starbucks": 217,
-      "doutor": 186,
-      "komeda": 698,
-      "mcdonalds": 458,
-      "mos": 832,
-      "kfc": 866,
-      "drugstore": 178,
-      "supermarket": 196
     }
   },
   {
@@ -14776,10 +15117,37 @@
     }
   },
   {
-    "id": "kansai_130",
+    "id": "kansai_126",
+    "name": "東横INN（堺東駅周邊）",
+    "brand": "Toyoko Inn",
+    "area": "大阪府 堺市 堺駅 堺東 中百舌鳥",
+    "region": "kansai",
+    "lat": 34.575255,
+    "lng": 135.479364,
+    "station_name": "堺東",
+    "station_dist": 513,
+    "airport_lines": [
+      "RAIL_NANKAI"
+    ],
+    "amenities": {
+      "lawson": 295,
+      "seven": 271,
+      "familymart": 83,
+      "starbucks": 816,
+      "doutor": 345,
+      "komeda": 476,
+      "mcdonalds": 452,
+      "mos": 9999,
+      "kfc": 1138,
+      "drugstore": 273,
+      "supermarket": 460
+    }
+  },
+  {
+    "id": "kansai_84",
     "name": "リッチモンドホテルプレミア京都四条",
     "brand": "Richmond Hotel",
-    "area": "京都市  中京区 四條通  京都府 京都市 河原町 烏丸",
+    "area": "京都市  中京区 四條通  京都府 京都市 河原町 烏丸 京都駅 二條 伏見",
     "region": "kansai",
     "lat": 35.004115,
     "lng": 135.754315,
@@ -14930,6 +15298,56 @@
     }
   },
   {
+    "id": "kansai_70",
+    "name": "OMU Guest House",
+    "brand": "Hotel Metropolitan",
+    "area": "大阪府 堺市 堺駅 堺東 中百舌鳥",
+    "region": "kansai",
+    "lat": 34.593672,
+    "lng": 135.509026,
+    "station_name": "杉本町",
+    "station_dist": 549,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 600,
+      "seven": 560,
+      "familymart": 625,
+      "starbucks": 2483,
+      "doutor": 3137,
+      "komeda": 3285,
+      "mcdonalds": 762,
+      "mos": 1005,
+      "kfc": 1355,
+      "drugstore": 459,
+      "supermarket": 336
+    }
+  },
+  {
+    "id": "kansai_64",
+    "name": "東横INN（弁天町駅周邊）",
+    "brand": "Toyoko Inn",
+    "area": "大阪府 大阪市 難波 心齋橋 天王寺 本町",
+    "region": "kansai",
+    "lat": 34.670698,
+    "lng": 135.46787,
+    "station_name": "弁天町",
+    "station_dist": 554,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 306,
+      "seven": 85,
+      "familymart": 204,
+      "starbucks": 543,
+      "doutor": 3602,
+      "komeda": 510,
+      "mcdonalds": 777,
+      "mos": 904,
+      "kfc": 782,
+      "drugstore": 415,
+      "supermarket": 202
+    }
+  },
+  {
     "id": "tohoku_13",
     "name": "ダイワロイネットホテル青森",
     "brand": "Daiwa Roynet",
@@ -15032,10 +15450,10 @@
     }
   },
   {
-    "id": "kansai_17",
-    "name": "東横イン",
+    "id": "kansai_135",
+    "name": "東横イン 京都五条大宮",
     "brand": "Toyoko Inn",
-    "area": "京都府 京都市 河原町 烏丸",
+    "area": "京都府 京都市 河原町 烏丸 京都駅 二條 伏見",
     "region": "kansai",
     "lat": 34.994529,
     "lng": 135.748935,
@@ -15057,16 +15475,18 @@
     }
   },
   {
-    "id": "kansai_15",
+    "id": "kansai_157",
     "name": "東横イン神戸三宮1",
     "brand": "Toyoko Inn",
-    "area": "兵庫県 兵庫縣 神戶市 三宮",
+    "area": "兵庫県 兵庫縣 神戶市 三宮 元町 新神戶",
     "region": "kansai",
     "lat": 34.694945,
     "lng": 135.201942,
     "station_name": "神戸三宮",
     "station_dist": 612,
-    "airport_lines": [],
+    "airport_lines": [
+      "BUS_KIX"
+    ],
     "amenities": {
       "lawson": 194,
       "seven": 285,
@@ -15082,10 +15502,10 @@
     }
   },
   {
-    "id": "kansai_134",
-    "name": "東横イン",
+    "id": "kansai_55",
+    "name": "東横イン 京橋桜ノ宮",
     "brand": "Toyoko Inn",
-    "area": "大阪府 大阪市 梅田 難波 心齋橋 天王寺",
+    "area": "大阪府 大阪市 梅田 新大阪 京橋 淀屋橋",
     "region": "kansai",
     "lat": 34.700488,
     "lng": 135.52455,
@@ -15184,10 +15604,10 @@
     }
   },
   {
-    "id": "kansai_40",
+    "id": "kansai_143",
     "name": "Comfort Hotel Kyoto Horigawagojo",
     "brand": "Comfort Hotel",
-    "area": "京都府 京都市 河原町 烏丸",
+    "area": "京都府 京都市 河原町 烏丸 京都駅 二條 伏見",
     "region": "kansai",
     "lat": 34.995553,
     "lng": 135.752844,
@@ -15234,10 +15654,10 @@
     }
   },
   {
-    "id": "kansai_30",
+    "id": "kansai_139",
     "name": "APA Hotel Kyoto Gojo Omiya",
     "brand": "APA Hotel",
-    "area": "京都府 京都市 河原町 烏丸",
+    "area": "京都府 京都市 河原町 烏丸 京都駅 二條 伏見",
     "region": "kansai",
     "lat": 34.996598,
     "lng": 135.749378,
@@ -15284,10 +15704,10 @@
     }
   },
   {
-    "id": "kansai_54",
+    "id": "kansai_147",
     "name": "hotel livemax",
     "brand": "LiveMax",
-    "area": "京都府 京都市 河原町 烏丸",
+    "area": "京都府 京都市 河原町 烏丸 京都駅 二條 伏見",
     "region": "kansai",
     "lat": 35.017558,
     "lng": 135.7483,
@@ -15356,6 +15776,33 @@
       "kfc": 749,
       "drugstore": 565,
       "supermarket": 573
+    }
+  },
+  {
+    "id": "kansai_128",
+    "name": "ホテルルートイン大阪和泉府中",
+    "brand": "Route Inn",
+    "area": "和泉市   府中町  大阪府 泉大津市 岸和田市 貝塚市",
+    "region": "kansai",
+    "lat": 34.482818,
+    "lng": 135.42751,
+    "station_name": "和泉府中",
+    "station_dist": 661,
+    "airport_lines": [
+      "RAIL_HARUKA"
+    ],
+    "amenities": {
+      "lawson": 1242,
+      "seven": 626,
+      "familymart": 633,
+      "starbucks": 84,
+      "doutor": 9999,
+      "komeda": 1695,
+      "mcdonalds": 1193,
+      "mos": 2774,
+      "kfc": 669,
+      "drugstore": 226,
+      "supermarket": 470
     }
   },
   {
@@ -15693,6 +16140,33 @@
       "kfc": 881,
       "drugstore": 273,
       "supermarket": 121
+    }
+  },
+  {
+    "id": "kansai_152",
+    "name": "スーパーホテル（草津駅周邊）",
+    "brand": "Super Hotel",
+    "area": "滋賀県 滋賀縣 大津市 草津市",
+    "region": "kansai",
+    "lat": 35.015385,
+    "lng": 135.966018,
+    "station_name": "草津",
+    "station_dist": 884,
+    "airport_lines": [
+      "RAIL_HARUKA"
+    ],
+    "amenities": {
+      "lawson": 966,
+      "seven": 882,
+      "familymart": 716,
+      "starbucks": 34,
+      "doutor": 9999,
+      "komeda": 769,
+      "mcdonalds": 808,
+      "mos": 2118,
+      "kfc": 9999,
+      "drugstore": 331,
+      "supermarket": 676
     }
   },
   {
@@ -16691,6 +17165,31 @@
       "kfc": 87,
       "drugstore": 21,
       "supermarket": 217
+    }
+  },
+  {
+    "id": "kansai_129",
+    "name": "ホテルルートイン大阪和泉",
+    "brand": "Route Inn",
+    "area": "和泉市     大阪府 泉大津市 岸和田市 貝塚市",
+    "region": "kansai",
+    "lat": 34.435761,
+    "lng": 135.450697,
+    "station_name": "周邊車站",
+    "station_dist": 9999,
+    "airport_lines": [],
+    "amenities": {
+      "lawson": 1273,
+      "seven": 1203,
+      "familymart": 2016,
+      "starbucks": 272,
+      "doutor": 9999,
+      "komeda": 9999,
+      "mcdonalds": 258,
+      "mos": 9999,
+      "kfc": 9999,
+      "drugstore": 1278,
+      "supermarket": 2020
     }
   }
 ]
